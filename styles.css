@@ -9,14 +9,14 @@
   --color-surface: #ffffff;
   --color-surface-2: #f1f5f9;
   --color-border: #e2e8f0;
-  --color-primary: #2563eb;
-  --color-primary-light: #3b82f6;
-  --color-primary-dark: #1d4ed8;
-  --color-accent: #0891b2;
-  --color-accent-light: #06b6d4;
+  --color-primary: #dc2626;
+  --color-primary-light: #ef4444;
+  --color-primary-dark: #b91c1c;
+  --color-accent: #0f172a;
+  --color-accent-light: #1e293b;
   --color-text: #0f172a;
   --color-text-muted: #475569;
-  --color-text-dim: #94a3b8;
+  --color-text-dim: #64748b;
   --color-success: #16a34a;
   --color-warning: #d97706;
   --color-danger: #dc2626;
@@ -146,7 +146,7 @@ a:hover {
   color: var(--color-text-muted);
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 8px 14px;
+  padding: 12px 14px;
   border-radius: var(--radius);
   transition: all var(--transition);
 }
@@ -410,7 +410,8 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   flex-shrink: 0;
   color: white;
 }
@@ -1180,4 +1181,91 @@ a:hover {
 
 .header-inner .logo img {
   height: 44px;
+}
+
+/* ============================================
+   TRUST BAR
+   ============================================ */
+.trust-bar {
+  background: var(--color-text);
+  padding: 28px 0;
+}
+.trust-bar-inner {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  text-align: center;
+  color: white;
+}
+.trust-item strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.trust-item span {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  margin-top: 4px;
+  display: block;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 999;
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   FORM SUCCESS STATE
+   ============================================ */
+#success-message {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+}
+#success-message:target {
+  display: block;
+}
+#success-message h3 {
+  color: var(--color-success);
+  margin-bottom: 12px;
+}
+#success-message p {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .trust-bar-inner {
+    gap: 24px;
+  }
+  .trust-item strong {
+    font-size: 1.2rem;
+  }
 }
