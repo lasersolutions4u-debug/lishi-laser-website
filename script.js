@@ -89,14 +89,6 @@ if (contactForm) {
   });
 }
 
-// Video play functionality placeholder
-function playVideo(element) {
-  const videoId = element.dataset.video;
-  // Video modal could be implemented here
-  // For now, show an alert or redirect to YouTube if video URL is known
-  console.log('Play video:', videoId);
-}
-
 // Counter animation for hero stats
 function animateCounters() {
   const counters = document.querySelectorAll('.hero-stat-value');
