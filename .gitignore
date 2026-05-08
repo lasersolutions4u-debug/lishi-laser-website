@@ -2,3 +2,12 @@ node_modules/
 .DS_Store
 *.log
 .wrangler/
+
+# Claude Code local state
+.claude/
+
+# API keys and secrets
+.claude-portable/settings.json
+
+# Cloudflare Pages local cache
+public/.wrangler/

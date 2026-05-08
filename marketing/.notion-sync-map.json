@@ -1,0 +1,67 @@
+{
+  "_description": "Notion → 本地文件同步映射。运行导出时，按此映射从 Notion 拉取内容回写本地文件。",
+  "_last_sync": "2026-05-06T18:50:00+08:00",
+  "_notion_hub_url": "https://www.notion.so/35895643234781ceb231e1510c77d401",
+  "_notion_task_db_url": "https://www.notion.so/f72c07c05f4e4a78928ea8acc2c23603",
+  "pages": [
+    {
+      "notion_id": "35895643-2347-81dd-a12c-d6d6bcbba708",
+      "notion_title": "LinkedIn 营销方案",
+      "local_file": "notion-export/LinkedIn-营销方案.md"
+    },
+    {
+      "notion_id": "35895643-2347-81d6-b950-efc2eb963e52",
+      "notion_title": "YouTube 频道计划",
+      "local_file": "notion-export/YouTube-频道计划.md"
+    },
+    {
+      "notion_id": "35895643-2347-819c-b8d2-de0c2cedbaa3",
+      "notion_title": "Email 营销体系",
+      "local_file": "notion-export/Email-营销体系.md"
+    },
+    {
+      "notion_id": "35895643-2347-8109-b341-fa86721285bc",
+      "notion_title": "B2B 平台策略",
+      "local_file": "notion-export/B2B-平台策略.md"
+    },
+    {
+      "notion_id": "35895643-2347-81b4-9300-d6e47a79e31c",
+      "notion_title": "印刷品方案",
+      "local_file": "notion-export/印刷品方案.md"
+    },
+    {
+      "notion_id": "35895643-2347-8184-98a3-c8df57fa65da",
+      "notion_title": "SEO 策略",
+      "local_file": "notion-export/SEO-策略.md"
+    },
+    {
+      "notion_id": "35895643-2347-8180-a868-efc84ecc5366",
+      "notion_title": "LinkedIn 帖子文案库",
+      "local_file": "notion-export/LinkedIn-帖子文案库.md"
+    },
+    {
+      "notion_id": "35895643-2347-8105-af67-ccbad7ede733",
+      "notion_title": "Email 模板库",
+      "local_file": "notion-export/Email-模板库.md"
+    },
+    {
+      "notion_id": "35895643-2347-8143-a0eb-f9407d72e6d5",
+      "notion_title": "邮寄附信模板",
+      "local_file": "notion-export/邮寄附信模板.md"
+    },
+    {
+      "notion_id": "35895643-2347-81d7-b997-f3f8fbde6a94",
+      "notion_title": "推广渠道效果分析",
+      "local_file": "notion-export/推广渠道效果分析.md"
+    },
+    {
+      "notion_id": "35895643-2347-81ce-b231-e1510c77d401",
+      "notion_title": "LISHI LASER 营销中心",
+      "local_file": "notion-export/00-营销中心总览.md"
+    }
+  ],
+  "task_db": {
+    "data_source_id": "2569a827-4f37-4301-bd3c-5810ffd85e7b",
+    "local_file": "notion-export/营销任务库.md"
+  }
+}
