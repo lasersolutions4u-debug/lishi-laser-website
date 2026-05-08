@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
+Disallow: /_template.html
 
 Sitemap: https://gasmixtech.com/sitemap.xml
+
+# AI crawlers — llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
