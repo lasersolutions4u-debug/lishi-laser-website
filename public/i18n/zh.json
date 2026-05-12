@@ -52,7 +52,7 @@
     "cutEffectTitle": "切割效果",
     "cutEffectDesc": "高速切割 + 零毛刺。安装后可根据不同板厚调节N₂ 95%和O₂ 5%的配比。内置程序分析使用比例并记录用气参数要求。",
     "compatTitle": "广泛兼容性",
-    "compatDesc": "适配所有主流品牌：HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山），以及BODOR（邦德）、KIMLA、MESSER等全球品牌。"
+    "compatDesc": "适配所有主流品牌：HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山），以及BODOR（邦德）、JIATAI、HG LASER、XUNLEI等全球品牌。"
   },
   "advantages": {
     "label": "竞争优势",
@@ -211,7 +211,7 @@
     "title": "准备提升您的切割速度了吗？",
     "description": "将一台设备连接到您的激光机，今天就开始3倍速切割。可适配6KW–60KW机器。",
     "buttonContact": "联系我们 →",
-    "buttonWhatsApp": "WhatsApp: +52 557 208 0065"
+    "buttonWhatsApp": "WhatsApp"
   },
   "faq": {
     "label": "常见问题",
@@ -219,7 +219,7 @@
     "q1": "什么是混合气体设备？它是如何工作的？",
     "a1": "混合气体设备将液氮（N₂）和液氧（O₂）精确混合成校准的N₂/O₂混合气体（通常为95%/5%）。这种微氧混合气体用作大功率激光切割的辅助气体，相比纯氧切割速度提升3倍，同时完全消除毛刺。",
     "q2": "能否兼容我的激光机？",
-    "a2": "可以。立石激光混合气体设备兼容所有主流激光品牌，包括HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山）、BODOR（邦德）、KIMLA、MESSER等。支持12kW至60kW功率的机器。只要您的机器使用标准辅助气体接口，即可兼容。",
+    "a2": "可以。立石激光混合气体设备兼容所有主流激光品牌，包括HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山）、BODOR（邦德）、JIATAI、HG LASER、XUNLEI等。支持12kW至60kW功率的机器。只要您的机器使用标准辅助气体接口，即可兼容。",
     "q3": "能切割多厚的板材？",
     "a3": "切割范围取决于激光功率：12kW可切割碳钢厚度达16mm，20kW达25mm，30kW达30mm，60kW达40mm。同时也能切割不锈钢和铝材，效果优异。",
     "q4": "能节省多少燃气费用？",

@@ -1,7 +1,7 @@
 # LISHI LASER Mixed Gas Device — Complete Product Information
 
 ## Product Overview
-LISHI LASER Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries through a network of 30+ distributors.
+LISHI LASER Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations worldwide through a network of 30+ distributors.
 
 ## How It Works — IGBT Precision Mixing Technology
 The device takes high-purity liquid nitrogen (99.999%) and liquid oxygen (99.5%), then mixes them at a precisely calibrated ratio (typically 95% N₂ / 5% O₂, adjustable). The IGBT (Insulated Gate Bipolar Transistor) control system monitors and adjusts the gas flow in real time, maintaining optimal mixture consistency regardless of downstream pressure fluctuations. This micro-oxygen mixture serves as an assist gas for high-power laser cutting.
@@ -51,8 +51,9 @@ Compatible with all major fiber laser cutting machine brands:
 - LEAD Laser (领创激光)
 - HSG Laser (宏山激光)
 - BODOR Laser (邦德激光)
-- KIMLA (Poland)
-- MESSER Cutting Systems (Germany)
+- JIATAI Laser (嘉泰激光)
+- HG LASER (华工激光)
+- XUNLEI Laser (迅镭激光)
 - And other China-made and international brands
 
 ## Detailed Technical Specifications
@@ -161,7 +162,7 @@ A typical sheet metal fabrication shop running one 20kW laser cutting machine ca
 ## Frequently Asked Questions
 
 **Q: Can this device work with any laser machine brand?**
-A: Yes, it is compatible with all major brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, MESSER, and other China-made and international brands. The device connects to the standard assist gas inlet of any fiber laser cutting machine.
+A: Yes, it is compatible with all major brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, XUNLEI, and other China-made and international brands. The device connects to the standard assist gas inlet of any fiber laser cutting machine.
 
 **Q: Do I need to modify my laser machine?**
 A: No mechanical modifications are needed. The device connects to the existing assist gas supply line. The laser machine operates normally with its standard settings.

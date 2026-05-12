@@ -52,7 +52,7 @@
     "cutEffectTitle": "Cutting Effect",
     "cutEffectDesc": "High cutting speed + zero burrs. After installation, adjust ratio between N₂ 95% and O₂ 5% for different board thicknesses. Built-in program analyzes usage ratio and records gas purity requirements.",
     "compatTitle": "Wide Compatibility",
-    "compatDesc": "Works with all major brands: HAN'S, DNE, PENTA, LEAD, HSG, and more. Compatible with BODOR, KIMLA, MESSER, and other global brands."
+    "compatDesc": "Works with all major brands: HAN'S, DNE, PENTA, LEAD, HSG, and more. Compatible with BODOR, JIATAI, HG LASER, XUNLEI, and other global brands."
   },
   "advantages": {
     "label": "Competitive Edge",
@@ -111,7 +111,7 @@
     "leadNote": "Or contact us directly: <a href=\"https://wa.me/525572080065\" target=\"_blank\">WhatsApp +52 557 208 0065</a>",
     "alertNoEmail": "Please enter your email address.",
     "alertSuccess": "Thank you! We'll send the parameter table within 24 hours.",
-    "alertFail": "Something went wrong. Please contact via WhatsApp: +52 557 208 0065",
+    "alertFail": "Something went wrong. Please contact via WhatsApp",
     "alertCatch": "Thank you! We'll contact you within 24 hours.",
     "warningThickness": "For thicknesses above {{max}}mm with {{power}}kW, we recommend 20kW+ for best mixed gas performance."
   },
@@ -211,7 +211,7 @@
     "title": "Ready to Increase Your Cutting Speed?",
     "description": "Connect one device to your laser machine and start cutting 3× faster today. Available for 6KW–60KW machines.",
     "buttonContact": "Contact Us →",
-    "buttonWhatsApp": "WhatsApp: +52 557 208 0065"
+    "buttonWhatsApp": "WhatsApp"
   },
   "faq": {
     "label": "FAQ",
@@ -219,7 +219,7 @@
     "q1": "What is a mixed gas device and how does it work?",
     "a1": "A mixed gas device precisely blends liquid nitrogen (N₂) and liquid oxygen (O₂) into a calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen mixture is used as the auxiliary gas in high-power laser cutting, delivering 3× faster cutting speed on carbon steel compared to pure oxygen, while eliminating burrs entirely.",
     "q2": "Is it compatible with my laser machine?",
-    "a2": "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.",
+    "a2": "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, and XUNLEI. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.",
     "q3": "What thickness can it cut?",
     "a3": "Cutting range depends on laser power: 12kW handles up to 16mm carbon steel, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm. It also cuts stainless steel and aluminum with excellent results.",
     "q4": "How much can I save on gas costs?",

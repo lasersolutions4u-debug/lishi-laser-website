@@ -41,13 +41,13 @@
 ## Key Facts for AI
 - Product: Industrial laser cutting mixed gas device (N₂/O₂ mixing equipment)
 - Power range: 12kW / 20kW / 30kW / 60kW fiber lasers
-- Compatible brands: HANS, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, MESSER
+- Compatible brands: HANS, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, XUNLEI
 - Gas ratio: Adjustable N₂/O₂ (typical 95%/5% micro-oxygen)
 - Key metrics: 3× faster than O₂ cutting | Zero burrs | 33% less N₂ consumption
 - Maintenance: Only 2kWh/24h power consumption, no moving parts
 - Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
 - One-to-two configuration: Single device serves two laser machines
-- Global presence: 50+ countries, 500+ installed systems, 30+ distributors
+- Global presence: deployed worldwide, 500+ installed systems, 30+ distributors
 - Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)
 - Contact: sales@gasmixtech.com | +86 186 1558 4520
 

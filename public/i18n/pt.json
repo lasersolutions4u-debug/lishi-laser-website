@@ -52,7 +52,7 @@
     "cutEffectTitle": "Efeito de Corte",
     "cutEffectDesc": "Alta velocidade de corte + zero rebarbas. Após a instalação, ajuste a proporção entre N₂ 95% e O₂ 5% para diferentes espessuras de chapa. Programa integrado analisa a proporção de uso e registra os requisitos de pureza do gás.",
     "compatTitle": "Ampla Compatibilidade",
-    "compatDesc": "Funciona com todas as principais marcas: HAN'S, DNE, PENTA, LEAD, HSG e mais. Compatível com BODOR, KIMLA, MESSER e outras marcas globais."
+    "compatDesc": "Funciona com todas as principais marcas: HAN'S, DNE, PENTA, LEAD, HSG e mais. Compatível com BODOR, JIATAI, HG LASER, XUNLEI e outras marcas globais."
   },
   "advantages": {
     "label": "Vantagem Competitiva",
@@ -111,7 +111,7 @@
     "leadNote": "Ou entre em contato diretamente: <a href=\"https://wa.me/525572080065\" target=\"_blank\">WhatsApp +52 557 208 0065</a>",
     "alertNoEmail": "Por favor, insira seu endereço de e-mail.",
     "alertSuccess": "Obrigado! Enviaremos a tabela de parâmetros em até 24 horas.",
-    "alertFail": "Algo deu errado. Por favor, entre em contato via WhatsApp: +52 557 208 0065",
+    "alertFail": "Algo deu errado. Por favor, entre em contato via WhatsApp",
     "alertCatch": "Obrigado! Entraremos em contato em até 24 horas.",
     "warningThickness": "Para espessuras acima de {{max}}mm com {{power}}kW, recomendamos 20kW+ para melhor desempenho de gás misto."
   },
@@ -211,7 +211,7 @@
     "title": "Pronto para Aumentar sua Velocidade de Corte?",
     "description": "Conecte um dispositivo à sua máquina laser e comece a cortar 3x mais rápido hoje. Disponível para máquinas de 6KW–60KW.",
     "buttonContact": "Entre em Contato →",
-    "buttonWhatsApp": "WhatsApp: +52 557 208 0065"
+    "buttonWhatsApp": "WhatsApp"
   },
   "faq": {
     "label": "Perguntas Frequentes",
@@ -219,7 +219,7 @@
     "q1": "O que é um dispositivo de gás misto e como funciona?",
     "a1": "Um dispositivo de gás misto mistura com precisão nitrogênio líquido (N₂) e oxigênio líquido (O₂) em uma mistura calibrada de gás N₂/O₂ (tipicamente 95%/5%). Esta mistura de micro-oxigênio é usada como gás auxiliar no corte a laser de alta potência, oferecendo 3× mais velocidade de corte em aço carbono em comparação com oxigênio puro, enquanto elimina rebarbas completamente.",
     "q2": "É compatível com minha máquina laser?",
-    "a2": "Sim. O Dispositivo de Gás Misto LISHI LASER funciona com todas as principais marcas de laser: HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Suporta máquinas de 12kW a 60kW. Se sua máquina usa conexões padrão de gás auxiliar, é compatível.",
+    "a2": "Sim. O Dispositivo de Gás Misto LISHI LASER funciona com todas as principais marcas de laser: HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER e XUNLEI. Suporta máquinas de 12kW a 60kW. Se sua máquina usa conexões padrão de gás auxiliar, é compatível.",
     "q3": "Que espessura pode cortar?",
     "a3": "O alcance de corte depende da potência do laser: 12kW corta até 16mm de aço carbono, 20kW até 25mm, 30kW até 30mm e 60kW até 40mm. Também corta aço inoxidável e alumínio com excelentes resultados.",
     "q4": "Quanto posso economizar em custos de gás?",
