@@ -1,7 +1,7 @@
 # LISHI LASER Mixed Gas Device
 > Official website: https://gasmixtech.com
 > Product: N₂/O₂ mixed gas device for 12kW-60kW fiber laser cutting machines.
-> Core advantage: 3× faster cutting speed, zero burrs, 33% less nitrogen consumption.
+> Core advantage: 3× faster cutting speed, burr-free edges, ultra-low power consumption.
 
 ## Core Pages
 - Homepage: https://gasmixtech.com/
@@ -19,7 +19,6 @@
 - Mixed Gas vs Oxygen Comparison: https://gasmixtech.com/blog/mixed-gas-vs-oxygen-comparison.html
 - Laser Cutting Gas FAQ: https://gasmixtech.com/blog/laser-cutting-gas-faq.html
 - Cutting Parameters Guide (12kW-60kW): https://gasmixtech.com/blog/cutting-parameters-guide.html
-- Mixed Gas Cost Savings Case Study: https://gasmixtech.com/blog/mixed-gas-cost-savings-case-study.html
 
 ## Language Versions (15 languages)
 - English (en): https://gasmixtech.com/
@@ -43,7 +42,7 @@
 - Power range: 12kW / 20kW / 30kW / 60kW fiber lasers
 - Compatible brands: HANS, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, XUNLEI
 - Gas ratio: Adjustable N₂/O₂ (typical 95%/5% micro-oxygen)
-- Key metrics: 3× faster than O₂ cutting | Zero burrs | 33% less N₂ consumption
+- Key metrics: 3× faster than O₂ cutting | Burr-free edges | 2 kWh/day power consumption
 - Maintenance: Only 2kWh/24h power consumption, no moving parts
 - Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
 - One-to-two configuration: Single device serves two laser machines

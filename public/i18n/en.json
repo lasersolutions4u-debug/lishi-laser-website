@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting",
-    "description": "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.",
-    "keywords": "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization",
+    "description": "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, burr-free edges, ultra-low power consumption. N2/O2 ratio technology for carbon steel cutting.",
+    "keywords": "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, lower power consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization",
     "ogTitle": "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting",
-    "ogDescription": "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology."
+    "ogDescription": "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, burr-free edges, ultra-low power consumption. N2/O2 ratio technology."
   },
   "nav": {
     "skipToContent": "Skip to content",
@@ -22,13 +22,13 @@
   "hero": {
     "badge": "<span>13 Years</span> in Laser Metal Cutting Industry",
     "title": "Cut <span class=\"accent\">3× Faster</span><br>with Mixed Gas Technology",
-    "subtitle": "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.",
+    "subtitle": "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). Burr-free edges, faster cutting speeds, and ultra-low power consumption.",
     "statSpeedValue": "3×",
     "statSpeedLabel": "Faster than O₂",
-    "statBurrsValue": "0",
-    "statBurrsLabel": "Burrs on cut surface",
-    "statGasValue": "−33%",
-    "statGasLabel": "Less gas than N₂",
+    "statBurrsValue": "Burr-Free",
+    "statBurrsLabel": "Cut edge quality",
+    "statGasValue": "2 kWh",
+    "statGasLabel": "Power per 24 hours",
     "ctaQuote": "Get a Quote →",
     "ctaParams": "View Parameters",
     "imgAlt": "LISHI LASER Mixed Gas Device - Nitrogen Oxygen Gas Mixing Equipment for Laser Cutting"
@@ -57,13 +57,13 @@
   "advantages": {
     "label": "Competitive Edge",
     "title": "Why Choose Mixed Gas Over O₂, N₂ or Air?",
-    "description": "Reduce nitrogen consumption by 33% while eliminating burrs on laser cutting carbon steel. Our maintenance-free gas supply system is compatible with Han's laser, DNE, PENTA, LEAD, HSG, BODOR and other major brands.",
+    "description": "Burr-free edges, 3× faster cutting speed, and near-zero electricity cost. Our maintenance-free gas supply system is compatible with Han's laser, DNE, PENTA, LEAD, HSG, BODOR and other major brands.",
     "speedTitle": "3× Faster Cutting",
     "speedDesc": "Increase laser cutting speed up to 3× compared to oxygen cutting. Example: 8mm carbon steel at 16m/min with mixed gas vs only 2–3m/min with O₂.",
     "burrsTitle": "Eliminate Burrs",
     "burrsDesc": "Unlike nitrogen cutting which produces burrs on plates ≥8mm (12kW) or ≥10mm (20kW), mixed gas cutting produces clean, burr-free surfaces on carbon steel — no secondary grinding needed.",
-    "costTitle": "Reduce Gas Costs",
-    "costDesc": "Reduce nitrogen consumption by 33–50% compared to pure N₂ cutting. Cost comparison: mixed gas saves significantly vs air compressor when factoring in maintenance-free operation.",
+    "costTitle": "Ultra-Low Power Cost",
+    "costDesc": "Only 2 kWh per 24 hours — near-zero electricity cost. Unlike air compressors that consume 15–30 kW continuously, the mixed gas device operates with minimal power draw while delivering 3× faster cutting performance.",
     "maintTitle": "Maintenance-Free",
     "maintDesc": "Power consumption: only 2 kWh / 24 hours. Unlike air compressors requiring filter/oil changes every 3,000 hours, our industrial laser gas equipment is maintenance-free.",
     "oneToTwoTitle": "One-to-Two Laser Setup",
@@ -76,7 +76,7 @@
     "headers": ["Factor", "Mixed Gas", "O₂ (Oxygen)", "N₂ (Nitrogen)", "Air"],
     "speedRow": ["Cutting Speed", "3× faster (e.g. 16m/min @ 8mm CS)", "2–3m/min @ 8mm CS", "Similar to mixed gas", "30% slower than mixed gas"],
     "surfaceRow": ["Cut Surface", "Smooth, no burrs", "Oxidized, rough edges", "May have burrs on thick plates", "Contaminated, rough"],
-    "gasRow": ["Gas Consumption", "1/3 less than N₂", "Similar total", "High", "Very high (compressor)"],
+    "gasRow": ["Gas Consumption", "Uses N₂ + O₂ blend", "Similar total", "High", "Very high (compressor)"],
     "powerRow": ["Power Cost", "2 kWh/24h", "High", "High", "Very high (compressor)"],
     "holeRow": ["Small Hole Piercing", "Some burrs during pierce", "Best for small holes", "Good", "Poor"],
     "protectionRow": ["Equipment Protection", "No pipeline contamination", "Standard", "Standard", "Risk of lens contamination"]
@@ -84,7 +84,7 @@
   "roi": {
     "label": "Calculator",
     "title": "Calculate Your Laser Cutting Gas Cost Savings",
-    "description": "See how much you can save with LISHI LASER mixed gas technology. Reduce nitrogen consumption, eliminate burrs on carbon steel, and increase laser cutting speed — all in one maintenance-free gas mixing device.",
+    "description": "See how much you can save with LISHI LASER mixed gas technology. Burr-free edges, 3× faster cutting speed, and near-zero electricity cost — all in one maintenance-free gas mixing device.",
     "powerLabel": "Machine Power",
     "thicknessLabel": "Material Thickness",
     "hoursLabel": "Work Hours per Day",
@@ -169,7 +169,7 @@
     "description": "Actual cutting footage from end users worldwide. No embellishment — real data, real performance.",
     "tag12kw30kw": "Mixed gas for high-power lasers",
     "title12kw30kw": "12kW &amp; 30kW · Professional Metal Factory",
-    "desc12kw30kw": "Dual power setup, one machine feeds two — 33% less gas, zero compromise on speed",
+    "desc12kw30kw": "Dual power setup, one machine feeds two — burr-free quality, zero compromise on speed",
     "tag30kw": "High-power mixed gas cutting",
     "title30kw": "30kW · 10–30mm Carbon Steel",
     "desc30kw": "Thick plates, no burrs. 10–14 m/min on 10mm, previously only achievable with O₂",
@@ -222,8 +222,8 @@
     "a2": "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, and XUNLEI. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.",
     "q3": "What thickness can it cut?",
     "a3": "Cutting range depends on laser power: 12kW handles up to 16mm carbon steel, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm. It also cuts stainless steel and aluminum with excellent results.",
-    "q4": "How much can I save on gas costs?",
-    "a4": "Mixed gas reduces nitrogen consumption by 33–50% compared to pure N₂ cutting. Additionally, the device consumes only 2 kWh per 24 hours — virtually maintenance-free. Use our ROI calculator above to estimate your specific savings.",
+    "q4": "How much can I save on operating costs?",
+    "a4": "The mixed gas device consumes only 2 kWh per 24 hours — near-zero electricity cost. The primary savings come from 3× faster cutting speed (more parts per shift) and eliminating manual deburring labor. Gas costs may be similar or slightly higher than pure N₂, but the throughput and quality gains far outweigh this for professional laser cutting shops.",
     "q5": "Does the device require regular maintenance?",
     "a5": "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. It uses pure liquid gas sources with no moving parts that wear out. Power consumption is just 2 kWh/24h.",
     "q6": "Can one device serve two laser machines?",

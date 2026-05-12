@@ -27,7 +27,7 @@
     "statSpeedLabel": "氧切割速度提升",
     "statBurrsValue": "0",
     "statBurrsLabel": "切割断面毛刺",
-    "statGasValue": "-33%",
+    "statGasValue": "2 kWh",
     "statGasLabel": "比氮气更省气",
     "ctaQuote": "获取报价 →",
     "ctaParams": "查看参数",

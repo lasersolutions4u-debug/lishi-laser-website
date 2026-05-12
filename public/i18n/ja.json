@@ -27,7 +27,7 @@
     "statSpeedLabel": "O₂より速い切断",
     "statBurrsValue": "0",
     "statBurrsLabel": "バリなし切断面",
-    "statGasValue": "-33%",
+    "statGasValue": "2 kWh",
     "statGasLabel": "N₂よりガス消費量削減",
     "ctaQuote": "見積もり依頼 →",
     "ctaParams": "仕様を見る",
