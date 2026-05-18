@@ -459,6 +459,8 @@
         <div class="roi-power-selector">
           <label class="roi-label">{{roi.powerLabel}}</label>
           <div class="power-buttons">
+            <button class="power-btn" data-power="3">3kW</button>
+            <button class="power-btn" data-power="6">6kW</button>
             <button class="power-btn active" data-power="12">12kW</button>
             <button class="power-btn" data-power="20">20kW</button>
             <button class="power-btn" data-power="30">30kW</button>
@@ -717,6 +719,36 @@
 
       <div class="params-grid">
         <div class="params-card fade-in">
+          <h3><span class="params-power">3KW</span> Laser Machine</h3>
+          <table class="params-table">
+            <tr>
+              <th>Thickness</th>
+              <th>Mixed Gas Speed</th>
+            </tr>
+            <tr><td>1mm</td><td>28–35 m/min</td></tr>
+            <tr><td>2mm</td><td>16–20 m/min</td></tr>
+          </table>
+          <p class="params-note">Best for ≤2mm carbon steel</p>
+        </div>
+
+        <div class="params-card fade-in">
+          <h3><span class="params-power">6KW</span> Laser Machine</h3>
+          <table class="params-table">
+            <tr>
+              <th>Thickness</th>
+              <th>Mixed Gas Speed</th>
+            </tr>
+            <tr><td>1mm</td><td>35–45 m/min</td></tr>
+            <tr><td>2mm</td><td>20–25 m/min</td></tr>
+            <tr><td>3mm</td><td>12–14 m/min</td></tr>
+            <tr><td>4mm</td><td>8–10 m/min</td></tr>
+            <tr><td>5mm</td><td>6–7 m/min</td></tr>
+            <tr><td>6mm</td><td>5–6 m/min</td></tr>
+          </table>
+          <p class="params-note">Best for ≤6mm carbon steel</p>
+        </div>
+
+        <div class="params-card fade-in">
           <h3><span class="params-power">12KW</span> Laser Machine</h3>
           <table class="params-table">
             <tr>
@@ -893,7 +925,7 @@
         <span class="pulse-dot" style="top:42%; left:68%"><span class="pulse-label">{{globalPresence.asia}}</span></span>
         <span class="pulse-dot" style="top:36%; left:48%"><span class="pulse-label">{{globalPresence.europe}}</span></span>
         <span class="pulse-dot" style="top:55%; left:30%"><span class="pulse-label">{{globalPresence.americas}}</span></span>
-        <span class="pulse-dot" style="top:62%; left:52%"><span class="pulse-label">{{globalPresence.africa}}</span></span>
+        <span class="pulse-dot" style="top:65%; left:78%"><span class="pulse-label">{{globalPresence.oceania}}</span></span>
         <span class="pulse-dot mini" style="top:48%; left:74%"></span>
         <span class="pulse-dot mini" style="top:58%; left:42%"></span>
         <span class="pulse-dot mini" style="top:40%; left:58%"></span>
@@ -923,8 +955,7 @@
         <span class="continent-badge"><span class="cb-dot"></span>{{globalPresence.badgeAsia}}</span>
         <span class="continent-badge"><span class="cb-dot"></span>{{globalPresence.badgeEurope}}</span>
         <span class="continent-badge"><span class="cb-dot"></span>{{globalPresence.badgeAmericas}}</span>
-        <span class="continent-badge"><span class="cb-dot"></span>{{globalPresence.badgeAfrica}}</span>
-        <span class="continent-badge upcoming"><span class="cb-dot"></span>{{globalPresence.badgeOceania}} <small>2026</small></span>
+        <span class="continent-badge"><span class="cb-dot"></span>{{globalPresence.badgeOceania}}</span>
       </div>
 
       <div class="presence-cta fade-in">
