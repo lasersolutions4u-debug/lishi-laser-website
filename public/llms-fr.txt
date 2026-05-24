@@ -1,0 +1,34 @@
+# LISHI LASER Mixed Gas Device — Français
+> https://gasmixtech.com/fr/
+> Product: N₂/O₂ mixed gas device for 3kW-60kW fiber laser cutting machines.
+> Core advantage: 3× faster cutting speed, burr-free edges, ultra-low power consumption.
+
+## Français Pages
+- Homepage: https://gasmixtech.com/fr/
+- Cutting Parameters: https://gasmixtech.com/fr/parameters.html
+- Contact: https://gasmixtech.com/fr/contact.html
+- How It Works: https://gasmixtech.com/fr/#principle (section)
+- Advantages: https://gasmixtech.com/fr/#advantages (section)
+- Cutting Samples: https://gasmixtech.com/fr/#samples (section)
+- FAQ: https://gasmixtech.com/fr/#faq (section)
+- ROI Calculator: https://gasmixtech.com/fr/#roi (section)
+
+## English Content Also Available
+- Blog (12 articles): https://gasmixtech.com/blog/
+- Case Studies: https://gasmixtech.com/case-studies/
+- Full Product Information (English): https://gasmixtech.com/llms-full.txt
+
+## Key Facts
+- Product: Industrial laser cutting mixed gas device (N₂/O₂ mixing equipment)
+- Power range: 3kW / 6kW / 12kW / 20kW / 30kW / 60kW fiber lasers
+- Compatible brands: HANS, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, XUNLEI
+- Gas ratio: Adjustable N₂/O₂ (typical 95%/5% micro-oxygen)
+- Key metrics: 3× faster than O₂ cutting | Burr-free edges | 2 kWh/day power consumption
+- Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
+- Global presence: 500+ installed systems, 30+ distributors, 20+ countries across 4 continents
+- Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)
+- Contact: sales@gasmixtech.com | +86 186 1558 4520
+
+## Optional
+- Full English content: https://gasmixtech.com/llms-full.txt
+- Sitemap: https://gasmixtech.com/sitemap.xml
