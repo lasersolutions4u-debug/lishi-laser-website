@@ -142,6 +142,30 @@
               <li><strong>You have a grinding department</strong><br>If parts need secondary finishing after laser cutting, your gas isn't doing its job. Burr-free edges are achievable with the right gas chemistry.</li>
             </ol>
 
+            <h2>The Cost of Doing Nothing</h2>
+            <p>Running a 30kW laser with the wrong assist gas isn't just a performance problem — it's a margin problem. Let's put numbers on it.</p>
+            <p>Assume a fabrication shop running one 30kW fiber laser, single shift (8 hours), 250 working days per year. Material: 6mm carbon steel. Current setup: pure oxygen assist gas. Average cutting speed: 2.8 m/min. With mixed gas (95/5 N₂/O₂), that same machine and material combination hits 18+ m/min.</p>
+
+            <h3>The Throughput Gap in Dollar Terms</h3>
+            <table class="comparison-table" style="margin:24px 0;">
+              <thead><tr><th>Metric</th><th>Pure O₂ (Current)</th><th>Mixed Gas (Upgraded)</th></tr></thead>
+              <tbody>
+                <tr><td>Cutting speed (6mm CS)</td><td>2.8 m/min</td><td class="comparison-win">18 m/min</td></tr>
+                <tr><td>Parts per shift (same nest)</td><td>1× baseline</td><td class="comparison-win">6.4× baseline</td></tr>
+                <tr><td>Annual throughput (linear meters)</td><td>~33,600 m</td><td class="comparison-win">~216,000 m</td></tr>
+                <tr><td>Revenue potential (at $2/m cutting revenue)</td><td>$67,200</td><td class="comparison-win">$432,000</td></tr>
+              </tbody>
+            </table>
+            <p>The math is stark: <strong>the same laser, same operator, same shift produces 6× the output</strong> — not by upgrading the machine, but by fixing the assist gas bottleneck.</p>
+
+            <h3>And that's before factoring in gas consumption</h3>
+            <p>Pure nitrogen cutting on a 30kW laser consumes roughly 50-60 Nm³/h at 16-20 bar. At typical bulk liquid N₂ pricing ($0.15-0.25/Nm³ delivered), that's $7.50-$15/hour just in nitrogen. Mixed gas (95/5) reduces pure N₂ consumption by approximately 33% — because the 5% oxygen contributes exothermic energy, reducing the total gas flow required. On a single-shift operation, that saves $5,000-$10,000/year in nitrogen alone.</p>
+            <p>Combine higher throughput with lower gas cost, and the payback on a mixed gas device is typically <strong>under 6 months</strong> for shops running 12kW+ lasers.</p>
+
+            <h2>Why Most Shops Miss This</h2>
+            <p>The assist gas is invisible infrastructure. Unlike a new laser — which arrives on a truck, gets uncrated, and dominates the factory floor — the gas system lives in a corner. It doesn't have a touchscreen. Nobody from the machine manufacturer asks about it during installation. The salesperson who sold you the 30kW laser likely never mentioned that your existing gas setup would cap its performance.</p>
+            <p>But the data doesn't lie. When <strong>fiber laser cutting gas</strong> chemistry is optimized, the performance difference isn't marginal — it's a step change. The shops running 18+ m/min on 6mm carbon steel aren't using better lasers. They're using better gas.</p>
+
             <h2>What to Do About It</h2>
             <p>If you're running 12kW or higher fiber lasers, do this audit:</p>
             <ol>
@@ -164,9 +188,9 @@
               <span>Previous Article</span>
               <strong>&larr; Mixed Gas for Stainless Steel & Aluminum</strong>
             </a>
-            <a href="/blog/" class="article-nav-link next">
-              <span>More Articles</span>
-              <strong>Blog Home &rarr;</strong>
+            <a href="/blog/cutting-parameters-guide.html" class="article-nav-link next">
+              <span>Next Article</span>
+              <strong>Cutting Parameters Guide &rarr;</strong>
             </a>
           </div>
         </article>
