@@ -9,3 +9,5 @@
 - [YouTube Strategy](youtube_channel_strategy.md) — complete launch plan, saved for later (2026-04-29)
 - [Print Marketing Plan](print_marketing_plan.md) — 5 print pieces for offline/mail, pending photos + logo vector (2026-04-29)
 - [Marketing Asset Library](../Euchio/激光%20金属成型/混合气体设备/网站/marketing/) — structured repository at `marketing/` with skills/content/plans/research
+- [GA MCP Setup](ga_mcp_setup.md) — Google Analytics MCP server, Property 420888879, supports site filter for euchio/gasmixtech
+- [Switch Computer Restore](switch_computer_restore.md) — ⚠️ REMINDER: run `powershell -ExecutionPolicy Bypass -File .claude-portable/restore.ps1` when switching computers

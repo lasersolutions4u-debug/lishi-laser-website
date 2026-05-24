@@ -28,10 +28,10 @@ LinkedIn 是 LISHI LASER 的首选营销渠道：
 ## 30 天冷启动计划
 
 ### Step 1: 公司页面优化（第一天）
-**Tagline**：Gas Mixing Technology for 12kW–60kW Fiber Laser Cutting
+**Tagline**：Gas Mixing Technology for 3kW–60kW Fiber Laser Cutting
 
 **About 文案**：
-> LISHI LASER is a specialized mixed gas technology brand under Jinan Euchio Machinery Co., Ltd. We design and manufacture intelligent N₂/O₂ gas mixing systems for high-power fiber laser cutting machines (12kW–60kW).
+> LISHI LASER is a specialized mixed gas technology brand under Jinan Euchio Machinery Co., Ltd. We design and manufacture intelligent N₂/O₂ gas mixing systems for high-power fiber laser cutting machines (3kW–60kW).
 >
 > Our mixed gas device delivers 3x faster cutting speed versus pure oxygen, zero-burr edge quality versus compressed air, and reduces nitrogen consumption by 33%. One device can simultaneously supply two laser machines of different power levels — the only stable One-to-Two configuration on the market.
 

@@ -45,7 +45,7 @@ Hi [Name],
 
 Thanks for connecting on LinkedIn. I see you're leading [department/function] at [Company] — impressive work on [specific project/post/achievement you noticed].
 
-I run the gas mixing technology division at LISHI LASER. We help sheet metal fabricators cut 3x faster on their existing 12kW–60kW fiber lasers by optimizing the N₂/O₂ ratio in the assist gas.
+I run the gas mixing technology division at LISHI LASER. We help sheet metal fabricators cut 3x faster on their existing 3kW–60kW fiber lasers by optimizing the N₂/O₂ ratio in the assist gas.
 
 No pitch — just wanted to say hello and put a face to the connection. If laser cutting efficiency ever comes up on your radar, I'm happy to share what we're seeing in the field.
 
@@ -89,7 +89,7 @@ I connected with you on LinkedIn after seeing [Company]'s sheet metal fabricatio
 
 One question: what assist gas are you currently running on your fiber lasers?
 
-The reason I ask — we've helped shops running 12kW to 60kW machines cut 3x faster with zero burrs using a N₂/O₂ mixed gas system. And it typically uses 33% less nitrogen than pure N₂.
+The reason I ask — we've helped shops running 3kW to 60kW machines cut 3x faster with zero burrs using a N₂/O₂ mixed gas system. And it typically uses 33% less nitrogen than pure N₂.
 
 If you're open to a 10-minute call, I can show you the cutting speed data for your specific laser power and material thickness. If not, no problem at all.
 

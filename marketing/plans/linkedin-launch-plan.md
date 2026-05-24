@@ -14,12 +14,12 @@
 ### 页面装修
 - **Logo**: 上传 `lishi-logo.png`（目前只有 PNG，足够用）
 - **Cover Image**: 用一张切割火花的高清照片，或设备正面照。暗色背景 + 红色火花为主
-- **Tagline**: `Gas Mixing Technology for 12kW–60kW Fiber Laser Cutting`
+- **Tagline**: `Gas Mixing Technology for 3kW–60kW Fiber Laser Cutting`
 
 ### About 文案（直接复制）
 
 ```
-LISHI LASER is a specialized mixed gas technology brand under Jinan Euchio Machinery Co., Ltd. We design and manufacture intelligent N₂/O₂ gas mixing systems for high-power fiber laser cutting machines (12kW–60kW).
+LISHI LASER is a specialized mixed gas technology brand under Jinan Euchio Machinery Co., Ltd. We design and manufacture intelligent N₂/O₂ gas mixing systems for high-power fiber laser cutting machines (3kW–60kW).
 
 Our mixed gas device delivers 3x faster cutting speed versus pure oxygen, zero-burr edge quality versus compressed air, and reduces nitrogen consumption by 33%. One device can simultaneously supply two laser machines of different power levels — the only stable One-to-Two configuration on the market.
 
@@ -63,11 +63,11 @@ Our mixed gas device delivers 3x faster cutting speed versus pure oxygen, zero-b
 
 ### 日历总览
 
-| Day | 日期 | 渠道 | 类型 | 主题 |
-|-----|------|------|------|------|
-| 1 | Tue W1 | 个人 | 图文 | 个人亮相 + 行业洞察 |
-| 2 | Wed W1 | 个人 | 投票 | 你的激光切割最大痛点是什么？ |
-| 3 | Thu W1 | 个人 | 图文 | 混合气技术科普 — N₂/O₂ 混气原理 |
+| Day | 日期 | 渠道 | 类型 | 主题 | 状态 |
+|-----|------|------|------|------|------|
+| 1 | Tue W1 | 个人 | 图文 | 个人亮相 + 行业洞察 | ✅ 已发 |
+| 2 | Wed W1 | 个人 | 图文 | 网站推广 | ✅ 已发 |
+| 3 | Thu W1 | 个人 | 图文 | 混合气技术科普 — N₂/O₂ 混气原理 | |
 | 4 | Tue W2 | 个人 | 图文 | 切割数据对比 — 混气 vs 纯氧 |
 | 5 | Wed W2 | 个人 | 图文 | 切割数据对比 — 混气 vs 空压机 |
 | 6 | Thu W2 | 个人 | PDF | Carousel — 4 页切割对比数据集 |
@@ -85,7 +85,7 @@ Our mixed gas device delivers 3x faster cutting speed versus pure oxygen, zero-b
 
 ## Step 4: 前 10 篇帖子完整文案
 
-### Post 1 — 个人亮相 + 行业洞察（Day 1, 周二）
+### Post 1 — 个人亮相 + 行业洞察（Day 1, 周二）✅ 已发
 
 **配图**: 设备产品照或切割火花照
 **发布账号**: 个人 Profile
@@ -105,14 +105,14 @@ Pure nitrogen? The monthly bill makes your accountant angry.
 
 There's a middle ground: N₂/O₂ mixed gas. 5% oxygen, 95% nitrogen. I've watched it turn a 2.1 m/min cut into 6.8 m/min. Same machine. Same operator. Just different gas.
 
-I work with LISHI LASER — we make gas mixing systems for 12kW to 60kW fiber lasers. Not going to pretend it's right for everyone. But if you're running high power and cutting carbon steel all day, it's worth 5 minutes of your time to check.
+I work with LISHI LASER — we make gas mixing systems for 3kW to 60kW fiber lasers. Not going to pretend it's right for everyone. But if you're running high power and cutting carbon steel all day, it's worth 5 minutes of your time to check.
 
 #lasercutting #sheetmetal #manufacturing
 ```
 
 ---
 
-### Post 2 — 网站推广（Day 2, 周三）★ 已调整
+### Post 2 — 网站推广（Day 2, 周三）★ 已调整 ✅ 已发
 
 > 原来的投票帖改为网站推广帖。理由：新号冷启动阶段投票帖容易零互动，反而伤触达。先通过网站建立专业感。
 
@@ -242,7 +242,7 @@ Full parameter table available if anyone wants it — just comment.
 CUT 3X FASTER. ZERO BURRS. 33% LESS GAS.
 
 LISHI LASER Mixed Gas Device
-For 12kW–60kW Fiber Laser Cutting
+For 3kW–60kW Fiber Laser Cutting
 ```
 
 **PDF Page 2 — 对比数据**:

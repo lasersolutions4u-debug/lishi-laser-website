@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distribution Opportunity — LISHI LASER Mixed Gas Device | Mexico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0f1a;
+    --card: #111827;
+    --red: #DC2626;
+    --amber: #F59E0B;
+    --green: #10B981;
+    --white: #F1F5F9;
+    --gray: #94A3B8;
+    --border: #1E293B;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #1a1f2e;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .flyer {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--white);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0a0f1a 0%, #111827 40%, #1a0a0a 100%);
+    padding: 20px 48px 14px;
+    display: flex;
+    gap: 38px;
+    align-items: center;
+    border-bottom: 2px solid var(--red);
+  }
+  .hero-left { flex: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 3px 14px;
+    border-radius: 3px;
+    font-size: 0.59rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    line-height: 1.06;
+    margin-bottom: 6px;
+  }
+  .hero h1 .brand { color: var(--red); }
+  .hero .subtitle {
+    font-size: 0.71rem;
+    color: var(--gray);
+    line-height: 1.48;
+    max-width: 480px;
+  }
+  .hero-right { flex: 0 0 205px; }
+  .hero-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  /* ── Content ── */
+  .content { padding: 16px 48px; }
+
+  .big-numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .big-num-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 12px 9px;
+    text-align: center;
+  }
+  .big-num-card .num {
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .big-num-card .num.red { color: var(--red); }
+  .big-num-card .num.green { color: var(--green); }
+  .big-num-card .num.amber { color: var(--amber); }
+  .big-num-card .label {
+    font-size: 0.61rem;
+    color: var(--gray);
+    line-height: 1.3;
+  }
+
+  .section { margin-bottom: 14px; }
+  .section h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.66rem;
+  }
+  .compare-table th {
+    background: rgba(220,38,38,0.10);
+    padding: 5px 13px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--red);
+    font-size: 0.57rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .compare-table td {
+    padding: 2px 13px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.38;
+  }
+  .compare-table .win { color: var(--green); font-weight: 600; }
+  .compare-table .lose { color: #EF4444; }
+
+  .mexico-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .mexico-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 13px;
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+  .mexico-item strong {
+    color: var(--amber);
+    display: block;
+    margin-bottom: 1px;
+    font-size: 0.7rem;
+  }
+
+  .clusters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .cluster-tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.63rem;
+    line-height: 1.42;
+  }
+  .cluster-tag .city { font-weight: 700; color: var(--white); }
+  .cluster-tag .desc { color: var(--gray); }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 14px 48px 4px;
+    background: linear-gradient(135deg, #111827 0%, #0a0f1a 100%);
+    border-top: 2px solid var(--red);
+  }
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 38px;
+  }
+  .cta-left { flex: 1; }
+  .cta-left h3 {
+    font-size: 1.02rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
+  .cta-left h3 .red { color: var(--red); }
+  .cta-left .cta-sub {
+    font-size: 0.68rem;
+    color: var(--gray);
+    line-height: 1.48;
+    max-width: 440px;
+  }
+  .cta-right {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2px 15px;
+    font-size: 0.68rem;
+    line-height: 1.62;
+    white-space: nowrap;
+  }
+  .cta-right .label { color: var(--gray); text-align: right; }
+  .cta-right .value { color: var(--white); font-weight: 500; }
+  .cta-right .value.whatsapp { color: var(--green); font-weight: 700; }
+
+  .footer-line {
+    font-size: 0.57rem;
+    color: var(--gray);
+    text-align: center;
+    padding: 4px 48px 22px;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: white; margin: 0; padding: 0; }
+    .flyer { width: 210mm; height: 297mm; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Distribution Opportunity — Mexico</div>
+      <h1><span class="brand">LISHI LASER</span><br>N₂/O₂ Mixed Gas Device</h1>
+      <p class="subtitle">Replaces the air compressor. 95% less electricity, 3× faster cutting, zero burrs. Mexico's industrial electricity costs 127% above the world average — this device turns that liability into competitive advantage.</p>
+    </div>
+    <div class="hero-right">
+      <img src="../../public/images/device-main.jpg" alt="LISHI LASER Mixed Gas Device">
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="big-numbers">
+      <div class="big-num-card">
+        <div class="num red">127%</div>
+        <div class="label">Mexico industrial electricity vs world average</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num green">2 kW</div>
+        <div class="label">Mixer power draw vs 37+ kW for a compressor</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num amber">~$13,800</div>
+        <div class="label">Annual electricity savings per laser, single shift</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num green">13–22</div>
+        <div class="label">Month payback on electricity savings alone</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Quick Comparison: Mixed Gas Device vs Air Compressor</h3>
+      <table class="compare-table">
+        <tr><th>Factor</th><th>N₂/O₂ Mixed Gas Device</th><th>Air Compressor (50HP)</th></tr>
+        <tr><td>Power consumption</td><td class="win">~2,000 W</td><td class="lose">~37,000 W</td></tr>
+        <tr><td>Annual electricity cost</td><td class="win">~$800 USD</td><td class="lose">~$14,600 USD</td></tr>
+        <tr><td>Cut edge quality</td><td class="win">Burr-free, weld-ready</td><td class="lose">Oxidized edge, needs grinding</td></tr>
+        <tr><td>Cutting speed</td><td class="win">3× faster than O₂</td><td class="lose">1× (baseline)</td></tr>
+        <tr><td>Maintenance</td><td class="win">Near zero</td><td class="lose">Filters, oil, belts</td></tr>
+        <tr><td>Grinding labor</td><td class="win">Eliminated</td><td class="lose">$8,000–$15,000/year</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Why Mexico Is the Perfect Market</h3>
+      <div class="mexico-grid">
+        <div class="mexico-item"><strong>Electricity 127% above world average</strong>Every watt-hour saved goes to profit. For a 3-laser shop, annual savings can exceed $41,000 USD.</div>
+        <div class="mexico-item"><strong>7th largest auto producer globally</strong>Hundreds of Tier-1/2 suppliers need precision cutting. Burr-free edges are a requirement, not a luxury.</div>
+        <div class="mexico-item"><strong>Nearshoring boom</strong>US companies relocating supply chains to Mexico. New fabrication shops open monthly — greenfield sites, no legacy equipment.</div>
+        <div class="mexico-item"><strong>500–1,400 shops with 12kW+ lasers</strong>Estimated addressable market. At 5% penetration over 3 years = 60–120 units sold.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Key Industrial Clusters</h3>
+      <div class="clusters">
+        <div class="cluster-tag"><span class="city">Monterrey, NL</span><br><span class="desc">Industrial capital — automotive, steel, appliances</span></div>
+        <div class="cluster-tag"><span class="city">Querétaro / Bajío</span><br><span class="desc">Aerospace corridor — Bombardier, Airbus, Safran, GE</span></div>
+        <div class="cluster-tag"><span class="city">Guanajuato</span><br><span class="desc">Automotive hub — GM, Toyota, Honda, Mazda</span></div>
+        <div class="cluster-tag"><span class="city">Edo. Méx. / CDMX</span><br><span class="desc">Largest concentration of manufacturing SMEs</span></div>
+        <div class="cluster-tag"><span class="city">Tijuana / Cd. Juárez</span><br><span class="desc">Maquiladora zone — US export-oriented, high standards</span></div>
+        <div class="cluster-tag"><span class="city">San Luis Potosí</span><br><span class="desc">BMW + supplier park — growing industrial base</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <h3>Actively Seeking a <span class="red">Distributor</span> in Mexico</h3>
+        <p class="cta-sub">LISHI LASER is expanding in Latin America. We are looking for an established distributor with industry connections to represent the Mixed Gas Device in Mexico. Exclusive territory, factory-direct pricing, full technical support.</p>
+      </div>
+      <div class="cta-right">
+        <span class="label">Contact</span><span class="value">Joe Ji · Sales Director</span>
+        <span class="label">Company</span><span class="value">Jinan Euchio Machinery Co., Ltd.</span>
+        <span class="label">WhatsApp</span><span class="value whatsapp">+52 557 208 0065</span>
+        <span class="label">Email</span><span class="value">sales@gasmixtech.com</span>
+        <span class="label">Web</span><span class="value">gasmixtech.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-line">
+    LISHI LASER — Gas Mixing Technology &nbsp;|&nbsp; Partner Brand of Jinan Euchio Machinery Co., Ltd. &nbsp;|&nbsp; 500+ Installations · 30+ Distributors · 50+ Countries
+  </div>
+
+</div>
+</body>
+</html>

@@ -81,7 +81,7 @@ Hi [Name],
 
 Quick question: are you seeing oxidation or burr issues on your thick plate cuts?
 
-We work with fabricators running 12kW–60kW fiber lasers. One pattern keeps repeating: shops upgrade to high-power lasers but keep using pure oxygen or compressed air — leaving 50-70% of their cutting speed on the table because the gas can't keep up.
+We work with fabricators running 3kW–60kW fiber lasers. One pattern keeps repeating: shops upgrade to high-power lasers but keep using pure oxygen or compressed air — leaving 50-70% of their cutting speed on the table because the gas can't keep up.
 
 Our N₂/O₂ mixed gas system addresses exactly this. 5% oxygen for speed. 95% nitrogen for a clean edge.
 
@@ -107,7 +107,7 @@ If you're running pure nitrogen, pure oxygen, or compressed air on your fiber la
 
 Gas cost was lower too — 33% less nitrogen consumption.
 
-Our device (LISHI LASER) does one thing: precision N₂/O₂ mixing for 12kW–60kW fiber lasers. 500+ installations across 50+ countries.
+Our device (LISHI LASER) does one thing: precision N₂/O₂ mixing for 3kW–60kW fiber lasers. 500+ installations across 50+ countries.
 
 Curious how it'd perform on your materials? I can put together a comparison using your parameters.
 

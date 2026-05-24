@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distribution Opportunity — LISHI LASER Mixed Gas Device | Brazil</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0f1a;
+    --card: #111827;
+    --green: #10B981;
+    --blue: #3B82F6;
+    --amber: #F59E0B;
+    --yellow: #FACC15;
+    --white: #F1F5F9;
+    --gray: #94A3B8;
+    --border: #1E293B;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #1a1f2e;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .flyer {
+    width: 210mm;
+    height: 297mm;
+    background: var(--bg);
+    color: var(--white);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0a0f1a 0%, #0d2818 40%, #111827 100%);
+    padding: 20px 48px 14px;
+    display: flex;
+    gap: 38px;
+    align-items: center;
+    border-bottom: 2px solid var(--green);
+  }
+  .hero-left { flex: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--green);
+    color: #0a0f1a;
+    padding: 3px 14px;
+    border-radius: 3px;
+    font-size: 0.59rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-size: 1.7rem;
+    font-weight: 900;
+    line-height: 1.06;
+    margin-bottom: 6px;
+  }
+  .hero h1 .brand { color: var(--green); }
+  .hero .subtitle {
+    font-size: 0.71rem;
+    color: var(--gray);
+    line-height: 1.48;
+    max-width: 480px;
+  }
+  .hero-right { flex: 0 0 205px; }
+  .hero-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  /* ── Content ── */
+  .content { padding: 16px 48px; }
+
+  .big-numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .big-num-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 12px 9px;
+    text-align: center;
+  }
+  .big-num-card .num {
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .big-num-card .num.green { color: var(--green); }
+  .big-num-card .num.amber { color: var(--amber); }
+  .big-num-card .num.blue { color: var(--blue); }
+  .big-num-card .label {
+    font-size: 0.61rem;
+    color: var(--gray);
+    line-height: 1.3;
+  }
+
+  .section { margin-bottom: 14px; }
+  .section h3 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.66rem;
+  }
+  .compare-table th {
+    background: rgba(16,185,129,0.10);
+    padding: 5px 13px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--green);
+    font-size: 0.57rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .compare-table td {
+    padding: 2px 13px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.38;
+  }
+  .compare-table .win { color: var(--green); font-weight: 600; }
+  .compare-table .lose { color: #EF4444; }
+
+  .brazil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .brazil-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 8px 13px;
+    font-size: 0.66rem;
+    line-height: 1.45;
+  }
+  .brazil-item strong {
+    color: var(--green);
+    display: block;
+    margin-bottom: 1px;
+    font-size: 0.7rem;
+  }
+
+  .clusters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .cluster-tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.63rem;
+    line-height: 1.42;
+  }
+  .cluster-tag .city { font-weight: 700; color: var(--white); }
+  .cluster-tag .desc { color: var(--gray); }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 14px 48px 4px;
+    background: linear-gradient(135deg, #0d2818 0%, #0a0f1a 100%);
+    border-top: 2px solid var(--green);
+  }
+  .cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 38px;
+  }
+  .cta-left { flex: 1; }
+  .cta-left h3 {
+    font-size: 1.02rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+  }
+  .cta-left h3 .green { color: var(--green); }
+  .cta-left .cta-sub {
+    font-size: 0.68rem;
+    color: var(--gray);
+    line-height: 1.48;
+    max-width: 440px;
+  }
+  .cta-right {
+    flex: 0 0 auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2px 15px;
+    font-size: 0.68rem;
+    line-height: 1.62;
+    white-space: nowrap;
+  }
+  .cta-right .label { color: var(--gray); text-align: right; }
+  .cta-right .value { color: var(--white); font-weight: 500; }
+  .cta-right .value.whatsapp { color: var(--green); font-weight: 700; }
+
+  .footer-line {
+    font-size: 0.57rem;
+    color: var(--gray);
+    text-align: center;
+    padding: 4px 48px 22px;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { background: white; margin: 0; padding: 0; }
+    .flyer { width: 210mm; height: 297mm; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Distribution Opportunity — Brazil</div>
+      <h1><span class="brand">LISHI LASER</span><br>N₂/O₂ Mixed Gas Device</h1>
+      <p class="subtitle">Replaces the air compressor. 95% less electricity, 3× faster cutting, zero burrs. Brazil has the 2nd largest manufacturing sector in the Americas — and industrial electricity at 2× China's rate. This device turns that cost gap into competitive advantage for Brazilian job shops.</p>
+    </div>
+    <div class="hero-right">
+      <img src="../../public/images/device-main.jpg" alt="LISHI LASER Mixed Gas Device">
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="big-numbers">
+      <div class="big-num-card">
+        <div class="num green">2nd</div>
+        <div class="label">Largest manufacturing in the Americas (after US)</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num amber">2 kW</div>
+        <div class="label">Mixer power draw vs 37+ kW for a compressor</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num green">~$11,000</div>
+        <div class="label">Annual electricity savings per laser, single shift</div>
+      </div>
+      <div class="big-num-card">
+        <div class="num blue">16–27</div>
+        <div class="label">Month payback on electricity savings alone</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Quick Comparison: Mixed Gas Device vs Air Compressor</h3>
+      <table class="compare-table">
+        <tr><th>Factor</th><th>N₂/O₂ Mixed Gas Device</th><th>Air Compressor (50HP)</th></tr>
+        <tr><td>Power consumption</td><td class="win">~2,000 W</td><td class="lose">~37,000 W</td></tr>
+        <tr><td>Annual electricity cost</td><td class="win">~$620 USD</td><td class="lose">~$11,600 USD</td></tr>
+        <tr><td>Cut edge quality</td><td class="win">Burr-free, weld-ready</td><td class="lose">Oxidized edge, needs grinding</td></tr>
+        <tr><td>Cutting speed</td><td class="win">3× faster than O₂</td><td class="lose">1× (baseline)</td></tr>
+        <tr><td>Maintenance</td><td class="win">Near zero</td><td class="lose">Filters, oil, belts</td></tr>
+        <tr><td>Grinding labor</td><td class="win">Eliminated</td><td class="lose">$6,000–$12,000/year (BR labor)</td></tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Why Brazil Is a Strong Market</h3>
+      <div class="brazil-grid">
+        <div class="brazil-item"><strong>2nd largest manufacturing in the Americas</strong>$580B manufacturing GDP. Automotive (22% of industrial GDP), aerospace (Embraer), agricultural machinery, steel, white goods — all heavy sheet metal users.</div>
+        <div class="brazil-item"><strong>Electricity 2× China's industrial rate</strong>~$0.15/kWh plus seasonal surcharges (bandeiras tarifárias) during dry periods. Every watt-hour saved goes to the bottom line. For a 3-laser shop, savings exceed $33,000/year.</div>
+        <div class="brazil-item"><strong>CO₂ → Fiber laser transition underway</strong>Brazilian shops are upgrading from older CO₂ lasers to high-power fiber. Every new 12kW+ installation is a gas mixer candidate — no legacy compressor to depreciate.</div>
+        <div class="brazil-item"><strong>1,500–2,500 shops with 12kW+ lasers</strong>Estimated addressable market, larger than Mexico due to bigger manufacturing base. At 5% penetration over 3 years = 75–150 units.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Key Industrial Clusters</h3>
+      <div class="clusters">
+        <div class="cluster-tag"><span class="city">ABCD Paulista, SP</span><br><span class="desc">Brazil's Detroit — VW, GM, Toyota, Ford + thousands of Tier-1/2 metal suppliers</span></div>
+        <div class="cluster-tag"><span class="city">S. José dos Campos, SP</span><br><span class="desc">Embraer HQ + 200+ aerospace precision fabricators</span></div>
+        <div class="cluster-tag"><span class="city">Belo Horizonte, MG</span><br><span class="desc">Steel state — Gerdau, Usiminas, heavy fab, mining equipment</span></div>
+        <div class="cluster-tag"><span class="city">Porto Alegre, RS</span><br><span class="desc">Ag machinery — John Deere, AGCO, CNH, harvester supply chain</span></div>
+        <div class="cluster-tag"><span class="city">Joinville, SC</span><br><span class="desc">Metal-mechanic hub — Whirlpool, Electrolux, WEG, 5,000+ SMEs</span></div>
+        <div class="cluster-tag"><span class="city">Curitiba, PR</span><br><span class="desc">Renault, VW, Audi plants + growing SME fabricator ecosystem</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <h3>Actively Seeking a <span class="green">Distributor</span> in Brazil</h3>
+        <p class="cta-sub">LISHI LASER is expanding in Latin America. We are looking for an established distributor with sheet metal industry connections to represent the Mixed Gas Device in Brazil. Exclusive territory, factory-direct pricing, full technical support, Portuguese-language materials ready.</p>
+      </div>
+      <div class="cta-right">
+        <span class="label">Contact</span><span class="value">Joe Ji · Sales Director</span>
+        <span class="label">Company</span><span class="value">Jinan Euchio Machinery Co., Ltd.</span>
+        <span class="label">WhatsApp</span><span class="value whatsapp">+86 186 1558 4520</span>
+        <span class="label">Email</span><span class="value">sales@gasmixtech.com</span>
+        <span class="label">Web</span><span class="value">gasmixtech.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-line">
+    LISHI LASER — Gas Mixing Technology &nbsp;|&nbsp; Partner Brand of Jinan Euchio Machinery Co., Ltd. &nbsp;|&nbsp; 1000+ Installations · 3kW–60kW · Global Network
+  </div>
+
+</div>
+</body>
+</html>
