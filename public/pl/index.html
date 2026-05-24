@@ -397,8 +397,8 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-label">Kalkulator</span>
-        <h2>Oblicz oszczędności kosztów gazu do cięcia laserowego</h2>
-        <p>Zobacz, ile możesz zaoszczędzić dzięki technologii mieszanki gazowej LISHI LASER. Zmniejsz zużycie azotu, wyeliminuj zadziory na stali węglowej i zwiększ prędkość cięcia laserowego — wszystko w jednym bezobsługowym urządzeniu.</p>
+        <h2>Oblicz Wzrost Wydajności i Zysku</h2>
+        <p>Zobacz, ile więcej możesz wyprodukować — i zarobić — przechodząc z O₂ na mieszankę gazową LISHI LASER. Na podstawie rzeczywistych danych dotyczących prędkości cięcia od użytkowników na całym świecie.</p>
       </div>
 
       <div class="roi-calculator">
@@ -410,7 +410,6 @@
         <div class="roi-slider-group"><div class="roi-slider-header"><label class="roi-label">Rzeczywisty czas cięcia (wiązka wł. %)</label><span class="roi-value" id="utilizationValue">60 %</span></div><input type="range" id="utilizationSlider" class="roi-slider" min="20" max="100" value="60" step="5"><div class="slider-range"><span>20%</span><span>100%</span></div><p class="roi-input-note" style="margin-top:8px;">Typowe zakłady pracują 40–70% — reszta to załadunek, przebijanie, przestoje.</p></div>
         <div class="roi-inputs">
           <div class="roi-input-group"><label class="roi-label">Zysk na metr (USD/m)</label><input type="number" id="profitPerMeter" class="roi-input" value="1.0" min="0.1" step="0.1"><span class="roi-input-note">Twoja cena sprzedaży minus koszt materiału (USD)</span></div>
-          <div class="roi-input-group"><label class="roi-label">Miesięczny koszt N₂ (USD)</label><input type="number" id="monthlyN2Cost" class="roi-input" value="2000" min="0" step="100"><span class="roi-input-note">Twój obecny miesięczny wydatek na azot (USD)</span></div>
         </div>
 
         <div class="roi-results">
@@ -419,7 +418,13 @@
           <div class="roi-result-card lishi"><div class="result-badge lishi-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>LISHI</div><h4>LISHI Mieszanka gazowa</h4><div class="roi-speed"><span class="speed-value" id="lishiSpeed">16</span><span class="speed-unit">m/min</span></div><div class="speed-bar-track"><div class="speed-bar-fill lishi-bar" id="lishiBar"></div></div><p class="roi-speed-label">Prędkość cięcia</p></div>
         </div>
 
-        <div class="roi-annual"><div class="roi-annual-glow"></div><p class="roi-annual-label">Szacowany roczny wzrost zysku (USD)</p><p class="roi-annual-value" id="annualProfit">$0</p><div class="roi-annual-sub"><span class="roi-gas-pill">Plus <span class="roi-gas-value" id="gasSavings">$0</span> USD/rok oszczędności na azocie</span></div><p class="roi-annual-note">Teoretyczna górna granica na podstawie Twoich danych. Rzeczywiste wyniki zależą od struktury zleceń, wydajności układania i czasu pracy maszyny.</p></div>
+        <!-- Annual Profit Display -->
+        <div class="roi-annual">
+          <div class="roi-annual-glow"></div>
+          <p class="roi-annual-label">Szacowany Roczny Wzrost Zysku (USD)</p>
+          <p class="roi-annual-value" id="annualProfit">$0</p>
+          <p class="roi-annual-note">Teoretyczna górna granica na podstawie Twoich danych. Rzeczywiste wyniki zależą od miksu zleceń, efektywności zagnieżdżania i czasu pracy maszyny.</p>
+        </div>
 
         <div class="roi-lead-capture">
           <div class="roi-lead-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>

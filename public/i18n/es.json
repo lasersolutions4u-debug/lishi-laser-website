@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "Dispositivo de Gas Mixto LISHI LASER | Corte Láser 3× Más Rápido",
-    "description": "Dispositivo de Gas Mixto LISHI LASER para máquinas de corte láser de 12KW-60KW. 3x más rápido, sin rebabas, 33% menos consumo de gas. Tecnología de mezcla N2/O2 para corte de acero al carbono.",
+    "description": "Dispositivo de Gas Mixto LISHI LASER para máquinas de corte láser de 3KW-60KW. 3x más rápido, sin rebabas, 33% menos consumo de gas. Tecnología de mezcla N2/O2 para corte de acero al carbono.",
     "keywords": "mezclador de gas para corte láser, dispositivo mezclador nitrógeno oxígeno, corte láser micro-oxígeno, corte láser acero al carbono, láser alta potencia 12kW 60kW, gas mixto vs compresor de aire, eliminar rebabas corte láser, reducir consumo nitrógeno, mezclador gas láser HAN'S, equipo gas industrial láser, configuración uno a dos gas mixto, optimización gas auxiliar",
     "ogTitle": "Dispositivo de Gas Mixto LISHI LASER | Corte Láser 3× Más Rápido",
-    "ogDescription": "Dispositivo de gas mixto para máquinas de corte láser de 12KW-60KW. 3× más rápido, sin rebabas, 33% menos consumo de gas. Tecnología de mezcla N2/O2."
+    "ogDescription": "Dispositivo de gas mixto para máquinas de corte láser de 3KW-60KW. 3× más rápido, sin rebabas, 33% menos consumo de gas. Tecnología de mezcla N2/O2."
   },
   "nav": {
     "skipToContent": "Saltar al contenido",
@@ -22,7 +22,7 @@
   "hero": {
     "badge": "<span>13 Años</span> en la Industria de Corte Láser de Metales",
     "title": "Corte <span class=\"accent\">3× Más Rápido</span><br>con Tecnología de Gas Mixto",
-    "subtitle": "El Dispositivo de Gas Mixto LISHI LASER ofrece corte con micro-oxígeno para máquinas láser de alta potencia (12KW–60KW). Sin rebabas, menor consumo de gas y velocidades de corte significativamente más rápidas.",
+    "subtitle": "El Dispositivo de Gas Mixto LISHI LASER ofrece corte con micro-oxígeno para máquinas láser de alta potencia (3KW–60KW). Sin rebabas, menor consumo de gas y velocidades de corte significativamente más rápidas.",
     "statSpeedValue": "3×",
     "statSpeedLabel": "Más rápido que O₂",
     "statBurrsValue": "0",
@@ -36,7 +36,7 @@
   "principle": {
     "label": "Cómo Funciona",
     "title": "¿Qué es un Dispositivo de Gas Mixto?",
-    "description": "Nuestro dispositivo mezclador de nitrógeno y oxígeno utiliza <strong>tecnología de corte láser con micro-oxígeno</strong> para producir un gas mixto N₂/O₂ con calibración precisa — eliminando rebabas en acero al carbono mientras entrega velocidades de corte 3× más rápidas que el corte con oxígeno tradicional. Diseñado para máquinas láser de alta potencia de 12kW a 60kW.",
+    "description": "Nuestro dispositivo mezclador de nitrógeno y oxígeno utiliza <strong>tecnología de corte láser con micro-oxígeno</strong> para producir un gas mixto N₂/O₂ con calibración precisa — eliminando rebabas en acero al carbono mientras entrega velocidades de corte 3× más rápidas que el corte con oxígeno tradicional. Diseñado para máquinas láser de alta potencia de 3kW a 60kW.",
     "flow1Title": "N₂ Líquido + O₂ Líquido",
     "flow1Desc": "Materias primas almacenadas en tanques, presión 20–25 bar",
     "flow2Title": "Vaporizador",
@@ -83,8 +83,8 @@
   },
   "roi": {
     "label": "Calculadora",
-    "title": "Calcule sus Ahorros en Costos de Gas de Corte Láser",
-    "description": "Vea cuánto puede ahorrar con la tecnología de gas mixto LISHI LASER. Reduzca el consumo de nitrógeno, elimine rebabas en acero al carbono y aumente la velocidad de corte — todo en un dispositivo mezclador de gas sin mantenimiento.",
+    "title": "Calcule el Retorno de Inversión",
+    "description": "Vea cuánto más puede producir — y ganar — al cambiar de O₂ al gas mixto LISHI LASER. Basado en datos reales de velocidad de corte de usuarios en todo el mundo.",
     "powerLabel": "Potencia de la Máquina",
     "thicknessLabel": "Espesor del Material",
     "hoursLabel": "Horas de Trabajo por Día",
@@ -104,7 +104,7 @@
     "gasSavingsPrefix": "Más ",
     "gasSavingsSuffix": " USD/año en costos de gas",
     "leadTitle": "¿Quiere la tabla de parámetros completa para su máquina?",
-    "leadDesc": "Obtenga datos de corte detallados adaptados a su configuración de láser de 12KW–60KW.",
+    "leadDesc": "Obtenga datos de corte detallados adaptados a su configuración de láser de 3KW–60KW.",
     "leadEmailPlaceholder": "Su correo electrónico",
     "leadPhonePlaceholder": "WhatsApp (opcional)",
     "leadButton": "Obtener Parámetros Gratis →",
@@ -219,7 +219,7 @@
     "q1": "¿Qué es un dispositivo de gas mixto y cómo funciona?",
     "a1": "Un dispositivo de gas mixto mezcla con precisión nitrógeno líquido (N₂) y oxígeno líquido (O₂) en una mezcla calibrada N₂/O₂ (típicamente 95%/5%). Esta mezcla micro-oxígeno se usa como gas auxiliar en corte láser de alta potencia, ofreciendo 3× más velocidad de corte en acero al carbono comparado con oxígeno puro, mientras elimina las rebabas por completo.",
     "q2": "¿Es compatible con mi máquina láser?",
-    "a2": "Sí. El Dispositivo de Gas Mixto LISHI LASER funciona con todas las marcas principales: HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER y XUNLEI. Soporta máquinas de 12kW a 60kW. Si su máquina usa conexiones estándar de gas auxiliar, es compatible.",
+    "a2": "Sí. El Dispositivo de Gas Mixto LISHI LASER funciona con todas las marcas principales: HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER y XUNLEI. Soporta máquinas de 3kW a 60kW. Si su máquina usa conexiones estándar de gas auxiliar, es compatible.",
     "q3": "¿Qué espesor puede cortar?",
     "a3": "El rango de corte depende de la potencia del láser: 12kW corta hasta 16mm de acero al carbono, 20kW hasta 25mm, 30kW hasta 30mm y 60kW hasta 40mm. También corta acero inoxidable y aluminio con excelentes resultados.",
     "q4": "¿Cuánto puedo ahorrar en costos de gas?",

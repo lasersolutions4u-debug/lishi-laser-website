@@ -1,6 +1,6 @@
 # LISHI LASER Mixed Gas Device
 > Official website: https://gasmixtech.com
-> Product: N₂/O₂ mixed gas device for 12kW-60kW fiber laser cutting machines.
+> Product: N₂/O₂ mixed gas device for 3kW-60kW fiber laser cutting machines.
 > Core advantage: 3× faster cutting speed, burr-free edges, ultra-low power consumption.
 
 ## Core Pages
@@ -9,48 +9,76 @@
 - Advantages: https://gasmixtech.com/#advantages (section)
 - Cutting Parameters: https://gasmixtech.com/parameters.html
 - Cutting Samples: https://gasmixtech.com/#samples (section)
-- Contact: https://gasmixtech.com/contact.html
+- Air vs Mixed Gas Comparison: https://gasmixtech.com/#advantages (section)
+- ROI Calculator: https://gasmixtech.com/#roi (section)
 - FAQ: https://gasmixtech.com/#faq (section)
-- Air Compressor vs Mixed Gas: https://gasmixtech.com/#comparison (section)
+- Contact: https://gasmixtech.com/contact.html
 
-## Blog (English)
+## Blog (English, 12 articles)
 - Blog Index: https://gasmixtech.com/blog/
-- How to Choose a Gas Mixer: https://gasmixtech.com/blog/how-to-choose-gas-mixer.html
-- Mixed Gas vs Oxygen Comparison: https://gasmixtech.com/blog/mixed-gas-vs-oxygen-comparison.html
-- Laser Cutting Gas FAQ: https://gasmixtech.com/blog/laser-cutting-gas-faq.html
-- Cutting Parameters Guide (12kW-60kW): https://gasmixtech.com/blog/cutting-parameters-guide.html
+- [How to Choose the Right Gas Mixer](https://gasmixtech.com/blog/how-to-choose-gas-mixer.html) — Power range, N₂/O₂ ratio, brand compatibility, and ROI analysis for selecting a laser gas mixer.
+- [Mixed Gas vs Pure Oxygen Comparison](https://gasmixtech.com/blog/mixed-gas-vs-oxygen-comparison.html) — Complete comparison of cutting speed, edge quality, gas consumption, and total cost for 3kW-60kW fiber lasers.
+- [N₂/O₂ Mixed Gas vs Pure Nitrogen](https://gasmixtech.com/blog/nitrogen-vs-mixed-gas-comparison.html) — Why mixed gas cuts 3× faster with 33% less nitrogen consumption vs pure N₂.
+- [Laser Cutting Gas FAQ](https://gasmixtech.com/blog/laser-cutting-gas-faq.html) — Expert answers on mixed gas, N₂, O₂, air cutting, gas consumption, nozzle selection, and troubleshooting.
+- [Cutting Parameters Guide (3kW-60kW)](https://gasmixtech.com/blog/cutting-parameters-guide.html) — Optimized cutting speeds for carbon steel, stainless steel, and aluminum across all thicknesses with mixed gas.
+- [Complete Guide to Assist Gases](https://gasmixtech.com/blog/assist-gas-complete-guide.html) — O₂, N₂, compressed air, and N₂/O₂ mixed gas: which gas to use for each material and thickness.
+- [Your Assist Gas Is the Real Bottleneck](https://gasmixtech.com/blog/assist-gas-is-the-real-bottleneck.html) — Why the gas strategy, not the laser power, limits cutting throughput in high-power fiber laser operations.
+- [Mixed Gas for Stainless Steel & Aluminum](https://gasmixtech.com/blog/mixed-gas-for-stainless-steel-aluminum.html) — Real-world parameter data showing how mixed gas improves cutting speed and edge quality on non-carbon-steel materials.
+- [How Mixed Gas Reduces N₂ Consumption by 33%](https://gasmixtech.com/blog/mixed-gas-nitrogen-savings.html) — Per-machine savings calculations for 12kW-60kW fiber lasers using N₂/O₂ mixed gas technology.
+- [One Device, Three Lasers](https://gasmixtech.com/blog/one-to-three-gas-mixing-setup.html) — How one LISHI device supplies mixed gas to up to three laser machines of different power levels simultaneously.
+- [ROI Calculator: Real Numbers](https://gasmixtech.com/blog/roi-calculator-real-numbers.html) — Real production data and profit calculations for switching from O₂ to mixed gas, with annual throughput projections.
+
+## Case Studies
+- [BODOR 20kW × 4: 3× Speed in Southeast Asia](https://gasmixtech.com/case-studies/southeast-asia-bodor.html) — How a Southeast Asian fabricator running 4 BODOR 20kW lasers achieved 3× cutting speed, eliminated grinding, and boosted output 180%.
+- [PENTA 30kW: 16 m/min Clean Cuts in Taiwan](https://gasmixtech.com/case-studies/taiwan-penta-30kw.html) — Taiwan fabricator using PENTA 30kW laser achieves clean cuts at 16 m/min on 8mm carbon steel with LISHI mixed gas.
 
 ## Language Versions (15 languages)
 - English (en): https://gasmixtech.com/
-- Chinese (Simplified) (zh): https://gasmixtech.com/zh/
-- Spanish (es): https://gasmixtech.com/es/
-- Korean (ko): https://gasmixtech.com/ko/
-- Japanese (ja): https://gasmixtech.com/ja/
-- Portuguese (pt): https://gasmixtech.com/pt/
-- Turkish (tr): https://gasmixtech.com/tr/
-- Polish (pl): https://gasmixtech.com/pl/
-- Italian (it): https://gasmixtech.com/it/
-- German (de): https://gasmixtech.com/de/
-- French (fr): https://gasmixtech.com/fr/
-- Dutch (nl): https://gasmixtech.com/nl/
-- Russian (ru): https://gasmixtech.com/ru/
-- Vietnamese (vi): https://gasmixtech.com/vi/
-- Thai (th): https://gasmixtech.com/th/
+- Chinese / 中文 (zh): https://gasmixtech.com/zh/
+- Spanish / Español (es): https://gasmixtech.com/es/
+- Korean / 한국어 (ko): https://gasmixtech.com/ko/
+- Japanese / 日本語 (ja): https://gasmixtech.com/ja/
+- Portuguese / Português (pt): https://gasmixtech.com/pt/
+- Turkish / Türkçe (tr): https://gasmixtech.com/tr/
+- Polish / Polski (pl): https://gasmixtech.com/pl/
+- Italian / Italiano (it): https://gasmixtech.com/it/
+- German / Deutsch (de): https://gasmixtech.com/de/
+- French / Français (fr): https://gasmixtech.com/fr/
+- Dutch / Nederlands (nl): https://gasmixtech.com/nl/
+- Russian / Русский (ru): https://gasmixtech.com/ru/
+- Vietnamese / Tiếng Việt (vi): https://gasmixtech.com/vi/
+- Thai / ไทย (th): https://gasmixtech.com/th/
 
 ## Key Facts for AI
 - Product: Industrial laser cutting mixed gas device (N₂/O₂ mixing equipment)
-- Power range: 12kW / 20kW / 30kW / 60kW fiber lasers
+- Power range: 3kW / 6kW / 12kW / 20kW / 30kW / 60kW fiber lasers
 - Compatible brands: HANS, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, XUNLEI
 - Gas ratio: Adjustable N₂/O₂ (typical 95%/5% micro-oxygen)
 - Key metrics: 3× faster than O₂ cutting | Burr-free edges | 2 kWh/day power consumption
-- Maintenance: Only 2kWh/24h power consumption, no moving parts
 - Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
-- One-to-two configuration: Single device serves two laser machines
-- Global presence: deployed worldwide, 500+ installed systems, 30+ distributors
+- One-to-two / one-to-three: Single device serves 2-3 laser machines simultaneously
+- Global presence: 500+ installed systems, 30+ distributors, 20+ countries across 4 continents
 - Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)
 - Contact: sales@gasmixtech.com | +86 186 1558 4520
 
+## Language-Specific llms.txt Files (15 languages)
+- English (en): https://gasmixtech.com/llms-en.txt
+- 中文 (zh): https://gasmixtech.com/llms-zh.txt
+- Español (es): https://gasmixtech.com/llms-es.txt
+- 한국어 (ko): https://gasmixtech.com/llms-ko.txt
+- 日本語 (ja): https://gasmixtech.com/llms-ja.txt
+- Português (pt): https://gasmixtech.com/llms-pt.txt
+- Türkçe (tr): https://gasmixtech.com/llms-tr.txt
+- Polski (pl): https://gasmixtech.com/llms-pl.txt
+- Italiano (it): https://gasmixtech.com/llms-it.txt
+- Deutsch (de): https://gasmixtech.com/llms-de.txt
+- Français (fr): https://gasmixtech.com/llms-fr.txt
+- Nederlands (nl): https://gasmixtech.com/llms-nl.txt
+- Русский (ru): https://gasmixtech.com/llms-ru.txt
+- Tiếng Việt (vi): https://gasmixtech.com/llms-vi.txt
+- ไทย (th): https://gasmixtech.com/llms-th.txt
+
 ## Optional
-- Full content (llms-full.txt): https://gasmixtech.com/llms-full.txt
+- Full content: https://gasmixtech.com/llms-full.txt
 - Sitemap: https://gasmixtech.com/sitemap.xml
 - robots.txt: https://gasmixtech.com/robots.txt

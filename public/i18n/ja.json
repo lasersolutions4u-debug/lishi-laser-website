@@ -83,8 +83,8 @@
   },
   "roi": {
     "label": "計算機",
-    "title": "レーザー切断ガスコスト削減額を計算",
-    "description": "LISHI LASER混合ガス技術でどの程度節約できるかご確認ください。窒素消費量を削減し、炭素鋼のバリを除去し、レーザー切断速度を向上—all in one maintenance-free gas mixing device。",
+    "title": "生産性と利益の向上を計算",
+    "description": "O₂からLISHI LASER混合ガスに切り替えることで、どれだけ多く生産し、どれだけ多く稼げるかをご確認ください。世界中のユーザーからの実際の切断速度データに基づいています。",
     "powerLabel": "機械出力",
     "thicknessLabel": "材料厚度",
     "hoursLabel": "1日あたりの作業時間",
