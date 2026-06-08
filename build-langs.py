@@ -6,7 +6,7 @@ Step 2: Translate English content to target language
 """
 import os, re, sys
 
-BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混合气体设备/网站/public"
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 
 # Language metadata
 LANGS = {
@@ -25,8 +25,12 @@ def apply_structural(content, lang, page_type):
     p = lang  # short alias
 
     # ── Phase 1: Asset paths (./ → ../) ──
-    content = content.replace('href="./styles.css"', 'href="../styles.css"')
-    content = content.replace('src="./script.js"', 'src="../script.js"')
+    content = content.replace('href="./styles.css"', 'href="../styles.min.css"')
+    content = content.replace('href="./styles.min.css"', 'href="../styles.min.css"')
+    content = content.replace('src="./script.js"', 'src="../script.min.js"')
+    content = content.replace('src="./script.min.js"', 'src="../script.min.js"')
+    content = content.replace('src="/script.js"', 'src="../script.min.js"')
+    content = content.replace('src="/script.min.js"', 'src="../script.min.js"')
     content = content.replace('href="./favicon.svg"', 'href="../favicon.svg"')
 
     # ── Phase 2: Image paths ──
@@ -71,23 +75,7 @@ def apply_structural(content, lang, page_type):
             f'<meta property="og:url" content="https://gasmixtech.com/{p}/parameters.html">')
 
     # ── Phase 6: Hreflang ──
-    # Replace en hreflang → new_lang + en (net +1 entry).
-    # x-default stays untouched (always points to root).
-    if page_type == 'index':
-        content = content.replace(
-            '<link rel="alternate" hreflang="en" href="https://gasmixtech.com/">',
-            f'<link rel="alternate" hreflang="{p}" href="https://gasmixtech.com/{p}/">\n'
-            '  <link rel="alternate" hreflang="en" href="https://gasmixtech.com/">')
-    elif page_type == 'contact':
-        content = content.replace(
-            '<link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html">',
-            f'<link rel="alternate" hreflang="{p}" href="https://gasmixtech.com/{p}/contact.html">\n'
-            '  <link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html">')
-    elif page_type == 'parameters':
-        content = content.replace(
-            '<link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html">',
-            f'<link rel="alternate" hreflang="{p}" href="https://gasmixtech.com/{p}/parameters.html">\n'
-            '  <link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html">')
+    # Source pages already include the full 15-language hreflang set.
 
     # ── Phase 7: Nav links (match with HTML context to avoid lang-dropdown) ──
     # Logo (in header and footer) — contains class="logo"
@@ -102,7 +90,7 @@ def apply_structural(content, lang, page_type):
         content = content.replace(f'<a href="/{sec}">', f'<a href="/{p}/{sec}">')
 
     # Nav: blog link
-    content = content.replace('<a href="/blog/">Blog</a>', f'<a href="/{p}/blog/">Blog</a>')
+    content = content.replace('<a href="/blog/">Blog</a>', '<a href="/blog/">Blog</a>')
 
     # Nav: contact CTA (NOT dropdown)
     content = content.replace(
@@ -131,28 +119,16 @@ def apply_structural(content, lang, page_type):
         f'href="/{p}/" class="btn btn-primary">Back to')
 
     # ── Phase 9: Lang dropdown ──
-    # Remove active from English option
-    content = content.replace(
-        'class="lang-option active" data-lang="en">English',
-        'class="lang-option" data-lang="en">English')
-    content = content.replace(
-        'class="lang-option active" data-lang="en">Eng</a>',
-        'class="lang-option" data-lang="en">Eng</a>')
-
-    # Add new language option after pl (which is the last one in every dropdown)
-    # For index page: no page suffix
-    # For contact/params: add page-specific URL
+    content = content.replace('class="lang-option active"', 'class="lang-option"')
     if page_type == 'index':
-        new_option = f'<a href="/{p}/" class="lang-option active" data-lang="{p}">{info["name"]}</a>'
-        marker = '<a href="/pl/" class="lang-option" data-lang="pl">Polski</a>'
+        current_href = f'/{p}/'
     elif page_type == 'contact':
-        new_option = f'<a href="/{p}/contact.html" class="lang-option active" data-lang="{p}">{info["name"]}</a>'
-        marker = '<a href="/pl/contact.html" class="lang-option" data-lang="pl">Polski</a>'
-    elif page_type == 'parameters':
-        new_option = f'<a href="/{p}/parameters.html" class="lang-option active" data-lang="{p}">{info["name"]}</a>'
-        marker = '<a href="/pl/parameters.html" class="lang-option" data-lang="pl">Polski</a>'
-
-    content = content.replace(marker, f'{marker}\n            {new_option}')
+        current_href = f'/{p}/contact.html'
+    else:
+        current_href = f'/{p}/parameters.html'
+    content = content.replace(
+        f'href="{current_href}" class="lang-option" data-lang="{p}"',
+        f'href="{current_href}" class="lang-option active" data-lang="{p}"')
 
     return content
 
@@ -399,7 +375,7 @@ IT = {
     "Power Range Served": "Gamma di Potenza Servita",
     "Manufacturing Durability": "Durabilità di Produzione",
     "The Next Territory is Still Open.": "Il Prossimo Territorio è Ancora Disponibile.",
-    "Exclusive distributor partnerships available in select regions. Ship a container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship a container, build your market.":
      "Partenariati di distribuzione esclusivi disponibili in regioni selezionate. Spedisci un container, costruisci il tuo mercato.",
 
     # FAQ
@@ -455,7 +431,7 @@ IT = {
     "Product Brand": "Marchio Prodotto",
     "Mixed Gas Device — 13 years in laser cutting industry": "Dispositivo a Gas Misto — 13 anni nel settore del taglio laser",
     "Looking for a distributor?": "Cerchi un distributore?",
-    "We are actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We are actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "Stiamo espandendo attivamente la nostra rete globale di agenti. Territori esclusivi disponibili per distributori qualificati.",
     "Agency Application →": "Richiesta Agenzia →",
     "Send Us a Message": "Inviaci un Messaggio",
@@ -611,7 +587,7 @@ IT = {
     "From coastal megafactories to inland workshops, mixed gas technology now powers laser cutters on four continents — and the footprint is expanding every quarter.":
      "Dalle megafabbriche costiere alle officine interne, la tecnologia a gas misto ora alimenta macchine da taglio laser in quattro continenti — e la presenza si espande ogni trimestre.",
     "The Next Territory Is Still Open.": "Il Prossimo Territorio è Ancora Disponibile.",
-    "Exclusive distributor partnerships available in select regions. Ship one container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship one container, build your market.":
      "Partenariati di distribuzione esclusivi disponibili in regioni selezionate. Spedisci un container, costruisci il tuo mercato.",
 
     # Hero CTA / Buttons
@@ -995,7 +971,7 @@ DE = {
     "Power Range Served": "Abgedeckter Leistungsbereich",
     "Manufacturing Durability": "Fertigungsbeständigkeit",
     "The Next Territory is Still Open.": "Das Nächste Gebiet Ist Noch Frei.",
-    "Exclusive distributor partnerships available in select regions. Ship a container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship a container, build your market.":
      "Exklusive Vertriebspartnerschaften in ausgewählten Regionen verfügbar. Verschiffen Sie einen Container, bauen Sie Ihren Markt auf.",
     "Actual cutting footage from end users worldwide. No embellishment — real data, real performance.":
      "Echte Schneidaufnahmen von Endanwendern weltweit. Keine Beschönigung — echte Daten, echte Leistung.",
@@ -1003,7 +979,7 @@ DE = {
     "From coastal megafactories to inland workshops, mixed gas technology now powers laser cutters on four continents — and the footprint is expanding every quarter.":
      "Von Küsten-Megafabriken bis zu Werkstätten im Landesinneren treibt Mischgastechnologie heute Laserschneider auf vier Kontinenten an — und die Präsenz wächst jedes Quartal.",
     "The Next Territory Is Still Open.": "Das Nächste Gebiet Ist Noch Frei.",
-    "Exclusive distributor partnerships available in select regions. Ship one container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship one container, build your market.":
      "Exklusive Vertriebspartnerschaften in ausgewählten Regionen verfügbar. Verschiffen Sie einen Container, bauen Sie Ihren Markt auf.",
 
     # FAQ
@@ -1068,7 +1044,7 @@ DE = {
     "Product Brand": "Produktmarke",
     "Mixed Gas Device — 13 years in laser cutting industry": "Mischgasgerät — 13 Jahre in der Laserschneidbranche",
     "Looking for a distributor?": "Suchen Sie einen Vertriebspartner?",
-    "We are actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We are actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "Wir erweitern aktiv unser globales Vertriebsnetz. Exklusive Gebiete verfügbar für qualifizierte Vertriebspartner.",
     "Agency Application →": "Vertriebspartnerantrag →",
     "Send Us a Message": "Senden Sie Uns eine Nachricht",
@@ -1439,7 +1415,7 @@ FR = {
     "Power Range Served": "Gamme de Puissance Desservie",
     "Manufacturing Durability": "Durabilité de Fabrication",
     "The Next Territory is Still Open.": "Le Prochain Territoire est Encore Ouvert.",
-    "Exclusive distributor partnerships available in select regions. Ship a container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship a container, build your market.":
      "Partenariats de distribution exclusifs disponibles dans certaines régions. Expédiez un conteneur, construisez votre marché.",
     "Actual cutting footage from end users worldwide. No embellishment — real data, real performance.":
      "Vidéos de découpe réelles d'utilisateurs finaux dans le monde entier. Aucun embellissement — données réelles, performance réelle.",
@@ -1447,7 +1423,7 @@ FR = {
     "From coastal megafactories to inland workshops, mixed gas technology now powers laser cutters on four continents — and the footprint is expanding every quarter.":
      "Des méga-usines côtières aux ateliers de l'intérieur, la technologie à gaz mixte alimente désormais les découpeuses laser sur quatre continents — et l'empreinte s'étend chaque trimestre.",
     "The Next Territory Is Still Open.": "Le Prochain Territoire est Encore Ouvert.",
-    "Exclusive distributor partnerships available in select regions. Ship one container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship one container, build your market.":
      "Partenariats de distribution exclusifs disponibles dans certaines régions. Expédiez un conteneur, construisez votre marché.",
 
     # FAQ
@@ -1512,7 +1488,7 @@ FR = {
     "Product Brand": "Marque du Produit",
     "Mixed Gas Device — 13 years in laser cutting industry": "Dispositif à Gaz Mixte — 13 ans dans l'industrie de la découpe laser",
     "Looking for a distributor?": "Vous cherchez un distributeur ?",
-    "We are actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We are actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "Nous élargissons activement notre réseau mondial d'agents. Territoires exclusifs disponibles pour distributeurs qualifiés.",
     "Agency Application →": "Demande d'Agence →",
     "Send Us a Message": "Envoyez-Nous un Message",
@@ -1883,7 +1859,7 @@ NL = {
     "Power Range Served": "Vermogensbereik Bediend",
     "Manufacturing Durability": "Productieduurzaamheid",
     "The Next Territory is Still Open.": "Het Volgende Territorium Is Nog Open.",
-    "Exclusive distributor partnerships available in select regions. Ship a container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship a container, build your market.":
      "Exclusieve distributeurpartnerschappen beschikbaar in geselecteerde regio's. Verscheep een container, bouw uw markt op.",
     "Actual cutting footage from end users worldwide. No embellishment — real data, real performance.":
      "Echte snijbeelden van eindgebruikers wereldwijd. Geen verfraaiing — echte data, echte prestaties.",
@@ -1891,7 +1867,7 @@ NL = {
     "From coastal megafactories to inland workshops, mixed gas technology now powers laser cutters on four continents — and the footprint is expanding every quarter.":
      "Van kustmegafabrieken tot werkplaatsen in het binnenland, menggastechnologie drijft nu lasersnijders aan op vier continenten — en de voetafdruk breidt elk kwartaal uit.",
     "The Next Territory Is Still Open.": "Het Volgende Territorium Is Nog Open.",
-    "Exclusive distributor partnerships available in select regions. Ship one container, build your market.":
+    "Regional distributor partnerships are open in select markets. Ship one container, build your market.":
      "Exclusieve distributeurpartnerschappen beschikbaar in geselecteerde regio's. Verscheep één container, bouw uw markt op.",
 
     # FAQ
@@ -1956,7 +1932,7 @@ NL = {
     "Product Brand": "Productmerk",
     "Mixed Gas Device — 13 years in laser cutting industry": "Menggasapparaat — 13 jaar in de lasersnij-industrie",
     "Looking for a distributor?": "Op zoek naar een distributeur?",
-    "We are actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We are actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "We breiden ons wereldwijde agentennetwerk actief uit. Exclusieve territoria beschikbaar voor gekwalificeerde distributeurs.",
     "Agency Application →": "Agentschapsaanvraag →",
     "Send Us a Message": "Stuur Ons een Bericht",
@@ -2028,7 +2004,7 @@ NL = {
      "Neem Contact Op Met LISHI LASER | Offerte Menggasapparaat Aanvragen",
     "Ready to increase your cutting speed? Send us your laser machine details and we'll provide customized parameters and pricing.":
      "Klaar om uw snijsnelheid te verhogen? Stuur ons de gegevens van uw lasermachine en wij bieden aangepaste parameters en prijzen.",
-    "We're actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We're actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "We breiden ons wereldwijde agentnetwerk actief uit. Exclusieve gebieden beschikbaar voor gekwalificeerde distributeurs.",
     "Looking for a Distributor?": "Op zoek naar een Distributeur?",
     "Apply for Agency →": "Vraag Agentschap Aan →",
@@ -2262,7 +2238,7 @@ RU = {
     "Product Brand": "Бренд продукта",
     "Mixed Gas Device — 13 Years in Laser Cutting Industry": "Устройство смешанного газа — 13 лет в отрасли лазерной резки",
     "Looking for a Distributor?": "Ищете дистрибьютора?",
-    "We're actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We're actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "Мы активно расширяем нашу глобальную агентскую сеть. Эксклюзивные территории доступны для квалифицированных дистрибьюторов.",
     "Apply for Agency →": "Подать заявку на агентство →",
     "Send Us a Message": "Отправьте нам сообщение",
@@ -2591,7 +2567,7 @@ VI = {
     "Product Brand": "Thương hiệu Sản phẩm",
     "Mixed Gas Device — 13 Years in Laser Cutting Industry": "Thiết bị Khí Hỗn hợp — 13 Năm trong Ngành Cắt Laser",
     "Looking for a Distributor?": "Đang tìm Nhà phân phối?",
-    "We're actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We're actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "Chúng tôi đang tích cực mở rộng mạng lưới đại lý toàn cầu. Các lãnh thổ độc quyền có sẵn cho các nhà phân phối đủ điều kiện.",
     "Apply for Agency →": "Đăng ký Đại lý →",
     "Send Us a Message": "Gửi Tin nhắn cho Chúng tôi",
@@ -2920,7 +2896,7 @@ TH = {
     "Product Brand": "แบรนด์ผลิตภัณฑ์",
     "Mixed Gas Device — 13 Years in Laser Cutting Industry": "อุปกรณ์ก๊าซผสม — 13 ปีในอุตสาหกรรมตัดเลเซอร์",
     "Looking for a Distributor?": "กำลังมองหาผู้จัดจำหน่าย?",
-    "We're actively expanding our global agent network. Exclusive territories available for qualified distributors.":
+    "We're actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
      "เรากำลังขยายเครือข่ายตัวแทนทั่วโลกอย่างแข็งขัน มีเขตพื้นที่พิเศษสำหรับผู้จัดจำหน่ายที่มีคุณสมบัติ",
     "Apply for Agency →": "สมัครเป็นตัวแทน →",
     "Send Us a Message": "ส่งข้อความถึงเรา",

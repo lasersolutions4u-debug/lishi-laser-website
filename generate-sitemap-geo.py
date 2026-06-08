@@ -3,8 +3,9 @@
 import os
 from datetime import date
 
-BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混合气体设备/网站/public"
+BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 DOMAIN = "https://gasmixtech.com"
+LANGS = ['en', 'zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
 
 def get_all_pages():
     """Get all indexable pages with their relative paths."""
@@ -12,15 +13,31 @@ def get_all_pages():
     for root, dirs, files in os.walk(BASE):
         for f in files:
             if f.endswith('.html') and f != '_template.html':
-                rel = os.path.relpath(os.path.join(root, f), BASE)
+                rel = os.path.relpath(os.path.join(root, f), BASE).replace(os.sep, '/')
                 pages.append(rel)
     return sorted(pages)
 
 def rel_to_url(rel):
     """Convert relative path to full URL."""
+    rel = rel.replace(os.sep, '/')
     if rel == 'index.html':
         return f'{DOMAIN}/'
+    if rel.endswith('/index.html'):
+        return f'{DOMAIN}/{rel[:-10]}'
     return f'{DOMAIN}/{rel}'
+
+def get_alternate_group(rel):
+    """Return equivalent language-page relatives for hreflang alternates."""
+    parts = rel.split('/')
+    page = parts[-1]
+
+    if page == 'index.html' and (len(parts) == 1 or parts[0] in LANGS[1:]):
+        return {'en': 'index.html', **{lang: f'{lang}/index.html' for lang in LANGS[1:]}}
+
+    if page in ('contact.html', 'parameters.html', 'privacy.html') and (len(parts) == 1 or parts[0] in LANGS[1:]):
+        return {'en': page, **{lang: f'{lang}/{page}' for lang in LANGS[1:]}}
+
+    return None
 
 def get_page_priority(rel):
     """Assign priority based on page type."""
@@ -50,7 +67,8 @@ def generate_sitemap():
     today = date.today().isoformat()
 
     xml = ['<?xml version="1.0" encoding="UTF-8"?>']
-    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"')
+    xml.append('        xmlns:xhtml="http://www.w3.org/1999/xhtml">')
 
     for rel in pages:
         url = rel_to_url(rel)
@@ -58,6 +76,13 @@ def generate_sitemap():
         changefreq = get_changefreq(rel)
         xml.append('  <url>')
         xml.append(f'    <loc>{url}</loc>')
+        alternates = get_alternate_group(rel)
+        if alternates:
+            for lang in LANGS:
+                alt_rel = alternates[lang]
+                if alt_rel in pages:
+                    xml.append(f'    <xhtml:link rel="alternate" hreflang="{lang}" href="{rel_to_url(alt_rel)}" />')
+            xml.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{rel_to_url(alternates["en"])}" />')
         xml.append(f'    <lastmod>{today}</lastmod>')
         xml.append(f'    <changefreq>{changefreq}</changefreq>')
         xml.append(f'    <priority>{priority}</priority>')

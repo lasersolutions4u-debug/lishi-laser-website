@@ -73,13 +73,55 @@
   },
   "comparison": {
     "title": "Comparação de Desempenho: Gás Misto vs O₂ vs N₂ vs Ar",
-    "headers": ["Fator", "Gás Misto", "O₂ (Oxigênio)", "N₂ (Nitrogênio)", "Ar"],
-    "speedRow": ["Velocidade de Corte", "3x mais rápido (ex: 16m/min @ 8mm CS)", "2–3m/min @ 8mm CS", "Similar ao gás misto", "30% mais lento que gás misto"],
-    "surfaceRow": ["Superfície de Corte", "Lisa, sem rebarbas", "Oxidada, bordas ásperas", "Pode ter rebarbas em placas grossas", "Contaminada, áspera"],
-    "gasRow": ["Consumo de Gás", "1/3 a menos que N₂", "Total similar", "Alto", "Muito alto (compressor)"],
-    "powerRow": ["Custo de Energia", "2 kWh/24h", "Alto", "Alto", "Muito alto (compressor)"],
-    "holeRow": ["Perfuração de Pequenos Furos", "Algumas rebarbas durante perfuração", "Melhor para pequenos furos", "Bom", "Ruim"],
-    "protectionRow": ["Proteção do Equipamento", "Sem contaminação de tubulação", "Padrão", "Padrão", "Risco de contaminação de lentes"]
+    "headers": [
+      "Fator",
+      "Gás Misto",
+      "O₂ (Oxigênio)",
+      "N₂ (Nitrogênio)",
+      "Ar"
+    ],
+    "speedRow": [
+      "Velocidade de Corte",
+      "3x mais rápido (ex: 16m/min @ 8mm CS)",
+      "2–3m/min @ 8mm CS",
+      "Similar ao gás misto",
+      "30% mais lento que gás misto"
+    ],
+    "surfaceRow": [
+      "Superfície de Corte",
+      "Lisa, sem rebarbas",
+      "Oxidada, bordas ásperas",
+      "Pode ter rebarbas em placas grossas",
+      "Contaminada, áspera"
+    ],
+    "gasRow": [
+      "Consumo de Gás",
+      "1/3 a menos que N₂",
+      "Total similar",
+      "Alto",
+      "Muito alto (compressor)"
+    ],
+    "powerRow": [
+      "Custo de Energia",
+      "2 kWh/24h",
+      "Alto",
+      "Alto",
+      "Muito alto (compressor)"
+    ],
+    "holeRow": [
+      "Perfuração de Pequenos Furos",
+      "Algumas rebarbas durante perfuração",
+      "Melhor para pequenos furos",
+      "Bom",
+      "Ruim"
+    ],
+    "protectionRow": [
+      "Proteção do Equipamento",
+      "Sem contaminação de tubulação",
+      "Padrão",
+      "Padrão",
+      "Risco de contaminação de lentes"
+    ]
   },
   "roi": {
     "label": "Calculadora",
@@ -205,7 +247,8 @@
     "badgeOceania": "OCEANIA",
     "ctaTitle": "O Próximo Território Ainda Está Aberto.",
     "ctaDesc": "Parcerias de distribuidor exclusivo disponíveis em regiões selecionadas. Envie um contêiner, construa seu mercado.",
-    "ctaButton": "Tornar-se Parceiro →"
+    "ctaButton": "Tornar-se Parceiro →",
+    "oceania": "Oceania"
   },
   "cta": {
     "title": "Pronto para Aumentar sua Velocidade de Corte?",

@@ -73,13 +73,55 @@
   },
   "comparison": {
     "title": "Performance Comparison: Mixed Gas vs O₂ vs N₂ vs Air",
-    "headers": ["Factor", "Mixed Gas", "O₂ (Oxygen)", "N₂ (Nitrogen)", "Air"],
-    "speedRow": ["Cutting Speed", "3× faster (e.g. 16m/min @ 8mm CS)", "2–3m/min @ 8mm CS", "Similar to mixed gas", "30% slower than mixed gas"],
-    "surfaceRow": ["Cut Surface", "Smooth, no burrs", "Oxidized, rough edges", "May have burrs on thick plates", "Contaminated, rough"],
-    "gasRow": ["Gas Consumption", "Uses N₂ + O₂ blend", "Similar total", "High", "Very high (compressor)"],
-    "powerRow": ["Power Cost", "2 kWh/24h", "High", "High", "Very high (compressor)"],
-    "holeRow": ["Small Hole Piercing", "Some burrs during pierce", "Best for small holes", "Good", "Poor"],
-    "protectionRow": ["Equipment Protection", "No pipeline contamination", "Standard", "Standard", "Risk of lens contamination"]
+    "headers": [
+      "Factor",
+      "Mixed Gas",
+      "O₂ (Oxygen)",
+      "N₂ (Nitrogen)",
+      "Air"
+    ],
+    "speedRow": [
+      "Cutting Speed",
+      "3× faster (e.g. 16m/min @ 8mm CS)",
+      "2–3m/min @ 8mm CS",
+      "Similar to mixed gas",
+      "30% slower than mixed gas"
+    ],
+    "surfaceRow": [
+      "Cut Surface",
+      "Smooth, no burrs",
+      "Oxidized, rough edges",
+      "May have burrs on thick plates",
+      "Contaminated, rough"
+    ],
+    "gasRow": [
+      "Gas Consumption",
+      "Uses N₂ + O₂ blend",
+      "Similar total",
+      "High",
+      "Very high (compressor)"
+    ],
+    "powerRow": [
+      "Power Cost",
+      "2 kWh/24h",
+      "High",
+      "High",
+      "Very high (compressor)"
+    ],
+    "holeRow": [
+      "Small Hole Piercing",
+      "Some burrs during pierce",
+      "Best for small holes",
+      "Good",
+      "Poor"
+    ],
+    "protectionRow": [
+      "Equipment Protection",
+      "No pipeline contamination",
+      "Standard",
+      "Standard",
+      "Risk of lens contamination"
+    ]
   },
   "roi": {
     "label": "Calculator",
@@ -109,7 +151,9 @@
     "alertSuccess": "Thank you! We'll send the parameter table within 24 hours.",
     "alertFail": "Something went wrong. Please contact via WhatsApp",
     "alertCatch": "Thank you! We'll contact you within 24 hours.",
-    "warningThickness": "For thicknesses above {{max}}mm with {{power}}kW, we recommend 20kW+ for best mixed gas performance."
+    "warningThickness": "For thicknesses above {{max}}mm with {{power}}kW, we recommend 20kW+ for best mixed gas performance.",
+    "n2CostLabel": "Monthly N2 Cost (USD)",
+    "n2CostNote": "Your current monthly nitrogen spend (USD)"
   },
   "airPain": {
     "sectionLabel": "Why Air Compressor Costs More",
@@ -199,7 +243,7 @@
     "badgeAmericas": "AMERICAS",
     "badgeOceania": "OCEANIA",
     "ctaTitle": "The Next Territory Is Still Open.",
-    "ctaDesc": "Exclusive distributor partnerships available in select regions. Ship one container, build your market.",
+    "ctaDesc": "Regional distributor partnerships are open in select markets. Ship one container, build your market.",
     "ctaButton": "Become a Partner →"
   },
   "cta": {

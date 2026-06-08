@@ -15,7 +15,7 @@ const PUBLIC_DIR = __dirname;
 const I18N_DIR = path.join(PUBLIC_DIR, 'i18n');
 
 // Supported languages — add new ones here + create i18n/xx.json
-const LANGUAGES = ['zh', 'es', 'ko', 'ja', 'pt'];
+const LANGUAGES = ['zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th'];
 
 // ─── Read template ──────────────────────────────────────────────────
 const templatePath = path.join(PUBLIC_DIR, '_template.html');
@@ -85,22 +85,22 @@ function getNestedValue(obj, path) {
  * Adjust relative paths for subdirectory pages.
  *
  * Template (root) uses:
- *   ./styles.css   ./images/…   ./favicon.svg   ./script.js
+ *   ./styles.min.css   ./images/…   ./favicon.svg   ./script.min.js
  *   /contact.html  /parameters.html  /
  *
  * Subdirectory pages need:
- *   ../styles.css  ../images/…  ../favicon.svg  ../script.js
+ *   ../styles.min.css  ../images/…  ../favicon.svg  ../script.min.js
  *   ./contact.html ./parameters.html  ../
  */
 function adjustPaths(html, lang) {
   // 1. Asset paths  ./xxx  →  ../xxx
-  html = html.replace(/\.(\/(styles\.css|script\.js|favicon\.svg|images\/))/g, '../$2');
+  html = html.replace(/\.(\/(styles(?:\.min)?\.css|script(?:\.min)?\.js|favicon\.svg|images\/))/g, '../$2');
 
   // 2. Root-relative page links  /contact.html → ./contact.html
   html = html.replace(/href="\/(contact\.html|parameters\.html)"/g, 'href="./$1"');
 
-  // 2b. Root-relative script  /script.js → ../script.js
-  html = html.replace(/src="\/script\.js"/g, 'src="../script.js"');
+  // 2b. Root-relative script  /script.min.js → ../script.min.js
+  html = html.replace(/src="\/script(?:\.min)?\.js"/g, 'src="../script.min.js"');
 
   // 3. Root-relative dir links  href="/zh/" → href="../zh/"
   //    but skip href="//" (protocol-relative) and already-adjusted paths
