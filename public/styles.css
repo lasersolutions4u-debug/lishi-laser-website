@@ -669,6 +669,7 @@ a:hover {
   border-radius: var(--radius-lg);
   padding: 40px;
   margin-top: 48px;
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -681,7 +682,7 @@ a:hover {
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
+  table-layout: fixed;
 }
 
 .comparison-table th,
@@ -703,6 +704,7 @@ a:hover {
 .comparison-table td {
   font-size: 0.9rem;
   color: rgba(255,255,255,0.6);
+  overflow-wrap: anywhere;
 }
 
 .comparison-table tr:last-child td {
@@ -1398,6 +1400,11 @@ a:hover {
 
   .comparison-section {
     padding: 24px;
+  }
+
+  .comparison-table {
+    min-width: 680px;
+    table-layout: auto;
   }
 
   .samples-grid {
