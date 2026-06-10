@@ -111,7 +111,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   height: 72px;
-  max-width: 1440px;
+  max-width: 1280px;
   transition: height 0.3s ease;
 }
 
@@ -161,6 +161,7 @@ a:hover {
   align-items: center;
   gap: 0;
   flex-shrink: 1;
+  margin-left: auto;
 }
 
 .nav a {
@@ -177,6 +178,10 @@ a:hover {
 .nav a.active {
   color: #ffffff;
   background: transparent;
+}
+
+.nav-secondary {
+  display: none;
 }
 
 .nav-cta {
@@ -202,13 +207,6 @@ a:hover {
   font-size: 1.5rem;
   cursor: pointer;
   padding: 8px;
-}
-
-@media (max-width: 1200px) {
-  .nav a[href="#faq"],
-  .nav a[href="/blog/"] {
-    display: none;
-  }
 }
 
 /* ============================================
@@ -1393,6 +1391,10 @@ a:hover {
     padding: 12px 16px;
   }
 
+  .nav.open .nav-secondary {
+    display: block;
+  }
+
   .hero-stats {
     flex-direction: column;
     gap: 16px;
@@ -2426,7 +2428,7 @@ textarea:focus-visible {
    AIR PAIN POINTS — Two-Panel Comparison Rows
    ============================================ */
 .air-pain-section {
-  width: min(100%, 1200px);
+  width: min(100%, 980px);
   margin: 80px auto 0;
   padding: 80px 24px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
@@ -2459,6 +2461,9 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 /* Individual Pain Row — full-width horizontal split */
@@ -2599,12 +2604,13 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 16px;
+  max-width: 980px;
   background: rgba(255,255,255,0.02);
   border: 1px solid rgba(255,255,255,0.06);
   border-left: 3px solid var(--color-success);
   border-radius: var(--radius);
   padding: 24px 28px;
-  margin-top: 32px;
+  margin: 32px auto 0;
 }
 
 .summary-icon {
