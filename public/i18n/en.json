@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting",
-    "description": "LISHI LASER Mixed Gas Device for 3KW-60KW laser cutting machines. 3x faster cutting speed, burr-free edges, ultra-low power consumption. N2/O2 ratio technology for carbon steel cutting.",
+    "title": "LISHI Series Mixed Gas Device | 3× Faster Laser Cutting",
+    "description": "LISHI Series Mixed Gas Device for 3KW-60KW laser cutting machines. 3x faster cutting speed, burr-free edges, ultra-low power consumption. N2/O2 ratio technology for carbon steel cutting.",
     "keywords": "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, lower power consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-three laser gas setup, auxiliary gas optimization",
-    "ogTitle": "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting",
+    "ogTitle": "LISHI Series Mixed Gas Device | 3× Faster Laser Cutting",
     "ogDescription": "Mixed gas device for 3KW-60KW laser cutting machines. 3× faster cutting speed, burr-free edges, ultra-low power consumption. N2/O2 ratio technology."
   },
   "nav": {
@@ -22,7 +22,7 @@
   "hero": {
     "badge": "<span>13 Years</span> in Laser Metal Cutting Industry",
     "title": "Cut <span class=\"accent\">3× Faster</span><br>with Mixed Gas Technology",
-    "subtitle": "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (3KW–60KW). Burr-free edges, faster cutting speeds, and ultra-low power consumption.",
+    "subtitle": "The LISHI Series Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (3KW–60KW). Burr-free edges, faster cutting speeds, and ultra-low power consumption.",
     "statSpeedValue": "3×",
     "statSpeedLabel": "Faster than O₂",
     "statBurrsValue": "Burr-Free",
@@ -31,7 +31,7 @@
     "statGasLabel": "Power per 24 hours",
     "ctaQuote": "Get a Quote →",
     "ctaParams": "View Parameters",
-    "imgAlt": "LISHI LASER Mixed Gas Device - Nitrogen Oxygen Gas Mixing Equipment for Laser Cutting"
+    "imgAlt": "LISHI Series Mixed Gas Device - Nitrogen Oxygen Gas Mixing Equipment for Laser Cutting"
   },
   "principle": {
     "label": "How It Works",
@@ -67,7 +67,7 @@
     "maintTitle": "Maintenance-Free",
     "maintDesc": "Power consumption: only 2 kWh / 24 hours. Unlike air compressors requiring filter/oil changes every 3,000 hours, our industrial laser gas equipment is maintenance-free.",
     "oneToTwoTitle": "One-to-Three Laser Setup",
-    "oneToTwoDesc": "The only manufacturer with stable one-to-three mixed gas equipment. One industrial gas mixing station powers up to three laser machines of different power levels simultaneously.",
+    "oneToTwoDesc": "Stable one-to-three mixed gas equipment configuration. One industrial gas mixing station powers up to three laser machines of different power levels simultaneously.",
     "lensTitle": "Lens Protection",
     "lensDesc": "Air compressors risk oil/water contamination burning laser head lenses ($5,000–$50,000 loss). Our pure liquid gas source keeps your optical system 100% safe."
   },
@@ -126,7 +126,7 @@
   "roi": {
     "label": "Calculator",
     "title": "Calculate Your Throughput & Profit Increase",
-    "description": "See how much more you can produce — and earn — by switching from O₂ to LISHI LASER mixed gas. Based on real cutting speed data from end users worldwide.",
+    "description": "See how much more you can produce — and earn — by switching from O₂ to LISHI Series mixed gas. Based on real cutting speed data from end users worldwide.",
     "powerLabel": "Machine Power",
     "thicknessLabel": "Material Thickness",
     "hoursLabel": "Work Hours per Day",
@@ -135,7 +135,7 @@
     "profitLabel": "Profit per Meter (USD/m)",
     "profitNote": "Your selling price minus material cost (USD)",
     "currentLabel": "Current (O₂)",
-    "lishiLabel": "LISHI Mixed Gas",
+    "lishiLabel": "LISHI Series Mixed Gas",
     "speedUnit": "m/min",
     "speedLabel": "Cutting Speed",
     "vs": "VS",
@@ -183,7 +183,7 @@
     "pain3Item4": "Unplanned production stop",
     "pain3Solution": "100% safe — pure liquid gas source",
     "pain3Cost": "Zero optical risk",
-    "summaryTitle": "LISHI Mixed Gas: The True Cost Saver",
+    "summaryTitle": "LISHI Series Mixed Gas: The True Cost Saver",
     "summaryText": "While air seems free, your real cost is in maintenance, rework, and lens replacement. Mixed gas costs less in the long run — and delivers superior quality."
   },
   "params": {
@@ -258,15 +258,15 @@
     "q1": "What is a mixed gas device and how does it work?",
     "a1": "A mixed gas device precisely blends liquid nitrogen (N₂) and liquid oxygen (O₂) into a calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen mixture is used as the auxiliary gas in high-power laser cutting, delivering 3× faster cutting speed on carbon steel compared to pure oxygen, while eliminating burrs entirely.",
     "q2": "Is it compatible with my laser machine?",
-    "a2": "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, and XUNLEI. It supports machines from 3kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.",
+    "a2": "Yes. The LISHI Series Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, JIATAI, HG LASER, and XUNLEI. It supports machines from 3kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.",
     "q3": "What thickness can it cut?",
     "a3": "Cutting range depends on laser power: 12kW handles up to 16mm carbon steel, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm. It also cuts stainless steel and aluminum with excellent results.",
     "q4": "How much can I save on operating costs?",
     "a4": "The mixed gas device consumes only 2 kWh per 24 hours — near-zero electricity cost. The primary savings come from 3× faster cutting speed (more parts per shift) and eliminating manual deburring labor. Gas costs may be similar or slightly higher than pure N₂, but the throughput and quality gains far outweigh this for professional laser cutting shops.",
     "q5": "Does the device require regular maintenance?",
-    "a5": "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. It uses pure liquid gas sources with no moving parts that wear out. Power consumption is just 2 kWh/24h.",
+    "a5": "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Series Mixed Gas Device is maintenance-free. It uses pure liquid gas sources with no moving parts that wear out. Power consumption is just 2 kWh/24h.",
     "q6": "Can one device serve multiple laser machines?",
-    "a6": "Yes. LISHI LASER is the only manufacturer offering a stable One-to-Three configuration. One mixing station can simultaneously supply up to three laser machines of different power levels (e.g., one 12kW and one 20kW).",
+    "a6": "Yes. The LISHI Series supports a stable One-to-Three configuration. One mixing station can simultaneously supply up to three laser machines of different power levels (e.g., one 12kW and one 20kW).",
     "q7": "How is mixed gas different from air cutting?",
     "a7": "Air cutting produces oxidized, rough edges and risks oil/water contamination that can burn expensive laser head lenses ($5,000–$50,000). Mixed gas delivers smooth, burr-free, silver-white cut surfaces with zero contamination risk — and cutting speeds 30% faster than air.",
     "q8": "How long does installation take?",
@@ -274,7 +274,7 @@
   },
   "footer": {
     "tagline": "Gas Mixing Technology",
-    "authLabel": "LISHI LASER is a specialized mixed gas technology brand under Euchio",
+    "authLabel": "LISHI Series - mixed gas cutting technology by Euchio",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "Product",
     "linkHowItWorks": "How It Works",

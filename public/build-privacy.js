@@ -15,13 +15,13 @@ const LANG_DIRS = ['zh','es','ko','ja','pt','tr','pl','it','de','fr','nl','ru','
 
 const T = {
   en: {
-    metaDesc: 'Privacy Policy for LISHI LASER — how we collect, use, and protect your personal data.',
-    title: 'Privacy Policy | LISHI LASER',
+    metaDesc: 'Privacy Policy for LISHI Series — how we collect, use, and protect your personal data.',
+    title: 'Privacy Policy | LISHI Series',
     pageTitle: 'Privacy Policy',
     lastUpdated: 'Last updated: May 25, 2026',
     nav: { home:'Home', howItWorks:'How It Works', advantages:'Advantages', parameters:'Parameters', samples:'Cutting Samples', references:'References', blog:'Blog', contact:'Contact' },
     s1t: '1. Who We Are',
-    s1p: 'LISHI LASER is a mixed gas technology partner brand, internationally promoted by Jinan Euchio Machinery Co., Ltd. Our website is <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series is a mixed gas cutting technology series operated by Jinan Euchio Machinery Co., Ltd. Our website is <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. What Data We Collect',
     s2p: 'We collect the following information when you use our website:',
     s2l1: '<strong>Contact form submissions</strong> — name, email address, phone number, company name, and any message content you choose to provide. This data is processed via Web3Forms and sent directly to us by email.',
@@ -60,7 +60,7 @@ const T = {
     s9phone: 'Phone',
     s9addr: 'Address: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, China',
     footerTagline: 'Gas Mixing Technology',
-    footerAuth: 'LISHI LASER — mixed gas technology partner brand | Internationally promoted by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Product',
     footerHow: 'How It Works',
     footerAdv: 'Advantages',
@@ -77,12 +77,12 @@ const T = {
 
   zh: {
     metaDesc: '立石激光隐私政策 — 我们如何收集、使用和保护您的个人数据。',
-    title: '隐私政策 | LISHI LASER',
+    title: '隐私政策 | LISHI Series',
     pageTitle: '隐私政策',
     lastUpdated: '最后更新：2026年5月25日',
     nav: { home:'首页', howItWorks:'工作原理', advantages:'优势特点', parameters:'参数数据', samples:'切割案例', references:'客户案例', blog:'Blog', contact:'联系我们' },
     s1t: '1. 我们是谁',
-    s1p: '立石激光（LISHI LASER）是混合气体技术合作品牌，由济南钰峭机械有限公司（Jinan Euchio Machinery Co., Ltd.）负责国际推广。我们的网站是 <a href="https://gasmixtech.com">gasmixtech.com</a>。',
+    s1p: 'LISHI Series 是由济南钰峭机械有限公司（Jinan Euchio Machinery Co., Ltd.）运营的混合气体切割技术系列。我们的网站是 <a href="https://gasmixtech.com">gasmixtech.com</a>。',
     s2t: '2. 我们收集哪些数据',
     s2p: '当您使用我们的网站时，我们会收集以下信息：',
     s2l1: '<strong>联系表单提交</strong> — 姓名、邮箱地址、电话号码、公司名称以及您选择提供的任何消息内容。这些数据通过 Web3Forms 处理并直接发送到我们的邮箱。',
@@ -121,7 +121,7 @@ const T = {
     s9phone: '电话',
     s9addr: '地址：济南钰峭机械有限公司，中国山东济南',
     footerTagline: '混合气体技术',
-    footerAuth: 'LISHI LASER — 混合气体技术合作品牌 | <a href="https://www.euchio.com" target="_blank">Euchio</a> 全球推广',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: '产品',
     footerHow: '工作原理',
     footerAdv: '优势特点',
@@ -137,13 +137,13 @@ const T = {
   },
 
   es: {
-    metaDesc: 'Política de Privacidad de LISHI LASER — cómo recopilamos, usamos y protegemos sus datos personales.',
-    title: 'Política de Privacidad | LISHI LASER',
+    metaDesc: 'Política de Privacidad de LISHI Series — cómo recopilamos, usamos y protegemos sus datos personales.',
+    title: 'Política de Privacidad | LISHI Series',
     pageTitle: 'Política de Privacidad',
     lastUpdated: 'Última actualización: 25 de mayo de 2026',
     nav: { home:'Inicio', howItWorks:'Cómo Funciona', advantages:'Ventajas', parameters:'Parámetros', samples:'Muestras', references:'Referencias', blog:'Blog', contact:'Contacto' },
     s1t: '1. Quiénes Somos',
-    s1p: 'LISHI LASER es una marca asociada de tecnología de gas mixto, promovida internacionalmente por Jinan Euchio Machinery Co., Ltd. Nuestro sitio web es <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series es una serie de tecnología de corte con gas mixto operada por Jinan Euchio Machinery Co., Ltd. Nuestro sitio web es <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Qué Datos Recopilamos',
     s2p: 'Recopilamos la siguiente información cuando utiliza nuestro sitio web:',
     s2l1: '<strong>Envíos de formulario de contacto</strong> — nombre, dirección de correo electrónico, número de teléfono, nombre de la empresa y cualquier contenido de mensaje que elija proporcionar. Estos datos se procesan a través de Web3Forms y se nos envían directamente por correo electrónico.',
@@ -182,7 +182,7 @@ const T = {
     s9phone: 'Teléfono',
     s9addr: 'Dirección: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, China',
     footerTagline: 'Tecnología de Gas Mixto',
-    footerAuth: 'LISHI LASER — marca asociada de tecnología de gas mixto | Promovido internacionalmente por <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Producto',
     footerHow: 'Cómo Funciona',
     footerAdv: 'Ventajas',
@@ -198,13 +198,13 @@ const T = {
   },
 
   ko: {
-    metaDesc: 'LISHI LASER 개인정보처리방침 — 당사가 귀하의 개인 데이터를 수집, 사용 및 보호하는 방법.',
-    title: '개인정보처리방침 | LISHI LASER',
+    metaDesc: 'LISHI Series 개인정보처리방침 — 당사가 귀하의 개인 데이터를 수집, 사용 및 보호하는 방법.',
+    title: '개인정보처리방침 | LISHI Series',
     pageTitle: '개인정보처리방침',
     lastUpdated: '최종 업데이트: 2026년 5월 25일',
     nav: { home:'홈', howItWorks:'작동 원리', advantages:'장점', parameters:'사양', samples:'절단 샘플', references:'참조', blog:'블로그', contact:'문의' },
     s1t: '1. 당사 소개',
-    s1p: 'LISHI LASER는 혼합 가스 기술 파트너 브랜드로, Jinan Euchio Machinery Co., Ltd.가 국제적으로 홍보합니다. 당사 웹사이트는 <a href="https://gasmixtech.com">gasmixtech.com</a>입니다.',
+    s1p: 'LISHI Series는 Jinan Euchio Machinery Co., Ltd.가 운영하는 혼합 가스 절단 기술 시리즈입니다. 당사 웹사이트는 <a href="https://gasmixtech.com">gasmixtech.com</a>입니다.',
     s2t: '2. 수집하는 데이터',
     s2p: '귀하가 당사 웹사이트를 이용할 때 다음 정보를 수집합니다:',
     s2l1: '<strong>문의 양식 제출</strong> — 이름, 이메일 주소, 전화번호, 회사명 및 귀하가 제공하기로 선택한 메시지 내용. 이 데이터는 Web3Forms를 통해 처리되며 이메일로 당사에 직접 전송됩니다.',
@@ -243,7 +243,7 @@ const T = {
     s9phone: '전화',
     s9addr: '주소: Jinan Euchio Machinery Co., Ltd., 중국 산둥성 지난시',
     footerTagline: '가스 혼합 기술',
-    footerAuth: 'LISHI LASER — 혼합 가스 기술 파트너 브랜드 | <a href="https://www.euchio.com" target="_blank">Euchio</a>가 국제적으로 홍보',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: '제품',
     footerHow: '작동 원리',
     footerAdv: '장점',
@@ -259,13 +259,13 @@ const T = {
   },
 
   ja: {
-    metaDesc: 'LISHI LASER プライバシーポリシー — 個人データの収集、使用、保護について。',
-    title: 'プライバシーポリシー | LISHI LASER',
+    metaDesc: 'LISHI Series プライバシーポリシー — 個人データの収集、使用、保護について。',
+    title: 'プライバシーポリシー | LISHI Series',
     pageTitle: 'プライバシーポリシー',
     lastUpdated: '最終更新：2026年5月25日',
     nav: { home:'ホーム', howItWorks:'仕組み', advantages:'利点', parameters:'仕様', samples:'切断サンプル', references:'導入事例', blog:'ブログ', contact:'お問い合わせ' },
     s1t: '1. 運営者情報',
-    s1p: 'LISHI LASERは混合ガス技術のパートナーブランドであり、Jinan Euchio Machinery Co., Ltd.が国際的に推進しています。当社のウェブサイトは <a href="https://gasmixtech.com">gasmixtech.com</a> です。',
+    s1p: 'LISHI SeriesはJinan Euchio Machinery Co., Ltd.が運営する混合ガス切断技術シリーズです。当社のウェブサイトは <a href="https://gasmixtech.com">gasmixtech.com</a> です。',
     s2t: '2. 収集するデータ',
     s2p: '当社は、お客様が当社ウェブサイトを利用する際に以下の情報を収集します：',
     s2l1: '<strong>お問い合わせフォームの送信</strong> — 氏名、メールアドレス、電話番号、会社名、およびお客様が提供を選択したメッセージ内容。このデータはWeb3Formsを通じて処理され、メールで直接当社に送信されます。',
@@ -304,7 +304,7 @@ const T = {
     s9phone: '電話',
     s9addr: '住所：Jinan Euchio Machinery Co., Ltd., 中国山東省済南市',
     footerTagline: 'ガス混合技術',
-    footerAuth: 'LISHI LASER — 混合ガス技術パートナーブランド | <a href="https://www.euchio.com" target="_blank">Euchio</a>が国際的に推進',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: '製品',
     footerHow: '仕組み',
     footerAdv: '利点',
@@ -320,13 +320,13 @@ const T = {
   },
 
   pt: {
-    metaDesc: 'Política de Privacidade da LISHI LASER — como coletamos, usamos e protegemos seus dados pessoais.',
-    title: 'Política de Privacidade | LISHI LASER',
+    metaDesc: 'Política de Privacidade da LISHI Series — como coletamos, usamos e protegemos seus dados pessoais.',
+    title: 'Política de Privacidade | LISHI Series',
     pageTitle: 'Política de Privacidade',
     lastUpdated: 'Última atualização: 25 de maio de 2026',
     nav: { home:'Início', howItWorks:'Como Funciona', advantages:'Vantagens', parameters:'Parâmetros', samples:'Amostras', references:'Referências', blog:'Blog', contact:'Contato' },
     s1t: '1. Quem Somos',
-    s1p: 'LISHI LASER é uma marca parceira de tecnologia de gás misto, promovida internacionalmente pela Jinan Euchio Machinery Co., Ltd. Nosso site é <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series é uma série de tecnologia de corte com gás misto operada pela Jinan Euchio Machinery Co., Ltd. Nosso site é <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Quais Dados Coletamos',
     s2p: 'Coletamos as seguintes informações quando você usa nosso site:',
     s2l1: '<strong>Envios do formulário de contato</strong> — nome, endereço de e-mail, número de telefone, nome da empresa e qualquer conteúdo de mensagem que você optar por fornecer. Esses dados são processados via Web3Forms e enviados diretamente para nós por e-mail.',
@@ -365,7 +365,7 @@ const T = {
     s9phone: 'Telefone',
     s9addr: 'Endereço: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, China',
     footerTagline: 'Tecnologia de Mistura de Gases',
-    footerAuth: 'LISHI LASER — marca parceira de tecnologia de gás misto | Promovido internacionalmente pela <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Produto',
     footerHow: 'Como Funciona',
     footerAdv: 'Vantagens',
@@ -381,13 +381,13 @@ const T = {
   },
 
   de: {
-    metaDesc: 'Datenschutzerklärung von LISHI LASER — wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen.',
-    title: 'Datenschutzerklärung | LISHI LASER',
+    metaDesc: 'Datenschutzerklärung von LISHI Series — wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen.',
+    title: 'Datenschutzerklärung | LISHI Series',
     pageTitle: 'Datenschutzerklärung',
     lastUpdated: 'Zuletzt aktualisiert: 25. Mai 2026',
     nav: { home:'Startseite', howItWorks:'Funktionsweise', advantages:'Vorteile', parameters:'Parameter', samples:'Schnittmuster', references:'Referenzen', blog:'Blog', contact:'Kontakt' },
     s1t: '1. Wer Wir Sind',
-    s1p: 'LISHI LASER ist eine Partnermarke für Mischgastechnologie, die international von Jinan Euchio Machinery Co., Ltd. vertrieben wird. Unsere Website ist <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series ist eine von Jinan Euchio Machinery Co., Ltd. betriebene Mischgas-Schneidtechnologie-Serie. Unsere Website ist <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Welche Daten Wir Erfassen',
     s2p: 'Wir erfassen die folgenden Informationen, wenn Sie unsere Website nutzen:',
     s2l1: '<strong>Kontaktformular-Übermittlungen</strong> — Name, E-Mail-Adresse, Telefonnummer, Firmenname und alle Nachrichteninhalte, die Sie uns mitteilen möchten. Diese Daten werden über Web3Forms verarbeitet und direkt per E-Mail an uns gesendet.',
@@ -426,7 +426,7 @@ const T = {
     s9phone: 'Telefon',
     s9addr: 'Adresse: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, China',
     footerTagline: 'Mischgastechnologie',
-    footerAuth: 'LISHI LASER — Partnermarke für Mischgastechnologie | International vertrieben von <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Produkt',
     footerHow: 'Funktionsweise',
     footerAdv: 'Vorteile',
@@ -442,13 +442,13 @@ const T = {
   },
 
   fr: {
-    metaDesc: 'Politique de confidentialité de LISHI LASER — comment nous collectons, utilisons et protégeons vos données personnelles.',
-    title: 'Politique de Confidentialité | LISHI LASER',
+    metaDesc: 'Politique de confidentialité de LISHI Series — comment nous collectons, utilisons et protégeons vos données personnelles.',
+    title: 'Politique de Confidentialité | LISHI Series',
     pageTitle: 'Politique de Confidentialité',
     lastUpdated: 'Dernière mise à jour : 25 mai 2026',
     nav: { home:'Accueil', howItWorks:'Fonctionnement', advantages:'Avantages', parameters:'Paramètres', samples:'Échantillons', references:'Références', blog:'Blog', contact:'Contact' },
     s1t: '1. Qui Nous Sommes',
-    s1p: 'LISHI LASER est une marque partenaire de technologie de gaz mixte, promue internationalement par Jinan Euchio Machinery Co., Ltd. Notre site Web est <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series est une série de technologie de coupe au gaz mixte exploitée par Jinan Euchio Machinery Co., Ltd. Notre site Web est <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Quelles Données Nous Collectons',
     s2p: 'Nous collectons les informations suivantes lorsque vous utilisez notre site Web :',
     s2l1: '<strong>Soumissions du formulaire de contact</strong> — nom, adresse e-mail, numéro de téléphone, nom de l\'entreprise et tout contenu de message que vous choisissez de fournir. Ces données sont traitées via Web3Forms et nous sont envoyées directement par e-mail.',
@@ -487,7 +487,7 @@ const T = {
     s9phone: 'Téléphone',
     s9addr: 'Adresse : Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, Chine',
     footerTagline: 'Technologie de Gaz Mixte',
-    footerAuth: 'LISHI LASER — marque partenaire de technologie de gaz mixte | Promu internationalement par <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Produit',
     footerHow: 'Fonctionnement',
     footerAdv: 'Avantages',
@@ -503,13 +503,13 @@ const T = {
   },
 
   it: {
-    metaDesc: 'Informativa sulla Privacy di LISHI LASER — come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.',
-    title: 'Informativa sulla Privacy | LISHI LASER',
+    metaDesc: 'Informativa sulla Privacy di LISHI Series — come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.',
+    title: 'Informativa sulla Privacy | LISHI Series',
     pageTitle: 'Informativa sulla Privacy',
     lastUpdated: 'Ultimo aggiornamento: 25 maggio 2026',
     nav: { home:'Home', howItWorks:'Come Funziona', advantages:'Vantaggi', parameters:'Parametri', samples:'Campioni', references:'Referenze', blog:'Blog', contact:'Contatti' },
     s1t: '1. Chi Siamo',
-    s1p: 'LISHI LASER è un marchio partner di tecnologia del gas misto, promosso a livello internazionale da Jinan Euchio Machinery Co., Ltd. Il nostro sito Web è <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series è una serie di tecnologia di taglio a gas misto gestita da Jinan Euchio Machinery Co., Ltd. Il nostro sito Web è <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Quali Dati Raccogliamo',
     s2p: 'Raccogliamo le seguenti informazioni quando utilizzi il nostro sito Web:',
     s2l1: '<strong>Invii del modulo di contatto</strong> — nome, indirizzo e-mail, numero di telefono, nome dell\'azienda e qualsiasi contenuto del messaggio che scegli di fornire. Questi dati vengono elaborati tramite Web3Forms e inviati direttamente a noi via e-mail.',
@@ -548,7 +548,7 @@ const T = {
     s9phone: 'Telefono',
     s9addr: 'Indirizzo: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, Cina',
     footerTagline: 'Tecnologia del Gas Misto',
-    footerAuth: 'LISHI LASER — marchio partner di tecnologia del gas misto | Promosso a livello internazionale da <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Prodotto',
     footerHow: 'Come Funziona',
     footerAdv: 'Vantaggi',
@@ -564,13 +564,13 @@ const T = {
   },
 
   nl: {
-    metaDesc: 'Privacybeleid van LISHI LASER — hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen.',
-    title: 'Privacybeleid | LISHI LASER',
+    metaDesc: 'Privacybeleid van LISHI Series — hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen.',
+    title: 'Privacybeleid | LISHI Series',
     pageTitle: 'Privacybeleid',
     lastUpdated: 'Laatst bijgewerkt: 25 mei 2026',
     nav: { home:'Home', howItWorks:'Hoe Het Werkt', advantages:'Voordelen', parameters:'Parameters', samples:'Snijmonsters', references:'Referenties', blog:'Blog', contact:'Contact' },
     s1t: '1. Wie Wij Zijn',
-    s1p: 'LISHI LASER is een partnermerk voor menggastechnologie, internationaal gepromoot door Jinan Euchio Machinery Co., Ltd. Onze website is <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series is een menggas-snijtechnologieserie die wordt beheerd door Jinan Euchio Machinery Co., Ltd. Onze website is <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Welke Gegevens Wij Verzamelen',
     s2p: 'Wij verzamelen de volgende informatie wanneer u onze website gebruikt:',
     s2l1: '<strong>Inzendingen via contactformulier</strong> — naam, e-mailadres, telefoonnummer, bedrijfsnaam en eventuele berichtinhoud die u kiest te verstrekken. Deze gegevens worden verwerkt via Web3Forms en rechtstreeks per e-mail naar ons verzonden.',
@@ -609,7 +609,7 @@ const T = {
     s9phone: 'Telefoon',
     s9addr: 'Adres: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, China',
     footerTagline: 'Menggastechnologie',
-    footerAuth: 'LISHI LASER — partnermerk voor menggastechnologie | Internationaal gepromoot door <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Product',
     footerHow: 'Hoe Het Werkt',
     footerAdv: 'Voordelen',
@@ -625,13 +625,13 @@ const T = {
   },
 
   pl: {
-    metaDesc: 'Polityka Prywatności LISHI LASER — jak zbieramy, wykorzystujemy i chronimy Twoje dane osobowe.',
-    title: 'Polityka Prywatności | LISHI LASER',
+    metaDesc: 'Polityka Prywatności LISHI Series — jak zbieramy, wykorzystujemy i chronimy Twoje dane osobowe.',
+    title: 'Polityka Prywatności | LISHI Series',
     pageTitle: 'Polityka Prywatności',
     lastUpdated: 'Ostatnia aktualizacja: 25 maja 2026',
     nav: { home:'Strona Główna', howItWorks:'Jak To Działa', advantages:'Zalety', parameters:'Parametry', samples:'Próbki Cięcia', references:'Referencje', blog:'Blog', contact:'Kontakt' },
     s1t: '1. Kim Jesteśmy',
-    s1p: 'LISHI LASER to partnerska marka technologii gazu mieszanego, promowana międzynarodowo przez Jinan Euchio Machinery Co., Ltd. Nasza strona internetowa to <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series to seria technologii cięcia gazem mieszanym obsługiwana przez Jinan Euchio Machinery Co., Ltd. Nasza strona internetowa to <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Jakie Dane Zbieramy',
     s2p: 'Zbieramy następujące informacje podczas korzystania z naszej strony:',
     s2l1: '<strong>Zgłoszenia z formularza kontaktowego</strong> — imię i nazwisko, adres e-mail, numer telefonu, nazwa firmy oraz wszelkie treści wiadomości, które zdecydujesz się podać. Dane te są przetwarzane przez Web3Forms i wysyłane bezpośrednio do nas e-mailem.',
@@ -670,7 +670,7 @@ const T = {
     s9phone: 'Telefon',
     s9addr: 'Adres: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, Chiny',
     footerTagline: 'Technologia Gazu Mieszanego',
-    footerAuth: 'LISHI LASER — partnerska marka technologii gazu mieszanego | Promowana międzynarodowo przez <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Produkt',
     footerHow: 'Jak To Działa',
     footerAdv: 'Zalety',
@@ -686,13 +686,13 @@ const T = {
   },
 
   ru: {
-    metaDesc: 'Политика конфиденциальности LISHI LASER — как мы собираем, используем и защищаем ваши персональные данные.',
-    title: 'Политика Конфиденциальности | LISHI LASER',
+    metaDesc: 'Политика конфиденциальности LISHI Series — как мы собираем, используем и защищаем ваши персональные данные.',
+    title: 'Политика Конфиденциальности | LISHI Series',
     pageTitle: 'Политика Конфиденциальности',
     lastUpdated: 'Последнее обновление: 25 мая 2026 г.',
     nav: { home:'Главная', howItWorks:'Как Это Работает', advantages:'Преимущества', parameters:'Параметры', samples:'Образцы Резки', references:'Клиенты', blog:'Блог', contact:'Контакты' },
     s1t: '1. Кто Мы',
-    s1p: 'LISHI LASER — партнерский бренд технологии смешанных газов, продвигаемый на международном уровне компанией Jinan Euchio Machinery Co., Ltd. Наш веб-сайт: <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series — серия технологий резки смешанным газом, управляемая Jinan Euchio Machinery Co., Ltd. Наш веб-сайт: <a href="https://gasmixtech.com">gasmixtech.com</a>.',
     s2t: '2. Какие Данные Мы Собираем',
     s2p: 'Мы собираем следующую информацию при использовании вами нашего веб-сайта:',
     s2l1: '<strong>Отправки контактной формы</strong> — имя, адрес электронной почты, номер телефона, название компании и любое содержание сообщения, которое вы решите предоставить. Эти данные обрабатываются через Web3Forms и отправляются непосредственно нам по электронной почте.',
@@ -731,7 +731,7 @@ const T = {
     s9phone: 'Телефон',
     s9addr: 'Адрес: Jinan Euchio Machinery Co., Ltd., Цзинань, Шаньдун, Китай',
     footerTagline: 'Технология Смешанных Газов',
-    footerAuth: 'LISHI LASER — партнерский бренд технологий смешанных газов | Международное продвижение: <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Продукт',
     footerHow: 'Как Это Работает',
     footerAdv: 'Преимущества',
@@ -747,13 +747,13 @@ const T = {
   },
 
   tr: {
-    metaDesc: 'LISHI LASER Gizlilik Politikası — kişisel verilerinizi nasıl topladığımız, kullandığımız ve koruduğumuz.',
-    title: 'Gizlilik Politikası | LISHI LASER',
+    metaDesc: 'LISHI Series Gizlilik Politikası — kişisel verilerinizi nasıl topladığımız, kullandığımız ve koruduğumuz.',
+    title: 'Gizlilik Politikası | LISHI Series',
     pageTitle: 'Gizlilik Politikası',
     lastUpdated: 'Son güncelleme: 25 Mayıs 2026',
     nav: { home:'Ana Sayfa', howItWorks:'Nasıl Çalışır', advantages:'Avantajlar', parameters:'Parametreler', samples:'Kesim Örnekleri', references:'Referanslar', blog:'Blog', contact:'İletişim' },
     s1t: '1. Biz Kimiz',
-    s1p: 'LISHI LASER, uluslararası olarak Jinan Euchio Machinery Co., Ltd. tarafından tanıtılan bir karma gaz teknolojisi partner markasıdır. Web sitemiz <a href="https://gasmixtech.com">gasmixtech.com</a>\'dur.',
+    s1p: 'LISHI Series is a mixed gas cutting technology series operated by Jinan Euchio Machinery Co., Ltd. Our website is <a href="https://gasmixtech.com">gasmixtech.com</a>.'dur.',
     s2t: '2. Hangi Verileri Topluyoruz',
     s2p: 'Web sitemizi kullandığınızda aşağıdaki bilgileri topluyoruz:',
     s2l1: '<strong>İletişim formu gönderimleri</strong> — ad, e-posta adresi, telefon numarası, şirket adı ve sağlamayı seçtiğiniz mesaj içeriği. Bu veriler Web3Forms aracılığıyla işlenir ve doğrudan bize e-posta ile gönderilir.',
@@ -792,7 +792,7 @@ const T = {
     s9phone: 'Telefon',
     s9addr: 'Adres: Jinan Euchio Machinery Co., Ltd., Jinan, Shandong, Çin',
     footerTagline: 'Karma Gaz Teknolojisi',
-    footerAuth: 'LISHI LASER — karma gaz teknolojisi partner markası | Uluslararası olarak <a href="https://www.euchio.com" target="_blank">Euchio</a> tarafından tanıtılmaktadır',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Ürün',
     footerHow: 'Nasıl Çalışır',
     footerAdv: 'Avantajlar',
@@ -808,13 +808,13 @@ const T = {
   },
 
   vi: {
-    metaDesc: 'Chính Sách Bảo Mật của LISHI LASER — cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu cá nhân của bạn.',
-    title: 'Chính Sách Bảo Mật | LISHI LASER',
+    metaDesc: 'Chính Sách Bảo Mật của LISHI Series — cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu cá nhân của bạn.',
+    title: 'Chính Sách Bảo Mật | LISHI Series',
     pageTitle: 'Chính Sách Bảo Mật',
     lastUpdated: 'Cập nhật lần cuối: 25 tháng 5 năm 2026',
     nav: { home:'Trang Chủ', howItWorks:'Cơ Chế Hoạt Động', advantages:'Ưu Điểm', parameters:'Thông Số', samples:'Mẫu Cắt', references:'Khách Hàng', blog:'Blog', contact:'Liên Hệ' },
     s1t: '1. Chúng Tôi Là Ai',
-    s1p: 'LISHI LASER là thương hiệu đối tác công nghệ khí hỗn hợp, được quảng bá quốc tế bởi Jinan Euchio Machinery Co., Ltd. Trang web của chúng tôi là <a href="https://gasmixtech.com">gasmixtech.com</a>.',
+    s1p: 'LISHI Series, Jinan Euchio Machinery Co., Ltd. tarafından işletilen bir karma gaz kesim teknolojisi serisidir. Web sitemiz <a href="https://gasmixtech.com">gasmixtech.com</a>'dur.',
     s2t: '2. Dữ Liệu Chúng Tôi Thu Thập',
     s2p: 'Chúng tôi thu thập các thông tin sau khi bạn sử dụng trang web của chúng tôi:',
     s2l1: '<strong>Gửi biểu mẫu liên hệ</strong> — tên, địa chỉ email, số điện thoại, tên công ty và bất kỳ nội dung tin nhắn nào bạn chọn cung cấp. Dữ liệu này được xử lý qua Web3Forms và gửi trực tiếp cho chúng tôi qua email.',
@@ -853,7 +853,7 @@ const T = {
     s9phone: 'Điện thoại',
     s9addr: 'Địa chỉ: Jinan Euchio Machinery Co., Ltd., Tế Nam, Sơn Đông, Trung Quốc',
     footerTagline: 'Công Nghệ Khí Hỗn Hợp',
-    footerAuth: 'LISHI LASER — thương hiệu đối tác công nghệ khí hỗn hợp | Được quảng bá quốc tế bởi <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'Sản Phẩm',
     footerHow: 'Cơ Chế Hoạt Động',
     footerAdv: 'Ưu Điểm',
@@ -869,13 +869,13 @@ const T = {
   },
 
   th: {
-    metaDesc: 'นโยบายความเป็นส่วนตัวของ LISHI LASER — วิธีที่เราเก็บรวบรวม ใช้ และปกป้องข้อมูลส่วนบุคคลของคุณ',
-    title: 'นโยบายความเป็นส่วนตัว | LISHI LASER',
+    metaDesc: 'นโยบายความเป็นส่วนตัวของ LISHI Series — วิธีที่เราเก็บรวบรวม ใช้ และปกป้องข้อมูลส่วนบุคคลของคุณ',
+    title: 'นโยบายความเป็นส่วนตัว | LISHI Series',
     pageTitle: 'นโยบายความเป็นส่วนตัว',
     lastUpdated: 'อัปเดตล่าสุด: 25 พฤษภาคม 2026',
     nav: { home:'หน้าแรก', howItWorks:'วิธีการทำงาน', advantages:'ข้อดี', parameters:'พารามิเตอร์', samples:'ตัวอย่างการตัด', references:'ลูกค้าอ้างอิง', blog:'บล็อก', contact:'ติดต่อ' },
     s1t: '1. เราเป็นใคร',
-    s1p: 'LISHI LASER เป็นแบรนด์พันธมิตรด้านเทคโนโลยีแก๊สผสม ซึ่งได้รับการส่งเสริมในระดับนานาชาติโดย Jinan Euchio Machinery Co., Ltd. เว็บไซต์ของเราคือ <a href="https://gasmixtech.com">gasmixtech.com</a>',
+    s1p: 'LISHI Series เป็นซีรีส์เทคโนโลยีตัดด้วยแก๊สผสมที่ดำเนินงานโดย Jinan Euchio Machinery Co., Ltd. เว็บไซต์ของเราคือ <a href="https://gasmixtech.com">gasmixtech.com</a>',
     s2t: '2. ข้อมูลที่เราเก็บรวบรวม',
     s2p: 'เราเก็บรวบรวมข้อมูลต่อไปนี้เมื่อคุณใช้เว็บไซต์ของเรา:',
     s2l1: '<strong>การส่งแบบฟอร์มติดต่อ</strong> — ชื่อ ที่อยู่อีเมล หมายเลขโทรศัพท์ ชื่อบริษัท และเนื้อหาข้อความใดๆ ที่คุณเลือกให้ ข้อมูลนี้ถูกประมวลผลผ่าน Web3Forms และส่งตรงถึงเราทางอีเมล',
@@ -914,7 +914,7 @@ const T = {
     s9phone: 'โทรศัพท์',
     s9addr: 'ที่อยู่: Jinan Euchio Machinery Co., Ltd., จี่หนาน, ซานตง, จีน',
     footerTagline: 'เทคโนโลยีแก๊สผสม',
-    footerAuth: 'LISHI LASER — แบรนด์พันธมิตรด้านเทคโนโลยีแก๊สผสม | ส่งเสริมในระดับนานาชาติโดย <a href="https://www.euchio.com" target="_blank">Euchio</a>',
+    footerAuth: 'LISHI Series - mixed gas cutting technology by <a href="https://www.euchio.com" target="_blank">Euchio</a>',
     footerProduct: 'ผลิตภัณฑ์',
     footerHow: 'วิธีการทำงาน',
     footerAdv: 'ข้อดี',
@@ -1037,9 +1037,9 @@ ${hreflangs}
   <header class="header">
     <div class="container header-inner">
       <a href="${homeHref}" class="logo">
-        <img src="${logoPath}" alt="LISHI LASER Logo">
+        <img src="${logoPath}" alt="EUCHIO Gas Mixing Technology Logo">
         <div class="logo-text">
-          <span class="logo-brand">LISHI LASER</span>
+          <span class="logo-brand">EUCHIO</span>
           <span class="logo-tagline">${t.footerTagline}</span>
         </div>
       </a>
@@ -1132,9 +1132,9 @@ ${hreflangs}
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="${footerHomeHref}" class="logo">
-            <img src="${logoPath}" alt="LISHI LASER Logo">
+            <img src="${logoPath}" alt="EUCHIO Gas Mixing Technology Logo">
             <div class="logo-text">
-              <span class="logo-brand">LISHI LASER</span>
+              <span class="logo-brand">EUCHIO</span>
               <span class="logo-tagline">${t.footerTagline}</span>
             </div>
           </a>

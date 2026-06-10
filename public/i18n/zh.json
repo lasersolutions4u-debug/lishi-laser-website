@@ -67,7 +67,7 @@
     "maintTitle": "免维护",
     "maintDesc": "功耗：仅2 kWh / 24小时。空压机每3000小时需更换滤芯/机油，而我们的工业激光气体设备几乎免维护。",
     "oneToTwoTitle": "一拖二激光配置",
-    "oneToTwoDesc": "唯一具备稳定一拖二混合气设备的制造商。一台工业气体混合站可同时为两台不同功率的激光机供气。",
+    "oneToTwoDesc": "Stable one-to-two mixed gas configuration.一台工业气体混合站可同时为两台不同功率的激光机供气。",
     "lensTitle": "镜片保护",
     "lensDesc": "空压机存在油/水污染风险，可能烧毁激光头镜片（损失$5,000–$50,000）。我们的纯液态气源确保光学系统100%安全。"
   },
@@ -126,7 +126,7 @@
   "roi": {
     "label": "计算器",
     "title": "计算您的产能与利润提升",
-    "description": "了解从纯氧切换到LISHI LASER混合气后，您可以多生产多少——多赚多少。基于全球用户真实的切割速度数据。",
+    "description": "了解从纯氧切换到LISHI Series混合气后，您可以多生产多少——多赚多少。基于全球用户真实的切割速度数据。",
     "powerLabel": "机器功率",
     "thicknessLabel": "材料厚度",
     "hoursLabel": "每日工作时长",
@@ -270,7 +270,7 @@
     "q5": "设备需要定期维护吗？",
     "a5": "不需要。空压机每500–3,000小时需要更换滤芯/机油，而立石混合气体设备完全免维护。采用纯液态气源，无磨损部件。功耗仅为2kWh/24h。",
     "q6": "一台设备能同时供两台激光机使用吗？",
-    "a6": "可以。立石激光是唯一提供稳定一拖二配置的制造商。一台混合站可同时为两台不同功率的激光机供气（如一台3kW和一台20kW）。",
+    "a6": "Yes. The LISHI Series supports a stable one-to-two configuration.一台混合站可同时为两台不同功率的激光机供气（如一台3kW和一台20kW）。",
     "q7": "混合气与空压机切割有什么区别？",
     "a7": "空压机切割产生氧化层、粗糙边缘，且油/水污染可能烧毁昂贵的激光头镜片（$5,000–$50,000）。混合气切割产生光滑、无毛刺、银白色的断面，零污染风险——切割速度比空压机快30%。",
     "q8": "安装需要多长时间？",
@@ -278,7 +278,7 @@
   },
   "footer": {
     "tagline": "混合气体技术",
-    "authLabel": "LISHI LASER 是 Euchio 旗下的混合气体技术专用品牌",
+    "authLabel": "LISHI Series - mixed gas cutting technology by Euchio",
     "authCompany": "济南钰峭机械有限公司",
     "productTitle": "产品",
     "linkHowItWorks": "工作原理",

@@ -1,4 +1,4 @@
-// LISHI LASER - Website JavaScript
+// LISHI Series - Website JavaScript
 
 // Mobile Navigation Toggle
 const mobileToggle = document.getElementById('mobileToggle');
