@@ -111,6 +111,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   height: 72px;
+  max-width: 1440px;
   transition: height 0.3s ease;
 }
 
@@ -126,7 +127,8 @@ a:hover {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -150,7 +152,7 @@ a:hover {
 .logo-tagline {
   font-size: 0.65rem;
   color: var(--color-primary);
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
@@ -158,13 +160,14 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0;
+  flex-shrink: 1;
 }
 
 .nav a {
   color: rgba(255,255,255,0.6);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 10px 12px;
+  padding: 10px 8px;
   border-radius: 0;
   transition: all var(--transition);
   letter-spacing: 0.3px;
@@ -179,7 +182,9 @@ a:hover {
 .nav-cta {
   background: var(--color-primary) !important;
   color: white !important;
-  margin-left: 12px;
+  margin-left: 8px;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
   font-weight: 600 !important;
   letter-spacing: 0 !important;
 }
@@ -197,6 +202,13 @@ a:hover {
   font-size: 1.5rem;
   cursor: pointer;
   padding: 8px;
+}
+
+@media (max-width: 1200px) {
+  .nav a[href="#faq"],
+  .nav a[href="/blog/"] {
+    display: none;
+  }
 }
 
 /* ============================================
@@ -2414,8 +2426,9 @@ textarea:focus-visible {
    AIR PAIN POINTS — Two-Panel Comparison Rows
    ============================================ */
 .air-pain-section {
-  margin-top: 80px;
-  padding-top: 80px;
+  width: min(100%, 1200px);
+  margin: 80px auto 0;
+  padding: 80px 24px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
