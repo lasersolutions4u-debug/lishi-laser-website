@@ -1,7 +1,7 @@
-# LISHI Series Mixed Gas Device — Complete Product Information
+# EUCHIO Mixed Gas Device — Complete Product Information
 
 ## Product Overview
-LISHI Series Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries through a network of 30+ distributors.
+EUCHIO Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries with remote technical support for overseas customers.
 
 ## How It Works — IGBT Precision Mixing Technology
 The device takes high-purity liquid nitrogen (99.999%) and liquid oxygen (99.5%), then mixes them at a precisely calibrated ratio (typically 95% N₂ / 5% O₂, adjustable). The IGBT (Insulated Gate Bipolar Transistor) control system monitors and adjusts the gas flow in real time, maintaining optimal mixture consistency regardless of downstream pressure fluctuations. This micro-oxygen mixture serves as an assist gas for high-power laser cutting.
@@ -185,7 +185,7 @@ A: Yes. The one-to-two configuration supports two machines of different brands o
 A: Standard warranty is 12 months from installation. Extended warranty options available. Remote technical support is provided for the lifetime of the equipment.
 
 **Q: How is after-sales support handled for international customers?**
-A: We provide remote diagnosis via video call, WeChat, WhatsApp, and email. Most issues can be resolved remotely. For hardware issues, replacement parts are shipped via DHL/FedEx (typically 3-7 days). We have local distributor support in 30+ countries.
+A: We provide remote diagnosis via video call, WeChat, WhatsApp, and email. Most issues can be resolved remotely. For hardware issues, replacement parts are shipped via DHL/FedEx (typically 3-7 days). We provide remote technical support and can arrange spare parts shipment when needed.
 
 **Q: What is the delivery time?**
 A: Standard delivery: 15-30 days from order confirmation. Shipping: 7-15 days by air freight, 25-40 days by sea freight.
@@ -231,7 +231,7 @@ A: Standard delivery: 15-30 days from order confirmation. Shipping: 7-15 days by
 ## Global Presence
 - 50+ Countries served
 - 500+ Installed Systems worldwide
-- 30+ Authorized Distributors
+- Remote Technical Support
 - Regional support in: East Asia, Southeast Asia, South Asia, Middle East, Europe (Eastern and Western), North America, Latin America, Africa, Oceania
 - Multi-language support: English, Chinese, Spanish, Korean, Japanese, Portuguese, Turkish, Polish, Italian, German, French, Dutch, Russian, Vietnamese, Thai
 

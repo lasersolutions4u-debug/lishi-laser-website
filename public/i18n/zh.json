@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "立石激光混合气体设备 | 切割速度提升3倍",
-    "description": "立石激光混合气体设备，专为3KW-60KW激光切割机设计。切割速度提升3倍，无毛刺，燃气消耗降低33%。氮氧混合气技术，碳钢切割首选。",
+    "title": "EUCHIO混合气体设备 | 切割速度提升3倍",
+    "description": "EUCHIO混合气体设备，专为3KW-60KW激光切割机设计。切割速度提升3倍，无毛刺，燃气消耗降低33%。氮氧混合气技术，碳钢切割首选。",
     "keywords": "激光切割混气设备, 氮氧混合气体装置, 微氧激光切割, 碳钢激光切割, 大功率激光12kW 60kW, 混合气vs空压机, 激光切割毛刺消除, 降低氮气消耗, HAN'S激光配套混气设备, 工业激光气体设备, 一拖二激光混气方案, 辅助气体优化",
-    "ogTitle": "立石激光混合气体设备 | 切割速度提升3倍",
+    "ogTitle": "EUCHIO混合气体设备 | 切割速度提升3倍",
     "ogDescription": "专为3KW-60KW激光切割机设计的混合气体设备。切割速度提升3倍，无毛刺，燃气消耗降低33%。氮氧混合气技术。"
   },
   "nav": {
@@ -22,7 +22,7 @@
   "hero": {
     "badge": "<span>13年</span> 深耕激光金属切割行业",
     "title": "混合气体技术<br>切割速度<span class=\"accent\">提升3倍</span>",
-    "subtitle": "立石激光混合气体设备，为大功率激光切割机（3KW–60KW）提供微氧切割方案。无毛刺、更省气、切割速度显著提升。",
+    "subtitle": "EUCHIO混合气体设备，为大功率激光切割机（3KW–60KW）提供微氧切割方案。无毛刺、更省气、切割速度显著提升。",
     "statSpeedValue": "3倍",
     "statSpeedLabel": "氧切割速度提升",
     "statBurrsValue": "0",
@@ -31,7 +31,7 @@
     "statGasLabel": "比氮气更省气",
     "ctaQuote": "获取报价 →",
     "ctaParams": "查看参数",
-    "imgAlt": "立石激光混合气体设备 - 氮氧气体混合装置"
+    "imgAlt": "EUCHIO混合气体设备 - 氮氧气体混合装置"
   },
   "principle": {
     "label": "工作原理",
@@ -126,7 +126,7 @@
   "roi": {
     "label": "计算器",
     "title": "计算您的产能与利润提升",
-    "description": "了解从纯氧切换到LISHI Series混合气后，您可以多生产多少——多赚多少。基于全球用户真实的切割速度数据。",
+    "description": "了解从纯氧切换到EUCHIO Mixed Gas混合气后，您可以多生产多少——多赚多少。基于全球用户真实的切割速度数据。",
     "powerLabel": "机器功率",
     "thicknessLabel": "材料厚度",
     "hoursLabel": "每日工作时长",
@@ -137,7 +137,7 @@
     "n2CostLabel": "每月氮气费用 (USD)",
     "n2CostNote": "您目前每月的氮气开支 (USD)",
     "currentLabel": "目前（氧气）",
-    "lishiLabel": "立石混合气",
+    "euchioLabel": "EUCHIO混合气",
     "speedUnit": "米/分钟",
     "speedLabel": "切割速度",
     "vs": "对比",
@@ -185,7 +185,7 @@
     "pain3Item4": "非计划性停产",
     "pain3Solution": "100%安全 — 纯液态气源",
     "pain3Cost": "零光学风险",
-    "summaryTitle": "立石混合气：真正的成本节省",
+    "summaryTitle": "EUCHIO混合气：真正的成本节省",
     "summaryText": "空压机看似免费，实际成本在维护、返工和镜片更换上。混合气长期成本更低——而且质量更优。"
   },
   "params": {
@@ -262,15 +262,15 @@
     "q1": "什么是混合气体设备？它是如何工作的？",
     "a1": "混合气体设备将液氮（N₂）和液氧（O₂）精确混合成校准的N₂/O₂混合气体（通常为95%/5%）。这种微氧混合气体用作大功率激光切割的辅助气体，相比纯氧切割速度提升3倍，同时完全消除毛刺。",
     "q2": "能否兼容我的激光机？",
-    "a2": "可以。立石激光混合气体设备兼容所有主流激光品牌，包括HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山）、BODOR（邦德）、JIATAI、HG LASER、XUNLEI等。支持3kW至60kW功率的机器。只要您的机器使用标准辅助气体接口，即可兼容。",
+    "a2": "可以。EUCHIO混合气体设备兼容所有主流激光品牌，包括HAN'S（海目星）、DNE（大族）、PENTA（奔腾）、LEAD（领创）、HSG（宏山）、BODOR（邦德）、JIATAI、HG LASER、XUNLEI等。支持3kW至60kW功率的机器。只要您的机器使用标准辅助气体接口，即可兼容。",
     "q3": "能切割多厚的板材？",
     "a3": "切割范围取决于激光功率：12kW可切割碳钢厚度达16mm，20kW达25mm，30kW达30mm，60kW达40mm。同时也能切割不锈钢和铝材，效果优异。",
     "q4": "能节省多少燃气费用？",
     "a4": "与纯氮气切割相比，混合气可减少33–50%的氮气消耗。此外，设备24小时仅耗电2kWh——几乎免维护。使用上方ROI计算器估算您的具体节省金额。",
     "q5": "设备需要定期维护吗？",
-    "a5": "不需要。空压机每500–3,000小时需要更换滤芯/机油，而立石混合气体设备完全免维护。采用纯液态气源，无磨损部件。功耗仅为2kWh/24h。",
+    "a5": "不需要。空压机每500–3,000小时需要更换滤芯/机油，而EUCHIO混合气体设备完全免维护。采用纯液态气源，无磨损部件。功耗仅为2kWh/24h。",
     "q6": "一台设备能同时供两台激光机使用吗？",
-    "a6": "Yes. The LISHI Series supports a stable one-to-two configuration.一台混合站可同时为两台不同功率的激光机供气（如一台3kW和一台20kW）。",
+    "a6": "Yes. The EUCHIO Mixed Gas supports a stable one-to-two configuration.一台混合站可同时为两台不同功率的激光机供气（如一台3kW和一台20kW）。",
     "q7": "混合气与空压机切割有什么区别？",
     "a7": "空压机切割产生氧化层、粗糙边缘，且油/水污染可能烧毁昂贵的激光头镜片（$5,000–$50,000）。混合气切割产生光滑、无毛刺、银白色的断面，零污染风险——切割速度比空压机快30%。",
     "q8": "安装需要多长时间？",
@@ -278,7 +278,7 @@
   },
   "footer": {
     "tagline": "混合气体技术",
-    "authLabel": "LISHI Series - mixed gas cutting technology by Euchio",
+    "authLabel": "EUCHIO Gas Mixing Technology",
     "authCompany": "济南钰峭机械有限公司",
     "productTitle": "产品",
     "linkHowItWorks": "工作原理",

@@ -1,4 +1,4 @@
-// LISHI Series - Website JavaScript
+// EUCHIO Mixed Gas - Website JavaScript
 
 // Mobile Navigation Toggle
 const mobileToggle = document.getElementById('mobileToggle');
@@ -199,10 +199,10 @@ function initRoiCalculator() {
   const utilizationValue = document.getElementById('utilizationValue');
   const powerWarning = document.getElementById('powerWarning');
   const currentSpeedEl = document.getElementById('currentSpeed');
-  const lishiSpeedEl = document.getElementById('lishiSpeed');
+  const euchioSpeedEl = document.getElementById('euchioSpeed');
   const annualProfitEl = document.getElementById('annualProfit');
   const currentBarEl = document.getElementById('currentBar');
-  const lishiBarEl = document.getElementById('lishiBar');
+  const euchioBarEl = document.getElementById('euchioBar');
   const profitPerMeterInput = document.getElementById('profitPerMeter');
 
   document.querySelectorAll('.power-btn').forEach(btn => {
@@ -300,21 +300,21 @@ function initRoiCalculator() {
     const profitPerMeter = parseFloat(profitPerMeterInput.value) || 1;
 
     const currentSpeed = getSpeed(o2Speed, currentPower, thickness);
-    const lishiSpeed = getSpeed(cuttingData, currentPower, thickness);
+    const euchioSpeed = getSpeed(cuttingData, currentPower, thickness);
 
     currentSpeedEl.textContent = currentSpeed > 0 ? currentSpeed.toFixed(1) : '--';
-    lishiSpeedEl.textContent = lishiSpeed > 0 ? lishiSpeed.toFixed(1) : '--';
+    euchioSpeedEl.textContent = euchioSpeed > 0 ? euchioSpeed.toFixed(1) : '--';
 
     // Update speed bars
-    if (currentBarEl && lishiBarEl) {
-      const maxSpeed = Math.max(currentSpeed, lishiSpeed, 1);
+    if (currentBarEl && euchioBarEl) {
+      const maxSpeed = Math.max(currentSpeed, euchioSpeed, 1);
       currentBarEl.style.width = (currentSpeed / maxSpeed * 100) + '%';
-      lishiBarEl.style.width = (lishiSpeed / maxSpeed * 100) + '%';
+      euchioBarEl.style.width = (euchioSpeed / maxSpeed * 100) + '%';
     }
 
-    if (lishiSpeed > 0 && currentSpeed > 0) {
+    if (euchioSpeed > 0 && currentSpeed > 0) {
       const workDays = 264;
-      const speedDiff = lishiSpeed - currentSpeed;
+      const speedDiff = euchioSpeed - currentSpeed;
       const annualBeamOnMinutes = hours * 60 * workDays * utilization;
       const annualMeters = speedDiff * annualBeamOnMinutes;
       const annualProfitIncrease = annualMeters * profitPerMeter;

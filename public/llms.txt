@@ -1,4 +1,4 @@
-# LISHI Series Mixed Gas Device
+# EUCHIO Mixed Gas Device
 > Official website: https://gasmixtech.com
 > Product: N₂/O₂ mixed gas device for 12kW-60kW fiber laser cutting machines.
 > Core advantage: 3× faster cutting speed, zero burrs, 33% less nitrogen consumption.
@@ -47,7 +47,7 @@
 - Maintenance: Only 2kWh/24h power consumption, no moving parts
 - Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
 - One-to-two configuration: Single device serves two laser machines
-- Global presence: 50+ countries, 500+ installed systems, 30+ distributors
+- Global presence: 50+ countries, 500+ installed systems, technical support coverage
 - Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)
 - Contact: sales@gasmixtech.com | +86 186 1558 4520
 

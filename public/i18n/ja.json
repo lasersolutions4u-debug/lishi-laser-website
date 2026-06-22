@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "LISHI Series混合ガス装置 | 3倍速いレーザー切断",
-    "description": "LISHI Series混合ガス装置 - 12KW〜60KWレーザー切断機用。切断速度3倍向上、バリなし、ガス消費量33%削減。窒素酸素混合比技術による炭素鋼切断。",
+    "title": "EUCHIO Mixed Gas混合ガス装置 | 3倍速いレーザー切断",
+    "description": "EUCHIO Mixed Gas混合ガス装置 - 12KW〜60KWレーザー切断機用。切断速度3倍向上、バリなし、ガス消費量33%削減。窒素酸素混合比技術による炭素鋼切断。",
     "keywords": "レーザー切断ガスミキサー, 窒素酸素混合装置, 微酸素レーザー切断, 炭素鋼レーザー切断, 高出力レーザー 12kW 60kW, 混合ガスvsエアコンプレッサー, レーザー切断バリ除去, 窒素消費量削減, HAN'Sレーザーガスミキサー, 産業用レーザーガス機器, 1対2レーザーガス構成, 補助ガス最適化",
-    "ogTitle": "LISHI Series混合ガス装置 | 3倍速いレーザー切断",
+    "ogTitle": "EUCHIO Mixed Gas混合ガス装置 | 3倍速いレーザー切断",
     "ogDescription": "12KW〜60KWレーザー切断機用混合ガス装置。切断速度3倍向上、バリなし、ガス消費量33%削減。窒素酸素混合比技術。"
   },
   "nav": {
@@ -22,7 +22,7 @@
   "hero": {
     "badge": "<span>13年</span> レーザー金属切断業界の経験",
     "title": "混合ガス技術で<span class=\"accent\">3倍速く</span><br>切断速度向上",
-    "subtitle": "LISHI Series混合ガス装置は、高出力レーザー機（12KW〜60KW）向け微酸素切断を実現。バリなし、ガス消費量削減、切断速度大幅向上。",
+    "subtitle": "EUCHIO Mixed Gas混合ガス装置は、高出力レーザー機（12KW〜60KW）向け微酸素切断を実現。バリなし、ガス消費量削減、切断速度大幅向上。",
     "statSpeedValue": "3倍",
     "statSpeedLabel": "O₂より速い切断",
     "statBurrsValue": "0",
@@ -31,7 +31,7 @@
     "statGasLabel": "N₂よりガス消費量削減",
     "ctaQuote": "見積もり依頼 →",
     "ctaParams": "仕様を見る",
-    "imgAlt": "LISHI Series混合ガス装置 - レーザー切断用窒素酸素ガス混合装置"
+    "imgAlt": "EUCHIO Mixed Gas混合ガス装置 - レーザー切断用窒素酸素ガス混合装置"
   },
   "principle": {
     "label": "仕組み",
@@ -124,7 +124,7 @@
   "roi": {
     "label": "計算機",
     "title": "生産性と利益の向上を計算",
-    "description": "O₂からLISHI Series混合ガスに切り替えることで、どれだけ多く生産し、どれだけ多く稼げるかをご確認ください。世界中のユーザーからの実際の切断速度データに基づいています。",
+    "description": "O₂からEUCHIO Mixed Gas混合ガスに切り替えることで、どれだけ多く生産し、どれだけ多く稼げるかをご確認ください。世界中のユーザーからの実際の切断速度データに基づいています。",
     "powerLabel": "機械出力",
     "thicknessLabel": "材料厚度",
     "hoursLabel": "1日あたりの作業時間",
@@ -135,7 +135,7 @@
     "n2CostLabel": "月間N₂コスト（USD）",
     "n2CostNote": "現在の月間窒素費用",
     "currentLabel": "現在（O₂）",
-    "lishiLabel": "LISHI Series mixed gas",
+    "euchioLabel": "mixed gas",
     "speedUnit": "m/min",
     "speedLabel": "切断速度",
     "vs": "VS",
@@ -183,7 +183,7 @@
     "pain3Item4": "計画外の生産停止",
     "pain3Solution": "100%安全 — 純粋な液体ガス源",
     "pain3Cost": "光学リスクゼロ",
-    "summaryTitle": "LISHI Series mixed gas：真のコスト節約",
+    "summaryTitle": "mixed gas：真のコスト節約",
     "summaryText": "空気は無料に見えますが、実際のコストはメンテナンス、再加工、レンズ交換に隠れています。混合ガスは長期的にコストが低く、さらに優れた品質を提供します。"
   },
   "params": {
@@ -260,15 +260,15 @@
     "q1": "混合ガス装置とは何ですか？どのように動作しますか？",
     "a1": "混合ガス装置は、液体窒素（N₂）と液体酸素（O₂）を精密に混合し、校正されたN₂/O₂混合ガス（通常95%/5%）を生成します。この微酸素混合ガスは高出力レーザー切断の補助ガスとして使用され、純酸素と比較して炭素鋼の切断速度を3倍向上させ、バリを完全に除去します。",
     "q2": "私のレーザー機と互換性がありますか？",
-    "a2": "はい。LISHI Series混合ガス装置は、HAN'S、DNE、PENTA、LEAD、HSG、BODOR、JIATAI、HG LASER、XUNLEIなど、すべての主要レーザーブランドと互換性があります。12kWから60kWの機械をサポートしています。お使いの機械が標準の補助ガス接続を使用していれば互換性があります。",
+    "a2": "はい。EUCHIO Mixed Gas混合ガス装置は、HAN'S、DNE、PENTA、LEAD、HSG、BODOR、JIATAI、HG LASER、XUNLEIなど、すべての主要レーザーブランドと互換性があります。12kWから60kWの機械をサポートしています。お使いの機械が標準の補助ガス接続を使用していれば互換性があります。",
     "q3": "どの厚さまで切断できますか？",
     "a3": "切断範囲はレーザー出力に依存します：12kWは最大16mm炭素鋼、20kWは最大25mm、30kWは最大30mm、60kWは最大40mmまで対応。ステンレス鋼やアルミニウムも優れた結果で切断できます。",
     "q4": "ガスコストをどのくらい節約できますか？",
     "a4": "混合ガスは純N₂切断と比較して窒素消費量を33〜50%削減します。さらに、装置は24時間あたり2kWhのみ消費し、ほぼメンテナンスフリーです。上記のROI計算機でお客様の具体的な節約額を試算してください。",
     "q5": "定期的なメンテナンスは必要ですか？",
-    "a5": "いいえ。エアコンプレッサーは500〜3,000時間ごとにフィルター/オイル交換が必要ですが、LISHI Series mixed gas装置はメンテナンスフリーです。純粋な液体ガス源を使用し、摩耗する可動部品がありません。消費電力は24時間あたり2kWhだけです。",
+    "a5": "いいえ。エアコンプレッサーは500〜3,000時間ごとにフィルター/オイル交換が必要ですが、mixed gas装置はメンテナンスフリーです。純粋な液体ガス源を使用し、摩耗する可動部品がありません。消費電力は24時間あたり2kWhだけです。",
     "q6": "1台の装置で2台のレーザー機に供給できますか？",
-    "a6": "Yes. The LISHI Series supports a stable configuration.1つの混合ステーションが異なる出力レベルの2台のレーザー機（例：12kWと20kW）に同時に供給できます。",
+    "a6": "Yes. The EUCHIO Mixed Gas supports a stable configuration.1つの混合ステーションが異なる出力レベルの2台のレーザー機（例：12kWと20kW）に同時に供給できます。",
     "q7": "混合ガスとエア切断の違いは何ですか？",
     "a7": "エア切断は酸化した粗いエッジを生成し、油/水の汚染により高価なレーザーヘッドレンズ（$5,000〜$50,000）が焦げるリスクがあります。混合ガスは滑らかでバリのない銀白色の切断面を提供し、汚染リスクゼロ — エアより30%速い切断速度を実現します。",
     "q8": "設置にはどのくらい時間がかかりますか？",
@@ -276,7 +276,7 @@
   },
   "footer": {
     "tagline": "ガス混合技術",
-    "authLabel": "LISHI Series - mixed gas cutting technology by Euchio",
+    "authLabel": "EUCHIO Gas Mixing Technology",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "製品",
     "linkHowItWorks": "仕組み",
