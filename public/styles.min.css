@@ -1281,11 +1281,11 @@ a:hover {
   max-width: 360px;
   color: rgba(255,255,255,0.52);
   font-size: 0.88rem;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 .footer-subtitle {
-  margin-top: 26px;
+  margin-top: 40px;
 }
 
 .footer-auth {
