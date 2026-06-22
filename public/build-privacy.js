@@ -974,7 +974,7 @@ function buildPrivacyHtml(lang) {
   const cssPath = '/styles.min.css';
   const jsPath = '/script.min.js';
   const faviconPath = '/favicon.svg';
-  const logoPath = '/images/euchio-logo.png';
+  const logoPath = '/images/lishi-logo.png';
 
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -1037,7 +1037,7 @@ ${hreflangs}
   <header class="header">
     <div class="container header-inner">
       <a href="${homeHref}" class="logo">
-        <img src="${logoPath}" alt="EUCHIO Gas Mixing Technology Logo">
+        <img src="${logoPath}" alt="EUCHIO">
         <div class="logo-text">
           <span class="logo-brand">EUCHIO</span>
           <span class="logo-tagline">${t.footerTagline}</span>
@@ -1132,7 +1132,7 @@ ${hreflangs}
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="${footerHomeHref}" class="logo">
-            <img src="${logoPath}" alt="EUCHIO Gas Mixing Technology Logo">
+            <img src="${logoPath}" alt="EUCHIO">
             <div class="logo-text">
               <span class="logo-brand">EUCHIO</span>
               <span class="logo-tagline">${t.footerTagline}</span>
