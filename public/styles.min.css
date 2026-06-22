@@ -1231,8 +1231,8 @@ a:hover {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(240px, 1.7fr) minmax(120px, 0.8fr) minmax(210px, 1fr) minmax(180px, 0.95fr);
-  gap: 36px;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
   margin-bottom: 40px;
 }
 
@@ -1276,12 +1276,16 @@ a:hover {
   color: white;
 }
 
-.footer-link-note {
-  margin-top: 4px;
-  max-width: 240px;
-  color: rgba(255,255,255,0.38);
-  font-size: 0.78rem;
-  line-height: 1.5;
+.footer-brand-intro {
+  margin-top: 18px;
+  max-width: 360px;
+  color: rgba(255,255,255,0.52);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.footer-subtitle {
+  margin-top: 26px;
 }
 
 .footer-auth {
