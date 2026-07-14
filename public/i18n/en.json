@@ -12,6 +12,7 @@
     "howItWorks": "How It Works",
     "advantages": "Advantages",
     "parameters": "Parameters",
+    "about": "About",
     "samples": "Cutting Samples",
     "references": "References",
     "faq": "FAQ",
@@ -248,7 +249,7 @@
   },
   "cta": {
     "title": "Ready to Increase Your Cutting Speed?",
-    "description": "Connect one device to your laser machine and start cutting 3× faster today. Available for 6KW–60KW machines.",
+    "description": "Connect one device to your laser machine and start cutting 3× faster today. Available for 3kW–60kW machines.",
     "buttonContact": "Contact Us →",
     "buttonWhatsApp": "WhatsApp"
   },
@@ -282,6 +283,7 @@
     "linkParameters": "Parameters",
     "linkSamples": "Cutting Samples",
     "linkFaq": "FAQ",
+    "linkAbout": "About",
     "contactTitle": "Contact",
     "whatsappMexico": "WhatsApp (Mexico)",
     "whatsappThailand": "WhatsApp (Thailand)",

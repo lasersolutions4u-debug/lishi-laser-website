@@ -19,6 +19,26 @@ LANGS = {
     'th': {'name': 'ไทย', 'html_lang': 'th', 'dir': 'ltr'},
 }
 
+PAGE_TITLES = {
+    'it': {'contact': 'Contatti | Preventivo Dispositivo a Gas Misto EUCHIO', 'parameters': 'Parametri di Taglio Laser 20kW | Gas Misto vs O₂'},
+    'de': {'contact': 'Kontakt | Angebot für EUCHIO Mischgasgerät', 'parameters': '20kW Laserschneidparameter | Mischgas vs O₂'},
+    'fr': {'contact': 'Contact | Devis Dispositif à Gaz Mixte EUCHIO', 'parameters': 'Paramètres de Découpe Laser 20kW | Gaz Mixte vs O₂'},
+    'nl': {'contact': 'Contact | Offerte voor EUCHIO Menggasapparaat', 'parameters': '20kW Lasersnijparameters | Menggas vs O₂'},
+    'ru': {'contact': 'Контакты | Предложение на устройство смешанного газа EUCHIO', 'parameters': 'Параметры лазерной резки 20 кВт | Смешанный газ и O₂'},
+    'vi': {'contact': 'Liên hệ | Báo giá Thiết bị Khí Hỗn hợp EUCHIO', 'parameters': 'Thông số Cắt Laser 20kW | Khí Hỗn hợp và O₂'},
+    'th': {'contact': 'ติดต่อ | ใบเสนอราคาอุปกรณ์ก๊าซผสม EUCHIO', 'parameters': 'พารามิเตอร์ตัดเลเซอร์ 20kW | ก๊าซผสมและ O₂'},
+}
+
+MULTI_MACHINE_COPY = {
+    'it': ('Configurazione Laser Uno-a-Tre', 'Configurazione stabile uno-a-tre. Una stazione di miscelazione può alimentare contemporaneamente fino a tre macchine laser di potenze diverse.', 'Un dispositivo può alimentare fino a tre macchine laser contemporaneamente?', 'Sì. La configurazione stabile uno-a-tre alimenta contemporaneamente fino a tre macchine laser di potenze diverse.'),
+    'de': ('Eins-zu-Drei-Laserkonfiguration', 'Stabile Eins-zu-Drei-Konfiguration. Eine Mischgasstation versorgt gleichzeitig bis zu drei Lasermaschinen unterschiedlicher Leistung.', 'Kann ein Gerät gleichzeitig bis zu drei Lasermaschinen versorgen?', 'Ja. Die stabile Eins-zu-Drei-Konfiguration versorgt gleichzeitig bis zu drei Lasermaschinen unterschiedlicher Leistung.'),
+    'fr': ('Configuration Laser Un-pour-Trois', 'Configuration stable un-pour-trois. Une station de mélange alimente simultanément jusqu’à trois machines laser de puissances différentes.', 'Un dispositif peut-il alimenter jusqu’à trois machines laser simultanément ?', 'Oui. La configuration stable un-pour-trois alimente simultanément jusqu’à trois machines laser de puissances différentes.'),
+    'nl': ('Eén-op-Drie Laserconfiguratie', 'Stabiele één-op-drie-configuratie. Eén menggasstation voedt gelijktijdig maximaal drie lasermachines met verschillende vermogens.', 'Kan één apparaat maximaal drie lasermachines tegelijk voeden?', 'Ja. De stabiele één-op-drie-configuratie voedt gelijktijdig maximaal drie lasermachines met verschillende vermogens.'),
+    'ru': ('Подключение до Трёх Лазеров', 'Стабильная схема один-к-трём позволяет одной станции одновременно подавать газ на три лазерных станка разной мощности.', 'Может ли одно устройство одновременно снабжать три лазерных станка?', 'Да. Стабильная схема один-к-трём одновременно снабжает до трёх лазерных станков разной мощности.'),
+    'vi': ('Cấu hình Một-đến-Ba', 'Cấu hình một-đến-ba ổn định. Một trạm trộn khí cấp đồng thời cho tối đa ba máy laser có công suất khác nhau.', 'Một thiết bị có thể cấp khí đồng thời cho tối đa ba máy laser không?', 'Có. Cấu hình một-đến-ba ổn định cấp đồng thời cho tối đa ba máy laser có công suất khác nhau.'),
+    'th': ('การตั้งค่าหนึ่งต่อสาม', 'การตั้งค่าหนึ่งต่อสามที่เสถียร สถานีผสมก๊าซหนึ่งชุดจ่ายก๊าซให้เครื่องเลเซอร์กำลังต่างกันได้พร้อมกันสูงสุดสามเครื่อง', 'อุปกรณ์หนึ่งชุดสามารถจ่ายก๊าซให้เครื่องเลเซอร์พร้อมกันสูงสุดสามเครื่องได้หรือไม่?', 'ได้ การตั้งค่าหนึ่งต่อสามที่เสถียรสามารถจ่ายก๊าซให้เครื่องเลเซอร์กำลังต่างกันได้พร้อมกันสูงสุดสามเครื่อง'),
+}
+
 def apply_structural(content, lang, page_type):
     """Apply all structural changes for subdirectory language page."""
     info = LANGS[lang]
@@ -68,6 +88,12 @@ def apply_structural(content, lang, page_type):
         content = content.replace(
             'value="https://gasmixtech.com/contact.html',
             f'value="https://gasmixtech.com/{p}/contact.html')
+        content = content.replace(
+            '<link rel="canonical" href="https://gasmixtech.com/contact">',
+            f'<link rel="canonical" href="https://gasmixtech.com/{p}/contact">')
+        content = content.replace(
+            '<meta property="og:url" content="https://gasmixtech.com/contact">',
+            f'<meta property="og:url" content="https://gasmixtech.com/{p}/contact">')
     elif page_type == 'parameters':
         content = content.replace(
             '<link rel="canonical" href="https://gasmixtech.com/parameters.html">',
@@ -75,6 +101,12 @@ def apply_structural(content, lang, page_type):
         content = content.replace(
             '<meta property="og:url" content="https://gasmixtech.com/parameters.html">',
             f'<meta property="og:url" content="https://gasmixtech.com/{p}/parameters.html">')
+        content = content.replace(
+            '<link rel="canonical" href="https://gasmixtech.com/parameters">',
+            f'<link rel="canonical" href="https://gasmixtech.com/{p}/parameters">')
+        content = content.replace(
+            '<meta property="og:url" content="https://gasmixtech.com/parameters">',
+            f'<meta property="og:url" content="https://gasmixtech.com/{p}/parameters">')
 
     # ── Phase 6: Hreflang ──
     # Source pages already include the full 15-language hreflang set.
@@ -107,6 +139,7 @@ def apply_structural(content, lang, page_type):
     content = content.replace(
         '<a href="/parameters.html">Parameters</a>',
         f'<a href="/{p}/parameters.html">Parameters</a>')
+    content = content.replace('href="/about"', f'href="/{p}/about"')
 
     # ── Phase 8: Content CTAs (match btn classes to avoid dropdown) ──
     content = content.replace(
@@ -132,6 +165,47 @@ def apply_structural(content, lang, page_type):
         f'href="{current_href}" class="lang-option" data-lang="{p}"',
         f'href="{current_href}" class="lang-option active" data-lang="{p}"')
 
+    content = re.sub(
+        r'(https://gasmixtech\.com(?:/[a-z]{2})?/(?:about|contact|parameters))\.html',
+        r'\1',
+        content)
+    content = re.sub(
+        r'href="(/(?:[a-z]{2}/)?(?:about|contact|parameters))\.html"',
+        r'href="\1"',
+        content)
+
+    return content
+
+
+def normalize_language_output(content, lang, page_type):
+    if page_type in PAGE_TITLES[lang]:
+        content = re.sub(
+            r'<title>.*?</title>',
+            f'<title>{PAGE_TITLES[lang][page_type]}</title>',
+            content,
+            count=1,
+            flags=re.DOTALL)
+
+    title, description, question, answer = MULTI_MACHINE_COPY[lang]
+    replacements = {
+        'One-to-Three Laser Setup': title,
+        'Stable one-to-three mixed gas equipment configuration. One industrial gas mixing station powers up to three laser machines of different power levels simultaneously.': description,
+        'Can one device serve multiple laser machines?': question,
+        'Can one mixed gas device supply up to three laser machines simultaneously?': question,
+        'Yes. The EUCHIO Mixed Gas supports a stable One-to-Three configuration. One mixing station can simultaneously supply up to three laser machines of different power levels (e.g., one 12kW and one 20kW).': answer,
+        'Yes. The EUCHIO Mixed Gas supports a stable one-to-three configuration. One mixing station can simultaneously supply multiple laser machines of different power levels with stable gas mixing ratios.': answer,
+        'Connect one device to your laser machine and start cutting 3× faster today. Available for 3kW–60kW machines.': {
+            'it': 'Collega il dispositivo alla tua macchina laser e inizia a tagliare 3× più velocemente. Compatibile con macchine da 3kW a 60kW.',
+            'de': 'Schließen Sie das Gerät an Ihre Lasermaschine an und schneiden Sie 3× schneller. Geeignet für Maschinen von 3kW bis 60kW.',
+            'fr': 'Connectez le dispositif à votre machine laser et découpez 3× plus vite. Compatible avec les machines de 3kW à 60kW.',
+            'nl': 'Sluit het apparaat aan op uw lasermachine en snijd 3× sneller. Geschikt voor machines van 3kW tot 60kW.',
+            'ru': 'Подключите устройство к лазерному станку и режьте в 3 раза быстрее. Поддерживаются станки от 3 до 60 кВт.',
+            'vi': 'Kết nối thiết bị với máy laser để cắt nhanh gấp 3 lần. Hỗ trợ máy từ 3kW đến 60kW.',
+            'th': 'เชื่อมต่ออุปกรณ์กับเครื่องเลเซอร์และตัดได้เร็วขึ้น 3 เท่า รองรับเครื่อง 3kW ถึง 60kW',
+        }[lang],
+    }
+    for source, target in replacements.items():
+        content = content.replace(source, target)
     return content
 
 
@@ -3059,6 +3133,7 @@ def build_language(lang, translations):
 
         # Step 2: Translate content
         content = translate(content, translations)
+        content = normalize_language_output(content, lang, page)
 
         with open(dst, 'w', encoding='utf-8') as f:
             f.write(content)

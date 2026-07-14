@@ -98,6 +98,7 @@ function adjustPaths(html, lang) {
 
   // 2. Root-relative page links  /contact.html → ./contact.html
   html = html.replace(/href="\/(contact\.html|parameters\.html)"/g, 'href="./$1"');
+  html = html.replace(/href="\/about"/g, `href="/${lang}/about"`);
 
   // 2b. Root-relative script  /script.min.js → ../script.min.js
   html = html.replace(/src="\/script(?:\.min)?\.js"/g, 'src="../script.min.js"');

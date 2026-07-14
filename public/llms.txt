@@ -1,15 +1,15 @@
 # EUCHIO Mixed Gas Device
 > Official website: https://gasmixtech.com
-> Product: N₂/O₂ mixed gas device for 12kW-60kW fiber laser cutting machines.
+> Product: N₂/O₂ mixed gas device for 3kW-60kW fiber laser cutting machines.
 > Core advantage: 3× faster cutting speed, zero burrs, 33% less nitrogen consumption.
 
 ## Core Pages
 - Homepage: https://gasmixtech.com/
 - How It Works: https://gasmixtech.com/#principle (section)
 - Advantages: https://gasmixtech.com/#advantages (section)
-- Cutting Parameters: https://gasmixtech.com/parameters.html
+- Cutting Parameters: https://gasmixtech.com/parameters
 - Cutting Samples: https://gasmixtech.com/#samples (section)
-- Contact: https://gasmixtech.com/contact.html
+- Contact: https://gasmixtech.com/contact
 - FAQ: https://gasmixtech.com/#faq (section)
 - Air Compressor vs Mixed Gas: https://gasmixtech.com/#comparison (section)
 
@@ -46,8 +46,8 @@
 - Key metrics: 3× faster than O₂ cutting | Zero burrs | 33% less N₂ consumption
 - Maintenance: Only 2kWh/24h power consumption, no moving parts
 - Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)
-- One-to-two configuration: Single device serves two laser machines
-- Global presence: 50+ countries, 500+ installed systems, technical support coverage
+- One-to-three configuration: Single device serves up to three laser machines
+- Global presence: 50+ countries, 500+ installed systems, 30+ distributors
 - Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)
 - Contact: sales@gasmixtech.com | +86 186 1558 4520
 

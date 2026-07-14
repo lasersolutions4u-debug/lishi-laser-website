@@ -1,7 +1,7 @@
 # EUCHIO Mixed Gas Device — Complete Product Information
 
 ## Product Overview
-EUCHIO Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries with remote technical support for overseas customers.
+EUCHIO Mixed Gas Device is an industrial gas mixing system designed for 3kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries through a network of 30+ distributors.
 
 ## How It Works — IGBT Precision Mixing Technology
 The device takes high-purity liquid nitrogen (99.999%) and liquid oxygen (99.5%), then mixes them at a precisely calibrated ratio (typically 95% N₂ / 5% O₂, adjustable). The IGBT (Insulated Gate Bipolar Transistor) control system monitors and adjusts the gas flow in real time, maintaining optimal mixture consistency regardless of downstream pressure fluctuations. This micro-oxygen mixture serves as an assist gas for high-power laser cutting.
@@ -37,8 +37,8 @@ The micro-oxygen creates a controlled oxidation reaction at the cutting zone. At
 - No oil vapor risk to laser optics (a common cause of premature lens failure)
 - Operating noise: near silent — vs 75-85dB for air compressors
 
-### 5. One-to-Two Configuration
-- Single mixed gas device can simultaneously serve two laser cutting machines
+### 5. One-to-Three Configuration
+- Single mixed gas device can simultaneously serve up to three laser cutting machines
 - Reduces capital equipment cost per machine by 50%
 - Independent flow control for each output channel
 - Ideal for shops with multiple laser machines
@@ -179,7 +179,7 @@ A: Yes, we provide operation training (typically 2 hours) via remote video call.
 A: Essentially none. The device has no moving parts in the gas flow path. Annual inspection of electrical connections and gas fittings is recommended but not required. There are no consumable parts to replace.
 
 **Q: Can one device serve two different laser brands simultaneously?**
-A: Yes. The one-to-two configuration supports two machines of different brands or power levels simultaneously, with independent flow control for each output.
+A: Yes. The one-to-three configuration supports up to three machines of different brands or power levels simultaneously, with independent flow control for each output.
 
 **Q: What is the warranty?**
 A: Standard warranty is 12 months from installation. Extended warranty options available. Remote technical support is provided for the lifetime of the equipment.

@@ -2,154 +2,198 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gasmixtech.com/404.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/assist-gas-complete-guide.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/assist-gas-is-the-real-bottleneck.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/cutting-parameters-guide.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/how-to-choose-gas-mixer.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/laser-cutting-gas-faq.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/mixed-gas-for-stainless-steel-aluminum.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/mixed-gas-nitrogen-savings.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/mixed-gas-vs-oxygen-comparison.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/nitrogen-vs-mixed-gas-comparison.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/one-to-three-gas-mixing-setup.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/blog/roi-calculator-real-numbers.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/case-studies/60kw-thick-plate.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/case-studies/bodor-12kw-aluminum.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/case-studies/foshan-hans-20kw.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/case-studies/southeast-asia-bodor.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://gasmixtech.com/case-studies/taiwan-penta-30kw.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/compatibility.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/de/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/de/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -171,29 +215,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/de/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/de/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -215,29 +259,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/es/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/es/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -259,29 +325,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/es/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/es/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -303,29 +369,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/fr/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/fr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/fr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -347,29 +435,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/fr/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/fr/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -391,7 +479,7 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -413,29 +501,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/it/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/it/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/it/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -457,29 +567,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/it/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/it/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -501,29 +611,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ja/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/ja/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/ja/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -545,29 +677,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ja/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/ja/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -589,29 +721,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ko/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/ko/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/ko/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -633,29 +787,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ko/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/ko/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -677,29 +831,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/nl/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/nl/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/nl/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -721,29 +897,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/nl/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/nl/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -765,51 +941,79 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/pl/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/payment.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/pl/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/pl/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -831,29 +1035,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/pl/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/pl/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -875,7 +1079,7 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -897,29 +1101,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/pt/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/pt/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/pt/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -941,29 +1167,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/pt/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/pt/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -985,29 +1211,57 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ru/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/roi.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/ru/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/ru/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1029,29 +1283,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/ru/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/ru/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1073,29 +1327,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/th/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/th/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/th/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1117,29 +1393,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/th/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/th/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1161,29 +1437,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/tr/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/tr/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/tr/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1205,29 +1503,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/tr/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/tr/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1249,29 +1547,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/vi/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/vi/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/vi/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1293,29 +1613,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/vi/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/vi/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1337,29 +1657,51 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/zh/contact.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/zh/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about" />
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://gasmixtech.com/zh/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/contact" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/contact" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/contact" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/contact" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/contact" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/contact" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/contact" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/contact" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/contact" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/contact" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/contact" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1381,29 +1723,29 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gasmixtech.com/zh/parameters.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters.html" />
-    <lastmod>2026-06-08</lastmod>
+    <loc>https://gasmixtech.com/zh/parameters</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/parameters" />
+    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/parameters" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/parameters" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/parameters" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/parameters" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/parameters" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/parameters" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/parameters" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/parameters" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/parameters" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/parameters" />
+    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/parameters" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/parameters" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/parameters" />
+    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/parameters" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/parameters" />
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1425,356 +1767,8 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/privacy.html" />
     <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/privacy.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html" />
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/compatibility.html</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/roi.html</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/payment.html</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/zh/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/es/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/ko/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/ja/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/pt/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/tr/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/pl/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/it/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/de/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/fr/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/nl/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/ru/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/vi/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
-  </url>
-  <url>
-    <loc>https://gasmixtech.com/th/about.html</loc>
-    <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gasmixtech.com/about.html" />
-    <xhtml:link rel="alternate" hreflang="zh" href="https://gasmixtech.com/zh/about.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gasmixtech.com/es/about.html" />
-    <xhtml:link rel="alternate" hreflang="ko" href="https://gasmixtech.com/ko/about.html" />
-    <xhtml:link rel="alternate" hreflang="ja" href="https://gasmixtech.com/ja/about.html" />
-    <xhtml:link rel="alternate" hreflang="pt" href="https://gasmixtech.com/pt/about.html" />
-    <xhtml:link rel="alternate" hreflang="tr" href="https://gasmixtech.com/tr/about.html" />
-    <xhtml:link rel="alternate" hreflang="pl" href="https://gasmixtech.com/pl/about.html" />
-    <xhtml:link rel="alternate" hreflang="it" href="https://gasmixtech.com/it/about.html" />
-    <xhtml:link rel="alternate" hreflang="de" href="https://gasmixtech.com/de/about.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://gasmixtech.com/fr/about.html" />
-    <xhtml:link rel="alternate" hreflang="nl" href="https://gasmixtech.com/nl/about.html" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gasmixtech.com/ru/about.html" />
-    <xhtml:link rel="alternate" hreflang="vi" href="https://gasmixtech.com/vi/about.html" />
-    <xhtml:link rel="alternate" hreflang="th" href="https://gasmixtech.com/th/about.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/about.html" />
   </url>
 </urlset>

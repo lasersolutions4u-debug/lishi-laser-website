@@ -4,11 +4,28 @@ Generate multilingual about.html pages from English source.
 Applies structural changes (paths, canonical, hreflang, nav) and full content translations.
 """
 import os, re, json
+from about_locales import COPY as COMPACT_COPY, render_main
 
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 SOURCE = os.path.join(BASE, 'about.html')
 
 LANGS = ['zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
+
+ABOUT_IMAGE_ALTS = {
+    'zh': ['混合气体设备在中国佛山40kW激光切割客户工厂的应用', '配备混合气体设备和绿色储气罐的40kW激光切割客户工厂', '配备混合气体设备的60kW超高功率激光切割客户工厂', '配备混合气体设备的20kW大族激光客户工厂'],
+    'es': ['Dispositivo de gas mixto en una fábrica cliente de corte láser de 40kW en Foshan', 'Fábrica cliente de corte láser de 40kW con dispositivo de gas mixto y tanques verdes', 'Fábrica cliente de corte láser de 60kW con dispositivo de gas mixto', 'Fábrica cliente con láser HAN\'S de 20kW y dispositivo de gas mixto'],
+    'ja': ['中国佛山の40kWレーザー切断顧客工場に導入された混合ガス装置', '混合ガス装置と緑色ガスタンクを備えた40kWレーザー切断顧客工場', '混合ガス装置を備えた60kW超高出力レーザー顧客工場', '混合ガス装置を備えた20kW HAN\'Sレーザー顧客工場'],
+    'de': ['Mischgasgerät in einer 40kW-Laserschneidfabrik eines Kunden in Foshan', '40kW-Laserschneidfabrik eines Kunden mit Mischgasgerät und grünen Gastanks', '60kW-Hochleistungs-Laserschneidfabrik eines Kunden mit Mischgasgerät', 'Kundenfabrik mit 20kW-HAN\'S-Laser und Mischgasgerät'],
+    'fr': ['Dispositif de gaz mixte dans une usine cliente de découpe laser 40kW à Foshan', 'Usine cliente de découpe laser 40kW avec dispositif de gaz mixte et réservoirs verts', 'Usine cliente de découpe laser 60kW avec dispositif de gaz mixte', 'Usine cliente équipée d\'un laser HAN\'S 20kW et d\'un dispositif de gaz mixte'],
+    'ru': ['Устройство смешанного газа на заводе клиента с лазером 40 кВт в Фошане', 'Завод клиента с лазером 40 кВт, устройством смешанного газа и зелёными резервуарами', 'Завод клиента с лазером 60 кВт и устройством смешанного газа', 'Завод клиента с лазером HAN\'S 20 кВт и устройством смешанного газа'],
+}
+
+ENGLISH_ABOUT_IMAGE_ALTS = [
+    'Gas mixing device deployed at a 40kW laser cutting factory in Foshan, China',
+    '40kW laser cutting factory with mixed gas device — Hymson laser machine with green gas storage tanks',
+    '60kW laser cutting factory with mixed gas device — ultra-high-power laser installation',
+    "20kW Han's laser factory with mixed gas device",
+]
 
 # Language code display in the switcher button
 LANG_CODE_DISPLAY = {
@@ -758,11 +775,17 @@ def apply_structural(content, lang):
     content = content.replace(
         '<link rel="canonical" href="https://gasmixtech.com/about.html">',
         f'<link rel="canonical" href="https://gasmixtech.com/{p}/about.html">')
+    content = content.replace(
+        '<link rel="canonical" href="https://gasmixtech.com/about">',
+        f'<link rel="canonical" href="https://gasmixtech.com/{p}/about">')
 
     # OG:url
     content = content.replace(
         '<meta property="og:url" content="https://gasmixtech.com/about.html">',
         f'<meta property="og:url" content="https://gasmixtech.com/{p}/about.html">')
+    content = content.replace(
+        '<meta property="og:url" content="https://gasmixtech.com/about">',
+        f'<meta property="og:url" content="https://gasmixtech.com/{p}/about">')
 
     # Nav: logo links
     content = content.replace('href="/" class="logo"', f'href="/{p}/" class="logo"')
@@ -773,6 +796,8 @@ def apply_structural(content, lang):
     # Nav: About link (both active and non-active)
     content = content.replace('<a href="/about.html" class="active">About</a>', f'<a href="/{p}/about.html" class="active">About</a>')
     content = content.replace('<a href="/about.html">About</a>', f'<a href="/{p}/about.html">About</a>')
+    content = content.replace('<a href="/about" class="active">About</a>', f'<a href="/{p}/about" class="active">About</a>')
+    content = content.replace('<a href="/about">About</a>', f'<a href="/{p}/about">About</a>')
 
     # Nav: section anchors
     for sec in ['#principle', '#advantages', '#samples', '#reference', '#faq', '#parameters']:
@@ -780,17 +805,23 @@ def apply_structural(content, lang):
 
     # Nav: parameters.html link
     content = content.replace('href="/parameters.html"', f'href="/{p}/parameters.html"')
+    content = content.replace('href="/parameters"', f'href="/{p}/parameters"')
 
     # Nav: contact CTA
     content = content.replace(
         'href="/contact.html" class="nav-cta',
         f'href="/{p}/contact.html" class="nav-cta')
+    content = content.replace(
+        'href="/contact" class="nav-cta',
+        f'href="/{p}/contact" class="nav-cta')
 
     # Contact Us button (hero + CTA section)
     content = content.replace('href="/contact.html" class="btn btn-secondary">Contact Us', f'href="/{p}/contact.html" class="btn btn-secondary">Contact Us')
+    content = content.replace('href="/contact" class="btn btn-secondary">Contact Us', f'href="/{p}/contact" class="btn btn-secondary">Contact Us')
 
     # Footer links
     content = content.replace('href="/about.html">About Us', f'href="/{p}/about.html">About Us')
+    content = content.replace('href="/about">About Us', f'href="/{p}/about">About Us')
     for sec in ['#principle', '#advantages', '#parameters', '#samples', '#faq']:
         content = content.replace(f'href="/{sec}"', f'href="/{p}/{sec}"')
     content = content.replace('href="/parameters.html"', f'href="/{p}/parameters.html"')
@@ -806,8 +837,14 @@ def apply_structural(content, lang):
         f'<a href="/about.html" class="lang-option active" data-lang="en">English</a>',
         '<a href="/about.html" class="lang-option" data-lang="en">English</a>')
     content = content.replace(
+        '<a href="/about" class="lang-option active" data-lang="en">English</a>',
+        '<a href="/about" class="lang-option" data-lang="en">English</a>')
+    content = content.replace(
         f'<a href="/{p}/about.html" class="lang-option" data-lang="{p}">',
         f'<a href="/{p}/about.html" class="lang-option active" data-lang="{p}">')
+    content = content.replace(
+        f'<a href="/{p}/about" class="lang-option" data-lang="{p}">',
+        f'<a href="/{p}/about" class="lang-option active" data-lang="{p}">')
 
     # Update lang-current display
     old_current = '<span class="lang-current">EN</span>'
@@ -818,9 +855,21 @@ def apply_structural(content, lang):
     content = content.replace(
         '"item": "https://gasmixtech.com/about.html"',
         f'"item": "https://gasmixtech.com/{p}/about.html"')
+    content = content.replace(
+        '"item": "https://gasmixtech.com/about"',
+        f'"item": "https://gasmixtech.com/{p}/about"')
+
+    content = content.replace(f'https://gasmixtech.com/{p}/about.html', f'https://gasmixtech.com/{p}/about')
+    content = content.replace('https://gasmixtech.com/about.html', 'https://gasmixtech.com/about')
+    content = content.replace(f'/{p}/about.html', f'/{p}/about')
+    content = content.replace('/about.html', '/about')
 
     # Footer logo link
     content = content.replace('href="/" class="logo"', f'href="/{p}/" class="logo"')
+
+    if lang in ABOUT_IMAGE_ALTS:
+        for english_alt, localized_alt in zip(ENGLISH_ABOUT_IMAGE_ALTS, ABOUT_IMAGE_ALTS[lang]):
+            content = content.replace(f'alt="{english_alt}"', f'alt="{localized_alt}"')
 
     return content
 
@@ -841,6 +890,24 @@ def apply_translations(content, lang):
     content = content.replace('>Contact</a>', f'>{tr.get("Contact", "Contact")}</a>')
     content = content.replace('>Advantages</a>', f'>{tr.get("Advantages", "Advantages")}</a>')
     content = content.replace('>FAQ</a>', f'>{tr.get("FAQ", "FAQ")}</a>')
+
+    if lang in COMPACT_COPY:
+        compact = COMPACT_COPY[lang]
+        content = content.replace(
+            'About Us | Euchio Machinery — Sheet Metal Equipment & Service',
+            compact['title'])
+        content = content.replace(
+            'About Euchio Machinery — a China-based machinery trading and service company focused on sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.',
+            compact['description'])
+        content = re.sub(
+            r'<main id="main">.*?</main>',
+            lambda _: render_main(lang, tr),
+            content,
+            flags=re.DOTALL)
+        content = content.replace(
+            'Jinan Euchio Machinery Co., Ltd. — machinery trading and service for sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts & service) brands for overseas industrial customers.',
+            compact['footer_intro'])
+        return content
 
     # CTA buttons in nav
     content = content.replace('>Get a Quote →', f'>{tr.get("Get a Quote →", "Get a Quote →")}')

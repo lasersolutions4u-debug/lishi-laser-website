@@ -12,7 +12,7 @@ def get_all_pages():
     pages = []
     for root, dirs, files in os.walk(BASE):
         for f in files:
-            if f.endswith('.html') and f != '_template.html':
+            if f.endswith('.html') and f not in ('_template.html', '404.html'):
                 rel = os.path.relpath(os.path.join(root, f), BASE).replace(os.sep, '/')
                 pages.append(rel)
     return sorted(pages)
@@ -24,6 +24,8 @@ def rel_to_url(rel):
         return f'{DOMAIN}/'
     if rel.endswith('/index.html'):
         return f'{DOMAIN}/{rel[:-10]}'
+    if rel.split('/')[-1] in ('about.html', 'contact.html', 'parameters.html'):
+        return f'{DOMAIN}/{rel[:-5]}'
     return f'{DOMAIN}/{rel}'
 
 def get_alternate_group(rel):
@@ -34,7 +36,7 @@ def get_alternate_group(rel):
     if page == 'index.html' and (len(parts) == 1 or parts[0] in LANGS[1:]):
         return {'en': 'index.html', **{lang: f'{lang}/index.html' for lang in LANGS[1:]}}
 
-    if page in ('contact.html', 'parameters.html', 'privacy.html') and (len(parts) == 1 or parts[0] in LANGS[1:]):
+    if page in ('about.html', 'contact.html', 'parameters.html', 'privacy.html') and (len(parts) == 1 or parts[0] in LANGS[1:]):
         return {'en': page, **{lang: f'{lang}/{page}' for lang in LANGS[1:]}}
 
     return None
@@ -96,16 +98,16 @@ def generate_llms_txt():
     lines = [
         '# LISHI LASER Mixed Gas Device',
         f'> Official website: {DOMAIN}',
-        '> Product: N₂/O₂ mixed gas device for 12kW-60kW fiber laser cutting machines.',
+        '> Product: N₂/O₂ mixed gas device for 3kW-60kW fiber laser cutting machines.',
         '> Core advantage: 3× faster cutting speed, zero burrs, 33% less nitrogen consumption.',
         '',
         '## Core Pages',
         f'- Homepage: {DOMAIN}/',
         f'- How It Works: {DOMAIN}/#principle (section)',
         f'- Advantages: {DOMAIN}/#advantages (section)',
-        f'- Cutting Parameters: {DOMAIN}/parameters.html',
+        f'- Cutting Parameters: {DOMAIN}/parameters',
         f'- Cutting Samples: {DOMAIN}/#samples (section)',
-        f'- Contact: {DOMAIN}/contact.html',
+        f'- Contact: {DOMAIN}/contact',
         f'- FAQ: {DOMAIN}/#faq (section)',
         f'- Air Compressor vs Mixed Gas: {DOMAIN}/#comparison (section)',
         '',
@@ -150,7 +152,7 @@ def generate_llms_txt():
         '- Key metrics: 3× faster than O₂ cutting | Zero burrs | 33% less N₂ consumption',
         '- Maintenance: Only 2kWh/24h power consumption, no moving parts',
         '- Materials: Carbon steel, stainless steel, aluminum (1mm–30mm thickness)',
-        '- One-to-two configuration: Single device serves two laser machines',
+        '- One-to-three configuration: Single device serves up to three laser machines',
         '- Global presence: 50+ countries, 500+ installed systems, 30+ distributors',
         '- Manufacturer: Jinan Euchio Machinery Co., Ltd. (China)',
         f'- Contact: sales@gasmixtech.com | +86 186 1558 4520',
@@ -170,7 +172,7 @@ def generate_llms_full_txt():
     sections.append("""# LISHI LASER Mixed Gas Device — Complete Product Information
 
 ## Product Overview
-LISHI LASER Mixed Gas Device is an industrial gas mixing system designed for 12kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries through a network of 30+ distributors.
+EUCHIO Mixed Gas Device is an industrial gas mixing system designed for 3kW-60kW fiber laser cutting machines. It combines liquid nitrogen (N₂) and liquid oxygen (O₂) using precision IGBT-controlled mixing technology to produce an optimized N₂/O₂ assist gas mixture. Manufactured by Jinan Euchio Machinery Co., Ltd. in China, the device has been deployed in over 500 installations across 50+ countries through a network of 30+ distributors.
 
 ## How It Works — IGBT Precision Mixing Technology
 The device takes high-purity liquid nitrogen (99.999%) and liquid oxygen (99.5%), then mixes them at a precisely calibrated ratio (typically 95% N₂ / 5% O₂, adjustable). The IGBT (Insulated Gate Bipolar Transistor) control system monitors and adjusts the gas flow in real time, maintaining optimal mixture consistency regardless of downstream pressure fluctuations. This micro-oxygen mixture serves as an assist gas for high-power laser cutting.
@@ -206,8 +208,8 @@ The micro-oxygen creates a controlled oxidation reaction at the cutting zone. At
 - No oil vapor risk to laser optics (a common cause of premature lens failure)
 - Operating noise: near silent — vs 75-85dB for air compressors
 
-### 5. One-to-Two Configuration
-- Single mixed gas device can simultaneously serve two laser cutting machines
+### 5. One-to-Three Configuration
+- Single mixed gas device can simultaneously serve up to three laser cutting machines
 - Reduces capital equipment cost per machine by 50%
 - Independent flow control for each output channel
 - Ideal for shops with multiple laser machines
@@ -348,7 +350,7 @@ A: Yes, we provide operation training (typically 2 hours) via remote video call.
 A: Essentially none. The device has no moving parts in the gas flow path. Annual inspection of electrical connections and gas fittings is recommended but not required. There are no consumable parts to replace.
 
 **Q: Can one device serve two different laser brands simultaneously?**
-A: Yes. The one-to-two configuration supports two machines of different brands or power levels simultaneously, with independent flow control for each output.
+A: Yes. The one-to-three configuration supports up to three machines of different brands or power levels simultaneously, with independent flow control for each output.
 
 **Q: What is the warranty?**
 A: Standard warranty is 12 months from installation. Extended warranty options available. Remote technical support is provided for the lifetime of the equipment.
