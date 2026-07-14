@@ -6,6 +6,24 @@ from pathlib import Path
 PUBLIC = Path(__file__).resolve().parent / 'public'
 LANGS = ['en', 'es', 'zh', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
 
+ABOUT_LABELS = {
+    'en': 'About',
+    'es': 'Acerca de',
+    'zh': '关于我们',
+    'ko': '소개',
+    'ja': '会社概要',
+    'pt': 'Sobre',
+    'tr': 'Hakkımızda',
+    'pl': 'O nas',
+    'it': 'Chi siamo',
+    'de': 'Über uns',
+    'fr': 'À propos',
+    'nl': 'Over ons',
+    'ru': 'О нас',
+    'vi': 'Giới thiệu',
+    'th': 'เกี่ยวกับ',
+}
+
 TITLES = {
     'en': {'parameters': '20kW Laser Cutting Parameters | Mixed Gas vs O₂ Speed Data', 'contact': 'Get Cutting Gas Assessment | EUCHIO Mixed Gas Device'},
     'es': {'parameters': 'Parámetros de Corte Láser 20kW | Gas Mixto vs O₂', 'contact': 'Contacto | Cotización del Dispositivo de Gas Mixto EUCHIO'},
@@ -62,6 +80,42 @@ def normalize_urls(content):
     return content
 
 
+def normalize_header_nav(content, lang):
+    def reorder(match):
+        body = match.group('body')
+        lines = body.splitlines(keepends=True)
+        newline = '\r\n' if '\r\n' in body else '\n'
+
+        def href_for(line):
+            anchor = re.search(r'<a\b[^>]*\bhref="([^"]+)"', line)
+            return anchor.group(1) if anchor else ''
+
+        parameter_lines = [line for line in lines if 'parameters' in href_for(line)]
+        contact_lines = [line for line in lines if 'contact' in href_for(line)]
+        if len(parameter_lines) != 1 or len(contact_lines) != 1:
+            return match.group(0)
+
+        about_lines = [line for line in lines if 'about' in href_for(line)]
+        if about_lines:
+            about_anchor = about_lines[0].strip()
+        else:
+            about_href = '/about' if lang == 'en' else f'/{lang}/about'
+            about_anchor = f'<a href="{about_href}">{ABOUT_LABELS[lang]}</a>'
+
+        lines = [line for line in lines if 'about' not in href_for(line)]
+        contact_index = next(i for i, line in enumerate(lines) if 'contact' in href_for(line))
+        indent = re.match(r'\s*', lines[contact_index]).group(0).replace('\r', '').replace('\n', '')
+        lines.insert(contact_index, f'{indent}{about_anchor}{newline}')
+        return f'{match.group("open")}{"".join(lines)}{match.group("close")}'
+
+    return re.sub(
+        r'(?P<open><nav class="nav"[^>]*>)(?P<body>.*?)(?P<close></nav>)',
+        reorder,
+        content,
+        count=1,
+        flags=re.DOTALL)
+
+
 def normalize_page(path):
     content = path.read_text(encoding='utf-8')
     original = content
@@ -73,6 +127,8 @@ def normalize_page(path):
     if lang != 'en':
         content = content.replace('href="/about"', f'href="/{lang}/about"')
         content = content.replace('href="./about"', f'href="/{lang}/about"')
+
+    content = normalize_header_nav(content, lang)
 
     if page_type in ('parameters', 'contact'):
         title = TITLES[lang][page_type]

@@ -75,11 +75,36 @@ def parse_page(path):
     return parser
 
 
+def header_nav_hrefs(path):
+    content = path.read_text(encoding="utf-8")
+    nav = re.search(r'<nav class="nav"[^>]*>(.*?)</nav>', content, re.DOTALL)
+    if nav is None:
+        return []
+    return re.findall(r'<a\b[^>]*href="([^"]+)"', nav.group(1))
+
+
 def page_path(lang, filename):
     return PUBLIC / filename if lang == "en" else PUBLIC / lang / filename
 
 
 class SiteIntegrityTests(unittest.TestCase):
+    def test_about_nav_is_after_parameters_and_immediately_before_contact(self):
+        for lang in LANGS:
+            for filename in ("index.html", "about.html", "parameters.html", "contact.html"):
+                with self.subTest(lang=lang, filename=filename):
+                    hrefs = header_nav_hrefs(page_path(lang, filename))
+                    parameter_matches = [i for i, href in enumerate(hrefs) if "parameters" in href]
+                    about_matches = [i for i, href in enumerate(hrefs) if "about" in href]
+                    contact_matches = [i for i, href in enumerate(hrefs) if "contact" in href]
+                    self.assertEqual(len(parameter_matches), 1, hrefs)
+                    self.assertEqual(len(about_matches), 1, hrefs)
+                    self.assertEqual(len(contact_matches), 1, hrefs)
+                    parameters = parameter_matches[0]
+                    about = about_matches[0]
+                    contact = contact_matches[0]
+                    self.assertLess(parameters, about)
+                    self.assertEqual(about + 1, contact)
+
     def test_all_about_pages_have_localized_content(self):
         for lang, marker in TRANSLATED_ABOUT_MARKERS.items():
             with self.subTest(lang=lang):
