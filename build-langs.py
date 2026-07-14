@@ -33,9 +33,11 @@ def apply_structural(content, lang, page_type):
     content = content.replace('src="/script.min.js"', 'src="../script.min.js"')
     content = content.replace('href="./favicon.svg"', 'href="../favicon.svg"')
 
-    # ── Phase 2: Image paths ──
+    # ── Phase 2: Image paths (src and srcset) ──
     content = content.replace('src="/images/', 'src="../images/')
     content = content.replace('src="./images/', 'src="../images/')
+    content = content.replace('srcset="/images/', 'srcset="../images/')
+    content = content.replace('srcset="./images/', 'srcset="../images/')
 
     # ── Phase 3: OG image + JSON-LD logo URLs ──
     content = content.replace(
@@ -148,26 +150,26 @@ def translate(content, translations):
 # ---- ITALIAN ----
 IT = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "Dispositivo a gas misto LISHI LASER per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "Dispositivo a gas misto EUCHIO per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Dispositivo a gas misto per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di gas in meno. Tecnologia a rapporto N2/O2.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "miscelatore gas taglio laser, dispositivo miscelazione azoto ossigeno, taglio laser micro ossigeno, taglio laser acciaio carbonio, laser alta potenza 12kW 60kW, gas misto vs compressore aria, eliminazione bave taglio laser, riduzione consumo azoto, miscelatore gas Han's, apparecchiatura gas laser industriale, configurazione gas uno-a-due, ottimizzazione gas assistito",
-    "LISHI LASER Mixed Gas Device": "LISHI LASER Dispositivo a Gas Misto",
+    "EUCHIO Mixed Gas Device": "EUCHIO Dispositivo a Gas Misto",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Prezzi e preventivi dispositivo a gas misto LISHI LASER. Compatibile con tutti i principali marchi laser (HANS, DNE, PENTA, LEAD, HSG, BODOR). Spedizione globale disponibile.",
-    "Request a quote for LISHI LASER mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
-     "Richiedi un preventivo per apparecchiatura da taglio a gas misto LISHI LASER. Compatibile con tutti i principali marchi laser. Spedizione globale disponibile.",
-    "LISHI LASER Contact | Get Mixed Gas Device Quote":
-     "LISHI LASER Contatto | Richiedi Preventivo Dispositivo Gas Misto",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Prezzi e preventivi dispositivo a gas misto EUCHIO. Compatibile con tutti i principali marchi laser (HANS, DNE, PENTA, LEAD, HSG, BODOR). Spedizione globale disponibile.",
+    "Request a quote for EUCHIO mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
+     "Richiedi un preventivo per apparecchiatura da taglio a gas misto EUCHIO. Compatibile con tutti i principali marchi laser. Spedizione globale disponibile.",
+    "EUCHIO Contact | Get Mixed Gas Device Quote":
+     "EUCHIO Contatto | Richiedi Preventivo Dispositivo Gas Misto",
     "laser cutting gas equipment quote, mixed gas device distributor, laser cutting equipment manufacturer, HANS laser compatible gas":
      "preventivo apparecchiatura gas taglio laser, distributore dispositivo gas misto, produttore apparecchiatura taglio laser, gas compatibile laser HANS",
-    "LISHI LASER Contact": "LISHI LASER Contatto",
+    "EUCHIO Contact": "EUCHIO Contatto",
 
     # Nav + UI
     "Skip to content": "Vai al contenuto",
@@ -191,8 +193,8 @@ IT = {
     "Zero Burrs": "Zero Bave",
     "33% Less N₂": "33% Meno N₂",
     "13 Years in Laser Metal Cutting": "13 Anni nel Taglio Laser dei Metalli",
-    "LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and dramatically faster processing.":
-     "Il Dispositivo a Gas Misto LISHI LASER offre taglio a micro-ossigeno per macchine laser ad alta potenza (12KW–60KW). Nessuna bava, minor consumo di gas e lavorazione notevolmente più veloce.",
+    "EUCHIO Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and dramatically faster processing.":
+     "Il Dispositivo a Gas Misto EUCHIO offre taglio a micro-ossigeno per macchine laser ad alta potenza (12KW–60KW). Nessuna bava, minor consumo di gas e lavorazione notevolmente più veloce.",
     "Get Quote →": "Richiedi Preventivo →",
     "View Parameters": "Visualizza Parametri",
 
@@ -279,8 +281,8 @@ IT = {
     "ROI Calculator": "Calcolatore ROI",
     "Calculator": "Calcolatore",
     "Calculate Your Laser Cutting Gas Cost Savings": "Calcola il Risparmio sui Costi del Gas da Taglio Laser",
-    "See how much you could save with LISHI LASER mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
-     "Scopri quanto puoi risparmiare con la tecnologia a gas misto LISHI LASER. Riduci il consumo di azoto, elimina le bave sull'acciaio al carbonio e aumenta la produttività.",
+    "See how much you could save with EUCHIO mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
+     "Scopri quanto puoi risparmiare con la tecnologia a gas misto EUCHIO. Riduci il consumo di azoto, elimina le bave sull'acciaio al carbonio e aumenta la produttività.",
     "Machine Power": "Potenza Macchina",
     "Material Thickness": "Spessore Materiale",
     "Daily Work Hours": "Ore Lavorative Giornaliere",
@@ -313,7 +315,7 @@ IT = {
     "POOR CUT QUALITY": "SCARSA QUALITÀ DI TAGLIO",
     "Dark oxidation layer on cut surface": "Strato di ossidazione scura sulla superficie di taglio",
     "Burrs and slag requiring rework": "Bave e scorie che richiedono rilavorazione",
-    "Extra grinding/polishing labor": "Lavoro extra di molatura/lucidatura",
+    "Extra grinding/poeuchiong labor": "Lavoro extra di molatura/lucidatura",
     "Cannot deliver premium jobs": "Impossibile consegnare lavori premium",
     "Silver-white surface, zero burrs": "Superficie bianco-argento, zero bave",
     "Ready to ship immediately": "Pronto per la spedizione immediata",
@@ -324,7 +326,7 @@ IT = {
     "Unplanned production stop": "Fermo produzione non pianificato",
     "100% safe — pure liquid gas source": "100% sicuro — fonte di gas liquido puro",
     "Zero optical risk": "Zero rischio ottico",
-    "LISHI Mixed Gas: The Real Cost Saver": "LISHI Gas Misto: Il Vero Riduttore di Costi",
+    "EUCHIO Mixed Gas: The Real Cost Saver": "EUCHIO Gas Misto: Il Vero Riduttore di Costi",
     "While air looks free, your real cost is in maintenance, rework, and lens replacements. Mixed gas costs less long-term — and delivers superior quality.":
      "Anche se l'aria sembra gratis, il costo reale è in manutenzione, rilavorazioni e sostituzioni lenti. Il gas misto costa meno a lungo termine — e offre qualità superiore.",
 
@@ -384,8 +386,8 @@ IT = {
     "A mixed gas device converts liquid nitrogen (N₂) and liquid oxygen (O₂) into a precisely calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen blend is used as auxiliary gas in high-power laser cutting, delivering 3× faster cutting speeds on carbon steel compared to pure oxygen while completely eliminating burrs.":
      "Un dispositivo a gas misto converte azoto liquido (N₂) e ossigeno liquido (O₂) in una miscela di gas N₂/O₂ precisamente calibrata (tipicamente 95%/5%). Questa miscela micro-ossigeno viene utilizzata come gas ausiliario nel taglio laser ad alta potenza, offrendo velocità di taglio 3× superiori sull'acciaio al carbonio rispetto all'ossigeno puro, eliminando completamente le bave.",
     "Is it compatible with my laser machine?": "È compatibile con la mia macchina laser?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Sì. Il Dispositivo a Gas Misto LISHI LASER funziona con tutti i principali marchi laser, inclusi HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas ausiliario, è compatibile.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Sì. Il Dispositivo a Gas Misto EUCHIO funziona con tutti i principali marchi laser, inclusi HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas ausiliario, è compatibile.",
     "What thicknesses can it cut?": "Quali spessori può tagliare?",
     "The cutting range depends on your laser power: 12kW handles up to 16mm, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm carbon steel. It also cuts stainless steel and aluminum. Detailed cutting parameter tables are available on our parameters page below.":
      "La gamma di taglio dipende dalla potenza del laser: 12kW gestisce fino a 16mm, 20kW fino a 25mm, 30kW fino a 30mm e 60kW fino a 40mm di acciaio al carbonio. Taglia anche acciaio inossidabile e alluminio. Tabelle dettagliate dei parametri sono disponibili nella nostra pagina parametri.",
@@ -393,11 +395,11 @@ IT = {
     "Mixed gas reduces nitrogen consumption by 33–50% compared to pure N₂ cutting. Additionally, the device consumes only 2 kWh per 24 hours — essentially maintenance-free. The optimized mixing ratio means you get more cutting per unit of gas.":
      "Il gas misto riduce il consumo di azoto del 33–50% rispetto al taglio con N₂ puro. Inoltre, il dispositivo consuma solo 2 kWh ogni 24 ore — essenzialmente esente da manutenzione. Il rapporto di miscelazione ottimizzato significa più taglio per unità di gas.",
     "Does it require regular maintenance?": "Richiede manutenzione regolare?",
-    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
-     "No. A differenza dei compressori d'aria che necessitano cambio filtri/olio ogni 500–3.000 ore, il Dispositivo a Gas Misto LISHI è esente da manutenzione. Non ci sono parti mobili da usurare, nessun filtro da sostituire e nessun olio da cambiare.",
+    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the EUCHIO Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
+     "No. A differenza dei compressori d'aria che necessitano cambio filtri/olio ogni 500–3.000 ore, il Dispositivo a Gas Misto EUCHIO è esente da manutenzione. Non ci sono parti mobili da usurare, nessun filtro da sostituire e nessun olio da cambiare.",
     "Can one device supply two lasers?": "Un dispositivo può alimentare due laser?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable One-to-Two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
-     "Sì. LISHI LASER è l'unico produttore che offre una configurazione Uno-a-Due stabile. Una stazione di miscelazione alimenta due macchine laser a diversi livelli di potenza (es. 12kW + 20kW) simultaneamente — nessuna commutazione, nessuna caduta di pressione.",
+    "Yes. EUCHIO is the only manufacturer offering a stable One-to-Two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
+     "Sì. EUCHIO è l'unico produttore che offre una configurazione Uno-a-Due stabile. Una stazione di miscelazione alimenta due macchine laser a diversi livelli di potenza (es. 12kW + 20kW) simultaneamente — nessuna commutazione, nessuna caduta di pressione.",
     "How is mixed gas different from air cutting?": "In cosa il gas misto è diverso dal taglio ad aria?",
     "Air cutting produces oxidized, rough edges and carries oil/water contamination risk that can burn expensive laser head lenses ($5,000–50,000). Mixed gas from pure liquid source delivers smooth, bright, burr-free edges — and protects your optics.":
      "Il taglio ad aria produce bordi ossidati e ruvidi e comporta rischi di contaminazione olio/acqua che possono bruciare costose lenti della testa laser ($5.000–50.000). Il gas misto da fonte liquida pura offre bordi lisci, luminosi e senza bave — e protegge l'ottica.",
@@ -495,8 +497,8 @@ IT = {
     "Clients": "Clienti",
 
     # Hero (exact source text)
-    "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
-     "Il Dispositivo a Gas Misto LISHI LASER offre taglio a micro-ossigeno per macchine laser ad alta potenza (12KW–60KW). Nessuna bava, minor consumo di gas e velocità di taglio notevolmente superiori.",
+    "The EUCHIO Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
+     "Il Dispositivo a Gas Misto EUCHIO offre taglio a micro-ossigeno per macchine laser ad alta potenza (12KW–60KW). Nessuna bava, minor consumo di gas e velocità di taglio notevolmente superiori.",
     "Faster than O₂": "Più veloce dell'O₂",
     "Burrs on cut surface": "Nessuna bava sulla superficie",
     "Less gas than N₂": "Meno gas dell'N₂",
@@ -549,7 +551,7 @@ IT = {
     "Poor Cut Quality": "Scarsa Qualità di Taglio",
     "Dark oxidation layer on cut surface": "Strato di ossidazione scura sulla superficie di taglio",
     "Burrs and dross requiring rework": "Bave e scorie che richiedono rilavorazione",
-    "Extra grinding/polishing labor": "Lavoro extra di molatura/lucidatura",
+    "Extra grinding/poeuchiong labor": "Lavoro extra di molatura/lucidatura",
     "Cannot deliver premium jobs": "Impossibile consegnare lavori premium",
     "Silver-white surface, zero burrs": "Superficie bianco-argento, zero bave",
     "Ready for immediate delivery": "Pronto per la consegna immediata",
@@ -562,7 +564,7 @@ IT = {
     "Unplanned production stop": "Fermo produzione non pianificato",
     "100% safe — pure liquid gas source": "100% sicuro — fonte di gas liquido puro",
     "Zero optical risk": "Zero rischio ottico",
-    "LISHI Mixed Gas: The True Cost Saver": "LISHI Gas Misto: Il Vero Riduttore di Costi",
+    "EUCHIO Mixed Gas: The True Cost Saver": "EUCHIO Gas Misto: Il Vero Riduttore di Costi",
     "While air seems free, your real cost is in maintenance, rework, and lens replacement. Mixed gas costs less in the long run — and delivers superior quality.":
      "Anche se l'aria sembra gratis, il costo reale è in manutenzione, rilavorazioni e sostituzione lenti. Il gas misto costa meno a lungo termine — e offre qualità superiore.",
 
@@ -619,8 +621,8 @@ IT = {
      "Un dispositivo a gas misto converte azoto liquido (N₂) e ossigeno liquido (O₂) in una miscela di gas N₂/O₂ precisamente calibrata (tipicamente 95%/5%). Questa miscela micro-ossigeno è utilizzata come gas ausiliario nel taglio laser ad alta potenza, offrendo velocità di taglio 3× superiori sull'acciaio al carbonio rispetto all'ossigeno puro, eliminando completamente le bave.",
     "Is it compatible with my laser machine?":
      "È compatibile con la mia macchina laser?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Sì. Il Dispositivo a Gas Misto LISHI LASER funziona con tutti i principali marchi laser, inclusi HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas ausiliario, è compatibile.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Sì. Il Dispositivo a Gas Misto EUCHIO funziona con tutti i principali marchi laser, inclusi HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas ausiliario, è compatibile.",
     "What thicknesses can it cut?":
      "Quali spessori può tagliare?",
     "What thickness can it cut?":
@@ -633,12 +635,12 @@ IT = {
      "Il gas misto riduce il consumo di azoto di circa il 33–50% rispetto al taglio con N₂ puro. Inoltre, il dispositivo consuma solo 2 kWh ogni 24 ore — essenzialmente esente da manutenzione. Il rapporto di miscelazione ottimizzato significa più taglio per unità di gas.",
     "Does the device require regular maintenance?":
      "Il dispositivo richiede manutenzione regolare?",
-    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
-     "No. A differenza dei compressori d'aria che necessitano cambio filtri/olio ogni 500–3.000 ore, il Dispositivo a Gas Misto LISHI è esente da manutenzione. Non ci sono parti mobili da usurare, nessun filtro da sostituire e nessun olio da cambiare.",
+    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the EUCHIO Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
+     "No. A differenza dei compressori d'aria che necessitano cambio filtri/olio ogni 500–3.000 ore, il Dispositivo a Gas Misto EUCHIO è esente da manutenzione. Non ci sono parti mobili da usurare, nessun filtro da sostituire e nessun olio da cambiare.",
     "Can one device serve two laser machines?":
      "Un dispositivo può servire due macchine laser?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
-     "Sì. LISHI LASER è l'unico produttore che offre una configurazione uno-a-due stabile. Una stazione di miscelazione alimenta due macchine laser a diversi livelli di potenza (es. 12kW + 20kW) simultaneamente — nessuna commutazione, nessuna caduta di pressione.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
+     "Sì. EUCHIO è l'unico produttore che offre una configurazione uno-a-due stabile. Una stazione di miscelazione alimenta due macchine laser a diversi livelli di potenza (es. 12kW + 20kW) simultaneamente — nessuna commutazione, nessuna caduta di pressione.",
     "How is mixed gas different from air cutting?":
      "In cosa il gas misto è diverso dal taglio ad aria?",
     "Air cutting produces oxidized, rough edges and carries oil/water contamination risk that can burn expensive laser head lenses ($5,000–$50,000). Mixed gas from pure liquid source delivers smooth, bright, burr-free edges — and protects your optics.":
@@ -662,8 +664,8 @@ IT = {
      "Vuoi la tabella completa dei parametri per la tua macchina specifica?",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Dispositivo a Gas Misto"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Contatto"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Dispositivo a Gas Misto"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Contatto"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Produzione Industriale > Apparecchiatura Taglio Laser"',
 
     # Misc
@@ -675,26 +677,26 @@ IT = {
 # ---- GERMAN ----
 DE = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "LISHI LASER Mischgasgerät für 12KW-60KW Laserschneidmaschinen. 3× schnellere Schnittgeschwindigkeit, keine Grate, 33% weniger Gasverbrauch. N2/O2-Verhältnistechnologie für Kohlenstoffstahlschneiden.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Mischgasgerät | 3× Schnelleres Laserschneiden",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "EUCHIO Mischgasgerät für 12KW-60KW Laserschneidmaschinen. 3× schnellere Schnittgeschwindigkeit, keine Grate, 33% weniger Gasverbrauch. N2/O2-Verhältnistechnologie für Kohlenstoffstahlschneiden.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Mischgasgerät | 3× Schnelleres Laserschneiden",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Mischgasgerät für 12KW-60KW Laserschneidmaschinen. 3× schnellere Schnittgeschwindigkeit, keine Grate, 33% weniger Gasverbrauch. N2/O2-Verhältnistechnologie.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "Laserschneiden Gasmischer, Stickstoff-Sauerstoff-Mischgerät, Mikro-Sauerstoff-Laserschneiden, Kohlenstoffstahl-Laserschneiden, Hochleistungslaser 12kW 60kW, Mischgas vs Luftkompressor, Laserschneidgrate beseitigen, Stickstoffverbrauch reduzieren, Han's Laser Gasmischer, industrielle Lasergasausrüstung, Eins-zu-Zwei-Lasergaskonfiguration, Schutzgasoptimierung",
-    "LISHI LASER Mixed Gas Device": "LISHI LASER Mischgasgerät",
+    "EUCHIO Mixed Gas Device": "EUCHIO Mischgasgerät",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "LISHI LASER Mischgasgerät Preise und Angebote. Kompatibel mit allen großen Lasermarken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Weltweiter Versand verfügbar.",
-    "Request a quote for LISHI LASER mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
-     "Fordern Sie ein Angebot für LISHI LASER Mischgas-Schneidausrüstung an. Kompatibel mit allen großen Lasermarken. Weltweiter Versand verfügbar.",
-    "LISHI LASER Contact | Get Mixed Gas Device Quote":
-     "LISHI LASER Kontakt | Mischgasgerät Angebot Erhalten",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "EUCHIO Mischgasgerät Preise und Angebote. Kompatibel mit allen großen Lasermarken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Weltweiter Versand verfügbar.",
+    "Request a quote for EUCHIO mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
+     "Fordern Sie ein Angebot für EUCHIO Mischgas-Schneidausrüstung an. Kompatibel mit allen großen Lasermarken. Weltweiter Versand verfügbar.",
+    "EUCHIO Contact | Get Mixed Gas Device Quote":
+     "EUCHIO Kontakt | Mischgasgerät Angebot Erhalten",
     "laser cutting gas equipment quote, mixed gas device distributor, laser cutting equipment manufacturer, HANS laser compatible gas":
      "Laserschneidgasanlage Angebot, Mischgasgerät Vertriebspartner, Laserschneidausrüstung Hersteller, HANS Laser kompatibles Gas",
-    "LISHI LASER Contact": "LISHI LASER Kontakt",
+    "EUCHIO Contact": "EUCHIO Kontakt",
 
     # Nav + UI
     "Skip to content": "Zum Inhalt springen",
@@ -720,8 +722,8 @@ DE = {
     "Zero Burrs": "Keine Grate",
     "33% Less N₂": "33% Weniger N₂",
     "13 Years in Laser Metal Cutting": "13 Jahre im Laser-Metallschneiden",
-    "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
-     "Das LISHI LASER Mischgasgerät ermöglicht Mikro-Sauerstoff-Schneiden für Hochleistungslasermaschinen (12KW–60KW). Keine Grate, weniger Gasverbrauch und deutlich höhere Schnittgeschwindigkeiten.",
+    "The EUCHIO Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
+     "Das EUCHIO Mischgasgerät ermöglicht Mikro-Sauerstoff-Schneiden für Hochleistungslasermaschinen (12KW–60KW). Keine Grate, weniger Gasverbrauch und deutlich höhere Schnittgeschwindigkeiten.",
     "Get Quote →": "Angebot Erhalten →",
     "View Parameters": "Parameter Anzeigen",
     "Faster than O₂": "Schneller als O₂",
@@ -839,8 +841,8 @@ DE = {
     "ROI Calculator": "ROI-Rechner",
     "Calculator": "Rechner",
     "Calculate Your Laser Cutting Gas Cost Savings": "Berechnen Sie Ihre Laserschneid-Gaskosteneinsparungen",
-    "See how much you could save with LISHI LASER mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
-     "Sehen Sie, wie viel Sie mit LISHI LASER Mischgastechnologie sparen können. Reduzieren Sie den Stickstoffverbrauch, beseitigen Sie Grate auf Kohlenstoffstahl und steigern Sie den Durchsatz.",
+    "See how much you could save with EUCHIO mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
+     "Sehen Sie, wie viel Sie mit EUCHIO Mischgastechnologie sparen können. Reduzieren Sie den Stickstoffverbrauch, beseitigen Sie Grate auf Kohlenstoffstahl und steigern Sie den Durchsatz.",
     "Machine Power": "Maschinenleistung",
     "Material Thickness": "Materialdicke",
     "Daily Work Hours": "Tägliche Arbeitsstunden",
@@ -887,7 +889,7 @@ DE = {
     "Dark oxidation layer on cut surface": "Dunkle Oxidationsschicht auf der Schnittfläche",
     "Burrs and slag requiring rework": "Grate und Schlacke, die Nacharbeit erfordern",
     "Burrs and dross requiring rework": "Grate und Schlacke, die Nacharbeit erfordern",
-    "Extra grinding/polishing labor": "Zusätzlicher Schleif-/Polieraufwand",
+    "Extra grinding/poeuchiong labor": "Zusätzlicher Schleif-/Polieraufwand",
     "Cannot deliver premium jobs": "Kann keine Premium-Aufträge liefern",
     "Silver-white surface, zero burrs": "Silberweiße Oberfläche, keine Grate",
     "Ready to ship immediately": "Sofort versandfertig",
@@ -902,8 +904,8 @@ DE = {
     "Unplanned production stop": "Ungeplanter Produktionsstopp",
     "100% safe — pure liquid gas source": "100% sicher — reine Flüssiggasquelle",
     "Zero optical risk": "Kein optisches Risiko",
-    "LISHI Mixed Gas: The Real Cost Saver": "LISHI Mischgas: Der Echte Kostensparer",
-    "LISHI Mixed Gas: The True Cost Saver": "LISHI Mischgas: Der Wahre Kostensparer",
+    "EUCHIO Mixed Gas: The Real Cost Saver": "EUCHIO Mischgas: Der Echte Kostensparer",
+    "EUCHIO Mixed Gas: The True Cost Saver": "EUCHIO Mischgas: Der Wahre Kostensparer",
     "While air looks free, your real cost is in maintenance, rework, and lens replacements. Mixed gas costs less long-term — and delivers superior quality.":
      "Während Luft kostenlos erscheint, liegen Ihre wahren Kosten in Wartung, Nacharbeit und Linsenwechseln. Mischgas kostet langfristig weniger — und liefert überlegene Qualität.",
     "While air seems free, your real cost is in maintenance, rework, and lens replacement. Mixed gas costs less in the long run — and delivers superior quality.":
@@ -988,10 +990,10 @@ DE = {
     "A mixed gas device converts liquid nitrogen (N₂) and liquid oxygen (O₂) into a precisely calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen blend is used as auxiliary gas in high-power laser cutting, delivering 3× faster cutting speeds on carbon steel compared to pure oxygen while completely eliminating burrs.":
      "Ein Mischgasgerät wandelt flüssigen Stickstoff (N₂) und flüssigen Sauerstoff (O₂) in eine präzise kalibrierte N₂/O₂-Gasmischung um (typischerweise 95%/5%). Diese Mikro-Sauerstoffmischung wird als Schutzgas beim Hochleistungslaserschneiden verwendet und liefert 3× höhere Schnittgeschwindigkeiten bei Kohlenstoffstahl im Vergleich zu reinem Sauerstoff, während Grate vollständig beseitigt werden.",
     "Is it compatible with my laser machine?": "Ist es mit meiner Lasermaschine kompatibel?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Ja. Das LISHI LASER Mischgasgerät funktioniert mit allen großen Lasermarken, einschließlich HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA und MESSER. Es unterstützt Maschinen von 12kW bis 60kW. Wenn Ihre Maschine Standard-Schutzgasanschlüsse verwendet, ist sie kompatibel.",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Ja. Das LISHI LASER Mischgasgerät funktioniert mit allen großen Lasermarken, einschließlich HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA und MESSER. Es unterstützt Maschinen von 12kW bis 60kW. Wenn Ihre Maschine Standard-Schutzgasanschlüsse verwendet, ist sie kompatibel.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Ja. Das EUCHIO Mischgasgerät funktioniert mit allen großen Lasermarken, einschließlich HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA und MESSER. Es unterstützt Maschinen von 12kW bis 60kW. Wenn Ihre Maschine Standard-Schutzgasanschlüsse verwendet, ist sie kompatibel.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Ja. Das EUCHIO Mischgasgerät funktioniert mit allen großen Lasermarken, einschließlich HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA und MESSER. Es unterstützt Maschinen von 12kW bis 60kW. Wenn Ihre Maschine Standard-Schutzgasanschlüsse verwendet, ist sie kompatibel.",
     "What thickness can it cut?": "Welche Dicken kann es schneiden?",
     "What thicknesses can it cut?": "Welche Dicken kann es schneiden?",
     "The cutting range depends on your laser power: 12kW handles up to 16mm, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm carbon steel. It also cuts stainless steel and aluminum. Detailed cutting parameter tables are available on our parameters page below.":
@@ -1001,12 +1003,12 @@ DE = {
      "Mischgas reduziert den Stickstoffverbrauch um etwa 33–50% im Vergleich zu reinem N₂-Schneiden. Zusätzlich verbraucht das Gerät nur 2 kWh pro 24 Stunden — praktisch wartungsfrei. Das optimierte Mischungsverhältnis bedeutet mehr Schneidleistung pro Gaseinheit.",
     "How much gas does it save?": "Wie viel Gas spart es?",
     "Does the device require regular maintenance?": "Erfordert das Gerät regelmäßige Wartung?",
-    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
-     "Nein. Anders als Luftkompressoren, die alle 500–3.000 Stunden Filter-/Ölwechsel benötigen, ist das LISHI Mischgasgerät wartungsfrei. Es gibt keine beweglichen Teile, die verschleißen, keine Filter zum Wechseln und kein Öl zum Austauschen.",
+    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the EUCHIO Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
+     "Nein. Anders als Luftkompressoren, die alle 500–3.000 Stunden Filter-/Ölwechsel benötigen, ist das EUCHIO Mischgasgerät wartungsfrei. Es gibt keine beweglichen Teile, die verschleißen, keine Filter zum Wechseln und kein Öl zum Austauschen.",
     "Does it require regular maintenance?": "Erfordert es regelmäßige Wartung?",
     "Can one device serve two laser machines?": "Kann ein Gerät zwei Lasermaschinen versorgen?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
-     "Ja. LISHI LASER ist der einzige Hersteller, der eine stabile Eins-zu-Zwei-Konfiguration anbietet. Eine Mischstation versorgt zwei Lasermaschinen mit unterschiedlichen Leistungsstufen (z.B. 12kW + 20kW) gleichzeitig — keine Umschaltung, keine Druckabfälle.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
+     "Ja. EUCHIO ist der einzige Hersteller, der eine stabile Eins-zu-Zwei-Konfiguration anbietet. Eine Mischstation versorgt zwei Lasermaschinen mit unterschiedlichen Leistungsstufen (z.B. 12kW + 20kW) gleichzeitig — keine Umschaltung, keine Druckabfälle.",
     "Can one device supply two lasers?": "Kann ein Gerät zwei Laser versorgen?",
     "How is mixed gas different from air cutting?": "Wie unterscheidet sich Mischgas vom Luftschneiden?",
     "Air cutting produces oxidized, rough edges and carries oil/water contamination risk that can burn expensive laser head lenses ($5,000–50,000). Mixed gas from pure liquid source delivers smooth, bright, burr-free edges — and protects your optics.":
@@ -1105,8 +1107,8 @@ DE = {
      "Bei extremen Dicken (30mm+) verschiebt sich der limitierende Faktor von der Gaschemie zur Laserleistungsdurchdringung. Das Mischgas bietet weiterhin Vorteile bei der Kantenqualität und beseitigt Grate, aber der reine Geschwindigkeitsunterschied zu Sauerstoff verringert sich, da beide Prozesse von der physikalischen Fähigkeit des Laserstrahls dominiert werden, das Material zu durchdringen.",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Mischgasgerät"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Kontakt"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Mischgasgerät"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Kontakt"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Industrielle Fertigung > Laserschneidausrüstung"',
 
     # Misc
@@ -1118,26 +1120,26 @@ DE = {
 # ---- FRENCH ----
 FR = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "Dispositif à gaz mixte LISHI LASER pour machines de découpe laser 12KW-60KW. Découpe 3× plus rapide, zéro bavure, 33% de gaz en moins. Technologie à ratio N2/O2 pour la découpe d'acier carbone.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Dispositif à Gaz Mixte | Découpe Laser 3× Plus Rapide",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "Dispositif à gaz mixte EUCHIO pour machines de découpe laser 12KW-60KW. Découpe 3× plus rapide, zéro bavure, 33% de gaz en moins. Technologie à ratio N2/O2 pour la découpe d'acier carbone.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Dispositif à Gaz Mixte | Découpe Laser 3× Plus Rapide",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Dispositif à gaz mixte pour machines de découpe laser 12KW-60KW. Découpe 3× plus rapide, zéro bavure, 33% de gaz en moins. Technologie à ratio N2/O2.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "mélangeur gaz découpe laser, dispositif mélange azote oxygène, découpe laser micro oxygène, découpe laser acier carbone, laser haute puissance 12kW 60kW, gaz mixte vs compresseur air, éliminer bavures découpe laser, réduire consommation azote, mélangeur gaz laser Han's, équipement gaz laser industriel, configuration gaz laser un-pour-deux, optimisation gaz auxiliaire",
-    "LISHI LASER Mixed Gas Device": "LISHI LASER Dispositif à Gaz Mixte",
+    "EUCHIO Mixed Gas Device": "EUCHIO Dispositif à Gaz Mixte",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Tarifs et devis dispositif à gaz mixte LISHI LASER. Compatible avec toutes les grandes marques laser (HANS, DNE, PENTA, LEAD, HSG, BODOR). Livraison mondiale disponible.",
-    "Request a quote for LISHI LASER mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
-     "Demandez un devis pour équipement de découpe à gaz mixte LISHI LASER. Compatible avec toutes les grandes marques laser. Livraison mondiale disponible.",
-    "LISHI LASER Contact | Get Mixed Gas Device Quote":
-     "LISHI LASER Contact | Devis Dispositif Gaz Mixte",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Tarifs et devis dispositif à gaz mixte EUCHIO. Compatible avec toutes les grandes marques laser (HANS, DNE, PENTA, LEAD, HSG, BODOR). Livraison mondiale disponible.",
+    "Request a quote for EUCHIO mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
+     "Demandez un devis pour équipement de découpe à gaz mixte EUCHIO. Compatible avec toutes les grandes marques laser. Livraison mondiale disponible.",
+    "EUCHIO Contact | Get Mixed Gas Device Quote":
+     "EUCHIO Contact | Devis Dispositif Gaz Mixte",
     "laser cutting gas equipment quote, mixed gas device distributor, laser cutting equipment manufacturer, HANS laser compatible gas":
      "devis équipement gaz découpe laser, distributeur dispositif gaz mixte, fabricant équipement découpe laser, gaz compatible laser HANS",
-    "LISHI LASER Contact": "LISHI LASER Contact",
+    "EUCHIO Contact": "EUCHIO Contact",
 
     # Nav + UI
     "Skip to content": "Aller au contenu",
@@ -1163,8 +1165,8 @@ FR = {
     "Zero Burrs": "Zéro Bavure",
     "33% Less N₂": "33% de N₂ en Moins",
     "13 Years in Laser Metal Cutting": "13 Ans dans la Découpe Laser des Métaux",
-    "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
-     "Le Dispositif à Gaz Mixte LISHI LASER offre une découpe micro-oxygène pour machines laser haute puissance (12KW–60KW). Aucune bavure, moins de gaz et des vitesses de découpe nettement supérieures.",
+    "The EUCHIO Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
+     "Le Dispositif à Gaz Mixte EUCHIO offre une découpe micro-oxygène pour machines laser haute puissance (12KW–60KW). Aucune bavure, moins de gaz et des vitesses de découpe nettement supérieures.",
     "Get Quote →": "Obtenir un Devis →",
     "View Parameters": "Voir les Paramètres",
     "Faster than O₂": "Plus Rapide que l'O₂",
@@ -1283,8 +1285,8 @@ FR = {
     "ROI Calculator": "Calculateur ROI",
     "Calculator": "Calculateur",
     "Calculate Your Laser Cutting Gas Cost Savings": "Calculez vos Économies de Coûts de Gaz de Découpe Laser",
-    "See how much you could save with LISHI LASER mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
-     "Voyez combien vous pourriez économiser avec la technologie à gaz mixte LISHI LASER. Réduisez la consommation d'azote, éliminez les bavures sur acier carbone et augmentez le débit.",
+    "See how much you could save with EUCHIO mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
+     "Voyez combien vous pourriez économiser avec la technologie à gaz mixte EUCHIO. Réduisez la consommation d'azote, éliminez les bavures sur acier carbone et augmentez le débit.",
     "Machine Power": "Puissance Machine",
     "Material Thickness": "Épaisseur Matériau",
     "Daily Work Hours": "Heures de Travail Quotidiennes",
@@ -1331,7 +1333,7 @@ FR = {
     "Dark oxidation layer on cut surface": "Couche d'oxydation foncée sur surface de coupe",
     "Burrs and slag requiring rework": "Bavures et scories nécessitant reprise",
     "Burrs and dross requiring rework": "Bavures et scories nécessitant reprise",
-    "Extra grinding/polishing labor": "Travail supplémentaire de meulage/polissage",
+    "Extra grinding/poeuchiong labor": "Travail supplémentaire de meulage/polissage",
     "Cannot deliver premium jobs": "Impossible de livrer des travaux premium",
     "Silver-white surface, zero burrs": "Surface blanc argenté, zéro bavure",
     "Ready to ship immediately": "Prêt à expédier immédiatement",
@@ -1346,8 +1348,8 @@ FR = {
     "Unplanned production stop": "Arrêt de production non planifié",
     "100% safe — pure liquid gas source": "100% sûr — source de gaz liquide pur",
     "Zero optical risk": "Zéro risque optique",
-    "LISHI Mixed Gas: The Real Cost Saver": "LISHI Gaz Mixte : Le Vrai Réducteur de Coûts",
-    "LISHI Mixed Gas: The True Cost Saver": "LISHI Gaz Mixte : Le Véritable Économiseur de Coûts",
+    "EUCHIO Mixed Gas: The Real Cost Saver": "EUCHIO Gaz Mixte : Le Vrai Réducteur de Coûts",
+    "EUCHIO Mixed Gas: The True Cost Saver": "EUCHIO Gaz Mixte : Le Véritable Économiseur de Coûts",
     "While air looks free, your real cost is in maintenance, rework, and lens replacements. Mixed gas costs less long-term — and delivers superior quality.":
      "Alors que l'air semble gratuit, votre coût réel est dans la maintenance, les reprises et les remplacements de lentilles. Le gaz mixte coûte moins cher à long terme — et offre une qualité supérieure.",
     "While air seems free, your real cost is in maintenance, rework, and lens replacement. Mixed gas costs less in the long run — and delivers superior quality.":
@@ -1432,10 +1434,10 @@ FR = {
     "A mixed gas device converts liquid nitrogen (N₂) and liquid oxygen (O₂) into a precisely calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen blend is used as auxiliary gas in high-power laser cutting, delivering 3× faster cutting speeds on carbon steel compared to pure oxygen while completely eliminating burrs.":
      "Un dispositif à gaz mixte convertit l'azote liquide (N₂) et l'oxygène liquide (O₂) en un mélange gazeux N₂/O₂ précisément calibré (typiquement 95%/5%). Ce mélange micro-oxygène est utilisé comme gaz auxiliaire dans la découpe laser haute puissance, offrant des vitesses de découpe 3× supérieures sur acier carbone par rapport à l'oxygène pur tout en éliminant complètement les bavures.",
     "Is it compatible with my laser machine?": "Est-il compatible avec ma machine laser ?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Oui. Le Dispositif à Gaz Mixte LISHI LASER fonctionne avec toutes les grandes marques laser, y compris HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA et MESSER. Il prend en charge les machines de 12kW à 60kW. Si votre machine utilise des connexions gaz auxiliaire standard, elle est compatible.",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Oui. Le Dispositif à Gaz Mixte LISHI LASER fonctionne avec toutes les grandes marques laser, y compris HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA et MESSER. Il prend en charge les machines de 12kW à 60kW. Si votre machine utilise des connexions gaz auxiliaire standard, elle est compatible.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Oui. Le Dispositif à Gaz Mixte EUCHIO fonctionne avec toutes les grandes marques laser, y compris HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA et MESSER. Il prend en charge les machines de 12kW à 60kW. Si votre machine utilise des connexions gaz auxiliaire standard, elle est compatible.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Oui. Le Dispositif à Gaz Mixte EUCHIO fonctionne avec toutes les grandes marques laser, y compris HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA et MESSER. Il prend en charge les machines de 12kW à 60kW. Si votre machine utilise des connexions gaz auxiliaire standard, elle est compatible.",
     "What thickness can it cut?": "Quelles épaisseurs peut-il couper ?",
     "What thicknesses can it cut?": "Quelles épaisseurs peut-il couper ?",
     "The cutting range depends on your laser power: 12kW handles up to 16mm, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm carbon steel. It also cuts stainless steel and aluminum. Detailed cutting parameter tables are available on our parameters page below.":
@@ -1445,12 +1447,12 @@ FR = {
      "Le gaz mixte réduit la consommation d'azote d'environ 33–50% par rapport à la découpe N₂ pur. De plus, le dispositif ne consomme que 2 kWh par 24 heures — essentiellement sans maintenance. Le ratio de mélange optimisé signifie plus de découpe par unité de gaz.",
     "How much gas does it save?": "Combien de gaz économise-t-il ?",
     "Does the device require regular maintenance?": "Le dispositif nécessite-t-il une maintenance régulière ?",
-    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
-     "Non. Contrairement aux compresseurs d'air nécessitant des changements de filtre/huile toutes les 500–3.000 heures, le Dispositif à Gaz Mixte LISHI est sans maintenance. Aucune pièce mobile à user, aucun filtre à remplacer, aucune huile à changer.",
+    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the EUCHIO Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
+     "Non. Contrairement aux compresseurs d'air nécessitant des changements de filtre/huile toutes les 500–3.000 heures, le Dispositif à Gaz Mixte EUCHIO est sans maintenance. Aucune pièce mobile à user, aucun filtre à remplacer, aucune huile à changer.",
     "Does it require regular maintenance?": "Nécessite-t-il une maintenance régulière ?",
     "Can one device serve two laser machines?": "Un dispositif peut-il servir deux machines laser ?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
-     "Oui. LISHI LASER est le seul fabricant offrant une configuration un-pour-deux stable. Une station de mélange alimente deux machines laser à différents niveaux de puissance (ex. 12kW + 20kW) simultanément — aucune commutation, aucune chute de pression.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
+     "Oui. EUCHIO est le seul fabricant offrant une configuration un-pour-deux stable. Une station de mélange alimente deux machines laser à différents niveaux de puissance (ex. 12kW + 20kW) simultanément — aucune commutation, aucune chute de pression.",
     "Can one device supply two lasers?": "Un dispositif peut-il alimenter deux lasers ?",
     "How is mixed gas different from air cutting?": "En quoi le gaz mixte diffère-t-il de la découpe à air ?",
     "Air cutting produces oxidized, rough edges and carries oil/water contamination risk that can burn expensive laser head lenses ($5,000–50,000). Mixed gas from pure liquid source delivers smooth, bright, burr-free edges — and protects your optics.":
@@ -1549,8 +1551,8 @@ FR = {
      "À des épaisseurs extrêmes (30mm+), le facteur limitant passe de la chimie du gaz à la puissance de pénétration laser. Le gaz mixte offre toujours des avantages en qualité de bord et élimine les bavures, mais la différence de vitesse brute par rapport à l'oxygène se réduit car les deux processus sont dominés par la capacité physique du faisceau laser à pénétrer le matériau.",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Dispositif à Gaz Mixte"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Contact"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Dispositif à Gaz Mixte"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Contact"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Fabrication Industrielle > Équipement de Découpe Laser"',
 
     # Misc
@@ -1562,26 +1564,26 @@ FR = {
 # ---- DUTCH ----
 NL = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "LISHI LASER Menggasapparaat voor 12KW-60KW lasersnijmachines. 3× snellere snijsnelheid, geen bramen, 33% minder gasverbruik. N2/O2-verhoudingstechnologie voor koolstofstaalsnijden.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Menggasapparaat | 3× Sneller Lasersnijden",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "EUCHIO Menggasapparaat voor 12KW-60KW lasersnijmachines. 3× snellere snijsnelheid, geen bramen, 33% minder gasverbruik. N2/O2-verhoudingstechnologie voor koolstofstaalsnijden.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Menggasapparaat | 3× Sneller Lasersnijden",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Menggasapparaat voor 12KW-60KW lasersnijmachines. 3× snellere snijsnelheid, geen bramen, 33% minder gasverbruik. N2/O2-verhoudingstechnologie.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "lasersnijden gasmenger, stikstof zuurstof mengapparaat, micro zuurstof lasersnijden, koolstofstaal lasersnijden, hoogvermogen laser 12kW 60kW, menggas vs luchtcompressor, lasersnijbramen verwijderen, stikstofverbruik verminderen, Han's laser gasmenger, industriële lasergasapparatuur, een-op-twee lasergasconfiguratie, snijgasoptimalisatie",
-    "LISHI LASER Mixed Gas Device": "LISHI LASER Menggasapparaat",
+    "EUCHIO Mixed Gas Device": "EUCHIO Menggasapparaat",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "LISHI LASER menggasapparaat prijzen en offertes. Compatibel met alle grote lasermerken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Wereldwijde verzending beschikbaar.",
-    "Request a quote for LISHI LASER mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
-     "Vraag een offerte aan voor LISHI LASER menggas snijapparatuur. Compatibel met alle grote lasermerken. Wereldwijde verzending beschikbaar.",
-    "LISHI LASER Contact | Get Mixed Gas Device Quote":
-     "LISHI LASER Contact | Menggasapparaat Offerte Aanvragen",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "EUCHIO menggasapparaat prijzen en offertes. Compatibel met alle grote lasermerken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Wereldwijde verzending beschikbaar.",
+    "Request a quote for EUCHIO mixed gas cutting equipment. Compatible with all major laser brands. Global shipping available.":
+     "Vraag een offerte aan voor EUCHIO menggas snijapparatuur. Compatibel met alle grote lasermerken. Wereldwijde verzending beschikbaar.",
+    "EUCHIO Contact | Get Mixed Gas Device Quote":
+     "EUCHIO Contact | Menggasapparaat Offerte Aanvragen",
     "laser cutting gas equipment quote, mixed gas device distributor, laser cutting equipment manufacturer, HANS laser compatible gas":
      "lasersnijgasapparatuur offerte, menggasapparaat distributeur, lasersnijapparatuur fabrikant, HANS laser compatibel gas",
-    "LISHI LASER Contact": "LISHI LASER Contact",
+    "EUCHIO Contact": "EUCHIO Contact",
 
     # Nav + UI
     "Skip to content": "Naar inhoud",
@@ -1607,8 +1609,8 @@ NL = {
     "Zero Burrs": "Geen Bramen",
     "33% Less N₂": "33% Minder N₂",
     "13 Years in Laser Metal Cutting": "13 Jaar in Laser Metaalsnijden",
-    "The LISHI LASER Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
-     "Het LISHI LASER Menggasapparaat levert micro-zuurstofsnijden voor hoogvermogen lasermachines (12KW–60KW). Geen bramen, minder gasverbruik en aanzienlijk hogere snijsnelheden.",
+    "The EUCHIO Mixed Gas Device delivers micro-oxygen cutting for high-power laser machines (12KW–60KW). No burrs, less gas consumption, and significantly faster cutting speeds.":
+     "Het EUCHIO Menggasapparaat levert micro-zuurstofsnijden voor hoogvermogen lasermachines (12KW–60KW). Geen bramen, minder gasverbruik en aanzienlijk hogere snijsnelheden.",
     "Get Quote →": "Offerte Aanvragen →",
     "View Parameters": "Parameters Bekijken",
     "Faster than O₂": "Sneller dan O₂",
@@ -1727,8 +1729,8 @@ NL = {
     "ROI Calculator": "ROI-Calculator",
     "Calculator": "Calculator",
     "Calculate Your Laser Cutting Gas Cost Savings": "Bereken Uw Lasersnijden Gaskostenbesparing",
-    "See how much you could save with LISHI LASER mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
-     "Zie hoeveel u kunt besparen met LISHI LASER menggastechnologie. Verlaag stikstofverbruik, elimineer bramen op koolstofstaal en verhoog de doorvoer.",
+    "See how much you could save with EUCHIO mixed gas technology. Cut nitrogen consumption, eliminate burrs on carbon steel, and boost throughput.":
+     "Zie hoeveel u kunt besparen met EUCHIO menggastechnologie. Verlaag stikstofverbruik, elimineer bramen op koolstofstaal en verhoog de doorvoer.",
     "Machine Power": "Machinevermogen",
     "Material Thickness": "Materiaaldikte",
     "Daily Work Hours": "Dagelijkse Werkuren",
@@ -1775,7 +1777,7 @@ NL = {
     "Dark oxidation layer on cut surface": "Donkere oxidatielaag op snijoppervlak",
     "Burrs and slag requiring rework": "Bramen en slak die nabewerking vereisen",
     "Burrs and dross requiring rework": "Bramen en slak die nabewerking vereisen",
-    "Extra grinding/polishing labor": "Extra slijp-/polijstwerk",
+    "Extra grinding/poeuchiong labor": "Extra slijp-/polijstwerk",
     "Cannot deliver premium jobs": "Kan geen premium opdrachten leveren",
     "Silver-white surface, zero burrs": "Zilverwit oppervlak, geen bramen",
     "Ready to ship immediately": "Klaar voor onmiddellijke verzending",
@@ -1790,8 +1792,8 @@ NL = {
     "Unplanned production stop": "Ongeplande productiestop",
     "100% safe — pure liquid gas source": "100% veilig — zuivere vloeibare gasbron",
     "Zero optical risk": "Geen optisch risico",
-    "LISHI Mixed Gas: The Real Cost Saver": "LISHI Menggas: De Echte Kostenbespaarder",
-    "LISHI Mixed Gas: The True Cost Saver": "LISHI Menggas: De Ware Kostenbespaarder",
+    "EUCHIO Mixed Gas: The Real Cost Saver": "EUCHIO Menggas: De Echte Kostenbespaarder",
+    "EUCHIO Mixed Gas: The True Cost Saver": "EUCHIO Menggas: De Ware Kostenbespaarder",
     "While air looks free, your real cost is in maintenance, rework, and lens replacements. Mixed gas costs less long-term — and delivers superior quality.":
      "Hoewel lucht gratis lijkt, zitten uw echte kosten in onderhoud, nabewerking en lensvervangingen. Menggas kost op lange termijn minder — en levert superieure kwaliteit.",
     "While air seems free, your real cost is in maintenance, rework, and lens replacement. Mixed gas costs less in the long run — and delivers superior quality.":
@@ -1876,10 +1878,10 @@ NL = {
     "A mixed gas device converts liquid nitrogen (N₂) and liquid oxygen (O₂) into a precisely calibrated N₂/O₂ gas mixture (typically 95%/5%). This micro-oxygen blend is used as auxiliary gas in high-power laser cutting, delivering 3× faster cutting speeds on carbon steel compared to pure oxygen while completely eliminating burrs.":
      "Een menggasapparaat zet vloeibare stikstof (N₂) en vloeibare zuurstof (O₂) om in een nauwkeurig gekalibreerd N₂/O₂-gasmengsel (meestal 95%/5%). Dit micro-zuurstofmengsel wordt gebruikt als snijgas bij hoogvermogen lasersnijden en levert 3× hogere snijsnelheden op koolstofstaal in vergelijking met zuivere zuurstof, terwijl bramen volledig worden geëlimineerd.",
     "Is it compatible with my laser machine?": "Is het compatibel met mijn lasermachine?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Ja. Het LISHI LASER Menggasapparaat werkt met alle grote lasermerken, waaronder HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA en MESSER. Het ondersteunt machines van 12kW tot 60kW. Als uw machine standaard snijgasaansluitingen gebruikt, is het compatibel.",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
-     "Ja. Het LISHI LASER Menggasapparaat werkt met alle grote lasermerken, waaronder HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA en MESSER. Het ondersteunt machines van 12kW tot 60kW. Als uw machine standaard snijgasaansluitingen gebruikt, is het compatibel.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Ja. Het EUCHIO Menggasapparaat werkt met alle grote lasermerken, waaronder HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA en MESSER. Het ondersteunt machines van 12kW tot 60kW. Als uw machine standaard snijgasaansluitingen gebruikt, is het compatibel.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands, including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA, and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it is compatible.":
+     "Ja. Het EUCHIO Menggasapparaat werkt met alle grote lasermerken, waaronder HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA en MESSER. Het ondersteunt machines van 12kW tot 60kW. Als uw machine standaard snijgasaansluitingen gebruikt, is het compatibel.",
     "What thickness can it cut?": "Welke diktes kan het snijden?",
     "What thicknesses can it cut?": "Welke diktes kan het snijden?",
     "The cutting range depends on your laser power: 12kW handles up to 16mm, 20kW up to 25mm, 30kW up to 30mm, and 60kW up to 40mm carbon steel. It also cuts stainless steel and aluminum. Detailed cutting parameter tables are available on our parameters page below.":
@@ -1889,12 +1891,12 @@ NL = {
      "Menggas vermindert het stikstofverbruik met ongeveer 33–50% in vergelijking met puur N₂-snijden. Bovendien verbruikt het apparaat slechts 2 kWh per 24 uur — vrijwel onderhoudsvrij. De geoptimaliseerde mengverhouding betekent meer snijwerk per eenheid gas.",
     "How much gas does it save?": "Hoeveel gas bespaart het?",
     "Does the device require regular maintenance?": "Heeft het apparaat regelmatig onderhoud nodig?",
-    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the LISHI Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
-     "Nee. In tegenstelling tot luchtcompressoren die elke 500–3.000 uur filter-/olieverversing nodig hebben, is het LISHI Menggasapparaat onderhoudsvrij. Er zijn geen bewegende delen die slijten, geen filters te vervangen en geen olie te verversen.",
+    "No. Unlike air compressors that need filter/oil changes every 500–3,000 hours, the EUCHIO Mixed Gas Device is maintenance-free. There are no moving parts to wear out, no filters to replace, and no oil to change.":
+     "Nee. In tegenstelling tot luchtcompressoren die elke 500–3.000 uur filter-/olieverversing nodig hebben, is het EUCHIO Menggasapparaat onderhoudsvrij. Er zijn geen bewegende delen die slijten, geen filters te vervangen en geen olie te verversen.",
     "Does it require regular maintenance?": "Heeft het regelmatig onderhoud nodig?",
     "Can one device serve two laser machines?": "Kan één apparaat twee lasermachines bedienen?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
-     "Ja. LISHI LASER is de enige fabrikant die een stabiele een-op-twee-configuratie aanbiedt. Eén mengstation voedt twee lasermachines op verschillende vermogensniveaus (bijv. 12kW + 20kW) gelijktijdig — geen omschakeling, geen drukverlies.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station feeds two laser machines at different power levels (e.g., 12kW + 20kW) simultaneously — no switching, no pressure drops.":
+     "Ja. EUCHIO is de enige fabrikant die een stabiele een-op-twee-configuratie aanbiedt. Eén mengstation voedt twee lasermachines op verschillende vermogensniveaus (bijv. 12kW + 20kW) gelijktijdig — geen omschakeling, geen drukverlies.",
     "Can one device supply two lasers?": "Kan één apparaat twee lasers voeden?",
     "How is mixed gas different from air cutting?": "Hoe verschilt menggas van luchtsnijden?",
     "Air cutting produces oxidized, rough edges and carries oil/water contamination risk that can burn expensive laser head lenses ($5,000–50,000). Mixed gas from pure liquid source delivers smooth, bright, burr-free edges — and protects your optics.":
@@ -1993,15 +1995,15 @@ NL = {
      "Bij extreme diktes (30mm+) verschuift de beperkende factor van gaschemie naar laservermogenpenetratie. Het menggas biedt nog steeds voordelen in randkwaliteit en elimineert bramen, maar het ruwe snelheidsverschil met zuurstof wordt kleiner omdat beide processen worden gedomineerd door het fysieke vermogen van de laserstraal om het materiaal te doordringen.",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Menggasapparaat"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Contact"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Menggasapparaat"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Contact"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Industriële Productie > Lasersnijapparatuur"',
 
     # Contact page specific
-    "Contact LISHI LASER for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Neem contact op met LISHI LASER voor menggasapparaat prijzen en offertes. Compatibel met alle grote lasermerken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Wereldwijde verzending beschikbaar.",
-    "Contact LISHI LASER | Get Mixed Gas Device Quote":
-     "Neem Contact Op Met LISHI LASER | Offerte Menggasapparaat Aanvragen",
+    "Contact EUCHIO for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Neem contact op met EUCHIO voor menggasapparaat prijzen en offertes. Compatibel met alle grote lasermerken (HANS, DNE, PENTA, LEAD, HSG, BODOR). Wereldwijde verzending beschikbaar.",
+    "Contact EUCHIO | Get Mixed Gas Device Quote":
+     "Neem Contact Op Met EUCHIO | Offerte Menggasapparaat Aanvragen",
     "Ready to increase your cutting speed? Send us your laser machine details and we'll provide customized parameters and pricing.":
      "Klaar om uw snijsnelheid te verhogen? Stuur ons de gegevens van uw lasermachine en wij bieden aangepaste parameters en prijzen.",
     "We're actively expanding our global partner network. Regional partnerships are available for qualified distributors.":
@@ -2026,8 +2028,8 @@ NL = {
      "20kW lasersnijparameters voor 8mm koolstofstaal. Menggas vs zuurstof snijsnelheid gegevens voor 12kW tot 60kW lasers. Industriële gasmengoptimalisatiegids met echte eindgebruikersgegevens.",
     "Laser Cutting Parameters by Power | Mixed Gas vs O2 Speed Data":
      "Lasersnijparameters per Vermogen | Menggas vs O2 Snelheid Gegevens",
-    "Laser Cutting Parameters | LISHI LASER Mixed Gas Device":
-     "Lasersnijparameters | LISHI LASER Menggasapparaat",
+    "Laser Cutting Parameters | EUCHIO Mixed Gas Device":
+     "Lasersnijparameters | EUCHIO Menggasapparaat",
     "20kW Laser Cutting Parameters | Mixed Gas vs O2 Speed Data":
      "20kW Lasersnijparameters | Menggas vs O2 Snelheid Gegevens",
     "20kW Laser Cutting Parameters & Gas Speed Data":
@@ -2053,26 +2055,26 @@ NL = {
 
 RU = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "LISHI LASER Устройство смешанного газа для станков лазерной резки 12-60 кВт. Скорость резки в 3 раза выше, без заусенцев, расход газа на 33% меньше. Технология соотношения N2/O2 для резки углеродистой стали.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Устройство смешанного газа | Лазерная резка в 3× быстрее",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "EUCHIO Устройство смешанного газа для станков лазерной резки 12-60 кВт. Скорость резки в 3 раза выше, без заусенцев, расход газа на 33% меньше. Технология соотношения N2/O2 для резки углеродистой стали.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Устройство смешанного газа | Лазерная резка в 3× быстрее",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Устройство смешанного газа для станков лазерной резки 12-60 кВт. Скорость резки в 3× выше, без заусенцев, расход газа на 33% меньше. Технология соотношения N2/O2.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "смеситель газа лазерной резки, устройство смешивания азота и кислорода, микрокислородная лазерная резка, лазерная резка углеродистой стали, мощный лазер 12кВт 60кВт, смешанный газ против воздушного компрессора, устранение заусенцев лазерной резки, снижение расхода азота, смеситель газа Han's laser, промышленное газовое оборудование, подключение одного устройства к двум станкам, оптимизация вспомогательного газа",
-    "LISHI LASER Mixed Gas Device": "LISHI LASER Устройство смешанного газа",
+    "EUCHIO Mixed Gas Device": "EUCHIO Устройство смешанного газа",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Цены и предложения на устройство смешанного газа LISHI LASER. Совместимо со всеми основными брендами лазеров (HANS, DNE, PENTA, LEAD, HSG, BODOR). Доступна международная доставка.",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Цены и предложения на устройство смешанного газа EUCHIO. Совместимо со всеми основными брендами лазеров (HANS, DNE, PENTA, LEAD, HSG, BODOR). Доступна международная доставка.",
 
     "Mixed gas device for carbon steel laser cutting — 3× faster than oxygen, zero burrs, 33% nitrogen savings":
      "Устройство смешанного газа для лазерной резки углеродистой стали — в 3× быстрее кислорода, без заусенцев, экономия азота 33%",
-    "Get LISHI LASER mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
-     "Получите параметры резки и цены на смешанный газ LISHI LASER. Совместимо с HANS, DNE, PENTA, LEAD, HSG, BODOR. Международная доставка.",
-    "LISHI LASER Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
-     "LISHI LASER Устройство смешанного газа | Промышленный смеситель газа для лазерной резки",
+    "Get EUCHIO mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
+     "Получите параметры резки и цены на смешанный газ EUCHIO. Совместимо с HANS, DNE, PENTA, LEAD, HSG, BODOR. Международная доставка.",
+    "EUCHIO Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
+     "EUCHIO Устройство смешанного газа | Промышленный смеситель газа для лазерной резки",
 
     # Hero
     "Cut <span class=\"accent\">3× Faster</span><br>with Mixed Gas Technology":
@@ -2295,10 +2297,10 @@ RU = {
     "View Parameters": "Смотреть параметры",
 
     # Contact page meta
-    "Contact LISHI LASER for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Свяжитесь с LISHI LASER для получения цен и предложений на устройство смешанного газа. Совместимо со всеми основными брендами лазеров (HANS, DNE, PENTA, LEAD, HSG, BODOR). Доступна международная доставка.",
-    "Contact LISHI LASER | Get Mixed Gas Device Quote":
-     "Свяжитесь с LISHI LASER | Получите предложение на устройство смешанного газа",
+    "Contact EUCHIO for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Свяжитесь с EUCHIO для получения цен и предложений на устройство смешанного газа. Совместимо со всеми основными брендами лазеров (HANS, DNE, PENTA, LEAD, HSG, BODOR). Доступна международная доставка.",
+    "Contact EUCHIO | Get Mixed Gas Device Quote":
+     "Свяжитесь с EUCHIO | Получите предложение на устройство смешанного газа",
 
     # Parameters page meta
     "Carbon steel cutting speed parameters: 12kW to 60kW. Compare mixed gas vs oxygen cutting speeds. Data from real end user tests.":
@@ -2307,8 +2309,8 @@ RU = {
      "Параметры лазерной резки 20 кВт для углеродистой стали 8 мм. Данные о скорости резки смешанным газом и кислородом для лазеров от 12 до 60 кВт. Руководство по оптимизации промышленного смешивания газов с реальными данными.",
     "Laser Cutting Parameters by Power | Mixed Gas vs O2 Speed Data":
      "Параметры лазерной резки по мощности | Сравнение скорости смешанного газа и O2",
-    "Laser Cutting Parameters | LISHI LASER Mixed Gas Device":
-     "Параметры лазерной резки | LISHI LASER Устройство смешанного газа",
+    "Laser Cutting Parameters | EUCHIO Mixed Gas Device":
+     "Параметры лазерной резки | EUCHIO Устройство смешанного газа",
     "20kW Laser Cutting Parameters | Mixed Gas vs O2 Speed Data":
      "Параметры лазерной резки 20 кВт | Сравнение скорости смешанного газа и O2",
     "20kW Laser Cutting Parameters & Gas Speed Data":
@@ -2327,8 +2329,8 @@ RU = {
     "Mixed Gas Device": "Устройство смешанного газа",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Устройство смешанного газа"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Контакты"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Устройство смешанного газа"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Контакты"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Промышленное производство > Оборудование для лазерной резки"',
 
     # FAQ content
@@ -2338,8 +2340,8 @@ RU = {
      "Устройство смешанного газа преобразует жидкий азот (N₂) и жидкий кислород (O₂) в точно калиброванную газовую смесь N₂/O₂ (обычно 95%/5%). Эта микрокислородная смесь используется в качестве вспомогательного газа при мощной лазерной резке, обеспечивая скорость резки в 3 раза выше по сравнению с чистым кислородом на углеродистой стали и полностью устраняя заусенцы.",
     "Is it compatible with my laser machine?":
      "Совместимо ли с моим лазерным станком?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
-     "Да. Устройство смешанного газа LISHI LASER работает со всеми основными брендами лазеров, включая HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA и MESSER. Поддерживает станки от 12 до 60 кВт. Если ваш станок использует стандартные подключения вспомогательного газа, он совместим.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
+     "Да. Устройство смешанного газа EUCHIO работает со всеми основными брендами лазеров, включая HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA и MESSER. Поддерживает станки от 12 до 60 кВт. Если ваш станок использует стандартные подключения вспомогательного газа, он совместим.",
     "What thicknesses can it cut?": "Какие толщины можно резать?",
     "The mixed gas device can cut carbon steel, stainless steel and aluminum from 1mm to 30mm. Cutting thickness depends on your laser power. Detailed cutting parameter tables are available on our parameters page below.":
      "Устройство смешанного газа может резать углеродистую сталь, нержавеющую сталь и алюминий от 1 до 30 мм. Толщина резки зависит от мощности вашего лазера. Подробные таблицы параметров резки доступны на нашей странице параметров.",
@@ -2361,16 +2363,16 @@ RU = {
      "Установка проста — компактный блок, подключаемый к вашему существующему лазерному станку. Обслуживание минимально: всего 2 кВт·ч/24 ч энергопотребления и базовая ежегодная проверка. Нет движущихся частей, поэтому нет износа или необходимости в частом обслуживании.",
     "Can one mixed gas device supply two laser machines simultaneously?":
      "Может ли одно устройство подавать газ на два лазерных станка одновременно?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
-     "Да. LISHI LASER — единственный производитель, предлагающий стабильную конфигурацию «один к двум». Одна смесительная станция может одновременно питать два станка лазерной резки с независимым контролем потока, эффективно сокращая затраты на оборудование вдвое.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
+     "Да. EUCHIO — единственный производитель, предлагающий стабильную конфигурацию «один к двум». Одна смесительная станция может одновременно питать два станка лазерной резки с независимым контролем потока, эффективно сокращая затраты на оборудование вдвое.",
     "What are the input gas pressure requirements?": "Каковы требования к входному давлению газа?",
-    "The LISHI LASER Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
-     "Устройство смешанного газа LISHI LASER требует входного давления 20–25 бар от резервуаров жидкого N₂ и O₂, с диапазоном выходного давления 15–30 бар, регулируемым для различных лазерных станков и применений резки.",
+    "The EUCHIO Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
+     "Устройство смешанного газа EUCHIO требует входного давления 20–25 бар от резервуаров жидкого N₂ и O₂, с диапазоном выходного давления 15–30 бар, регулируемым для различных лазерных станков и применений резки.",
     "Is it guaranteed?": "Есть ли гарантия?",
-    "Yes, all LISHI LASER Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
-     "Да, все устройства смешанного газа LISHI LASER покрываются гарантией 1 год с даты покупки. Варианты расширенной гарантии доступны через нашу глобальную сеть послепродажной поддержки.",
-    "What laser power levels are supported by the LISHI LASER Mixed Gas Device?":
-     "Какие уровни мощности лазера поддерживает устройство смешанного газа LISHI LASER?",
+    "Yes, all EUCHIO Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
+     "Да, все устройства смешанного газа EUCHIO покрываются гарантией 1 год с даты покупки. Варианты расширенной гарантии доступны через нашу глобальную сеть послепродажной поддержки.",
+    "What laser power levels are supported by the EUCHIO Mixed Gas Device?":
+     "Какие уровни мощности лазера поддерживает устройство смешанного газа EUCHIO?",
     "The device supports laser machines from 12KW to 60KW. 12KW handles up to 16mm carbon steel, 20KW up to 25mm, 30KW up to 30mm. Contact us for parameters specific to your power level.":
      "Устройство поддерживает лазерные станки от 12 до 60 кВт. 12 кВт режет углеродистую сталь до 16 мм, 20 кВт до 25 мм, 30 кВт до 30 мм. Свяжитесь с нами для получения параметров для вашего уровня мощности.",
 
@@ -2382,26 +2384,26 @@ RU = {
 
 VI = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "Thiết bị Khí Hỗn hợp LISHI LASER cho máy cắt laser 12KW-60KW. Tốc độ cắt nhanh gấp 3 lần, không ba via, tiêu thụ khí ít hơn 33%. Công nghệ tỷ lệ N2/O2 cho cắt thép carbon.",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER Thiết bị Khí Hỗn hợp | Cắt Laser Nhanh Gấp 3×",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "Thiết bị Khí Hỗn hợp EUCHIO cho máy cắt laser 12KW-60KW. Tốc độ cắt nhanh gấp 3 lần, không ba via, tiêu thụ khí ít hơn 33%. Công nghệ tỷ lệ N2/O2 cho cắt thép carbon.",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO Thiết bị Khí Hỗn hợp | Cắt Laser Nhanh Gấp 3×",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "Thiết bị khí hỗn hợp cho máy cắt laser 12KW-60KW. Tốc độ cắt nhanh gấp 3×, không ba via, tiêu thụ khí ít hơn 33%. Công nghệ tỷ lệ N2/O2.",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "máy trộn khí cắt laser, thiết bị trộn nitơ oxy, cắt laser vi oxy, cắt laser thép carbon, laser công suất cao 12kW 60kW, khí hỗn hợp so với máy nén khí, loại bỏ ba via cắt laser, giảm tiêu thụ nitơ, máy trộn khí laser Han's, thiết bị khí laser công nghiệp, cấu hình khí một-đến-hai, tối ưu hóa khí phụ trợ",
-    "LISHI LASER Mixed Gas Device": "Thiết bị Khí Hỗn hợp LISHI LASER",
+    "EUCHIO Mixed Gas Device": "Thiết bị Khí Hỗn hợp EUCHIO",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Giá và báo giá thiết bị khí hỗn hợp LISHI LASER. Tương thích với tất cả các thương hiệu laser lớn (HANS, DNE, PENTA, LEAD, HSG, BODOR). Vận chuyển toàn cầu.",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Giá và báo giá thiết bị khí hỗn hợp EUCHIO. Tương thích với tất cả các thương hiệu laser lớn (HANS, DNE, PENTA, LEAD, HSG, BODOR). Vận chuyển toàn cầu.",
 
     "Mixed gas device for carbon steel laser cutting — 3× faster than oxygen, zero burrs, 33% nitrogen savings":
      "Thiết bị khí hỗn hợp cho cắt laser thép carbon — nhanh gấp 3× so với oxy, không ba via, tiết kiệm nitơ 33%",
-    "Get LISHI LASER mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
-     "Nhận thông số cắt và giá thiết bị khí hỗn hợp LISHI LASER. Tương thích với HANS, DNE, PENTA, LEAD, HSG, BODOR. Vận chuyển toàn cầu.",
-    "LISHI LASER Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
-     "LISHI LASER Thiết bị Khí Hỗn hợp | Máy Trộn Khí Cắt Laser Công nghiệp",
+    "Get EUCHIO mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
+     "Nhận thông số cắt và giá thiết bị khí hỗn hợp EUCHIO. Tương thích với HANS, DNE, PENTA, LEAD, HSG, BODOR. Vận chuyển toàn cầu.",
+    "EUCHIO Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
+     "EUCHIO Thiết bị Khí Hỗn hợp | Máy Trộn Khí Cắt Laser Công nghiệp",
 
     # Hero
     "Cut <span class=\"accent\">3× Faster</span><br>with Mixed Gas Technology":
@@ -2624,10 +2626,10 @@ VI = {
     "View Parameters": "Xem Thông số",
 
     # Contact page meta
-    "Contact LISHI LASER for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "Liên hệ LISHI LASER để biết giá và báo giá thiết bị khí hỗn hợp. Tương thích với tất cả các thương hiệu laser lớn (HANS, DNE, PENTA, LEAD, HSG, BODOR). Vận chuyển toàn cầu.",
-    "Contact LISHI LASER | Get Mixed Gas Device Quote":
-     "Liên hệ LISHI LASER | Nhận Báo giá Thiết bị Khí Hỗn hợp",
+    "Contact EUCHIO for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "Liên hệ EUCHIO để biết giá và báo giá thiết bị khí hỗn hợp. Tương thích với tất cả các thương hiệu laser lớn (HANS, DNE, PENTA, LEAD, HSG, BODOR). Vận chuyển toàn cầu.",
+    "Contact EUCHIO | Get Mixed Gas Device Quote":
+     "Liên hệ EUCHIO | Nhận Báo giá Thiết bị Khí Hỗn hợp",
 
     # Parameters page meta
     "Carbon steel cutting speed parameters: 12kW to 60kW. Compare mixed gas vs oxygen cutting speeds. Data from real end user tests.":
@@ -2636,8 +2638,8 @@ VI = {
      "Thông số cắt laser 20kW cho thép carbon 8mm. Dữ liệu tốc độ cắt khí hỗn hợp vs oxy cho laser 12kW đến 60kW. Hướng dẫn tối ưu hóa trộn khí công nghiệp với dữ liệu thực tế.",
     "Laser Cutting Parameters by Power | Mixed Gas vs O2 Speed Data":
      "Thông số Cắt Laser theo Công suất | Dữ liệu Tốc độ Khí Hỗn hợp vs O2",
-    "Laser Cutting Parameters | LISHI LASER Mixed Gas Device":
-     "Thông số Cắt Laser | LISHI LASER Thiết bị Khí Hỗn hợp",
+    "Laser Cutting Parameters | EUCHIO Mixed Gas Device":
+     "Thông số Cắt Laser | EUCHIO Thiết bị Khí Hỗn hợp",
     "20kW Laser Cutting Parameters | Mixed Gas vs O2 Speed Data":
      "Thông số Cắt Laser 20kW | Dữ liệu Tốc độ Khí Hỗn hợp vs O2",
     "20kW Laser Cutting Parameters & Gas Speed Data":
@@ -2656,8 +2658,8 @@ VI = {
     "Mixed Gas Device": "Thiết bị Khí Hỗn hợp",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER Thiết bị Khí Hỗn hợp"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER Liên hệ"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO Thiết bị Khí Hỗn hợp"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO Liên hệ"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "Sản xuất Công nghiệp > Thiết bị Cắt Laser"',
 
     # FAQ content
@@ -2667,8 +2669,8 @@ VI = {
      "Thiết bị khí hỗn hợp chuyển đổi nitơ lỏng (N₂) và oxy lỏng (O₂) thành hỗn hợp khí N₂/O₂ được hiệu chuẩn chính xác (thường là 95%/5%). Hỗn hợp vi oxy này được sử dụng làm khí phụ trợ trong cắt laser công suất cao, mang lại tốc độ cắt nhanh gấp 3× so với oxy tinh khiết trên thép carbon trong khi loại bỏ hoàn toàn ba via.",
     "Is it compatible with my laser machine?":
      "Nó có tương thích với máy laser của tôi không?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
-     "Có. Thiết bị Khí Hỗn hợp LISHI LASER hoạt động với tất cả các thương hiệu laser lớn bao gồm HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA và MESSER. Hỗ trợ máy từ 12kW đến 60kW. Nếu máy của bạn sử dụng kết nối khí phụ trợ tiêu chuẩn, nó tương thích.",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
+     "Có. Thiết bị Khí Hỗn hợp EUCHIO hoạt động với tất cả các thương hiệu laser lớn bao gồm HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA và MESSER. Hỗ trợ máy từ 12kW đến 60kW. Nếu máy của bạn sử dụng kết nối khí phụ trợ tiêu chuẩn, nó tương thích.",
     "What thicknesses can it cut?": "Nó có thể cắt những độ dày nào?",
     "The mixed gas device can cut carbon steel, stainless steel and aluminum from 1mm to 30mm. Cutting thickness depends on your laser power. Detailed cutting parameter tables are available on our parameters page below.":
      "Thiết bị khí hỗn hợp có thể cắt thép carbon, thép không gỉ và nhôm từ 1mm đến 30mm. Độ dày cắt phụ thuộc vào công suất laser của bạn. Bảng thông số cắt chi tiết có sẵn trên trang thông số của chúng tôi.",
@@ -2690,16 +2692,16 @@ VI = {
      "Lắp đặt đơn giản — một thiết bị nhỏ gọn kết nối với máy laser hiện có của bạn. Bảo trì tối thiểu: chỉ tiêu thụ điện 2kWh/24h và kiểm tra cơ bản hàng năm. Không có bộ phận chuyển động, vì vậy không có hao mòn hoặc cần bảo dưỡng thường xuyên.",
     "Can one mixed gas device supply two laser machines simultaneously?":
      "Một thiết bị khí hỗn hợp có thể cung cấp cho hai máy laser đồng thời không?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
-     "Có. LISHI LASER là nhà sản xuất duy nhất cung cấp cấu hình một-đến-hai ổn định. Một trạm trộn có thể đồng thời cung cấp cho hai máy cắt laser với điều khiển lưu lượng độc lập, giảm một nửa chi phí thiết bị cho mỗi máy.",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
+     "Có. EUCHIO là nhà sản xuất duy nhất cung cấp cấu hình một-đến-hai ổn định. Một trạm trộn có thể đồng thời cung cấp cho hai máy cắt laser với điều khiển lưu lượng độc lập, giảm một nửa chi phí thiết bị cho mỗi máy.",
     "What are the input gas pressure requirements?": "Yêu cầu áp suất khí đầu vào là gì?",
-    "The LISHI LASER Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
-     "Thiết bị Khí Hỗn hợp LISHI LASER yêu cầu áp suất đầu vào 20–25 bar từ bể chứa N₂ và O₂ lỏng, với phạm vi áp suất đầu ra 15–30 bar có thể điều chỉnh cho các máy laser và ứng dụng cắt khác nhau.",
+    "The EUCHIO Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
+     "Thiết bị Khí Hỗn hợp EUCHIO yêu cầu áp suất đầu vào 20–25 bar từ bể chứa N₂ và O₂ lỏng, với phạm vi áp suất đầu ra 15–30 bar có thể điều chỉnh cho các máy laser và ứng dụng cắt khác nhau.",
     "Is it guaranteed?": "Có bảo hành không?",
-    "Yes, all LISHI LASER Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
-     "Có, tất cả Thiết bị Khí Hỗn hợp LISHI LASER được bảo hành 1 năm kể từ ngày mua. Các tùy chọn bảo hành mở rộng có sẵn thông qua mạng lưới hỗ trợ hậu mãi toàn cầu của chúng tôi.",
-    "What laser power levels are supported by the LISHI LASER Mixed Gas Device?":
-     "Thiết bị Khí Hỗn hợp LISHI LASER hỗ trợ những mức công suất laser nào?",
+    "Yes, all EUCHIO Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
+     "Có, tất cả Thiết bị Khí Hỗn hợp EUCHIO được bảo hành 1 năm kể từ ngày mua. Các tùy chọn bảo hành mở rộng có sẵn thông qua mạng lưới hỗ trợ hậu mãi toàn cầu của chúng tôi.",
+    "What laser power levels are supported by the EUCHIO Mixed Gas Device?":
+     "Thiết bị Khí Hỗn hợp EUCHIO hỗ trợ những mức công suất laser nào?",
     "The device supports laser machines from 12KW to 60KW. 12KW handles up to 16mm carbon steel, 20KW up to 25mm, 30KW up to 30mm. Contact us for parameters specific to your power level.":
      "Thiết bị hỗ trợ máy laser từ 12KW đến 60KW. 12KW xử lý thép carbon đến 16mm, 20KW đến 25mm, 30KW đến 30mm. Liên hệ với chúng tôi để biết thông số cụ thể cho mức công suất của bạn.",
 
@@ -2711,26 +2713,26 @@ VI = {
 
 TH = {
     # Meta + OG
-    "LISHI LASER Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
-     "อุปกรณ์ก๊าซผสม LISHI LASER สำหรับเครื่องตัดเลเซอร์ 12KW-60KW ตัดเร็วขึ้น 3 เท่า ไร้ครีบ ใช้ก๊าซน้อยลง 33% เทคโนโลยีอัตราส่วน N2/O2 สำหรับการตัดเหล็กกล้าคาร์บอน",
-    "LISHI LASER Mixed Gas Device | 3× Faster Laser Cutting":
-     "LISHI LASER อุปกรณ์ก๊าซผสม | ตัดเลเซอร์เร็วขึ้น 3×",
+    "EUCHIO Mixed Gas Device for 12KW-60KW laser cutting machines. 3x faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology for carbon steel cutting.":
+     "อุปกรณ์ก๊าซผสม EUCHIO สำหรับเครื่องตัดเลเซอร์ 12KW-60KW ตัดเร็วขึ้น 3 เท่า ไร้ครีบ ใช้ก๊าซน้อยลง 33% เทคโนโลยีอัตราส่วน N2/O2 สำหรับการตัดเหล็กกล้าคาร์บอน",
+    "EUCHIO Mixed Gas Device | 3× Faster Laser Cutting":
+     "EUCHIO อุปกรณ์ก๊าซผสม | ตัดเลเซอร์เร็วขึ้น 3×",
     "Mixed gas device for 12KW-60KW laser cutting machines. 3× faster cutting speed, zero burrs, 33% less gas consumption. N2/O2 ratio technology.":
      "อุปกรณ์ก๊าซผสมสำหรับเครื่องตัดเลเซอร์ 12KW-60KW ตัดเร็วขึ้น 3× ไร้ครีบ ใช้ก๊าซน้อยลง 33% เทคโนโลยีอัตราส่วน N2/O2",
     "laser cutting gas mixer, nitrogen oxygen mixing device, micro oxygen laser cutting, carbon steel laser cutting, high power laser 12kW 60kW, mixed gas vs air compressor, eliminate laser cutting burrs, reduce nitrogen consumption, Han's laser gas mixer, industrial laser gas equipment, one-to-two laser gas setup, auxiliary gas optimization":
      "เครื่องผสมก๊าซตัดเลเซอร์ อุปกรณ์ผสมไนโตรเจนออกซิเจน การตัดเลเซอร์ไมโครออกซิเจน ตัดเลเซอร์เหล็กกล้าคาร์บอน เลเซอร์กำลังสูง 12kW 60kW ก๊าซผสมเทียบกับเครื่องอัดอากาศ กำจัดครีบตัดเลเซอร์ ลดการใช้ไนโตรเจน เครื่องผสมก๊าซเลเซอร์ Han's อุปกรณ์ก๊าซเลเซอร์อุตสาหกรรม การตั้งค่าก๊าซหนึ่งต่อสอง การเพิ่มประสิทธิภาพก๊าซช่วย",
-    "LISHI LASER Mixed Gas Device": "อุปกรณ์ก๊าซผสม LISHI LASER",
+    "EUCHIO Mixed Gas Device": "อุปกรณ์ก๊าซผสม EUCHIO",
 
     # OG/Twitter contact
-    "LISHI LASER mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "ราคาและใบเสนอราคาอุปกรณ์ก๊าซผสม LISHI LASER เข้ากันได้กับเครื่องเลเซอร์ทุกแบรนด์หลัก (HANS, DNE, PENTA, LEAD, HSG, BODOR) มีบริการจัดส่งทั่วโลก",
+    "EUCHIO mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "ราคาและใบเสนอราคาอุปกรณ์ก๊าซผสม EUCHIO เข้ากันได้กับเครื่องเลเซอร์ทุกแบรนด์หลัก (HANS, DNE, PENTA, LEAD, HSG, BODOR) มีบริการจัดส่งทั่วโลก",
 
     "Mixed gas device for carbon steel laser cutting — 3× faster than oxygen, zero burrs, 33% nitrogen savings":
      "อุปกรณ์ก๊าซผสมสำหรับตัดเลเซอร์เหล็กกล้าคาร์บอน — เร็วกว่าออกซิเจน 3× ไร้ครีบ ประหยัดไนโตรเจน 33%",
-    "Get LISHI LASER mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
-     "รับพารามิเตอร์การตัดและราคาก๊าซผสม LISHI LASER เข้ากันได้กับ HANS, DNE, PENTA, LEAD, HSG, BODOR จัดส่งทั่วโลก",
-    "LISHI LASER Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
-     "LISHI LASER อุปกรณ์ก๊าซผสม | เครื่องผสมก๊าซตัดเลเซอร์อุตสาหกรรม",
+    "Get EUCHIO mixed gas cutting parameters and pricing. Compatible with HANS, DNE, PENTA, LEAD, HSG, BODOR. Global shipping.":
+     "รับพารามิเตอร์การตัดและราคาก๊าซผสม EUCHIO เข้ากันได้กับ HANS, DNE, PENTA, LEAD, HSG, BODOR จัดส่งทั่วโลก",
+    "EUCHIO Mixed Gas Device | Industrial Laser Cutting Gas Mixer":
+     "EUCHIO อุปกรณ์ก๊าซผสม | เครื่องผสมก๊าซตัดเลเซอร์อุตสาหกรรม",
 
     # Hero
     "Cut <span class=\"accent\">3× Faster</span><br>with Mixed Gas Technology":
@@ -2953,10 +2955,10 @@ TH = {
     "View Parameters": "ดูพารามิเตอร์",
 
     # Contact page meta
-    "Contact LISHI LASER for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
-     "ติดต่อ LISHI LASER สำหรับราคาและใบเสนอราคาอุปกรณ์ก๊าซผสม เข้ากันได้กับเครื่องเลเซอร์ทุกแบรนด์หลัก (HANS, DNE, PENTA, LEAD, HSG, BODOR) มีบริการจัดส่งทั่วโลก",
-    "Contact LISHI LASER | Get Mixed Gas Device Quote":
-     "ติดต่อ LISHI LASER | ขอใบเสนอราคาอุปกรณ์ก๊าซผสม",
+    "Contact EUCHIO for mixed gas device pricing and quotes. Compatible with all major laser brands (HANS, DNE, PENTA, LEAD, HSG, BODOR). Global shipping available.":
+     "ติดต่อ EUCHIO สำหรับราคาและใบเสนอราคาอุปกรณ์ก๊าซผสม เข้ากันได้กับเครื่องเลเซอร์ทุกแบรนด์หลัก (HANS, DNE, PENTA, LEAD, HSG, BODOR) มีบริการจัดส่งทั่วโลก",
+    "Contact EUCHIO | Get Mixed Gas Device Quote":
+     "ติดต่อ EUCHIO | ขอใบเสนอราคาอุปกรณ์ก๊าซผสม",
 
     # Parameters page meta
     "Carbon steel cutting speed parameters: 12kW to 60kW. Compare mixed gas vs oxygen cutting speeds. Data from real end user tests.":
@@ -2965,8 +2967,8 @@ TH = {
      "พารามิเตอร์ตัดเลเซอร์ 20kW สำหรับเหล็กกล้าคาร์บอน 8mm ข้อมูลความเร็วตัดก๊าซผสมกับออกซิเจนสำหรับเลเซอร์ 12kW ถึง 60kW คู่มือการเพิ่มประสิทธิภาพการผสมก๊าซอุตสาหกรรมด้วยข้อมูลผู้ใช้จริง",
     "Laser Cutting Parameters by Power | Mixed Gas vs O2 Speed Data":
      "พารามิเตอร์ตัดเลเซอร์ตามกำลัง | ข้อมูลความเร็วก๊าซผสม vs O2",
-    "Laser Cutting Parameters | LISHI LASER Mixed Gas Device":
-     "พารามิเตอร์ตัดเลเซอร์ | LISHI LASER อุปกรณ์ก๊าซผสม",
+    "Laser Cutting Parameters | EUCHIO Mixed Gas Device":
+     "พารามิเตอร์ตัดเลเซอร์ | EUCHIO อุปกรณ์ก๊าซผสม",
     "20kW Laser Cutting Parameters | Mixed Gas vs O2 Speed Data":
      "พารามิเตอร์ตัดเลเซอร์ 20kW | ข้อมูลความเร็วก๊าซผสม vs O2",
     "20kW Laser Cutting Parameters & Gas Speed Data":
@@ -2985,8 +2987,8 @@ TH = {
     "Mixed Gas Device": "อุปกรณ์ก๊าซผสม",
 
     # JSON-LD names
-    '"name": "LISHI LASER Mixed Gas Device"': '"name": "LISHI LASER อุปกรณ์ก๊าซผสม"',
-    '"name": "LISHI LASER Contact"': '"name": "LISHI LASER ติดต่อ"',
+    '"name": "EUCHIO Mixed Gas Device"': '"name": "EUCHIO อุปกรณ์ก๊าซผสม"',
+    '"name": "EUCHIO Contact"': '"name": "EUCHIO ติดต่อ"',
     '"category": "Industrial Manufacturing > Laser Cutting Equipment"': '"category": "การผลิตอุตสาหกรรม > อุปกรณ์ตัดเลเซอร์"',
 
     # FAQ content
@@ -2996,8 +2998,8 @@ TH = {
      "อุปกรณ์ก๊าซผสมแปลงไนโตรเจนเหลว (N₂) และออกซิเจนเหลว (O₂) เป็นส่วนผสมก๊าซ N₂/O₂ ที่ปรับเทียบอย่างแม่นยำ (ปกติ 95%/5%) ส่วนผสมไมโครออกซิเจนนี้ใช้เป็นก๊าซช่วยในการตัดเลเซอร์กำลังสูง ให้ความเร็วตัดเร็วกว่า 3× เมื่อเทียบกับออกซิเจนบริสุทธิ์บนเหล็กกล้าคาร์บอน พร้อมกำจัดครีบอย่างสมบูรณ์",
     "Is it compatible with my laser machine?":
      "เข้ากันได้กับเครื่องเลเซอร์ของฉันหรือไม่?",
-    "Yes. The LISHI LASER Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
-     "ใช่ อุปกรณ์ก๊าซผสม LISHI LASER ทำงานกับเครื่องเลเซอร์ทุกแบรนด์หลัก รวมถึง HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA และ MESSER รองรับเครื่องตั้งแต่ 12kW ถึง 60kW หากเครื่องของคุณใช้การเชื่อมต่อก๊าซช่วยมาตรฐาน ก็เข้ากันได้",
+    "Yes. The EUCHIO Mixed Gas Device works with all major laser brands including HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA and MESSER. It supports machines from 12kW to 60kW. If your machine uses standard auxiliary gas connections, it's compatible.":
+     "ใช่ อุปกรณ์ก๊าซผสม EUCHIO ทำงานกับเครื่องเลเซอร์ทุกแบรนด์หลัก รวมถึง HAN'S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA และ MESSER รองรับเครื่องตั้งแต่ 12kW ถึง 60kW หากเครื่องของคุณใช้การเชื่อมต่อก๊าซช่วยมาตรฐาน ก็เข้ากันได้",
     "What thicknesses can it cut?": "ตัดความหนาได้เท่าไหร่?",
     "The mixed gas device can cut carbon steel, stainless steel and aluminum from 1mm to 30mm. Cutting thickness depends on your laser power. Detailed cutting parameter tables are available on our parameters page below.":
      "อุปกรณ์ก๊าซผสมสามารถตัดเหล็กกล้าคาร์บอน สแตนเลส และอลูมิเนียมได้ตั้งแต่ 1mm ถึง 30mm ความหนาในการตัดขึ้นอยู่กับกำลังเลเซอร์ของคุณ ตารางพารามิเตอร์การตัดโดยละเอียดมีอยู่ในหน้าพารามิเตอร์ของเรา",
@@ -3019,16 +3021,16 @@ TH = {
      "การติดตั้งง่าย — หน่วยขนาดกะทัดรัดที่เชื่อมต่อกับเครื่องเลเซอร์ที่มีอยู่ของคุณ การบำรุงรักษาน้อยที่สุด: ใช้พลังงานเพียง 2kWh/24h และตรวจสอบพื้นฐานประจำปี ไม่มีชิ้นส่วนเคลื่อนไหว จึงไม่มีการสึกหรอหรือต้องบริการบ่อย",
     "Can one mixed gas device supply two laser machines simultaneously?":
      "อุปกรณ์ก๊าซผสมหนึ่งเครื่องสามารถจ่ายให้เครื่องเลเซอร์สองเครื่องพร้อมกันได้หรือไม่?",
-    "Yes. LISHI LASER is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
-     "ใช่ LISHI LASER เป็นผู้ผลิตรายเดียวที่เสนอการกำหนดค่าหนึ่งต่อสองที่เสถียร สถานีผสมหนึ่งแห่งสามารถจ่ายให้เครื่องตัดเลเซอร์สองเครื่องพร้อมกันด้วยการควบคุมการไหลอิสระ ลดต้นทุนอุปกรณ์ต่อเครื่องลงครึ่งหนึ่งอย่างมีประสิทธิภาพ",
+    "Yes. EUCHIO is the only manufacturer offering a stable one-to-two configuration. One mixing station can simultaneously supply two laser cutting machines with independent flow control, effectively halving your equipment cost per machine.":
+     "ใช่ EUCHIO เป็นผู้ผลิตรายเดียวที่เสนอการกำหนดค่าหนึ่งต่อสองที่เสถียร สถานีผสมหนึ่งแห่งสามารถจ่ายให้เครื่องตัดเลเซอร์สองเครื่องพร้อมกันด้วยการควบคุมการไหลอิสระ ลดต้นทุนอุปกรณ์ต่อเครื่องลงครึ่งหนึ่งอย่างมีประสิทธิภาพ",
     "What are the input gas pressure requirements?": "ข้อกำหนดแรงดันก๊าซขาเข้าคืออะไร?",
-    "The LISHI LASER Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
-     "อุปกรณ์ก๊าซผสม LISHI LASER มีข้อกำหนดแรงดันขาเข้า 20–25 bar จากถังเก็บ N₂ และ O₂ เหลว โดยมีช่วงแรงดันขาออก 15–30 bar ปรับได้สำหรับเครื่องเลเซอร์และการใช้งานตัดต่างๆ",
+    "The EUCHIO Mixed Gas Device has an input pressure requirement of 20–25 bar from liquid N₂ and O₂ storage tanks, with an output pressure range of 15–30 bar adjustable for different laser machines and cutting applications.":
+     "อุปกรณ์ก๊าซผสม EUCHIO มีข้อกำหนดแรงดันขาเข้า 20–25 bar จากถังเก็บ N₂ และ O₂ เหลว โดยมีช่วงแรงดันขาออก 15–30 bar ปรับได้สำหรับเครื่องเลเซอร์และการใช้งานตัดต่างๆ",
     "Is it guaranteed?": "มีการรับประกันหรือไม่?",
-    "Yes, all LISHI LASER Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
-     "ใช่ อุปกรณ์ก๊าซผสม LISHI LASER ทั้งหมดรับประกัน 1 ปีนับจากวันที่ซื้อ มีตัวเลือกการรับประกันเพิ่มเติมผ่านเครือข่ายสนับสนุนหลังการขายทั่วโลกของเรา",
-    "What laser power levels are supported by the LISHI LASER Mixed Gas Device?":
-     "อุปกรณ์ก๊าซผสม LISHI LASER รองรับกำลังเลเซอร์ระดับใดบ้าง?",
+    "Yes, all EUCHIO Mixed Gas Devices are covered by a 1-year warranty from the date of purchase. Extended warranty options are available through our global after-sales support network.":
+     "ใช่ อุปกรณ์ก๊าซผสม EUCHIO ทั้งหมดรับประกัน 1 ปีนับจากวันที่ซื้อ มีตัวเลือกการรับประกันเพิ่มเติมผ่านเครือข่ายสนับสนุนหลังการขายทั่วโลกของเรา",
+    "What laser power levels are supported by the EUCHIO Mixed Gas Device?":
+     "อุปกรณ์ก๊าซผสม EUCHIO รองรับกำลังเลเซอร์ระดับใดบ้าง?",
     "The device supports laser machines from 12KW to 60KW. 12KW handles up to 16mm carbon steel, 20KW up to 25mm, 30KW up to 30mm. Contact us for parameters specific to your power level.":
      "อุปกรณ์รองรับเครื่องเลเซอร์ตั้งแต่ 12KW ถึง 60KW 12KW ตัดเหล็กกล้าคาร์บอนได้ถึง 16mm, 20KW ถึง 25mm, 30KW ถึง 30mm ติดต่อเราเพื่อขอพารามิเตอร์เฉพาะสำหรับระดับกำลังของคุณ",
 

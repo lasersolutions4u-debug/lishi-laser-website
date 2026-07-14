@@ -974,7 +974,7 @@ function buildPrivacyHtml(lang) {
   const cssPath = '/styles.min.css';
   const jsPath = '/script.min.js';
   const faviconPath = '/favicon.svg';
-  const logoPath = '/images/lishi-logo.png';
+  const logoPath = '/images/logo.png';
 
   return `<!DOCTYPE html>
 <html lang="${lang}">

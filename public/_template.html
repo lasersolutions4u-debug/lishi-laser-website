@@ -46,7 +46,7 @@
     "@type": "Organization",
     "name": "EUCHIO / Jinan Euchio Machinery Co., Ltd.",
     "url": "https://gasmixtech.com",
-    "logo": "https://gasmixtech.com/images/lishi-logo.png",
+    "logo": "https://gasmixtech.com/images/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+86-186-1558-4520",
@@ -166,7 +166,7 @@
   <header class="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="./images/lishi-logo.png" alt="EUCHIO">
+        <img src="./images/logo.png" alt="EUCHIO">
         <div class="logo-text">
           <span class="logo-brand">EUCHIO</span>
           <span class="logo-tagline">{{footer.tagline}}</span>
@@ -180,7 +180,7 @@
         <a href="#samples" class="nav-secondary">{{nav.samples}}</a>
         <a href="#reference" class="nav-secondary">{{nav.references}}</a>
         <a href="#faq" class="nav-secondary">{{nav.faq}}</a>
-        <a href="/blog/" class="nav-secondary">Blog</a>
+        <a href="/about.html">About</a>
         <a href="/contact.html" class="nav-cta">{{nav.contact}}</a>
         <div class="lang-switch" id="langSwitch">
           <button class="lang-btn" id="langBtn" type="button">
@@ -256,12 +256,19 @@
             </div>
           </div>
           <div class="hero-actions">
-            <a href="/contact.html" class="btn btn-primary">{{hero.ctaQuote}}</a>
+            <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">{{hero.ctaQuote}}</a>
             <a href="#parameters" class="btn btn-secondary">{{hero.ctaParams}}</a>
           </div>
         </div>
         <div class="hero-visual">
-          <img src="./images/device-main.jpg?v=20260622-nolishi" alt="{{hero.imgAlt}}" class="hero-image">
+          <div style="position: relative; display: inline-block;">
+            <video class="hero-image" autoplay muted loop playsinline preload="auto" poster="./images/device-main.jpg?v=20260713" aria-label="{{hero.imgAlt}}">
+              <source src="./images/device-360-rotation.webm" type="video/webm">
+              <source src="./images/device-360-rotation.mp4" type="video/mp4">
+              <img src="./images/device-360-rotation.gif" alt="{{hero.imgAlt}}" class="hero-image">
+            </video>
+            <span style="position: absolute; top: 12px; right: 12px; background: rgba(220, 38, 38, 0.9); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 50px; letter-spacing: 0.5px; pointer-events: none; z-index: 2;">360°</span>
+          </div>
         </div>
       </div>
     </div>
@@ -961,7 +968,7 @@
             <h3>{{globalPresence.ctaTitle}}</h3>
             <p>{{globalPresence.ctaDesc}}</p>
           </div>
-          <a href="/contact.html" class="btn btn-primary">{{globalPresence.ctaButton}}</a>
+          <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">{{globalPresence.ctaButton}}</a>
         </div>
       </div>
     </div>
@@ -1023,7 +1030,7 @@
           {{cta.description}}
         </p>
         <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <a href="/contact.html" class="btn btn-primary">{{cta.buttonContact}}</a>
+          <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">{{cta.buttonContact}}</a>
           <a href="https://wa.me/525572080065" class="btn btn-secondary" target="_blank">{{cta.buttonWhatsApp}}</a>
         </div>
       </div>
@@ -1036,13 +1043,13 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <img src="./images/lishi-logo.png" alt="EUCHIO">
+            <img src="./images/logo.png" alt="EUCHIO">
             <div class="logo-text">
               <span class="logo-brand">EUCHIO</span>
               <span class="logo-tagline">{{footer.tagline}}</span>
             </div>
           </a>
-          <p class="footer-brand-intro">EUCHIO supplies sheet metal fabrication machinery for overseas factories and job shops. We focus on practical equipment solutions for laser cutting, bending, welding, and related production needs.</p>
+          <p class="footer-brand-intro">Jinan Euchio Machinery Co., Ltd. — machinery trading and service for sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts & service) brands for overseas industrial customers.</p>
         </div>
         <div>
           <h4>{{footer.productTitle}}</h4>
@@ -1053,6 +1060,7 @@
             <li><a href="#samples">{{footer.linkSamples}}</a></li>
             <li><a href="#faq">{{footer.linkFaq}}</a></li>
             <li><a href="/blog/">Blog</a></li>
+            <li><a href="/about.html">About</a></li>
           </ul>
         </div>
         <div>
@@ -1063,10 +1071,11 @@
             <li><a href="https://wa.me/525572080065" target="_blank">{{footer.whatsappMexico}}</a></li>
             <li><a href="https://wa.me/66961135966" target="_blank">{{footer.whatsappThailand}}</a></li>
           </ul>
-          <h4 class="footer-subtitle">Related Pages</h4>
+          <h4 class="footer-subtitle">Related Links</h4>
           <ul class="footer-links">
-            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO</a></li>
-            <li><a href="https://www.smart-hoist.com" target="_blank" rel="noopener">Smart Hoist</a></li>
+            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO — Complete Machines</a></li>
+            <li><a href="https://www.sagemro.com" target="_blank" rel="noopener">SAGEMRO — Parts &amp; Service</a></li>
+            <li><a href="https://www.dhgate.com/store/22325464" target="_blank" rel="noopener">DHgate Store</a></li>
           </ul>
         </div>
       </div>

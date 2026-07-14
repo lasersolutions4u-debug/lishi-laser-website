@@ -188,7 +188,7 @@
   <header class="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <picture><source srcset="./images/lishi-logo.webp" type="image/webp"><img src="./images/lishi-logo.png" alt="EUCHIO"></picture>
+        <picture><source srcset="./images/logo.webp" type="image/webp"><img src="./images/logo.png" alt="EUCHIO"></picture>
         <div class="logo-text">
           <span class="logo-brand">EUCHIO</span>
           <span class="logo-tagline">Gas Mixing Technology</span>
@@ -196,6 +196,7 @@
       </a>
       <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <a href="/">Home</a>
+        <a href="/about.html">About</a>
         <a href="/#principle">Principle</a>
         <a href="/#advantages">Advantages</a>
         <a href="/parameters.html" class="active">Parameters</a>
@@ -536,85 +537,94 @@
       </div>
 
       <!-- 40KW & 60KW -->
+      <div class="fade-in" style="margin-top: 48px; padding: 24px; background: rgba(220, 38, 38, 0.05); border-left: 4px solid var(--color-primary); border-radius: 8px; margin-bottom: 48px;">
+        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text-dim);">
+          <strong>⚠️ Important Note on 40KW–60KW Data:</strong>
+          The cutting speeds listed below for 40kW and 60kW lasers are <strong>reference estimates derived from power-scaling of verified 30kW field data</strong>, not independently confirmed on-site test results.
+          Actual cutting speeds may vary significantly based on machine brand, beam quality, gas supply conditions, and material properties.
+          Please <a href="/contact.html" style="color: var(--color-primary); font-weight: 600;">contact us</a> for confirmed parameters validated on your specific machine configuration.
+        </p>
+      </div>
+
       <div style="margin-bottom: 48px;" class="fade-in">
         <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
           <span style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 6px 16px; border-radius: 50px; font-size: 1rem;">40KW</span>
-          Best for ≤35mm Carbon Steel
+          Best for ≤35mm Carbon Steel <span style="font-size: 0.8rem; color: var(--color-text-dim); font-weight: 400;">(Reference Estimates)</span>
         </h3>
         <div class="comparison-section" style="margin-top: 0;">
           <table class="comparison-table">
             <thead>
               <tr>
                 <th>Thickness</th>
-                <th>Estimated Mixed Gas Speed</th>
+                <th>Reference Speed*</th>
                 <th>Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>20mm</td>
-                <td class="comparison-win">~10 m/min</td>
-                <td>—</td>
+                <td>~10 m/min</td>
+                <td>Power-scaled from 30kW</td>
               </tr>
               <tr>
                 <td>25mm</td>
-                <td class="comparison-win">~6 m/min</td>
-                <td>—</td>
+                <td>~6 m/min</td>
+                <td>Power-scaled from 30kW</td>
               </tr>
               <tr>
                 <td>30mm</td>
-                <td class="comparison-win">~4 m/min</td>
-                <td>—</td>
+                <td>~4 m/min</td>
+                <td>Extrapolated</td>
               </tr>
               <tr>
                 <td>35mm</td>
-                <td class="comparison-win">~2.5 m/min</td>
-                <td>—</td>
+                <td>~2.5 m/min</td>
+                <td>Extrapolated</td>
               </tr>
             </tbody>
           </table>
-          <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-dim);">Note: 40KW parameters based on field data from PENTA end users and Foshan factory tests. Contact us for confirmed data.</p>
+          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">*Reference estimates based on power-scaling from verified 30kW field data (PENTA end user, Taiwan site). Not yet independently confirmed on a 40kW machine. <a href="/contact.html" style="color: var(--color-primary);">Contact us for confirmed parameters</a>.</p>
         </div>
       </div>
 
       <div style="margin-bottom: 48px;" class="fade-in">
         <h3 style="margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
           <span style="background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); color: white; padding: 6px 16px; border-radius: 50px; font-size: 1rem;">60KW</span>
-          Best for ≤45mm Carbon Steel
+          Best for ≤45mm Carbon Steel <span style="font-size: 0.8rem; color: var(--color-text-dim); font-weight: 400;">(Reference Estimates)</span>
         </h3>
         <div class="comparison-section" style="margin-top: 0;">
           <table class="comparison-table">
             <thead>
               <tr>
                 <th>Thickness</th>
-                <th>Estimated Mixed Gas Speed</th>
+                <th>Reference Speed*</th>
                 <th>Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>25mm</td>
-                <td class="comparison-win">~10 m/min</td>
-                <td>—</td>
+                <td>~10 m/min</td>
+                <td>Power-scaled from 30kW</td>
               </tr>
               <tr>
                 <td>30mm</td>
-                <td class="comparison-win">~7 m/min</td>
-                <td>—</td>
+                <td>~7 m/min</td>
+                <td>Power-scaled from 30kW</td>
               </tr>
               <tr>
                 <td>40mm</td>
-                <td class="comparison-win">~3.5 m/min</td>
-                <td>—</td>
+                <td>~3.5 m/min</td>
+                <td>Extrapolated</td>
               </tr>
               <tr>
                 <td>45mm</td>
-                <td class="comparison-win">~2 m/min</td>
-                <td>—</td>
+                <td>~2 m/min</td>
+                <td>Extrapolated</td>
               </tr>
             </tbody>
           </table>
-          <p style="margin-top: 16px; font-size: 0.9rem; color: var(--color-text-dim);">Note: 60KW parameters are estimates based on power scaling from 30KW/40KW data. Contact us for confirmed test results and specific use cases.</p>
+          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">*Reference estimates based on power-scaling from verified 30kW/40kW data. A 60kW deployment has been observed on-site, but systematic parameter testing has not been completed. <a href="/contact.html" style="color: var(--color-primary);">Contact us for the latest test results</a> and to discuss your specific 60kW application.</p>
         </div>
       </div>
 
@@ -671,7 +681,7 @@
 
       <div style="text-align: center; margin-top: 64px;" class="fade-in">
         <p style="margin-bottom: 20px; color: var(--color-text-muted);">Need detailed parameters for your specific laser machine and use case? Contact us for a customized parameter table.</p>
-        <a href="/contact.html" class="btn btn-primary">Get Your Custom Parameters →</a>
+        <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">Get Your Custom Parameters →</a>
       </div>
     </div>
   </section>
@@ -729,17 +739,18 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <picture><source srcset="./images/lishi-logo.webp" type="image/webp"><img src="./images/lishi-logo.png" alt="EUCHIO"></picture>
+            <picture><source srcset="./images/logo.webp" type="image/webp"><img src="./images/logo.png" alt="EUCHIO"></picture>
             <div class="logo-text">
               <span class="logo-brand">EUCHIO</span>
               <span class="logo-tagline">Gas Mixing Technology</span>
             </div>
           </a>
-          <p class="footer-brand-intro">EUCHIO supplies sheet metal fabrication machinery for overseas factories and job shops. We focus on practical equipment solutions for laser cutting, bending, welding, and related production needs.</p>
+          <p class="footer-brand-intro">Jinan Euchio Machinery Co., Ltd. — machinery trading and service for sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts & service) brands for overseas industrial customers.</p>
         </div>
         <div>
           <h4>Product</h4>
           <ul class="footer-links">
+            <li><a href="/about.html">About Us</a></li>
             <li><a href="/#principle">How It Works</a></li>
             <li><a href="/#advantages">Advantages</a></li>
             <li><a href="/parameters.html">Parameters</a></li>
@@ -756,10 +767,11 @@
             <li><a href="https://wa.me/66961135966" target="_blank">WhatsApp (Thailand)</a></li>
             <li><a href="https://www.linkedin.com/company/euchio" target="_blank">LinkedIn</a></li>
           </ul>
-          <h4 class="footer-subtitle">Related Pages</h4>
+          <h4 class="footer-subtitle">Related Links</h4>
           <ul class="footer-links">
-            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO</a></li>
-            <li><a href="https://www.smart-hoist.com" target="_blank" rel="noopener">Smart Hoist</a></li>
+            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO — Complete Machines</a></li>
+            <li><a href="https://www.sagemro.com" target="_blank" rel="noopener">SAGEMRO — Parts &amp; Service</a></li>
+            <li><a href="https://www.dhgate.com/store/22325464" target="_blank" rel="noopener">DHgate Store</a></li>
           </ul>
         </div>
       </div>
