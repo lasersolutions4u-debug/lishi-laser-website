@@ -1958,6 +1958,58 @@ textarea:focus-visible {
   font-size: 0.95rem;
 }
 
+.deployment-proof-section {
+  padding: 72px 0;
+}
+
+.deployment-proof {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(360px, 1.28fr);
+  align-items: center;
+  gap: 48px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.deployment-proof-metric {
+  padding-right: 48px;
+  border-right: 1px solid var(--color-border);
+}
+
+.deployment-proof-number {
+  font-size: clamp(3.5rem, 7vw, 5.25rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.deployment-proof-label {
+  margin-top: 14px;
+  color: var(--color-text-dim);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.deployment-proof-copy .section-label {
+  margin-bottom: 12px;
+}
+
+.deployment-proof-copy h2 {
+  margin-bottom: 16px;
+}
+
+.deployment-proof-copy p {
+  max-width: 620px;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
 @media (max-width: 900px) {
   .presence-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -1969,6 +2021,17 @@ textarea:focus-visible {
 }
 
 @media (max-width: 600px) {
+  .deployment-proof-section { padding: 56px 0; }
+  .deployment-proof {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px 0;
+  }
+  .deployment-proof-metric {
+    padding: 0 0 28px;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
   .global-presence { padding: 80px 0; }
   .globe-stage { margin: 32px auto 48px; }
   .presence-cta { padding: 28px; text-align: center; }

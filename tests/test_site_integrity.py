@@ -88,6 +88,25 @@ def page_path(lang, filename):
 
 
 class SiteIntegrityTests(unittest.TestCase):
+    def test_about_deployment_proof_uses_verified_installation_data(self):
+        for lang in LANGS:
+            with self.subTest(lang=lang):
+                content = page_path(lang, "about.html").read_text(encoding="utf-8")
+                section = re.search(
+                    r'<section[^>]*id="global-reach"[^>]*>(.*?)</section>',
+                    content,
+                    re.DOTALL,
+                )
+                self.assertIsNotNone(section)
+                deployment = section.group(1)
+                self.assertIn("deployment-proof", deployment)
+                self.assertRegex(deployment, r">\s*1,000\+\s*<")
+                self.assertNotIn("presence-stats", deployment)
+                self.assertNotIn("continents-row", deployment)
+                self.assertNotIn("OVERSEAS CUSTOMERS", deployment)
+                self.assertNotIn("3 – 60kW", deployment)
+                self.assertNotIn("2 kWh", deployment)
+
     def test_about_nav_is_after_parameters_and_immediately_before_contact(self):
         for lang in LANGS:
             for filename in ("index.html", "about.html", "parameters.html", "contact.html"):
