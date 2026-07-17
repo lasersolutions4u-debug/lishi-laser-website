@@ -88,6 +88,54 @@ def page_path(lang, filename):
 
 
 class SiteIntegrityTests(unittest.TestCase):
+    def test_about_brand_section_matches_two_brand_content(self):
+        brand_page_count = 0
+
+        for lang in LANGS:
+            content = page_path(lang, "about.html").read_text(encoding="utf-8")
+            section = re.search(
+                r'<section[^>]*id="brands"[^>]*>(.*?)</section>',
+                content,
+                re.DOTALL,
+            )
+            if section is None:
+                continue
+
+            brand_page_count += 1
+            brand_section = section.group(1)
+            self.assertIn('class="brand-grid"', brand_section)
+            self.assertEqual(
+                len(re.findall(r'class="[^"]*\bbrand-card\b[^"]*"', brand_section)),
+                2,
+            )
+            self.assertIn('class="brand-fit-note', brand_section)
+
+        self.assertGreater(brand_page_count, 0)
+
+        styles = (PUBLIC / "styles.css").read_text(encoding="utf-8")
+        self.assertRegex(
+            styles,
+            r"(?s)\.brand-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)",
+        )
+        self.assertRegex(
+            styles,
+            r"(?s)\.section-dark \.brand-card h3\s*\{[^}]*color:\s*var\(--color-text\)",
+        )
+        self.assertRegex(
+            styles,
+            r"(?s)\.brand-fit-note p\s*\{[^}]*color:\s*var\(--color-text-inverse-muted\)",
+        )
+
+    def test_about_pages_exclude_removed_compatible_brands(self):
+        sources = [page_path(lang, "about.html") for lang in LANGS]
+        sources.append(ROOT / "build-about-langs.py")
+
+        for source in sources:
+            content = source.read_text(encoding="utf-8")
+            for brand in ("KIMLA", "MESSER"):
+                with self.subTest(source=source, brand=brand):
+                    self.assertNotRegex(content, rf"\b{brand}\b")
+
     def test_about_deployment_proof_uses_verified_installation_data(self):
         for lang in LANGS:
             with self.subTest(lang=lang):
