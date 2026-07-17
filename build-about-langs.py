@@ -141,14 +141,14 @@ UI_TRANSLATIONS = {
 BODY_TRANSLATIONS = {
     'zh': {
         'page_title': '关于我们 | Euchio Machinery — 钣金设备与服务',
-        'meta_description': '关于 Euchio Machinery — 一家专注于钣金加工设备的中国机械贸易与服务公司。运营 EUCHIO（整机）和 SAGEMRO（MRO零部件及服务）品牌，服务海外工业客户。',
+        'meta_description': '关于 Euchio Machinery — 一家专注于钣金加工的中国工业设备解决方案与服务公司。运营 EUCHIO（整机）和 SAGEMRO（MRO零部件及服务）品牌，服务海外工业客户。',
         'hero_badge': '<span>钣金设备</span>与服务',
         'hero_h1': '为钣金加工企业<br>提供<span class="accent">实用的设备方案</span>',
-        'hero_subtitle': '济南钰峭机械有限公司是一家专注于钣金加工设备的中国机械贸易与服务公司。我们运营两个品牌 — <strong>EUCHIO</strong>（整机）和 <strong>SAGEMRO</strong>（MRO零部件及服务）— 以清晰的沟通、负责任的采购和长期的支持服务海外工业客户。',
+        'hero_subtitle': '济南钰峭机械有限公司是一家专注于钣金加工的中国工业设备解决方案与服务公司。我们运营两个品牌 — <strong>EUCHIO</strong>（整机）和 <strong>SAGEMRO</strong>（MRO零部件及服务）— 以清晰沟通、严谨选型和长期支持服务海外工业客户。',
         'btn_contact_us': '联系我们',
         'label_company': '我们的公司',
         'h2_who_we_are': '我们是谁',
-        'wwa_p1': '济南钰峭机械有限公司是一家专注于钣金加工设备及相关工业解决方案的中国机械贸易与服务公司。我们与中国的制造商合作，将他们的设备与海外工业客户对接。',
+        'wwa_p1': '济南钰峭机械有限公司是一家专注于钣金加工设备及相关工业应用的中国工业设备解决方案与服务公司。我们提供实用的设备解决方案，并配套应用评估、技术协调和长期服务。',
         'wwa_p2': '公司运营两个品牌：<strong>EUCHIO</strong> — 可在自有品牌下供应的整机设备；<strong>SAGEMRO</strong> — MRO产品和服务，包括维护、维修、备件和外围设备。不允许贴牌的产品，或来自不允许品牌重塑的制造商的产品，通过 SAGEMRO 或我们的在线商店提供。',
         'wwa_p3': '我们的目标很明确：为海外工业客户提供实用、匹配的设备和服务方案，以清晰的沟通和长期的支持。我们专注于诚实面对我们能做什么和不能做什么 — 如果产品不合适，我们会直说。',
         'tl1_title': '产品开发',
@@ -237,14 +237,14 @@ BODY_TRANSLATIONS = {
     },
     'es': {
         'page_title': 'Sobre Nosotros | Euchio Machinery — Equipos de Chapa y Servicio',
-        'meta_description': 'Sobre Euchio Machinery — una empresa china de comercio y servicio de maquinaria enfocada en equipos de procesamiento de chapa. Opera las marcas EUCHIO (máquinas completas) y SAGEMRO (repuestos y servicio MRO) para clientes industriales en el extranjero.',
+        'meta_description': 'Sobre Euchio Machinery — una empresa china de soluciones y servicios de equipos industriales centrada en el procesamiento de chapa. Opera las marcas EUCHIO (máquinas completas) y SAGEMRO (repuestos y servicio MRO) para clientes industriales en el extranjero.',
         'hero_badge': '<span>Equipos de Chapa</span> y Servicio',
         'hero_h1': 'Soluciones Prácticas de Equipos<br>para <span class="accent">Fabricantes de Chapa</span>',
-        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. es una empresa china de comercio y servicio de maquinaria enfocada en equipos de procesamiento de chapa. Operamos dos marcas — <strong>EUCHIO</strong> para máquinas completas y <strong>SAGEMRO</strong> para repuestos y servicio MRO — para servir a clientes industriales en el extranjero con comunicación clara, aprovisionamiento responsable y soporte a largo plazo.',
+        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. es una empresa china de soluciones y servicios de equipos industriales centrada en el procesamiento de chapa. Operamos dos marcas — <strong>EUCHIO</strong> para máquinas completas y <strong>SAGEMRO</strong> para repuestos y servicio MRO — para servir a clientes industriales en el extranjero con comunicación clara, selección cuidadosa de soluciones y soporte a largo plazo.',
         'btn_contact_us': 'Contáctenos',
         'label_company': 'Nuestra Empresa',
         'h2_who_we_are': 'Quiénes Somos',
-        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. es una empresa china de comercio y servicio de maquinaria enfocada en equipos de procesamiento de chapa y soluciones industriales relacionadas. Trabajamos con fabricantes en China y conectamos sus equipos con clientes industriales en el extranjero.',
+        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. es una empresa china de soluciones y servicios de equipos industriales centrada en equipos para el procesamiento de chapa y aplicaciones industriales relacionadas. Ofrecemos soluciones prácticas de equipamiento respaldadas por evaluación de aplicaciones, coordinación técnica y servicio a largo plazo.',
         'wwa_p2': 'La empresa opera dos marcas: <strong>EUCHIO</strong> para máquinas completas que pueden suministrarse bajo nuestra propia identidad de marca, y <strong>SAGEMRO</strong> para productos y servicios MRO — incluyendo mantenimiento, reparación, repuestos y equipos periféricos. Los productos que no pueden ser renombrados, o que provienen de fabricantes que no permiten el etiquetado privado, se ofrecen bajo SAGEMRO o a través de nuestra tienda en línea.',
         'wwa_p3': 'Nuestro objetivo es claro: proporcionar soluciones prácticas de equipos y servicio para clientes industriales en el extranjero, con comunicación clara y soporte a largo plazo. Nos enfocamos en ser honestos sobre lo que podemos y no podemos hacer — si un producto no es el adecuado, lo diremos.',
         'tl1_title': 'Desarrollo de Producto',
@@ -333,14 +333,14 @@ BODY_TRANSLATIONS = {
     },
     'de': {
         'page_title': 'Über Uns | Euchio Machinery — Blechbearbeitungsgeräte & Service',
-        'meta_description': 'Über Euchio Machinery — ein chinesisches Maschinenhandels- und Serviceunternehmen für Blechbearbeitungsgeräte. Betreibt die Marken EUCHIO (komplette Maschinen) und SAGEMRO (MRO-Teile und Service) für industrielle Kunden im Ausland.',
+        'meta_description': 'Über Euchio Machinery — ein chinesisches Unternehmen für industrielle Ausrüstungslösungen und Serviceleistungen mit Schwerpunkt Blechbearbeitung. Betreibt die Marken EUCHIO (komplette Maschinen) und SAGEMRO (MRO-Teile und Service) für industrielle Kunden im Ausland.',
         'hero_badge': '<span>Blechgeräte</span> & Service',
         'hero_h1': 'Praktische Gerätelösungen<br>für <span class="accent">Blechbearbeiter</span>',
-        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. ist ein chinesisches Maschinenhandels- und Serviceunternehmen für Blechbearbeitungsgeräte. Wir betreiben zwei Marken — <strong>EUCHIO</strong> für komplette Maschinen und <strong>SAGEMRO</strong> für MRO-Teile und Service — um ausländische Industriekunden mit klarer Kommunikation, verantwortungsvoller Beschaffung und langfristigem Support zu bedienen.',
+        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. ist ein chinesisches Unternehmen für industrielle Ausrüstungslösungen und Serviceleistungen mit Schwerpunkt Blechbearbeitung. Wir betreiben zwei Marken — <strong>EUCHIO</strong> für komplette Maschinen und <strong>SAGEMRO</strong> für MRO-Teile und Service — um ausländische Industriekunden mit klarer Kommunikation, sorgfältiger Lösungsauswahl und langfristigem Support zu bedienen.',
         'btn_contact_us': 'Kontaktieren Sie uns',
         'label_company': 'Unser Unternehmen',
         'h2_who_we_are': 'Wer wir sind',
-        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. ist ein chinesisches Maschinenhandels- und Serviceunternehmen für Blechbearbeitungsgeräte und verwandte Industrielösungen. Wir arbeiten mit Herstellern in China und verbinden deren Geräte mit ausländischen Industriekunden.',
+        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. ist ein chinesisches Unternehmen für industrielle Ausrüstungslösungen und Serviceleistungen mit Schwerpunkt auf Blechbearbeitungsanlagen und verwandten industriellen Anwendungen. Wir bieten praxisgerechte Ausrüstungslösungen mit Anwendungsbewertung, technischer Koordination und langfristigem Service.',
         'wwa_p2': 'Das Unternehmen betreibt zwei Marken: <strong>EUCHIO</strong> für komplette Maschinen, die unter unserer eigenen Markenidentität geliefert werden können, und <strong>SAGEMRO</strong> für MRO-Produkte und Dienstleistungen — einschließlich Wartung, Reparatur, Ersatzteile und Peripheriegeräte. Produkte, die nicht umgebrandet werden können, oder von Herstellern stammen, die kein Private Labeling erlauben, werden unter SAGEMRO oder über unseren Online-Shop angeboten.',
         'wwa_p3': 'Unser Ziel ist unkompliziert: praktische, passende Geräte- und Servicelösungen für ausländische Industriekunden mit klarer Kommunikation und langfristigem Support. Wir konzentrieren uns darauf, ehrlich darüber zu sein, was wir können und was nicht — wenn ein Produkt nicht passt, sagen wir es.',
         'tl1_title': 'Produktentwicklung',
@@ -429,14 +429,14 @@ BODY_TRANSLATIONS = {
     },
     'fr': {
         'page_title': 'À Propos | Euchio Machinery — Équipements de Tôle & Service',
-        'meta_description': 'À propos d\'Euchio Machinery — une entreprise chinoise de commerce et de service de machines spécialisée dans les équipements de traitement de tôle. Opère les marques EUCHIO (machines complètes) et SAGEMRO (pièces et service MRO) pour les clients industriels étrangers.',
+        'meta_description': 'À propos d\'Euchio Machinery — une entreprise chinoise de solutions d\'équipements industriels et de services spécialisée dans le travail de la tôle. Opère les marques EUCHIO (machines complètes) et SAGEMRO (pièces et service MRO) pour les clients industriels étrangers.',
         'hero_badge': '<span>Équipements de Tôle</span> & Service',
         'hero_h1': 'Solutions d\'Équipements Pratiques<br>pour <span class="accent">Fabricants de Tôle</span>',
-        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. est une entreprise chinoise de commerce et de service de machines spécialisée dans les équipements de traitement de tôle. Nous opérons deux marques — <strong>EUCHIO</strong> pour les machines complètes et <strong>SAGEMRO</strong> pour les pièces et services MRO — pour servir les clients industriels étrangers avec une communication claire, un approvisionnement responsable et un support à long terme.',
+        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. est une entreprise chinoise de solutions d\'équipements industriels et de services spécialisée dans le travail de la tôle. Nous opérons deux marques — <strong>EUCHIO</strong> pour les machines complètes et <strong>SAGEMRO</strong> pour les pièces et services MRO — pour servir les clients industriels étrangers avec une communication claire, une sélection rigoureuse des solutions et un support à long terme.',
         'btn_contact_us': 'Contactez-nous',
         'label_company': 'Notre Entreprise',
         'h2_who_we_are': 'Qui Nous Sommes',
-        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. est une entreprise chinoise de commerce et de service de machines spécialisée dans les équipements de traitement de tôle et les solutions industrielles associées. Nous travaillons avec des fabricants en Chine et connectons leurs équipements avec des clients industriels étrangers.',
+        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. est une entreprise chinoise de solutions d\'équipements industriels et de services spécialisée dans les équipements de travail de la tôle et les applications industrielles associées. Nous proposons des solutions d\'équipement pratiques, appuyées par l\'évaluation des applications, la coordination technique et un service à long terme.',
         'wwa_p2': 'L\'entreprise opère deux marques : <strong>EUCHIO</strong> pour les machines complètes pouvant être fournies sous notre propre identité de marque, et <strong>SAGEMRO</strong> pour les produits et services MRO — incluant maintenance, réparation, pièces de rechange et équipements périphériques. Les produits qui ne peuvent pas être rebaptisés, ou provenant de fabricants n\'autorisant pas le marquage privé, sont proposés sous SAGEMRO ou via notre boutique en ligne.',
         'wwa_p3': 'Notre objectif est simple : fournir des solutions d\'équipements et de services pratiques et adaptées aux clients industriels étrangers, avec une communication claire et un support à long terme. Nous nous concentrons sur l\'honnêteté quant à ce que nous pouvons et ne pouvons pas faire — si un produit n\'est pas adapté, nous le dirons.',
         'tl1_title': 'Développement de Produit',
@@ -525,14 +525,14 @@ BODY_TRANSLATIONS = {
     },
     'ja': {
         'page_title': '会社概要 | Euchio Machinery — 板金設備・サービス',
-        'meta_description': 'Euchio Machinery について — 板金加工設備に特化した中国の機械貿易・サービス企業。海外の産業顧客向けに EUCHIO（完成機）および SAGEMRO（MRO部品・サービス）ブランドを運営。',
+        'meta_description': 'Euchio Machinery について — 板金加工に特化した中国の産業設備ソリューション・サービス企業。海外の産業顧客向けに EUCHIO（完成機）および SAGEMRO（MRO部品・サービス）ブランドを運営。',
         'hero_badge': '<span>板金設備</span>・サービス',
         'hero_h1': '板金加工業者のための<br><span class="accent">実用的な設備ソリューション</span>',
-        'hero_subtitle': '济南钰峭機械有限公司は、板金加工設備に特化した中国の機械貿易・サービス企業です。EUCHIO（完成機）と SAGEMRO（MRO部品・サービス）の2つのブランドを運営し、明確なコミュニケーション、責任ある調達、長期的なサポートで海外の産業顧客にサービスを提供します。',
+        'hero_subtitle': '济南钰峭機械有限公司は、板金加工に特化した中国の産業設備ソリューション・サービス企業です。EUCHIO（完成機）と SAGEMRO（MRO部品・サービス）の2つのブランドを運営し、明確なコミュニケーション、慎重なソリューション選定、長期的なサポートで海外の産業顧客にサービスを提供します。',
         'btn_contact_us': 'お問い合わせ',
         'label_company': '会社概要',
         'h2_who_we_are': '私たちについて',
-        'wwa_p1': '济南钰峭機械有限公司は、板金加工設備および関連する産業ソリューションに特化した中国の機械貿易・サービス企業です。中国のメーカーと協力し、その設備を海外の産業顧客と結びつけます。',
+        'wwa_p1': '济南钰峭機械有限公司は、板金加工設備および関連産業用途に注力する中国の産業設備ソリューション・サービス企業です。用途評価、技術調整、長期サービスを伴う実用的な設備ソリューションを提供します。',
         'wwa_p2': '当社は2つのブランドを運営しています：<strong>EUCHIO</strong> — 自社ブランドで供給できる完成機、<strong>SAGEMRO</strong> — 保守、修理、スペアパーツ、周辺機器を含むMRO製品・サービス。再ブランド化できない製品、またはプライベートラベルを許可しないメーカーの製品は、SAGEMROまたはオンラインストアを通じて提供されます。',
         'wwa_p3': '私たちの目標は明確です：明確なコミュニケーションと長期的なサポートにより、海外の産業顧客に実用的で適合した設備・サービスソリューションを提供すること。できることとできないことについて正直に努めます — 製品が合わない場合は、そう言います。',
         'tl1_title': '製品開発',
@@ -621,14 +621,14 @@ BODY_TRANSLATIONS = {
     },
     'ru': {
         'page_title': 'О нас | Euchio Machinery — Листовое оборудование и сервис',
-        'meta_description': 'О Euchio Machinery — китайская торгово-сервисная машиностроительная компания, специализирующаяся на оборудовании для обработки листового металла. Управляет брендами EUCHIO (готовые станки) и SAGEMRO (запчасти и сервис MRO) для зарубежных промышленных клиентов.',
+        'meta_description': 'О Euchio Machinery — китайская компания, предлагающая решения и сервис в области промышленного оборудования для обработки листового металла. Управляет брендами EUCHIO (готовые станки) и SAGEMRO (запчасти и сервис MRO) для зарубежных промышленных клиентов.',
         'hero_badge': '<span>Листовое оборудование</span> и сервис',
         'hero_h1': 'Практичные решения по оборудованию<br>для <span class="accent">производителей листового металла</span>',
-        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. — китайская торгово-сервисная машиностроительная компания, специализирующаяся на оборудовании для обработки листового металла. Мы управляем двумя брендами — <strong>EUCHIO</strong> для готовых станков и <strong>SAGEMRO</strong> для запчастей и сервиса MRO — для обслуживания зарубежных промышленных клиентов с чёткой коммуникацией, ответственными закупками и долгосрочной поддержкой.',
+        'hero_subtitle': 'Jinan Euchio Machinery Co., Ltd. — китайская компания, предлагающая решения и сервис в области промышленного оборудования для обработки листового металла. Мы управляем двумя брендами — <strong>EUCHIO</strong> для готовых станков и <strong>SAGEMRO</strong> для запчастей и сервиса MRO — и обслуживаем зарубежных промышленных клиентов, обеспечивая чёткую коммуникацию, тщательный подбор решений и долгосрочную поддержку.',
         'btn_contact_us': 'Связаться с нами',
         'label_company': 'Наша компания',
         'h2_who_we_are': 'Кто мы',
-        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. — китайская торгово-сервисная машиностроительная компания, специализирующаяся на оборудовании для обработки листового металла и смежных промышленных решениях. Мы работаем с производителями в Китае и связываем их оборудование с зарубежными промышленными клиентами.',
+        'wwa_p1': 'Jinan Euchio Machinery Co., Ltd. — китайская компания, специализирующаяся на решениях в области оборудования для обработки листового металла и смежных промышленных применениях. Мы предлагаем практичные решения с оценкой применимости, технической координацией и долгосрочным сервисом.',
         'wwa_p2': 'Компания управляет двумя брендами: <strong>EUCHIO</strong> — готовые станки, поставляемые под собственным брендом, и <strong>SAGEMRO</strong> — продукция и услуги MRO, включая техобслуживание, ремонт, запчасти и периферийное оборудование. Продукция, не подлежащая ребрендингу, или от производителей, не допускающих частную маркировку, предлагается под SAGEMRO или через наш интернет-магазин.',
         'wwa_p3': 'Наша цель проста: предоставлять практичные, подходящие решения по оборудованию и сервису для зарубежных промышленных клиентов с чёткой коммуникацией и долгосрочной поддержкой. Мы честны в том, что можем и не можем сделать — если продукт не подходит, мы так и скажем.',
         'tl1_title': 'Разработка продукта',
@@ -867,7 +867,7 @@ def apply_translations(content, lang):
             'About Us | Euchio Machinery — Sheet Metal Equipment & Service',
             compact['title'])
         content = content.replace(
-            'About Euchio Machinery — a China-based machinery trading and service company focused on sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.',
+            'About Euchio Machinery — a China-based industrial equipment solutions and service company focused on sheet metal processing. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.',
             compact['description'])
         content = re.sub(
             r'<main id="main">.*?</main>',
@@ -875,7 +875,7 @@ def apply_translations(content, lang):
             content,
             flags=re.DOTALL)
         content = content.replace(
-            'Jinan Euchio Machinery Co., Ltd. — machinery trading and service for sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts & service) brands for overseas industrial customers.',
+            'Jinan Euchio Machinery Co., Ltd. — industrial equipment solutions and service for sheet metal processing. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts & service) brands for overseas industrial customers.',
             compact['footer_intro'])
         return content
 
@@ -893,18 +893,18 @@ def apply_translations(content, lang):
     replacements = [
         # Meta
         ('About Us | Euchio Machinery — Sheet Metal Equipment & Service', bt.get('page_title', 'About Us | Euchio Machinery — Sheet Metal Equipment & Service')),
-        ('About Euchio Machinery — a China-based machinery trading and service company focused on sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.', bt.get('meta_description', 'About Euchio Machinery — a China-based machinery trading and service company focused on sheet metal processing equipment. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.')),
+        ('About Euchio Machinery — a China-based industrial equipment solutions and service company focused on sheet metal processing. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.', bt.get('meta_description', 'About Euchio Machinery — a China-based industrial equipment solutions and service company focused on sheet metal processing. Operating EUCHIO (complete machines) and SAGEMRO (MRO parts and service) brands for overseas industrial customers.')),
 
         # Hero
         ('<span>Sheet Metal Equipment</span> & Service', bt.get('hero_badge', '<span>Sheet Metal Equipment</span> & Service')),
         ('Practical Equipment Solutions<br>for <span class="accent">Sheet Metal Fabricators</span>', bt.get('hero_h1', 'Practical Equipment Solutions<br>for <span class="accent">Sheet Metal Fabricators</span>')),
-        ('Jinan Euchio Machinery Co., Ltd. is a China-based machinery trading and service company focused on sheet metal processing equipment. We operate two brands — <strong>EUCHIO</strong> for complete machines and <strong>SAGEMRO</strong> for MRO parts and service — to serve overseas industrial customers with clear communication, responsible sourcing, and long-term support.', bt.get('hero_subtitle', '')),
+        ('Jinan Euchio Machinery Co., Ltd. is a China-based industrial equipment solutions and service company focused on sheet metal processing. We operate two brands — <strong>EUCHIO</strong> for complete machines and <strong>SAGEMRO</strong> for MRO parts and service — to serve overseas industrial customers with clear communication, careful solution matching, and long-term support.', bt.get('hero_subtitle', '')),
         ('Contact Us', bt.get('btn_contact_us', 'Contact Us')),
 
         # Who We Are
         ('>Our Company<', f'>{bt.get("label_company", "Our Company")}<'),
         ('>Who We Are<', f'>{bt.get("h2_who_we_are", "Who We Are")}<'),
-        ('Jinan Euchio Machinery Co., Ltd. is a China-based machinery trading and service company focused on sheet metal processing equipment and related industrial solutions. We work with manufacturers in China and connect their equipment with overseas industrial customers.', bt.get('wwa_p1', '')),
+        ('Jinan Euchio Machinery Co., Ltd. is a China-based industrial equipment solutions and service company focused on sheet metal processing equipment and related industrial applications. We provide practical equipment solutions supported by application assessment, technical coordination, and long-term service.', bt.get('wwa_p1', '')),
         ('The company operates two brands: <strong>EUCHIO</strong> for complete machines that can be supplied under our own brand identity, and <strong>SAGEMRO</strong> for MRO products and services — including maintenance, repair, spare parts, and peripheral equipment. Products that cannot be rebranded, or that come from manufacturers who do not allow private labeling, are offered under SAGEMRO or through our online store.', bt.get('wwa_p2', '')),
         ('Our goal is straightforward: provide practical, well-matched equipment and service solutions for overseas industrial customers, with clear communication and long-term support. We focus on being honest about what we can and cannot do — if a product isn\'t the right fit, we\'ll say so.', bt.get('wwa_p3', '')),
 

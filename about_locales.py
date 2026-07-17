@@ -130,7 +130,7 @@ COPY = {
         "details": "Dane Prawne i Kontaktowe",
         "cta": "Gotowy Usprawnić Cięcie Laserowe?",
         "cta_body": "Prześlij moc lasera, materiał, grubość i plan zasilania gazem, abyśmy ocenili zastosowanie.",
-        "footer_intro": "Jinan Euchio Machinery Co., Ltd. prowadzi handel i serwis urządzeń do obróbki blach poprzez marki EUCHIO i SAGEMRO.",
+        "footer_intro": "Jinan Euchio Machinery Co., Ltd. oferuje rozwiązania w zakresie urządzeń i serwis dla obróbki blach poprzez marki EUCHIO i SAGEMRO.",
         "alt40": "Urządzenie do mieszania gazów w fabryce klienta z laserem 40kW",
         "alt60": "Urządzenie do mieszania gazów w fabryce klienta z laserem 60kW",
         "alt20": "Urządzenie do mieszania gazów w fabryce klienta z laserem HAN'S 20kW",
@@ -171,7 +171,7 @@ COPY = {
     },
     "nl": {
         "title": "Over Ons | Euchio Machinery — Plaatbewerkingsmachines en Service",
-        "description": "Euchio Machinery is een Chinees handels- en servicebedrijf voor plaatbewerkingsmachines. Het bedient internationale industriële klanten via de merken EUCHIO en SAGEMRO.",
+        "description": "Euchio Machinery is een Chinees bedrijf dat industriële apparatuuroplossingen en service voor plaatbewerking biedt. Het bedient internationale industriële klanten via de merken EUCHIO en SAGEMRO.",
         "badge": "Plaatbewerkingsmachines en Service",
         "hero": "Praktische Apparatuuroplossingen<br>voor <span class=\"accent\">Plaatbewerkers</span>",
         "subtitle": "Jinan Euchio Machinery Co., Ltd. levert complete <strong>EUCHIO</strong>-machines en <strong>SAGEMRO</strong> MRO-onderdelen en diensten aan internationale industriële klanten.",

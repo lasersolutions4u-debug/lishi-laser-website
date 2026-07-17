@@ -88,6 +88,27 @@ def page_path(lang, filename):
 
 
 class SiteIntegrityTests(unittest.TestCase):
+    def test_about_pages_do_not_position_company_as_a_trading_business(self):
+        trading_terms = (
+            "machinery trading",
+            "机械贸易",
+            "comercio y servicio de maquinaria",
+            "maschinenhandels- und serviceunternehmen",
+            "commerce et de service de machines",
+            "機械貿易",
+            "торгово-сервисная",
+            "handel i serwis",
+            "handels- en servicebedrijf",
+        )
+        sources = [page_path(lang, "about.html") for lang in LANGS]
+        sources.extend((ROOT / "about_locales.py", ROOT / "build-about-langs.py"))
+
+        for source in sources:
+            content = source.read_text(encoding="utf-8").casefold()
+            for term in trading_terms:
+                with self.subTest(source=source, term=term):
+                    self.assertNotIn(term, content, f"{term!r} remains in {source}")
+
     def test_about_brand_section_matches_two_brand_content(self):
         brand_page_count = 0
 
