@@ -1,0 +1,54 @@
+    <section class="product-hero product-hero--valve">
+      <div class="container product-hero-grid">
+        <div class="product-hero-copy">
+          <span class="product-eyebrow">{{page.eyebrow}}</span>
+          <h1>{{page.h1}}</h1>
+          <p class="product-lede">{{page.lede}}</p>
+          <p class="product-hero-note">{{page.hero_note}}</p>
+          <div class="product-actions"><a class="btn btn-primary" href="{{route.contact}}">{{page.primary_cta}}</a><a class="btn btn-outline-light" href="https://www.dhgate.com/store/22325464" target="_blank" rel="noopener" data-conversion="dhgate-store">{{page.store_cta}}</a></div>
+        </div>
+        <figure class="product-hero-media product-hero-device product-hero-device--compact">
+          <img src="/images/products/mspv2-4000/mspv2-4000-angle-02.png" alt="{{page.visual_alt}}" width="1550" height="1450">
+          <span class="media-index">{{page.media_index}}</span>
+        </figure>
+      </div>
+    </section>
+
+    <section class="product-section" id="valve-gallery">
+      <div class="container">
+        <div class="product-media-grid">
+          <img src="/images/products/mspv2-4000/mspv2-4000-angle-01.png" alt="{{page.gallery_alt_1}}" loading="lazy">
+          <img src="/images/products/mspv2-4000/mspv2-4000-angle-02.png" alt="{{page.gallery_alt_2}}" loading="lazy">
+          <img src="/images/products/mspv2-4000/mspv2-4000-angle-03.png" alt="{{page.gallery_alt_3}}" loading="lazy">
+          <video controls muted loop playsinline preload="none" poster="/images/products/mspv2-4000/mspv2-4000-angle-02.png"><source src="/images/products/mspv2-4000/mspv2-4000-360.webm" type="video/webm">{{page.video_fallback}}</video>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-section product-section--tinted" id="valve-fit">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.fit_label}}</span><h2>{{page.fit_title}}</h2><p>{{page.fit_text}}</p></div><div class="choice-marker"><span>{{page.choice_same}}</span><strong>{{page.choice_action}}</strong><a href="/products/mixed-gas-control-comparison">{{page.compare_cta}} →</a></div></div>
+    </section>
+
+    <section class="product-section" id="valve-specifications">
+      <div class="container"><div class="product-section-heading"><span class="product-eyebrow">{{page.specs_label}}</span><h2>{{page.specs_title}}</h2><p>{{page.specs_text}}</p></div>{{blocks.specs}}</div>
+    </section>
+
+    <section class="product-section product-section--dark" id="control-principle">
+      <div class="container product-split product-split--media"><div><span class="product-eyebrow">{{page.control_label}}</span><h2>{{page.control_title}}</h2><p>{{page.control_text}}</p></div><figure class="technical-figure"><img src="/images/products/mspv2-4000/mspv2-4000-closed-loop-control.png" alt="{{page.control_alt}}" loading="lazy" width="1600" height="900"></figure></div>
+    </section>
+
+    <section class="product-section" id="installation-conditions">
+      <div class="container"><div class="product-section-heading"><span class="product-eyebrow">{{page.installation_label}}</span><h2>{{page.installation_title}}</h2><p>{{page.installation_text}}</p></div>{{blocks.cards}}</div>
+    </section>
+
+    <section class="product-section product-section--tinted" id="integration-checklist">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.checklist_label}}</span><h2>{{page.checklist_title}}</h2></div>{{blocks.checklist}}</div>
+    </section>
+
+    <section class="product-section" id="faq">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.faq_label}}</span><h2>{{page.faq_title}}</h2></div>{{blocks.faq}}</div>
+    </section>
+
+    <section class="product-closing-cta product-closing-cta--cyan">
+      <div class="container"><span class="product-eyebrow">{{page.closing_label}}</span><h2>{{page.closing_title}}</h2><p>{{page.closing_text}}</p><a class="btn btn-primary" href="{{route.contact}}">{{page.closing_cta}}</a></div>
+    </section>

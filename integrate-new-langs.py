@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
-"""Add ru/vi/th hreflang and lang-option to all HTML pages."""
+"""Legacy locale integration helper; no additional languages are active."""
 import os, re, sys
 
 BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混合气体设备/网站/public"
 
-NEW_LANGS = [
-    ('ru', 'Русский'),
-    ('vi', 'Tiếng Việt'),
-    ('th', 'ไทย'),
-]
+NEW_LANGS = []
 
 def get_url_prefix(rel_path):
     """Determine hreflang URL prefix based on file location."""

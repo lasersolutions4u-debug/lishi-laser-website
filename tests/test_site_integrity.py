@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
-LANGS = ["en", "es", "zh", "ko", "ja", "pt", "tr", "pl", "it", "de", "fr", "nl", "ru", "vi", "th"]
+LANGS = ["en", "es", "zh", "ko", "ja", "pt", "pl"]
 SUB_LANGS = LANGS[1:]
 TRANSLATED_ABOUT_MARKERS = {
     "es": "Quiénes Somos",
@@ -16,15 +16,7 @@ TRANSLATED_ABOUT_MARKERS = {
     "ko": "회사 소개",
     "ja": "私たちについて",
     "pt": "Quem Somos",
-    "tr": "Biz Kimiz",
     "pl": "Kim jesteśmy",
-    "it": "Chi Siamo",
-    "de": "Wer wir sind",
-    "fr": "Qui Nous Sommes",
-    "nl": "Wie Wij Zijn",
-    "ru": "Кто мы",
-    "vi": "Chúng Tôi Là Ai",
-    "th": "เราเป็นใคร",
 }
 
 
@@ -157,28 +149,19 @@ class SiteIntegrityTests(unittest.TestCase):
                 with self.subTest(source=source, brand=brand):
                     self.assertNotRegex(content, rf"\b{brand}\b")
 
-    def test_about_deployment_proof_uses_verified_installation_data(self):
+    def test_about_pages_do_not_publish_unverified_scale_claims(self):
+        forbidden = re.compile(
+            r"1,000\+|500\+\s+(?:installed|systems)|50\+\s+countries|30\+\s+(?:authorized\s+)?distributors",
+            re.IGNORECASE,
+        )
         for lang in LANGS:
             with self.subTest(lang=lang):
                 content = page_path(lang, "about.html").read_text(encoding="utf-8")
-                section = re.search(
-                    r'<section[^>]*id="global-reach"[^>]*>(.*?)</section>',
-                    content,
-                    re.DOTALL,
-                )
-                self.assertIsNotNone(section)
-                deployment = section.group(1)
-                self.assertIn("deployment-proof", deployment)
-                self.assertRegex(deployment, r">\s*1,000\+\s*<")
-                self.assertNotIn("presence-stats", deployment)
-                self.assertNotIn("continents-row", deployment)
-                self.assertNotIn("OVERSEAS CUSTOMERS", deployment)
-                self.assertNotIn("3 – 60kW", deployment)
-                self.assertNotIn("2 kWh", deployment)
+                self.assertIsNone(forbidden.search(content))
 
-    def test_about_nav_is_after_parameters_and_immediately_before_contact(self):
-        for lang in LANGS:
-            for filename in ("index.html", "about.html", "parameters.html", "contact.html"):
+    def test_legacy_localized_core_nav_keeps_about_before_contact(self):
+        for lang in SUB_LANGS:
+            for filename in ("about.html", "parameters.html", "contact.html"):
                 with self.subTest(lang=lang, filename=filename):
                     hrefs = header_nav_hrefs(page_path(lang, filename))
                     parameter_matches = [i for i, href in enumerate(hrefs) if "parameters" in href]
@@ -240,10 +223,6 @@ class SiteIntegrityTests(unittest.TestCase):
                     self.assertFalse(mojibake.search(title), title)
         self.assertNotRegex(parse_page(page_path("ja", "parameters.html")).title, r"[가-힣]")
         self.assertNotRegex(parse_page(page_path("ja", "parameters.html")).h1, r"[가-힣]")
-        for lang in ("it", "de", "fr"):
-            title = parse_page(page_path(lang, "contact.html")).title
-            self.assertNotRegex(title, r"\bGet\b.*\bQuote\b")
-
     def test_pretty_urls_are_used_for_canonical_hreflang_and_sitemap(self):
         for lang in LANGS:
             prefix = "" if lang == "en" else f"/{lang}"
@@ -265,7 +244,7 @@ class SiteIntegrityTests(unittest.TestCase):
         locs = [node.text for node in tree.findall("s:url/s:loc", ns)]
         self.assertNotIn("https://gasmixtech.com/404.html", locs)
         about_locs = [loc for loc in locs if loc.endswith("/about") or loc == "https://gasmixtech.com/about"]
-        self.assertEqual(len(about_locs), 15)
+        self.assertEqual(len(about_locs), len(LANGS))
 
     def test_about_factory_image_alt_text_is_localized(self):
         english_alts = {

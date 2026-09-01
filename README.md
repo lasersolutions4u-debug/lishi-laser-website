@@ -1,11 +1,11 @@
-# LISHI LASER Mixed Gas Device Website
+# EUCHIO Mixed Gas Device Website
 
-Website for [gasmixtech.com](https://gasmixtech.com) — LISHI LASER Mixed Gas Device product page.
+Website for [gasmixtech.com](https://gasmixtech.com) — EUCHIO Mixed Gas Device product page.
 
 ## Product
 
 EUCHIO Mixed Gas Device (氮气氧气配比柜 / 激光切割混气装置)
-- Brand: LISHI LASER
+- Brand: EUCHIO
 - Company: Jinan Euchio Machinery Co., Ltd.
 - Website: gasmixtech.com
 
@@ -49,21 +49,28 @@ After first deploy:
 ## Project Structure
 
 ```
-/
-├── index.html          # Homepage
-├── parameters.html     # Cutting parameters detail page
-├── contact.html        # Contact page with form
-├── styles.css         # Main stylesheet
-├── script.js          # Interactions
-├── robots.txt
-├── favicon.svg         # Logo
-└── public/
-    └── images/         # Product & sample images
+public/
+├── index.html              # English homepage (root)
+├── parameters.html         # English cutting parameters
+├── contact.html            # English contact page
+├── privacy.html            # English privacy policy
+├── _template.html          # i18n template with {{key}} placeholders
+├── 404.html                # Custom 404 page
+├── styles.css / script.js  # Main stylesheet & interactions
+├── styles.min.css / script.min.js  # Minified production versions
+├── robots.txt / sitemap.xml / _headers / favicon.svg
+├── images/                 # Product & sample images
+├── i18n/                   # Translation JSON files (en.json, zh.json, ...)
+├── pagefind/               # Full-text search index & JS
+├── blog/                   # English blog posts (11 articles)
+├── case-studies/           # English case studies (5 articles)
+└── [lang]/                 # 14 language subdirectories (zh/es/ko/ja/pt/tr/pl/it/de/fr/nl/ru/vi/th)
+    └── (index + parameters + contact + privacy).html
 ```
 
 ## Contact Info
 
-- Email: sales@euchio.com
+- Email: sales@gasmixtech.com
 - Phone: +86 186 1558 4520 (WeChat)
 - WhatsApp Mexico: +52 557 208 0065
 - WhatsApp Thailand: +66 961 135 966

@@ -9,7 +9,7 @@ from about_locales import COPY as COMPACT_COPY, render_main
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 SOURCE = os.path.join(BASE, 'about.html')
 
-LANGS = ['zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
+LANGS = ['zh', 'es', 'ko', 'ja', 'pt', 'pl']
 
 ABOUT_IMAGE_ALTS = {
     'zh': ['混合气体设备在中国佛山40kW激光切割客户工厂的应用', '配备混合气体设备和绿色储气罐的40kW激光切割客户工厂', '配备混合气体设备的60kW超高功率激光切割客户工厂', '配备混合气体设备的20kW大族激光客户工厂'],

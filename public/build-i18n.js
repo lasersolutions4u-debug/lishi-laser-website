@@ -10,12 +10,20 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const PUBLIC_DIR = __dirname;
 const I18N_DIR = path.join(PUBLIC_DIR, 'i18n');
+const PYTHON = process.platform === 'win32' ? 'python' : 'python3';
+
+// Normalize retained locale source copy before rendering. This keeps the JSON
+// sources and generated HTML under the same evidence and positioning policy.
+execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'normalize-i18n-homepages.py')], {
+  stdio: 'inherit'
+});
 
 // Supported languages — add new ones here + create i18n/xx.json
-const LANGUAGES = ['zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th'];
+const LANGUAGES = ['zh', 'es', 'ko', 'ja', 'pt', 'pl'];
 
 // ─── Read template ──────────────────────────────────────────────────
 const templatePath = path.join(PUBLIC_DIR, '_template.html');
@@ -52,7 +60,14 @@ for (const lang of LANGUAGES) {
   console.log(`  ${lang}/index.html`);
 }
 
-console.log(`\nDone — ${built} language(s) built.`);
+// Apply the shared canonical, schema, language, identity, and evidence-policy
+// contract after every homepage build so legacy translation strings cannot
+// silently restore removed product branding or unsupported positioning.
+execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'stabilize-core-locales.py')], {
+  stdio: 'inherit'
+});
+
+console.log(`\nDone — ${built} language(s) built and normalized.`);
 
 // ═══════════════════════════════════════════════════════════════════════
 // Helpers

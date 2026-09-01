@@ -7,9 +7,7 @@ BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混
 ALL_LANGS = [
     ('en', 'English'), ('zh', '中文'), ('es', 'Español'),
     ('ko', '한국어'), ('ja', '日本語'), ('pt', 'Português'),
-    ('tr', 'Türkçe'), ('pl', 'Polski'), ('it', 'Italiano'),
-    ('de', 'Deutsch'), ('fr', 'Français'), ('nl', 'Nederlands'),
-    ('ru', 'Русский'), ('vi', 'Tiếng Việt'), ('th', 'ไทย'),
+    ('pl', 'Polski'),
 ]
 
 def parse_path(rel_path):

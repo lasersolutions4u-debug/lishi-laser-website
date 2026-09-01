@@ -6,16 +6,16 @@ for f in index.html contact.html parameters.html; do
   FILE="$BASE/$f"
 
   # === Meta & Head ===
-  sed -i '' 's|12KW-60KW lazer kesim makineleri için LISHI LASER Karma Gaz Cihazı. 3 kat daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. Karbon çeliği kesimi için N2/O2 oran teknolojisi.|Dispositivo a gas misto LISHI LASER per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.|' "$FILE"
+  sed -i '' 's|12KW-60KW lazer kesim makineleri için EUCHIO Karma Gaz Cihazı. 3 kat daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. Karbon çeliği kesimi için N2/O2 oran teknolojisi.|Dispositivo a gas misto EUCHIO per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.|' "$FILE"
 
   sed -i '' 's|lazer kesim gaz karıştırıcı, nitrojen oksijen karışım cihazı, mikro oksijen lazer kesim, karbon çeliği lazer kesim, yüksek güçlü lazer 12kW 60kW, karma gaz vs hava kompresörü, lazer kesim çapaklarını giderme, nitrojen tüketimini azaltma, Han'\''s lazer gaz karıştırıcı, endüstriyel lazer gaz ekipmanı, bire-iki lazer gaz kurulumu, yardımcı gaz optimizasyonu|miscelatore gas taglio laser, dispositivo miscelazione azoto ossigeno, taglio laser micro ossigeno, taglio laser acciaio carbonio, laser alta potenza 12kW 60kW, gas misto vs compressore aria, eliminazione bave taglio laser, riduzione consumo azoto, miscelatore gas laser Han'\''s, apparecchiatura gas laser industriale, configurazione gas laser uno-a-due, ottimizzazione gas assistito|' "$FILE"
 
-  sed -i '' 's|LISHI LASER Karma Gaz Cihazı |3× Daha Hızlı Lazer Kesim|LISHI LASER Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce|' "$FILE"
+  sed -i '' 's|EUCHIO Karma Gaz Cihazı |3× Daha Hızlı Lazer Kesim|EUCHIO Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce|' "$FILE"
 
   sed -i '' 's|12KW-60KW lazer kesim makineleri için karma gaz cihazı. 3× daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. N2/O2 oran teknolojisi.|Dispositivo a gas misto per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2.|' "$FILE"
 
   # === JSON-LD ===
-  sed -i '' 's|"name": "LISHI LASER Karma Gaz Cihazı"|"name": "LISHI LASER Dispositivo a Gas Misto"|g' "$FILE"
+  sed -i '' 's|"name": "EUCHIO Karma Gaz Cihazı"|"name": "EUCHIO Dispositivo a Gas Misto"|g' "$FILE"
 
   sed -i '' 's|"description": "Yüksek güçlü lazer kesim makineleri için nitrojen oksijen karma gaz ekipmanı. 3 kat daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi."|"description": "Apparecchiatura a gas misto azoto-ossigeno per macchine da taglio laser ad alta potenza. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno."|' "$FILE"
 
@@ -27,7 +27,7 @@ for f in index.html contact.html parameters.html; do
 
   sed -i '' 's|"Lazer makinemle uyumlu mu?"|"È compatibile con la mia macchina laser?"|' "$FILE"
 
-  sed -i '' 's|"Evet. LISHI LASER Karma Gaz Cihazı, HAN'\''S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA ve MESSER dahil tüm büyük lazer markalarıyla çalışır. 12kW'\''dan 60kW'\''a kadar makineleri destekler. Makineniz standart yardımcı gaz bağlantıları kullanıyorsa uyumludur."|"Sì. Il Dispositivo a Gas Misto LISHI LASER funziona con tutti i principali marchi laser, inclusi HAN'\''S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas assistito, è compatibile."|' "$FILE"
+  sed -i '' 's|"Evet. EUCHIO Karma Gaz Cihazı, HAN'\''S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA ve MESSER dahil tüm büyük lazer markalarıyla çalışır. 12kW'\''dan 60kW'\''a kadar makineleri destekler. Makineniz standart yardımcı gaz bağlantıları kullanıyorsa uyumludur."|"Sì. Il Dispositivo a Gas Misto EUCHIO funziona con tutti i principali marchi laser, inclusi HAN'\''S, DNE, PENTA, LEAD, HSG, BODOR, KIMLA e MESSER. Supporta macchine da 12kW a 60kW. Se la tua macchina utilizza connessioni standard per gas assistito, è compatibile."|' "$FILE"
 
   sed -i '' 's|"Hangi kalınlıkları kesebilir?"|"Quali spessori può tagliare?"|' "$FILE"
 
@@ -47,24 +47,24 @@ for f in index.html contact.html parameters.html; do
 
   sed -i '' 's|"Garantili mi?"|"È garantito?"|' "$FILE"
 
-  sed -i '' 's|"Evet, tüm LISHI LASER Karma Gaz Cihazları, satın alma tarihinden itibaren 1 yıl garanti kapsamındadır. Küresel satış sonrası destek ağımız aracılığıyla uzatılmış garanti seçenekleri mevcuttur."|"Sì, tutti i Dispositivi a Gas Misto LISHI LASER sono coperti da una garanzia di 1 anno dalla data di acquisto. Opzioni di garanzia estesa sono disponibili attraverso la nostra rete globale di assistenza post-vendita."|' "$FILE"
+  sed -i '' 's|"Evet, tüm EUCHIO Karma Gaz Cihazları, satın alma tarihinden itibaren 1 yıl garanti kapsamındadır. Küresel satış sonrası destek ağımız aracılığıyla uzatılmış garanti seçenekleri mevcuttur."|"Sì, tutti i Dispositivi a Gas Misto EUCHIO sono coperti da una garanzia di 1 anno dalla data di acquisto. Opzioni di garanzia estesa sono disponibili attraverso la nostra rete globale di assistenza post-vendita."|' "$FILE"
 
   # === Video descriptions ===
-  sed -i '' 's|"LISHI LASER Karma Gaz Cihazı 20KW lazer kesim makinesi ile çalışırken"|"Dispositivo a Gas Misto LISHI LASER in funzione con macchina da taglio laser 20KW"|g' "$FILE"
+  sed -i '' 's|"EUCHIO Karma Gaz Cihazı 20KW lazer kesim makinesi ile çalışırken"|"Dispositivo a Gas Misto EUCHIO in funzione con macchina da taglio laser 20KW"|g' "$FILE"
   sed -i '' 's|"Karma gaz cihazı karbon çeliği keserken"|"Dispositivo a gas misto per taglio acciaio al carbonio"|g' "$FILE"
   sed -i '' 's|"Karma gaz cihazı demo videosu"|"Video dimostrativo dispositivo a gas misto"|g' "$FILE"
   sed -i '' 's|"Karma gaz cihazı çalışma prensibi"|"Principio di funzionamento dispositivo a gas misto"|g' "$FILE"
   sed -i '' 's|"Karma gaz cihazı kurulumu"|"Installazione dispositivo a gas misto"|g' "$FILE"
 
   # === META (contact.html specific) ===
-  sed -i '' 's|LISHI LASER karma gaz cihazı fiyatlandırması ve teklifleri için iletişime geçin|Contatta per prezzi e offerte dispositivo a gas misto LISHI LASER|' "$FILE"
+  sed -i '' 's|EUCHIO karma gaz cihazı fiyatlandırması ve teklifleri için iletişime geçin|Contatta per prezzi e offerte dispositivo a gas misto EUCHIO|' "$FILE"
   sed -i '' 's|Tüm büyük lazer markalarıyla uyumlu|Compatibile con tutti i principali marchi laser|g' "$FILE"
   sed -i '' 's|Global sevkiyat mevcuttur|Spedizione globale disponibile|g' "$FILE"
   sed -i '' 's|lazer kesim gaz ekipmanı teklifi|offerta apparecchiatura gas taglio laser|' "$FILE"
   sed -i '' 's|karma gaz cihazı distribütörü|distributore dispositivo gas misto|' "$FILE"
   sed -i '' 's|lazer kesim ekipmanı üreticisi|produttore apparecchiatura taglio laser|' "$FILE"
   sed -i '' 's|HANS lazer uyumlu gaz|gas compatibile laser HANS|' "$FILE"
-  sed -i '' 's|LISHI LASER karma gaz kesim ekipmanı için teklif isteyin|Richiedi un preventivo per apparecchiatura taglio gas misto LISHI LASER|' "$FILE"
+  sed -i '' 's|EUCHIO karma gaz kesim ekipmanı için teklif isteyin|Richiedi un preventivo per apparecchiatura taglio gas misto EUCHIO|' "$FILE"
   sed -i '' 's|Tüm büyük lazer markalarıyla uyumlu. Global sevkiyat mevcuttur.|Compatibile con tutti i principali marchi laser. Spedizione globale disponibile.|' "$FILE"
 
   # === Navigation ===
@@ -229,7 +229,7 @@ for f in index.html contact.html parameters.html; do
   sed -i '' 's|"name": "Kesim Parametreleri"|"name": "Parametri di Taglio"|' "$FILE"
 
   # ContactPage JSON-LD
-  sed -i '' 's|"name": "LISHI LASER İletişim"|"name": "LISHI LASER Contatto"|' "$FILE"
+  sed -i '' 's|"name": "EUCHIO İletişim"|"name": "EUCHIO Contatto"|' "$FILE"
 
   # section labels
   sed -i '' 's|>İletişime Geçin<|>Mettiti in Contatto<|' "$FILE"

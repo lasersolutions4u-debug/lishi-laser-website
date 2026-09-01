@@ -18,7 +18,7 @@ import re
 PUBLIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
 
 # Language subdirectories
-LANGS = ["zh", "es", "ko", "ja", "pt", "tr", "pl", "it", "de", "fr", "nl", "ru", "vi", "th"]
+LANGS = ["zh", "es", "ko", "ja", "pt", "pl"]
 
 # File types to fix in language subdirs
 HTML_FILES = ["about.html", "contact.html", "parameters.html", "privacy.html", "index.html"]

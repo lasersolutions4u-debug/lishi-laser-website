@@ -4,8 +4,8 @@ import os, re
 
 BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混合气体设备/网站/public/blog"
 
-# All 15 languages + x-default
-LANGUAGES = ['en', 'zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
+# Blog content is English-only.
+LANGUAGES = ['en']
 
 def build_hreflang_block(page_name):
     """Build hreflang block for a blog article.

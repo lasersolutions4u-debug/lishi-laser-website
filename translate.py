@@ -8,14 +8,14 @@ BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混
 # Italian translations
 IT_TRANSLATIONS = {
     # Meta
-    "12KW-60KW lazer kesim makineleri için LISHI LASER Karma Gaz Cihazı. 3 kat daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. Karbon çeliği kesimi için N2/O2 oran teknolojisi.":
-     "Dispositivo a gas misto LISHI LASER per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.",
+    "12KW-60KW lazer kesim makineleri için EUCHIO Karma Gaz Cihazı. 3 kat daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. Karbon çeliği kesimi için N2/O2 oran teknolojisi.":
+     "Dispositivo a gas misto EUCHIO per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2 per taglio acciaio al carbonio.",
 
     "lazer kesim gaz karıştırıcı, nitrojen oksijen karışım cihazı, mikro oksijen lazer kesim, karbon çeliği lazer kesim, yüksek güçlü lazer 12kW 60kW, karma gaz vs hava kompresörü, lazer kesim çapaklarını giderme, nitrojen tüketimini azaltma, Han's lazer gaz karıştırıcı, endüstriyel lazer gaz ekipmanı, bire-iki lazer gaz kurulumu, yardımcı gaz optimizasyonu":
      "miscelatore gas taglio laser, dispositivo miscelazione azoto ossigeno, taglio laser micro ossigeno, taglio laser acciaio carbonio, laser alta potenza 12kW 60kW, gas misto vs compressore aria, eliminazione bave taglio laser, riduzione consumo azoto, miscelatore gas laser Han's, apparecchiatura gas laser industriale, configurazione gas uno-a-due, ottimizzazione gas assistito",
 
-    "LISHI LASER Karma Gaz Cihazı | 3× Daha Hızlı Lazer Kesim":
-     "LISHI LASER Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce",
+    "EUCHIO Karma Gaz Cihazı | 3× Daha Hızlı Lazer Kesim":
+     "EUCHIO Dispositivo a Gas Misto | Taglio Laser 3× Più Veloce",
 
     "12KW-60KW lazer kesim makineleri için karma gaz cihazı. 3× daha hızlı kesim, sıfır çapak, %33 daha az gaz tüketimi. N2/O2 oran teknolojisi.":
      "Dispositivo a gas misto per macchine da taglio laser 12KW-60KW. Taglio 3× più veloce, zero bave, 33% di consumo gas in meno. Tecnologia a rapporto N2/O2.",

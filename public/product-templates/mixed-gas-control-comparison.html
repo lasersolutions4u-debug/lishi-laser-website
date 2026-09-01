@@ -1,0 +1,34 @@
+    <section class="product-hero product-hero--comparison">
+      <div class="container product-hero-grid">
+        <div class="product-hero-copy"><span class="product-eyebrow">{{page.eyebrow}}</span><h1>{{page.h1}}</h1><p class="product-lede">{{page.lede}}</p><p class="product-hero-note">{{page.hero_note}}</p><div class="product-actions"><a class="btn btn-primary" href="{{route.contact}}">{{page.primary_cta}}</a></div></div>
+        <div class="comparison-hero-visual" aria-label="Two alternative mixed-gas controllers">
+          <div class="comparison-hero-card comparison-hero-card--cabinet"><span>{{page.hero_cabinet_label}}</span><strong>{{page.hero_cabinet_title}}</strong></div>
+          <span class="comparison-or">{{page.hero_or}}</span>
+          <div class="comparison-hero-card comparison-hero-card--valve"><span>{{page.hero_valve_label}}</span><strong>{{page.hero_valve_title}}</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-section" id="decision-principle">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.principle_label}}</span><h2>{{page.principle_title}}</h2></div><p class="large-copy">{{page.principle_text}}</p></div>
+    </section>
+
+    <section class="product-section product-section--tinted" id="comparison-table">
+      <div class="container"><div class="product-section-heading"><span class="product-eyebrow">{{page.table_label}}</span><h2>{{page.table_title}}</h2><p>{{page.table_text}}</p></div><div class="comparison-scroll"><table class="product-comparison-table"><thead><tr><th scope="col">{{page.factor_header}}</th><th scope="col">{{page.cabinet_header}}</th><th scope="col">{{page.valve_header}}</th></tr></thead><tbody>{{blocks.comparison_rows}}</tbody></table></div></div>
+    </section>
+
+    <section class="product-section" id="quick-fit">
+      <div class="container"><div class="product-section-heading"><span class="product-eyebrow">{{page.fit_label}}</span><h2>{{page.fit_title}}</h2></div>{{blocks.cards}}<div class="product-actions product-actions--center"><a class="btn btn-secondary" href="/products/integrated-gas-mixing-cabinet">{{page.cabinet_cta}}</a><a class="btn btn-secondary" href="/products/mspv2-4000-proportional-valve">{{page.valve_cta}}</a></div></div>
+    </section>
+
+    <section class="product-section product-section--dark" id="recommendation-inputs">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.checklist_label}}</span><h2>{{page.checklist_title}}</h2></div>{{blocks.checklist}}</div>
+    </section>
+
+    <section class="product-section" id="faq">
+      <div class="container product-split"><div><span class="product-eyebrow">{{page.faq_label}}</span><h2>{{page.faq_title}}</h2></div>{{blocks.faq}}</div>
+    </section>
+
+    <section class="product-closing-cta product-closing-cta--cyan">
+      <div class="container"><span class="product-eyebrow">{{page.closing_label}}</span><h2>{{page.closing_title}}</h2><p>{{page.closing_text}}</p><a class="btn btn-primary" href="{{route.contact}}">{{page.closing_cta}}</a></div>
+    </section>

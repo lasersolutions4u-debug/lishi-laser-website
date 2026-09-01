@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// LEGACY PRIVACY GENERATOR DISABLED: it contains retired locales and obsolete product-brand copy.
+throw new Error('Use node public/build-i18n.js; build-privacy.js is retained only for historical review.');
 /**
  * build-privacy.js — Generate translated privacy policy pages for all 15 languages.
  * Reads privacy.html as structural template, replaces content with translations.
@@ -9,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PUBLIC_DIR = __dirname;
-const LANG_DIRS = ['zh','es','ko','ja','pt','tr','pl','it','de','fr','nl','ru','vi','th'];
+const LANG_DIRS = ['zh','es','ko','ja','pt','pl'];
 
 // ─── Translations ────────────────────────────────────────────────────
 
@@ -930,8 +932,13 @@ const T = {
   }
 };
 
-// ─── All 15 language codes ─────────────────────────────────────────────
-const ALL_LANGS = ['en','zh','es','ko','ja','pt','de','fr','it','nl','pl','ru','tr','vi','th'];
+// ─── Retained language codes ───────────────────────────────────────────
+const ALL_LANGS = ['en','zh','es','ko','ja','pt','pl'];
+const LANGUAGE_LABELS = {
+  en: 'English', zh: '中文', es: 'Español', ko: '한국어', ja: '日本語',
+  pt: 'Português', pl: 'Polski', it: 'Italiano', de: 'Deutsch',
+  fr: 'Français', nl: 'Nederlands'
+};
 
 // ─── Build HTML for one language ───────────────────────────────────────
 function buildPrivacyHtml(lang) {
@@ -947,6 +954,12 @@ function buildPrivacyHtml(lang) {
     hreflangs += `  <link rel="alternate" hreflang="${l}" href="https://gasmixtech.com${lprefix}/privacy.html">\n`;
   }
   hreflangs += `  <link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/privacy.html">`;
+
+  const languageOptions = ALL_LANGS.map((code) => {
+    const optionPrefix = code === 'en' ? '' : `/${code}`;
+    const active = code === lang ? ' active' : '';
+    return `          <a href="${optionPrefix}/privacy.html" class="lang-option${active}" data-lang="${code}">${LANGUAGE_LABELS[code]}</a>`;
+  }).join('\n');
 
   const nav = t.nav;
   const assetPrefix = isEn ? '/' : '/';
@@ -1053,6 +1066,16 @@ ${hreflangs}
         <a href="${navBlog}">${nav.blog}</a>
         <a href="${navContact}" class="nav-cta">${nav.contact}</a>
       </nav>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <span class="lang-current">${lang.toUpperCase()}</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-arrow">▼</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+${languageOptions}
+        </div>
+      </div>
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">&#9776;</button>
     </div>
   </header>

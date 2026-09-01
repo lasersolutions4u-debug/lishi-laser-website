@@ -40,7 +40,7 @@ if __name__ == '__main__':
         count += 1
 
     # Language subdirectory indexes
-    for lang in ['zh', 'es', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']:
+    for lang in ['zh', 'es', 'ko', 'ja', 'pt', 'pl']:
         filepath = os.path.join(BASE, lang, 'index.html')
         if os.path.exists(filepath) and optimize_index(filepath):
             print(f'  {lang}/index.html')

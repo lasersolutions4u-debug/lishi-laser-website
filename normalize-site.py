@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 PUBLIC = Path(__file__).resolve().parent / 'public'
-LANGS = ['en', 'es', 'zh', 'ko', 'ja', 'pt', 'tr', 'pl', 'it', 'de', 'fr', 'nl', 'ru', 'vi', 'th']
+LANGS = ['en', 'es', 'zh', 'ko', 'ja', 'pt', 'pl']
 
 ABOUT_LABELS = {
     'en': 'About',

@@ -6,7 +6,7 @@ BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混
 
 # Pattern: hreflang URL that has a second language code in the path
 # e.g., /it/ja/ → /it/, /de/ko/parameters.html → /de/parameters.html, /nl/ja/contact.html → /nl/contact.html
-LANG_CODES = 'en|zh|es|ko|ja|pt|tr|pl|it|de|fr|nl|ru|vi|th'
+LANG_CODES = 'en|zh|es|ko|ja|pt|pl'
 
 def fix_file(filepath):
     rel_path = os.path.relpath(filepath, BASE)

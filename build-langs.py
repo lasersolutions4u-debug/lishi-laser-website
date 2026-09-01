@@ -9,15 +9,7 @@ import os, re, sys
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'public')
 
 # Language metadata
-LANGS = {
-    'it': {'name': 'Italiano', 'html_lang': 'it', 'dir': 'ltr'},
-    'de': {'name': 'Deutsch', 'html_lang': 'de', 'dir': 'ltr'},
-    'fr': {'name': 'Français', 'html_lang': 'fr', 'dir': 'ltr'},
-    'nl': {'name': 'Nederlands', 'html_lang': 'nl', 'dir': 'ltr'},
-    'ru': {'name': 'Русский', 'html_lang': 'ru', 'dir': 'ltr'},
-    'vi': {'name': 'Tiếng Việt', 'html_lang': 'vi', 'dir': 'ltr'},
-    'th': {'name': 'ไทย', 'html_lang': 'th', 'dir': 'ltr'},
-}
+LANGS = {}
 
 PAGE_TITLES = {
     'it': {'contact': 'Contatti | Preventivo Dispositivo a Gas Misto EUCHIO', 'parameters': 'Parametri di Taglio Laser 20kW | Gas Misto vs O₂'},
@@ -3145,7 +3137,7 @@ def build_language(lang, translations):
 
 if __name__ == '__main__':
     lang = sys.argv[1] if len(sys.argv) > 1 else 'it'
-    trans_map = {'it': IT, 'de': DE, 'fr': FR, 'nl': NL, 'ru': RU, 'vi': VI, 'th': TH}
+    trans_map = {}
     if lang in trans_map:
         build_language(lang, trans_map[lang])
     else:

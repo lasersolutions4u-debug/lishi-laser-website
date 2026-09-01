@@ -33,7 +33,7 @@ FIXES = {
     '"ผลิตภัณฑ์"': '"Product"',
 }
 
-LANGS = ['de', 'it', 'fr', 'vi', 'ru', 'th']
+LANGS = []
 
 
 def fix_file(filepath):

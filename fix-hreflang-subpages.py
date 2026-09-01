@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""Fix ru/vi/th hreflang URLs in contact.html and parameters.html pages.
-These were pointing to /{lang}/ (homepage) instead of /{lang}/contact.html or /{lang}/parameters.html.
-"""
+"""Legacy hreflang repair helper; no removed languages are active."""
 import os
 
 BASE = "/Users/joe/Nutstore Files/我的坚果云/Euchio/激光 金属成型/混合气体设备/网站/public"
@@ -13,7 +11,7 @@ def fix_file(filepath, page_type):
         content = f.read()
 
     original = content
-    for lang in ['ru', 'vi', 'th']:
+    for lang in []:
         old = f'hreflang="{lang}" href="https://gasmixtech.com/{lang}/"'
         new = f'hreflang="{lang}" href="https://gasmixtech.com/{lang}/{page_type}"'
         content = content.replace(old, new)

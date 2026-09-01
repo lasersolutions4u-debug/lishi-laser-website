@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / "public"
-LANGS = {"en", "es", "zh", "ko", "ja", "pt", "tr", "pl", "it", "de", "fr", "nl", "ru", "vi", "th"}
+LANGS = {"en", "es", "zh", "ko", "ja", "pt", "pl"}
 BUTTON_RE = re.compile(r'<a href="https://wa\.me/525572080065" class="whatsapp-float".*?</a>', re.DOTALL)
 
 

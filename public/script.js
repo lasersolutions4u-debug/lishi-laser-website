@@ -19,6 +19,37 @@ if (mobileToggle && nav) {
   });
 }
 
+// Product navigation menu
+const productMenuButton = document.getElementById('productMenuButton');
+const productMenu = document.getElementById('productMenu');
+
+if (productMenuButton && productMenu) {
+  const closeProductMenu = (restoreFocus = false) => {
+    productMenu.classList.remove('is-open');
+    productMenuButton.setAttribute('aria-expanded', 'false');
+    if (restoreFocus) productMenuButton.focus();
+  };
+
+  productMenuButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = productMenuButton.getAttribute('aria-expanded') === 'true';
+    productMenu.classList.toggle('is-open', !isOpen);
+    productMenuButton.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!productMenu.contains(event.target) && event.target !== productMenuButton) {
+      closeProductMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && productMenuButton.getAttribute('aria-expanded') === 'true') {
+      closeProductMenu(true);
+    }
+  });
+}
+
 // Scroll Animations (Fade In)
 const observerOptions = {
   threshold: 0.1,

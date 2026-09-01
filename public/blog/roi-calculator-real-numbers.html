@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Real production data and profit calculations for switching from O₂ to N₂/O₂ mixed gas. See actual cutting speed comparisons for 3kW-60kW fiber lasers, with annual throughput and profit projections.">
+  <meta name="description" content="Learn how to model laser cutting gas mixer ROI using accepted-part cycle time, gas consumption, finishing labor, utilization, demand, and local operating costs.">
   <meta name="keywords" content="laser cutting ROI, mixed gas ROI, laser cutting profit increase, fiber laser throughput, O2 vs mixed gas speed, laser cutting cost per meter">
-  <title>From O₂ to Mixed Gas: Real Throughput & Profit Numbers | EUCHIO Mixed Gas</title>
+  <title>Laser Cutting Gas Mixer ROI Examples | GasMixTech</title>
   <link rel="canonical" href="https://gasmixtech.com/blog/roi-calculator-real-numbers.html">
-  <link rel="alternate" hreflang="en" href="https://gasmixtech.com/blog/roi-calculator-real-numbers.html">
-  <link rel="alternate" hreflang="x-default" href="https://gasmixtech.com/blog/roi-calculator-real-numbers.html">
-  <meta property="og:title" content="From O₂ to Mixed Gas: Real Throughput & Profit Numbers">
-  <meta property="og:description" content="Real production data for switching from O₂ to N₂/O₂ mixed gas. Speed comparisons, throughput calculations, and profit projections for 3kW-60kW fiber lasers.">
+  <meta property="og:title" content="How to Model Laser Cutting Gas Mixer ROI">
+  <meta property="og:description" content="A transparent ROI method using measured cycle time, accepted output, gas use, finishing labor, utilization, demand, and local costs.">
   <meta property="og:image" content="https://gasmixtech.com/images/device-main.jpg">
   <meta property="og:url" content="https://gasmixtech.com/blog/roi-calculator-real-numbers.html">
   <meta property="og:type" content="article">
@@ -24,18 +22,18 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "From O₂ to Mixed Gas: Real Throughput & Profit Numbers",
-    "description": "Production data and profit calculations for switching from O₂ to N₂/O₂ mixed gas in laser cutting. Includes real cutting speed comparisons for 3kW-60kW fiber lasers.",
+    "headline": "How to Model Laser Cutting Gas Mixer ROI",
+    "description": "A transparent method for evaluating laser cutting gas mixer ROI with measured cycle time, accepted output, gas use, finishing labor, utilization, demand, and local costs.",
     "image": "https://gasmixtech.com/images/device-main.jpg",
     "datePublished": "2026-05-21",
-    "dateModified": "2026-05-21",
+    "dateModified": "2026-08-05",
     "author": {
       "@type": "Organization",
-      "name": "EUCHIO / Jinan Euchio Machinery Co., Ltd."
+      "name": "Jinan Euchio Machinery Co., Ltd."
     },
     "publisher": {
       "@type": "Organization",
-      "name": "EUCHIO Mixed Gas",
+      "name": "Jinan Euchio Machinery Co., Ltd.",
       "logo": {"@type": "ImageObject", "url": "https://gasmixtech.com/images/logo.png"}
     }
   }
@@ -47,10 +45,31 @@
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gasmixtech.com/"},
       {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://gasmixtech.com/blog/"},
-      {"@type": "ListItem", "position": 3, "name": "From O₂ to Mixed Gas: Real Throughput & Profit Numbers", "item": "https://gasmixtech.com/blog/roi-calculator-real-numbers.html"}
+      {"@type": "ListItem", "position": 3, "name": "How to Model Laser Cutting Gas Mixer ROI", "item": "https://gasmixtech.com/blog/roi-calculator-real-numbers.html"}
     ]
   }
   </script>
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '28152921424302280');
+  fbq('init', '1368446785419262');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=28152921424302280&ev=PageView&noscript=1"
+  /></noscript>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1368446785419262&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
 </head>
 <body>
 
@@ -59,9 +78,9 @@
   <header class="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <picture><source srcset="/images/logo.webp" type="image/webp"><img src="/images/logo.png" alt="EUCHIO"></picture>
+        <picture><source srcset="/images/logo.webp" type="image/webp"><img src="/images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
         <div class="logo-text">
-          <span class="logo-brand">EUCHIO</span>
+          <span class="logo-brand">GasMixTech</span>
           <span class="logo-tagline">Gas Mixing Technology</span>
         </div>
       </a>
@@ -82,37 +101,13 @@
             <span class="lang-arrow">▼</span>
           </button>
           <div class="lang-dropdown" id="langDropdown">
-
             <a href="/" class="lang-option active" data-lang="en">English</a>
-
             <a href="/zh/" class="lang-option" data-lang="zh">中文</a>
-
             <a href="/es/" class="lang-option" data-lang="es">Español</a>
-
             <a href="/ko/" class="lang-option" data-lang="ko">한국어</a>
-
             <a href="/ja/" class="lang-option" data-lang="ja">日本語</a>
-
             <a href="/pt/" class="lang-option" data-lang="pt">Português</a>
-
-            <a href="/tr/" class="lang-option" data-lang="tr">Türkçe</a>
-
             <a href="/pl/" class="lang-option" data-lang="pl">Polski</a>
-
-            <a href="/it/" class="lang-option" data-lang="it">Italiano</a>
-
-            <a href="/de/" class="lang-option" data-lang="de">Deutsch</a>
-
-            <a href="/fr/" class="lang-option" data-lang="fr">Français</a>
-
-            <a href="/nl/" class="lang-option" data-lang="nl">Nederlands</a>
-
-            <a href="/ru/" class="lang-option" data-lang="ru">Русский</a>
-
-            <a href="/vi/" class="lang-option" data-lang="vi">Tiếng Việt</a>
-
-            <a href="/th/" class="lang-option" data-lang="th">ไทย</a>
-
           </div>
         </div>
       </nav>
@@ -124,7 +119,7 @@
     <div class="article-page-hero">
       <div class="article-container">
         <span class="section-label">ROI Analysis</span>
-        <h1>From O₂ to Mixed Gas: Real Throughput &amp; Profit Numbers</h1>
+        <h1>How to Model Laser Cutting Gas Mixer ROI</h1>
         <div class="article-meta">
           <span>Published: May 21, 2026</span>
           <span>8 min read</span>
@@ -137,107 +132,65 @@
         <article>
           <div class="article-body">
 
-            <p>Every shop owner we talk to asks the same question: "What's the actual financial difference?" Not marketing claims — real numbers. Production data from the floor. So we compiled the cutting speed data from hundreds of installations, matched it against standard O₂ parameters, and built a calculation model anyone can use.</p>
+            <p>A laser cutting gas mixer ROI model is credible only when it starts with the current process and accepted production data. Brochure speed, maximum machine power, or a single demonstration cut cannot establish annual profit.</p>
 
-            <p>Here's what the numbers say.</p>
+            <div class="article-callout">
+              <h4>Separate capacity from realized value</h4>
+              <p>A shorter cutting cycle creates potential capacity. It creates financial value only when there is demand, machine availability, material flow, and downstream capacity to use it.</p>
+            </div>
 
-            <h2>The Speed Gap: O₂ vs Mixed Gas by Power</h2>
+            <h2>1. Define the Baseline</h2>
 
-            <p>Let's start with the raw data. These are production speeds (meters per minute) for carbon steel, comparing pure oxygen against N₂/O₂ mixed gas at the same power level:</p>
+            <p>Use one representative job and record the laser, material grade, thickness, geometry, nozzle, assist gas, pressure, flow, focus, piercing strategy, cycle time, accepted quantity, rejects, and finishing work. Repeat the measurement across the jobs that represent most annual production.</p>
+
+            <h2>2. Measure the Mixed-Gas Trial</h2>
+
+            <p>Run the same jobs with the proposed mixed-gas process. Record the final accepted parameters, nitrogen and oxygen use, total cycle time, accepted quantity, rejects, finishing labor, and any effect on loading or downstream operations.</p>
+
+            <h2>3. Calculate Verified Operating-Cost Difference</h2>
 
             <div class="article-table-wrapper">
               <table>
-                <thead>
-                  <tr>
-                    <th>Laser Power</th>
-                    <th>Material</th>
-                    <th>Thickness</th>
-                    <th>O₂ Speed</th>
-                    <th>Mixed Gas Speed</th>
-                    <th>Speed Increase</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>Cost input</th><th>How to measure</th><th>Common error</th></tr></thead>
                 <tbody>
-                  <tr><td>3kW</td><td>CS</td><td>1mm</td><td>12.0 m/min</td><td>31.5 m/min</td><td><strong>2.6x</strong></td></tr>
-                  <tr><td>6kW</td><td>CS</td><td>2mm</td><td>10.0 m/min</td><td>22.5 m/min</td><td><strong>2.3x</strong></td></tr>
-                  <tr><td>12kW</td><td>CS</td><td>8mm</td><td>2.5 m/min</td><td>10.0 m/min</td><td><strong>4.0x</strong></td></tr>
-                  <tr><td>12kW</td><td>CS</td><td>12mm</td><td>1.8 m/min</td><td>4.0 m/min</td><td><strong>2.2x</strong></td></tr>
-                  <tr><td>20kW</td><td>CS</td><td>6mm</td><td>3.0 m/min</td><td>18.0 m/min</td><td><strong>6.0x</strong></td></tr>
-                  <tr><td>20kW</td><td>CS</td><td>12mm</td><td>1.9 m/min</td><td>10.0 m/min</td><td><strong>5.3x</strong></td></tr>
-                  <tr><td>20kW</td><td>CS</td><td>20mm</td><td>1.3 m/min</td><td>3.2 m/min</td><td><strong>2.5x</strong></td></tr>
-                  <tr><td>30kW</td><td>CS</td><td>16mm</td><td>1.5 m/min</td><td>8.0 m/min</td><td><strong>5.3x</strong></td></tr>
-                  <tr><td>30kW</td><td>CS</td><td>25mm</td><td>0.9 m/min</td><td>3.2 m/min</td><td><strong>3.6x</strong></td></tr>
-                  <tr><td>60kW</td><td>CS</td><td>30mm</td><td>1.0 m/min</td><td>5.5 m/min</td><td><strong>5.5x</strong></td></tr>
+                  <tr><td>N₂ and O₂</td><td>Consumption per accepted part × invoiced unit price</td><td>Using hourly flow without gas-on time</td></tr>
+                  <tr><td>Electricity</td><td>Measured kWh for all required supply equipment</td><td>Comparing nameplate power only</td></tr>
+                  <tr><td>Finishing labor</td><td>Minutes per accepted part × loaded labor rate</td><td>Assuming all grinding disappears</td></tr>
+                  <tr><td>Maintenance</td><td>Documented service, consumables, and downtime</td><td>Ignoring auxiliary equipment</td></tr>
+                  <tr><td>Rejects</td><td>Rejected material and lost machine time</td><td>Counting gross output as saleable output</td></tr>
                 </tbody>
               </table>
             </div>
 
-            <p>The pattern is consistent: mixed gas is faster at every thickness. But the real story isn't just "it's faster." It's what that speed difference means in <em>additional meters produced per year</em> — because every extra meter is profit.</p>
+            <p>Verified monthly operating benefit equals the baseline accepted-part cost minus the trial accepted-part cost, multiplied by the production volume that can realistically move to the new process.</p>
 
-            <h2>Converting Speed to Profit: The Formula</h2>
+            <h2>4. Value Additional Capacity Carefully</h2>
 
-            <p>The financial impact of cutting speed comes down to three variables:</p>
+            <p>Use complete cycle time rather than straight-line cutting speed. Include piercing, corners, traversing, loading, unloading, nesting, inspection, and downstream constraints. Count incremental margin only for demand that can be served and collected; do not treat every theoretical extra meter as profit.</p>
 
-            <ol>
-              <li><strong>Speed difference</strong> — how many more meters per minute the laser produces on mixed gas</li>
-              <li><strong>Beam-on time</strong> — how many hours per year the laser is actually cutting (not loading, piercing, or idle)</li>
-              <li><strong>Profit per meter</strong> — your selling price minus material cost, per meter of cut</li>
-            </ol>
+            <h2>5. Calculate Payback and Sensitivity</h2>
 
-            <p>Annual profit increase = Speed difference (m/min) × 60 × Annual beam-on hours × Profit per meter</p>
-
-            <p>A typical single-shift operation runs 8 hours per day, with 40-70% actual beam-on time. Across 264 working days per year, that's 1,267 to 2,218 beam-on hours. Every extra meter per minute of cutting speed translates into 76,000-133,000 additional meters per year.</p>
-
-            <h2>Worked Example: 20kW Laser, 8mm Carbon Steel</h2>
-
-            <p>Let's walk through a realistic scenario.</p>
+            <p>Simple payback equals installed equipment cost divided by verified monthly benefit. Run at least three scenarios for utilization, product mix, local gas price, and finishing-labor effect. State which inputs are measured, quoted, or assumed.</p>
 
             <div class="article-table-wrapper">
               <table>
-                <thead>
-                  <tr><th>Parameter</th><th>O₂ (Current)</th><th>Mixed Gas (EUCHIO)</th></tr>
-                </thead>
+                <thead><tr><th>Scenario</th><th>Utilization</th><th>Process mix</th><th>Purpose</th></tr></thead>
                 <tbody>
-                  <tr><td>Cutting speed</td><td>2.5 m/min</td><td>10.0 m/min</td></tr>
-                  <tr><td>Speed difference</td><td colspan="2" style="text-align:center;background:rgba(220,38,38,0.06);"><strong>+7.5 m/min</strong></td></tr>
-                  <tr><td>Daily cutting time (beam-on)</td><td colspan="2">4.8 hours (60% of 8-hour shift)</td></tr>
-                  <tr><td>Working days per year</td><td colspan="2">264</td></tr>
-                  <tr><td>Annual beam-on minutes</td><td colspan="2">76,032</td></tr>
-                  <tr><td>Extra meters per year</td><td colspan="2" style="background:rgba(220,38,38,0.06);"><strong>570,240 meters</strong></td></tr>
-                  <tr><td>Profit per meter</td><td colspan="2">$1.00 (conservative)</td></tr>
-                  <tr><td>Annual profit increase</td><td colspan="2" style="background:rgba(22,163,74,0.06);"><strong>$570,240</strong></td></tr>
+                  <tr><td>Conservative</td><td>Below current average</td><td>Only validated jobs</td><td>Tests downside protection</td></tr>
+                  <tr><td>Base</td><td>Current measured average</td><td>Expected validated jobs</td><td>Supports the purchasing case</td></tr>
+                  <tr><td>Capacity case</td><td>Higher but achievable</td><td>Validated jobs with confirmed demand</td><td>Shows upside without treating it as guaranteed</td></tr>
                 </tbody>
               </table>
             </div>
 
-            <p>At a conservative $1/meter profit margin, the additional throughput alone generates over half a million dollars in extra profit per year. Even at $0.50/meter — which accounts for highly competitive pricing — the annual increase exceeds $285,000.</p>
+            <h2>Decision Rule</h2>
 
-            <p>The mixed gas device — a one-time capital expense — pays for itself within weeks at these numbers.</p>
-
-            <h2>Why the Speed Gap Exists</h2>
-
-            <p>The physics is straightforward. Pure oxygen cutting relies on an iron-oxygen combustion reaction that's slow to initiate and difficult to control at high power. The edge oxidizes, which means every cut part needs secondary grinding or machining before welding.</p>
-
-            <p>Mixed gas adds ~5% oxygen to the nitrogen stream. The oxygen triggers a controlled exothermic reaction at the cutting front — boosting speed — while the nitrogen shields the kerf from oxidation. You get the thermal benefit of oxygen without paying for it in edge quality.</p>
-
-            <p>At 6kW and below, the absolute speed difference is modest (a few meters per minute). At 12kW and above, it becomes dramatic. At 30kW and 60kW, pure oxygen is so far behind that mixed gas effectively unlocks the machine's real capability — a laser cutting at full speed rather than at the speed its assist gas allows.</p>
-
-            <h2>What About Gas Cost?</h2>
-
-            <p>Mixed gas reduces nitrogen consumption by roughly 33% compared to pure N₂ cutting — the 5% O₂ substitution is direct savings, and the faster cutting speed means less gas used per part. But for most shops, gas cost is a secondary benefit. The primary driver is throughput.</p>
-
-            <p>A shop doing $800K/year in cutting revenue that triples its cutting speed doesn't triple its revenue overnight — there are loading, unloading, and downstream constraints. But even a 50% net throughput increase on the same machine, with the same operator, is transformative. It's the difference between one shift and two, between turning away work and taking it on.</p>
-
-            <h2>Try It With Your Numbers</h2>
-
-            <p>We built a <a href="/#calculator">free calculator</a> on our site that lets you plug in your specific machine power, material thickness, work hours, utilization rate, and profit margin. It pulls from the same cutting speed database we use for customer proposals — no signup, no sales call.</p>
-
-            <p>The numbers above are representative. Your actual results depend on your job mix, nesting efficiency, and downstream capacity. But the direction is consistent across every installation we've done: faster cutting, cleaner edges, and profit that flows directly to the bottom line.</p>
+            <p>Proceed when representative trials meet the part specification, the compatibility review is complete, the installed scope is defined, and the conservative scenario meets the company's investment threshold. If any of those inputs is missing, treat the ROI as preliminary.</p>
 
             <div class="article-cta-box">
-              <h3>Calculate Your Throughput Increase</h3>
-              <p>Use the interactive calculator on our homepage — select your laser power, material thickness, and work schedule. Get an instant annual profit projection based on real cutting speed data.</p>
-              <a href="/#calculator" class="btn btn-primary">Open ROI Calculator →</a>
+              <h3>Build a Reviewable ROI Estimate</h3>
+              <p>Use the <a href="/roi.html">ROI input guide</a> or send us your measured baseline, representative jobs, gas invoices, finishing time, utilization, and proposed installation scope.</p>
+              <a href="/roi.html" class="btn btn-primary">Review ROI Inputs →</a>
             </div>
 
           </div>
@@ -263,14 +216,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="logo">
-            <picture><source srcset="/images/logo.webp" type="image/webp"><img src="/images/logo.png" alt="EUCHIO"></picture>
+            <picture><source srcset="/images/logo.webp" type="image/webp"><img src="/images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
             <div class="logo-text">
-              <span class="logo-brand">EUCHIO</span>
+              <span class="logo-brand">GasMixTech</span>
               <span class="logo-tagline">Gas Mixing Technology</span>
             </div>
           </a>
           <div class="footer-auth">
-            <div class="footer-auth-line">EUCHIO Gas Mixing Technology</div>
+            <div class="footer-auth-line">GasMixTech — Laser Cutting Gas Mixers</div>
           </div>
         </div>
         <div>
@@ -305,5 +258,32 @@
   <a href="https://wa.me/525572080065" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
+  <!-- Facebook Lead Event Tracking -->
+  <script>
+  function trackLead(method) {
+    fbq('track', 'Lead', {
+      content_name: 'EUCHIO Inquiry - ' + method,
+      content_category: 'Gas Mixing Device'
+    });
+  }
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function() {
+      trackLead('Contact Form');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+    if (link) trackLead('WhatsApp Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="mailto:"], a[href^="tel:"]');
+    if (link) trackLead('Email/Phone Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="dhgate.com"]');
+    if (link) trackLead('DHgate Click');
+  });
+  </script>
+  <!-- End Facebook Lead Event Tracking -->
 </body>
 </html>
