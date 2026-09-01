@@ -245,7 +245,8 @@ class MultilingualCoreTests(unittest.TestCase):
     def test_polish_contact_page_has_no_legacy_mojibake(self):
         content = page_path("pl", "contact.html").read_text(encoding="utf-8")
         self.assertIn("Skontaktuj się", content)
-        self.assertIn("Wyślij wiadomość →</button>", content)
+        self.assertIn("Wyślij prośbę o ocenę</button>", content)
+        self.assertIn('action="/api/inquiry"', content)
         self.assertNotRegex(content, r"[臋膮贸艂艣膰藕鈫娴庡閽板抄鏈烘漏偶]")
 
     def test_core_hreflang_set_is_exact(self):

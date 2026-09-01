@@ -128,7 +128,7 @@
             <div>
               <h4>이메일</h4>
               <p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></p>
-              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">24시간 이내 응답</p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">접수 후 기술 검토</p>
             </div>
           </div>
 
@@ -189,111 +189,54 @@
           </div>
         </div>
 
-        <div class="contact-form fade-in">
-          <h3>메시지 보내기</h3>
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="2352c2d3-9578-4f1e-aa56-611e2ad355d1">
-            <input type="hidden" name="subject" value="New Contact Form Submission - gasmixtech.com">
-            <input type="checkbox" name="botcheck" style="display: none;">
-            <input type="hidden" name="redirect" value="https://gasmixtech.com/ko/contact#success">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">이름 *</label>
-                <input type="text" id="name" name="name" required placeholder="홍길동">
+        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>프로젝트 평가 요청</h3>
+          <p class="inquiry-intro">솔루션을 선택하고 운전 조건과 연락처를 순서대로 입력해 주세요.</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="3단계 중 {current}단계"><span data-progress-text>3단계 중 1단계</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="전송 중..." data-required-message="이 단계의 필수 항목을 입력해 주세요." novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">01. 솔루션 선택</legend>
+              <div class="form-group"><label for="product">관심 솔루션 또는 제품 *</label><select id="product" name="product" required><option value="">선택하세요...</option><option value="psa-nitrogen-system">PSA 질소 발생 시스템</option><option value="integrated-mixing-cabinet">통합 가스 혼합 캐비닛</option><option value="mspv2-4000">MSPV2-4000 비례 밸브</option><option value="need-recommendation">선택 지원 필요</option></select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">어느 공급 영역을 평가할까요? *</label><select id="recommendation_branch" name="recommendation_branch" disabled><option value="">선택하세요...</option><option value="psa">질소 발생</option><option value="mixer">혼합 가스 제어</option><option value="both">둘 다</option></select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>계속</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">02. 운전 조건</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">목표 질소 유량 *</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">요구 순도 *</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">출력 압력 *</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">레이저 대수 *</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">레이저 출력 *</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">운전 시간 *</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">보유 모듈 *</span><div class="inquiry-check-grid" data-required-group="retained_modules"><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-compressor" disabled> Air compressor</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="dryer" disabled> Air dryer</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="filters" disabled> Filters</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-buffer-tank" disabled> Air buffer tank</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="nitrogen-storage" disabled> Nitrogen storage</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="booster" disabled> Booster</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="none" disabled> None</label></div></div>
+                <div class="form-group"><label for="installation_space">설치 가능 공간 *</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
               </div>
-              <div class="form-group">
-                <label for="company">회사</label>
-                <input type="text" id="company" name="company" placeholder="OO 레이저 주식회사">
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">레이저 브랜드 / 모델 *</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">레이저 출력 *</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">주요 소재 *</label><select id="material" name="material" disabled data-required><option value="">선택하세요...</option><option value="carbon_steel">Carbon steel</option><option value="stainless_steel">Stainless steel</option><option value="aluminum">Aluminum</option><option value="mixed">Mixed materials</option><option value="other">Other</option></select></div><div class="form-group"><label for="thickness">두께 범위 *</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">현재 보조 가스 *</label><select id="current_gas" name="current_gas" disabled data-required><option value="">선택하세요...</option><option value="oxygen">Oxygen</option><option value="nitrogen">Nitrogen</option><option value="air">Compressed air</option><option value="mixed">Mixed gas</option><option value="unknown">Not sure</option></select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">질소 공급원 *</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">질소 입구 압력 *</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">산소 공급원 *</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">산소 입구 압력 *</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">필요 혼합가스 유량 *</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">설치 방식 *</label><select id="installation_preference" name="installation_preference" disabled data-required><option value="">선택하세요...</option><option value="cabinet">Integrated cabinet</option><option value="valve">Proportional valve</option><option value="unsure">Need recommendation</option></select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">제어 인터페이스 *</label><select id="control_interface" name="control_interface" disabled data-required><option value="">선택하세요...</option><option value="analog">Analog</option><option value="modbus">Modbus</option><option value="plc-custom">Custom PLC</option><option value="unsure">Not sure</option></select></div>
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">이메일 *</label>
-                <input type="email" id="email" name="email" required placeholder="hong@company.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">전화 / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+82 10 1234 5678">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="country">국가</label>
-              <input type="text" id="country" name="country" placeholder="예: 한국, 멕시코, 태국">
-            </div>
-
-
-            <div class="form-group">
-              <label for="website">회사 웹사이트</label>
-              <input type="url" id="website" name="website" placeholder="https://www.company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="buyer_type">구매자 유형 *</label>
-              <select id="buyer_type" name="buyer_type" required><option value="">선택하세요...</option><option value="end_user">최종 사용자 / 레이저 절단 업체</option><option value="factory">자체 레이저 절단 공장</option><option value="integrator">레이저 시스템 인티그레이터</option><option value="project_owner">프로젝트 소유자 / 구매 팀</option><option value="other">기타</option></select>
-            </div>
-
-            <div class="form-group">
-              <label for="inquiry">문의 유형</label>
-              <select id="inquiry" name="inquiry">
-                <option value="">선택...</option>
-                <option value="pricing">가격 및 견적</option>
-                <option value="technical">기술 파라미터</option>
-                <option value="project_owner">프로젝트 책임자 / 구매 팀</option>
-                <option value="OEM">OEM / 커스터마이징</option>
-                <option value="other">기타</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_power">레이저 출력</label>
-              <select id="laser_power" name="laser_power">
-                <option value="">레이저 출력 선택...</option>
-                <option value="3KW">3KW</option>
-                <option value="6KW">6KW</option>
-                <option value="12KW">12KW</option>
-                <option value="20KW">20KW</option>
-                <option value="30KW">30KW</option>
-                <option value="40KW">40KW</option>
-                <option value="60KW">60KW</option>
-                <option value="Other">기타 / 복수</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_brand">레이저 브랜드</label>
-              <input type="text" id="laser_brand" name="laser_brand" placeholder="예: HAN'S, DNE, PENTA, LEAD, BODOR">
-            </div>
-
-
-            <div class="form-row">
-              <div class="form-group"><label for="material">주요 소재</label><select id="material" name="material"><option value="">소재를 선택하세요...</option><option value="carbon_steel">탄소강</option><option value="stainless_steel">스테인리스강</option><option value="aluminum">알루미늄</option><option value="mixed">복합 소재</option></select></div>
-              <div class="form-group"><label for="thickness">두께 범위</label><input type="text" id="thickness" name="thickness" placeholder="예: 6-20 mm"></div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group"><label for="current_gas">현재 보조 가스</label><select id="current_gas" name="current_gas"><option value="">선택하세요...</option><option value="oxygen">산소</option><option value="nitrogen">질소</option><option value="air">압축 공기</option><option value="mixed">이미 혼합가스 사용</option><option value="unknown">확실하지 않음</option></select></div>
-              <div class="form-group"><label for="main_problem">주요 문제</label><select id="main_problem" name="main_problem"><option value="">선택하세요...</option><option value="burr">버 / 2차 디버링</option><option value="slow_speed">느린 절단 속도</option><option value="gas_cost">높은 질소 비용</option><option value="edge_quality">불안정한 에지 품질</option><option value="capacity">근무조당 생산량 확대 필요</option></select></div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">메시지 *</label>
-              <textarea id="message" name="message" required placeholder="절단 요구 사항을 알려주세요 — 재료 종류, 두께, 현재 가스 설정 등"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary form-submit">메시지 보내기 →</button>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>이전</button><button type="button" class="btn btn-primary" data-next>계속</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">03. 연락처 및 확인</legend>
+              <div class="form-row"><div class="form-group"><label for="name">성명 *</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">회사 *</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">국가 / 지역 *</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">회사 이메일 *</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">전화 / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">선호 연락 방식 *</label><select id="preferred_channel" name="preferred_channel" required><option value="">선택하세요...</option><option value="email">Email</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option></select></div></div>
+              <div class="form-group"><label for="customer_type">고객 유형 *</label><select id="customer_type" name="customer_type" required><option value="">선택하세요...</option><option value="end_user">End user</option><option value="factory">Factory</option><option value="integrator">System integrator</option><option value="project_owner">Project / purchasing team</option><option value="other">Other</option></select></div>
+              <div class="form-group"><label for="message">프로젝트 세부 정보 *</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>Jinan Euchio Machinery Co., Ltd.가 문의 평가와 답변을 위해 이 정보를 사용하는 데 동의합니다.</span></label>
+              <div class="inquiry-review"><h4>확인 요약</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>이전</button><button type="submit" class="btn btn-primary form-submit">평가 요청 보내기</button></div>
+            </fieldset>
           </form>
-
-          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">
-            더 빠른 응답을 원하시면 <a href="https://wa.me/525572080065" target="_blank">WhatsApp</a>으로 직접 문의하세요.
-          </p>
-        </div>
-
-        <div id="success-message">
-          <h3>메시지가 성공적으로 전송되었습니다!</h3>
-          <p>문의해 주셔서 감사합니다. 24시간 이내에 연락드리겠습니다.</p>
-          <p style="margin-top: 16px;"><a href="./" class="btn btn-primary">홈으로 돌아가기</a></p>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>양식을 전달하지 못했습니다</h4><p>입력 내용은 이 페이지에 유지됩니다. 다시 시도하거나 직접 문의해 주세요.</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">WhatsApp</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>요청 접수 완료</h4><p>프로젝트 정보가 영업팀에 전달되었습니다.</p><p>참조 번호: <strong data-inquiry-reference></strong></p></div>
         </div>
       </div>
     </div>
@@ -356,6 +299,7 @@
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <script src="../script.min.js"></script>
+  <script src="/inquiry-form.js"></script>
   <!-- Facebook Lead Event Tracking -->
   <script>
   function trackLead(method) {
@@ -364,11 +308,6 @@
       content_category: 'Gas Mixing Device'
     });
   }
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function() {
-      trackLead('Contact Form');
-    });
-  });
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
     if (link) trackLead('WhatsApp Click');

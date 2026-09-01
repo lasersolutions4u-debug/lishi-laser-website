@@ -2,6 +2,7 @@
 """Normalize the supported static locale matrix without rewriting page copy."""
 
 import re
+from html import escape
 from pathlib import Path
 
 
@@ -660,6 +661,304 @@ def select_options(values, option_values):
     return "".join(f'<option value="{value}">{label}</option>' for value, label in zip(option_values, values))
 
 
+INQUIRY_FORM_COPY = {
+    "en": {
+        "title": "Request a project assessment",
+        "intro": "Choose the solution area, add the operating conditions we need, then confirm your contact details.",
+        "progress": "Step {current} of 3",
+        "steps": ("Choose a solution", "Operating conditions", "Contact and review"),
+        "product": "Solution or product interest",
+        "products": ("PSA nitrogen generation system", "Integrated gas mixing cabinet", "MSPV2-4000 proportional valve", "Help me choose"),
+        "branch": "Which supply area should we assess?",
+        "branches": ("Nitrogen generation", "Mixed-gas control", "Both"),
+        "select": "Select one...",
+        "back": "Back",
+        "next": "Continue",
+        "submit": "Send assessment request",
+        "sending": "Sending...",
+        "required": "Please complete the required fields in this step.",
+        "consent": "I agree that Jinan Euchio Machinery Co., Ltd. may use these details to evaluate and respond to this inquiry.",
+        "success_title": "Request received",
+        "success": "Your project information was delivered to the sales team.",
+        "reference": "Reference",
+        "failure_title": "The form could not be delivered",
+        "failure": "Your entries are still on this page. Please retry or contact us directly.",
+        "review": "Review summary",
+    },
+    "zh": {
+        "title": "提交项目评估",
+        "intro": "先选择方案方向，再填写必要工况，最后确认联系人信息。",
+        "progress": "第 {current} 步，共 3 步",
+        "steps": ("选择方案", "填写工况", "联系信息与确认"),
+        "product": "意向方案或产品",
+        "products": ("PSA 制氮系统", "一体式混气柜", "MSPV2-4000 比例阀", "需要协助选择"),
+        "branch": "需要评估哪个供气方向？",
+        "branches": ("制氮供气", "混气控制", "两者都评估"),
+        "select": "请选择...",
+        "back": "上一步",
+        "next": "继续",
+        "submit": "发送评估申请",
+        "sending": "正在发送...",
+        "required": "请完整填写本步骤的必填信息。",
+        "consent": "我同意济南钰峭机械有限公司使用这些信息评估并回复本次询盘。",
+        "success_title": "申请已收到",
+        "success": "项目资料已送达销售团队。",
+        "reference": "参考编号",
+        "failure_title": "表单暂时无法送达",
+        "failure": "已填写内容仍保留在本页，请重试或直接联系我们。",
+        "review": "确认摘要",
+    },
+    "es": {
+        "title": "Solicitar evaluación del proyecto",
+        "intro": "Seleccione la solución, añada las condiciones de trabajo y confirme sus datos de contacto.",
+        "progress": "Paso {current} de 3",
+        "steps": ("Elegir solución", "Condiciones de trabajo", "Contacto y revisión"),
+        "product": "Solución o producto de interés",
+        "products": ("Sistema PSA de generación de nitrógeno", "Armario integrado de mezcla", "Válvula proporcional MSPV2-4000", "Necesito ayuda para elegir"),
+        "branch": "¿Qué área debemos evaluar?",
+        "branches": ("Generación de nitrógeno", "Control de gas mezclado", "Ambas"),
+        "select": "Seleccione...",
+        "back": "Atrás",
+        "next": "Continuar",
+        "submit": "Enviar solicitud",
+        "sending": "Enviando...",
+        "required": "Complete los campos obligatorios de este paso.",
+        "consent": "Acepto que Jinan Euchio Machinery Co., Ltd. use estos datos para evaluar y responder a esta consulta.",
+        "success_title": "Solicitud recibida",
+        "success": "La información del proyecto fue entregada al equipo comercial.",
+        "reference": "Referencia",
+        "failure_title": "No se pudo entregar el formulario",
+        "failure": "Sus datos permanecen en esta página. Inténtelo de nuevo o contáctenos directamente.",
+        "review": "Resumen para confirmar",
+    },
+    "ko": {
+        "title": "프로젝트 평가 요청",
+        "intro": "솔루션을 선택하고 운전 조건과 연락처를 순서대로 입력해 주세요.",
+        "progress": "3단계 중 {current}단계",
+        "steps": ("솔루션 선택", "운전 조건", "연락처 및 확인"),
+        "product": "관심 솔루션 또는 제품",
+        "products": ("PSA 질소 발생 시스템", "통합 가스 혼합 캐비닛", "MSPV2-4000 비례 밸브", "선택 지원 필요"),
+        "branch": "어느 공급 영역을 평가할까요?",
+        "branches": ("질소 발생", "혼합 가스 제어", "둘 다"),
+        "select": "선택하세요...",
+        "back": "이전",
+        "next": "계속",
+        "submit": "평가 요청 보내기",
+        "sending": "전송 중...",
+        "required": "이 단계의 필수 항목을 입력해 주세요.",
+        "consent": "Jinan Euchio Machinery Co., Ltd.가 문의 평가와 답변을 위해 이 정보를 사용하는 데 동의합니다.",
+        "success_title": "요청 접수 완료",
+        "success": "프로젝트 정보가 영업팀에 전달되었습니다.",
+        "reference": "참조 번호",
+        "failure_title": "양식을 전달하지 못했습니다",
+        "failure": "입력 내용은 이 페이지에 유지됩니다. 다시 시도하거나 직접 문의해 주세요.",
+        "review": "확인 요약",
+    },
+    "ja": {
+        "title": "プロジェクト評価を依頼",
+        "intro": "対象ソリューション、運転条件、連絡先の順に入力してください。",
+        "progress": "3ステップ中 {current}",
+        "steps": ("ソリューション選択", "運転条件", "連絡先と確認"),
+        "product": "対象ソリューションまたは製品",
+        "products": ("PSA窒素発生システム", "一体型ガス混合キャビネット", "MSPV2-4000比例弁", "選定サポートが必要"),
+        "branch": "評価する供給範囲",
+        "branches": ("窒素発生", "混合ガス制御", "両方"),
+        "select": "選択してください...",
+        "back": "戻る",
+        "next": "続ける",
+        "submit": "評価依頼を送信",
+        "sending": "送信中...",
+        "required": "このステップの必須項目を入力してください。",
+        "consent": "Jinan Euchio Machinery Co., Ltd. が本問い合わせの評価と回答にこれらの情報を使用することに同意します。",
+        "success_title": "依頼を受け付けました",
+        "success": "プロジェクト情報が営業チームに送信されました。",
+        "reference": "参照番号",
+        "failure_title": "フォームを送信できませんでした",
+        "failure": "入力内容はこのページに保持されています。再試行するか直接ご連絡ください。",
+        "review": "確認概要",
+    },
+    "pt": {
+        "title": "Solicitar avaliação do projeto",
+        "intro": "Escolha a solução, informe as condições operacionais e confirme os dados de contato.",
+        "progress": "Etapa {current} de 3",
+        "steps": ("Escolher solução", "Condições operacionais", "Contato e revisão"),
+        "product": "Solução ou produto de interesse",
+        "products": ("Sistema PSA de geração de nitrogênio", "Gabinete integrado de mistura", "Válvula proporcional MSPV2-4000", "Preciso de ajuda para escolher"),
+        "branch": "Qual área devemos avaliar?",
+        "branches": ("Geração de nitrogênio", "Controle de gás misto", "Ambas"),
+        "select": "Selecione...",
+        "back": "Voltar",
+        "next": "Continuar",
+        "submit": "Enviar solicitação",
+        "sending": "Enviando...",
+        "required": "Preencha os campos obrigatórios desta etapa.",
+        "consent": "Concordo que a Jinan Euchio Machinery Co., Ltd. use estes dados para avaliar e responder a esta consulta.",
+        "success_title": "Solicitação recebida",
+        "success": "As informações do projeto foram entregues à equipe comercial.",
+        "reference": "Referência",
+        "failure_title": "Não foi possível enviar o formulário",
+        "failure": "Os dados permanecem nesta página. Tente novamente ou fale conosco diretamente.",
+        "review": "Resumo para revisão",
+    },
+    "pl": {
+        "title": "Poproś o ocenę projektu",
+        "intro": "Wybierz rozwiązanie, podaj warunki pracy i potwierdź dane kontaktowe.",
+        "progress": "Krok {current} z 3",
+        "steps": ("Wybór rozwiązania", "Warunki pracy", "Kontakt i weryfikacja"),
+        "product": "Interesujące rozwiązanie lub produkt",
+        "products": ("System wytwarzania azotu PSA", "Zintegrowana szafa mieszająca", "Zawór proporcjonalny MSPV2-4000", "Potrzebuję pomocy w wyborze"),
+        "branch": "Który obszar mamy ocenić?",
+        "branches": ("Wytwarzanie azotu", "Sterowanie gazem mieszanym", "Oba"),
+        "select": "Wybierz...",
+        "back": "Wstecz",
+        "next": "Dalej",
+        "submit": "Wyślij prośbę o ocenę",
+        "sending": "Wysyłanie...",
+        "required": "Uzupełnij wymagane pola w tym kroku.",
+        "consent": "Zgadzam się, aby Jinan Euchio Machinery Co., Ltd. wykorzystała te dane do oceny i odpowiedzi na zapytanie.",
+        "success_title": "Zapytanie zostało przyjęte",
+        "success": "Informacje o projekcie zostały przekazane zespołowi sprzedaży.",
+        "reference": "Numer referencyjny",
+        "failure_title": "Nie udało się wysłać formularza",
+        "failure": "Wpisane dane pozostają na tej stronie. Spróbuj ponownie lub skontaktuj się bezpośrednio.",
+        "review": "Podsumowanie",
+    },
+}
+
+INQUIRY_FIELD_LABELS = {
+    "en": ("Target nitrogen flow", "Required purity", "Output pressure", "Number of lasers", "Laser power", "Operating hours", "Modules already available", "Available installation space", "Laser brand / model", "Laser power", "Main material", "Thickness range", "Current assist gas", "Nitrogen source", "Nitrogen inlet pressure", "Oxygen source", "Oxygen inlet pressure", "Required mixed-gas flow", "Installation preference", "Control interface", "Full name", "Company", "Country / region", "Business email", "Phone / WhatsApp", "Preferred contact channel", "Customer type", "Project details"),
+    "zh": ("目标氮气流量", "所需纯度", "输出压力", "激光机数量", "激光功率", "每日运行时间", "已有可保留模块", "可用安装空间", "激光品牌 / 型号", "激光功率", "主要材料", "厚度范围", "当前辅助气体", "氮气来源", "氮气入口压力", "氧气来源", "氧气入口压力", "所需混气流量", "安装形式偏好", "控制接口", "姓名", "公司", "国家 / 地区", "工作邮箱", "电话 / WhatsApp", "首选联系方式", "客户类型", "项目说明"),
+    "es": ("Caudal objetivo de nitrógeno", "Pureza requerida", "Presión de salida", "Número de láseres", "Potencia del láser", "Horas de trabajo", "Módulos disponibles", "Espacio de instalación", "Marca / modelo del láser", "Potencia del láser", "Material principal", "Rango de espesor", "Gas auxiliar actual", "Fuente de nitrógeno", "Presión de entrada de N₂", "Fuente de oxígeno", "Presión de entrada de O₂", "Caudal requerido", "Preferencia de instalación", "Interfaz de control", "Nombre completo", "Empresa", "País / región", "Correo empresarial", "Teléfono / WhatsApp", "Canal preferido", "Tipo de cliente", "Detalles del proyecto"),
+    "ko": ("목표 질소 유량", "요구 순도", "출력 압력", "레이저 대수", "레이저 출력", "운전 시간", "보유 모듈", "설치 가능 공간", "레이저 브랜드 / 모델", "레이저 출력", "주요 소재", "두께 범위", "현재 보조 가스", "질소 공급원", "질소 입구 압력", "산소 공급원", "산소 입구 압력", "필요 혼합가스 유량", "설치 방식", "제어 인터페이스", "성명", "회사", "국가 / 지역", "회사 이메일", "전화 / WhatsApp", "선호 연락 방식", "고객 유형", "프로젝트 세부 정보"),
+    "ja": ("目標窒素流量", "必要純度", "出口圧力", "レーザー台数", "レーザー出力", "稼働時間", "既存モジュール", "設置可能スペース", "レーザーブランド / 型式", "レーザー出力", "主な材料", "板厚範囲", "現在のアシストガス", "窒素供給源", "窒素入口圧力", "酸素供給源", "酸素入口圧力", "必要混合ガス流量", "設置方式", "制御インターフェース", "氏名", "会社", "国 / 地域", "業務用メール", "電話 / WhatsApp", "希望連絡方法", "顧客区分", "プロジェクト詳細"),
+    "pt": ("Vazão alvo de nitrogênio", "Pureza necessária", "Pressão de saída", "Número de lasers", "Potência do laser", "Horas de operação", "Módulos disponíveis", "Espaço de instalação", "Marca / modelo do laser", "Potência do laser", "Material principal", "Faixa de espessura", "Gás auxiliar atual", "Fonte de nitrogênio", "Pressão de entrada de N₂", "Fonte de oxigênio", "Pressão de entrada de O₂", "Vazão necessária", "Preferência de instalação", "Interface de controle", "Nome completo", "Empresa", "País / região", "E-mail corporativo", "Telefone / WhatsApp", "Canal preferido", "Tipo de cliente", "Detalhes do projeto"),
+    "pl": ("Docelowy przepływ azotu", "Wymagana czystość", "Ciśnienie wyjściowe", "Liczba laserów", "Moc lasera", "Czas pracy", "Dostępne moduły", "Dostępna przestrzeń", "Marka / model lasera", "Moc lasera", "Główny materiał", "Zakres grubości", "Obecny gaz pomocniczy", "Źródło azotu", "Ciśnienie wejściowe N₂", "Źródło tlenu", "Ciśnienie wejściowe O₂", "Wymagany przepływ", "Preferowany montaż", "Interfejs sterowania", "Imię i nazwisko", "Firma", "Kraj / region", "E-mail służbowy", "Telefon / WhatsApp", "Preferowany kanał", "Typ klienta", "Szczegóły projektu"),
+}
+
+INQUIRY_FIELD_KEYS = ("target_flow", "purity", "output_pressure", "laser_count", "psa_laser_power", "operating_hours", "retained_modules", "installation_space", "laser_brand", "mixer_laser_power", "material", "thickness", "current_gas", "nitrogen_source", "nitrogen_inlet_pressure", "oxygen_source", "oxygen_inlet_pressure", "required_flow", "installation_preference", "control_interface", "name", "company", "country", "email", "phone", "preferred_channel", "customer_type", "message")
+
+INQUIRY_RESPONSE_NOTES = {
+    "en": "Technical review after receipt",
+    "zh": "收到后进行技术评估",
+    "es": "Revisión técnica después de recibir la consulta",
+    "ko": "접수 후 기술 검토",
+    "ja": "受領後に技術確認を実施",
+    "pt": "Revisão técnica após o recebimento",
+    "pl": "Weryfikacja techniczna po otrzymaniu zapytania",
+}
+
+
+def inquiry_options(values, labels, placeholder=None):
+    options = f'<option value="">{escape(placeholder)}</option>' if placeholder else ""
+    return options + "".join(f'<option value="{escape(value)}">{escape(label)}</option>' for value, label in zip(values, labels))
+
+
+def build_inquiry_form(lang):
+    copy = INQUIRY_FORM_COPY[lang]
+    labels = dict(zip(INQUIRY_FIELD_KEYS, INQUIRY_FIELD_LABELS[lang]))
+    product_values = ("psa-nitrogen-system", "integrated-mixing-cabinet", "mspv2-4000", "need-recommendation")
+    product_options = inquiry_options(product_values, copy["products"], copy["select"])
+    branch_options = inquiry_options(("psa", "mixer", "both"), copy["branches"], copy["select"])
+    common_select = inquiry_options(("end_user", "factory", "integrator", "project_owner", "other"), ("End user", "Factory", "System integrator", "Project / purchasing team", "Other"), copy["select"])
+    channel_select = inquiry_options(("email", "phone", "whatsapp"), ("Email", "Phone", "WhatsApp"), copy["select"])
+    material_select = inquiry_options(("carbon_steel", "stainless_steel", "aluminum", "mixed", "other"), ("Carbon steel", "Stainless steel", "Aluminum", "Mixed materials", "Other"), copy["select"])
+    gas_select = inquiry_options(("oxygen", "nitrogen", "air", "mixed", "unknown"), ("Oxygen", "Nitrogen", "Compressed air", "Mixed gas", "Not sure"), copy["select"])
+    installation_select = inquiry_options(("cabinet", "valve", "unsure"), ("Integrated cabinet", "Proportional valve", "Need recommendation"), copy["select"])
+    control_select = inquiry_options(("analog", "modbus", "plc-custom", "unsure"), ("Analog", "Modbus", "Custom PLC", "Not sure"), copy["select"])
+    retained = "".join(
+        f'<label class="inquiry-check"><input type="checkbox" name="retained_modules" value="{value}" disabled> {text}</label>'
+        for value, text in (("air-compressor", "Air compressor"), ("dryer", "Air dryer"), ("filters", "Filters"), ("air-buffer-tank", "Air buffer tank"), ("nitrogen-storage", "Nitrogen storage"), ("booster", "Booster"), ("none", "None"))
+    )
+    safe = {key: escape(str(value), quote=True) for key, value in copy.items() if isinstance(value, str)}
+    return f'''        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>{safe["title"]}</h3>
+          <p class="inquiry-intro">{safe["intro"]}</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="{safe["progress"]}"><span data-progress-text>{escape(copy["progress"].format(current=1))}</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="{safe["sending"]}" data-required-message="{safe["required"]}" novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">01. {escape(copy["steps"][0])}</legend>
+              <div class="form-group"><label for="product">{safe["product"]} *</label><select id="product" name="product" required>{product_options}</select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">{safe["branch"]} *</label><select id="recommendation_branch" name="recommendation_branch" disabled>{branch_options}</select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>{safe["next"]}</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">02. {escape(copy["steps"][1])}</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">{escape(labels["target_flow"])} *</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">{escape(labels["purity"])} *</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">{escape(labels["output_pressure"])} *</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">{escape(labels["laser_count"])} *</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">{escape(labels["psa_laser_power"])} *</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">{escape(labels["operating_hours"])} *</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">{escape(labels["retained_modules"])} *</span><div class="inquiry-check-grid" data-required-group="retained_modules">{retained}</div></div>
+                <div class="form-group"><label for="installation_space">{escape(labels["installation_space"])} *</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
+              </div>
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">{escape(labels["laser_brand"])} *</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">{escape(labels["mixer_laser_power"])} *</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">{escape(labels["material"])} *</label><select id="material" name="material" disabled data-required>{material_select}</select></div><div class="form-group"><label for="thickness">{escape(labels["thickness"])} *</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">{escape(labels["current_gas"])} *</label><select id="current_gas" name="current_gas" disabled data-required>{gas_select}</select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">{escape(labels["nitrogen_source"])} *</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">{escape(labels["nitrogen_inlet_pressure"])} *</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">{escape(labels["oxygen_source"])} *</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">{escape(labels["oxygen_inlet_pressure"])} *</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">{escape(labels["required_flow"])} *</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">{escape(labels["installation_preference"])} *</label><select id="installation_preference" name="installation_preference" disabled data-required>{installation_select}</select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">{escape(labels["control_interface"])} *</label><select id="control_interface" name="control_interface" disabled data-required>{control_select}</select></div>
+              </div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>{safe["back"]}</button><button type="button" class="btn btn-primary" data-next>{safe["next"]}</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">03. {escape(copy["steps"][2])}</legend>
+              <div class="form-row"><div class="form-group"><label for="name">{escape(labels["name"])} *</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">{escape(labels["company"])} *</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">{escape(labels["country"])} *</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">{escape(labels["email"])} *</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">{escape(labels["phone"])} *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">{escape(labels["preferred_channel"])} *</label><select id="preferred_channel" name="preferred_channel" required>{channel_select}</select></div></div>
+              <div class="form-group"><label for="customer_type">{escape(labels["customer_type"])} *</label><select id="customer_type" name="customer_type" required>{common_select}</select></div>
+              <div class="form-group"><label for="message">{escape(labels["message"])} *</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>{safe["consent"]}</span></label>
+              <div class="inquiry-review"><h4>{safe["review"]}</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>{safe["back"]}</button><button type="submit" class="btn btn-primary form-submit">{safe["submit"]}</button></div>
+            </fieldset>
+          </form>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>{safe["failure_title"]}</h4><p>{safe["failure"]}</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">WhatsApp</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>{safe["success_title"]}</h4><p>{safe["success"]}</p><p>{safe["reference"]}: <strong data-inquiry-reference></strong></p></div>
+        </div>
+'''
+
+
+def install_secure_inquiry_form(content, lang):
+    start = content.find("        <!-- Secure Inquiry Form -->")
+    if start < 0:
+        form = content.find('<form id="contactForm"')
+        if form < 0:
+            raise ValueError(f"{lang}/contact.html: contact form not found")
+        container = content.rfind('<div class="contact-form fade-in">', 0, form)
+        if container < 0:
+            raise ValueError(f"{lang}/contact.html: contact form container not found")
+        start = content.rfind("\n", 0, container) + 1
+    closing = "      </div>\n    </div>\n  </section>"
+    end = content.find(closing, start)
+    if end < 0:
+        raise ValueError(f"{lang}/contact.html: contact section closing not found")
+    content = content[:start] + build_inquiry_form(lang) + content[end:]
+    content = re.sub(
+        r"\s*document\.querySelectorAll\('form'\)\.forEach\(function\(form\) \{\s*form\.addEventListener\('submit', function\(\) \{\s*trackLead\('Contact Form'\);\s*\}\);\s*\}\);",
+        "",
+        content,
+        count=1,
+    )
+    content = re.sub(
+        r'(<p style="font-size: 0\.85rem; color: var\(--color-text-dim\); margin-top: 4px;">).*?(</p>)',
+        rf'\1{INQUIRY_RESPONSE_NOTES[lang]}\2',
+        content,
+        count=1,
+    )
+    if '<script src="/inquiry-form.js"></script>' not in content:
+        content = re.sub(
+            r'(<script src="(?:\.\./|/)script\.min\.js"></script>)',
+            r'\1\n  <script src="/inquiry-form.js"></script>',
+            content,
+            count=1,
+        )
+    return content
+
+
 def repair_contact_fields(content, lang):
     if 'name="website"' in content:
         return content
@@ -782,6 +1081,8 @@ def normalize_core_page(path, lang, filename):
         content = repair_interface_translations(content, lang)
         content = normalize_local_assets(content)
         content = repair_visible_structure(content, lang, filename)
+    if filename == "contact.html":
+        content = install_secure_inquiry_form(content, lang)
     if content != original:
         path.write_text(content, encoding="utf-8", newline="")
 
