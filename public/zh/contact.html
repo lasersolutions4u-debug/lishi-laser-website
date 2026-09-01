@@ -128,7 +128,7 @@
             <div>
               <h4>电子邮箱</h4>
               <p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></p>
-              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">24小时内回复</p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">收到后进行技术评估</p>
             </div>
           </div>
 
@@ -188,111 +188,54 @@
           </div>
         </div>
 
-        <div class="contact-form fade-in">
-          <h3>发送消息</h3>
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="2352c2d3-9578-4f1e-aa56-611e2ad355d1">
-            <input type="hidden" name="subject" value="新的联系我们表单提交 - gasmixtech.com/zh">
-            <input type="checkbox" name="botcheck" style="display: none;">
-            <input type="hidden" name="redirect" value="https://gasmixtech.com/zh/contact#success">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">姓名 *</label>
-                <input type="text" id="name" name="name" required placeholder="张三">
+        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>提交项目评估</h3>
+          <p class="inquiry-intro">先选择方案方向，再填写必要工况，最后确认联系人信息。</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="第 {current} 步，共 3 步"><span data-progress-text>第 1 步，共 3 步</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="正在发送..." data-required-message="请完整填写本步骤的必填信息。" novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">01. 选择方案</legend>
+              <div class="form-group"><label for="product">意向方案或产品 *</label><select id="product" name="product" required><option value="">请选择...</option><option value="psa-nitrogen-system">PSA 制氮系统</option><option value="integrated-mixing-cabinet">一体式混气柜</option><option value="mspv2-4000">MSPV2-4000 比例阀</option><option value="need-recommendation">需要协助选择</option></select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">需要评估哪个供气方向？ *</label><select id="recommendation_branch" name="recommendation_branch" disabled><option value="">请选择...</option><option value="psa">制氮供气</option><option value="mixer">混气控制</option><option value="both">两者都评估</option></select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>继续</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">02. 填写工况</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">目标氮气流量 *</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">所需纯度 *</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">输出压力 *</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">激光机数量 *</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">激光功率 *</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">每日运行时间 *</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">已有可保留模块 *</span><div class="inquiry-check-grid" data-required-group="retained_modules"><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-compressor" disabled> Air compressor</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="dryer" disabled> Air dryer</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="filters" disabled> Filters</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-buffer-tank" disabled> Air buffer tank</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="nitrogen-storage" disabled> Nitrogen storage</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="booster" disabled> Booster</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="none" disabled> None</label></div></div>
+                <div class="form-group"><label for="installation_space">可用安装空间 *</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
               </div>
-              <div class="form-group">
-                <label for="company">公司</label>
-                <input type="text" id="company" name="company" placeholder="XX激光科技有限公司">
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">激光品牌 / 型号 *</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">激光功率 *</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">主要材料 *</label><select id="material" name="material" disabled data-required><option value="">请选择...</option><option value="carbon_steel">Carbon steel</option><option value="stainless_steel">Stainless steel</option><option value="aluminum">Aluminum</option><option value="mixed">Mixed materials</option><option value="other">Other</option></select></div><div class="form-group"><label for="thickness">厚度范围 *</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">当前辅助气体 *</label><select id="current_gas" name="current_gas" disabled data-required><option value="">请选择...</option><option value="oxygen">Oxygen</option><option value="nitrogen">Nitrogen</option><option value="air">Compressed air</option><option value="mixed">Mixed gas</option><option value="unknown">Not sure</option></select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">氮气来源 *</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">氮气入口压力 *</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">氧气来源 *</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">氧气入口压力 *</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">所需混气流量 *</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">安装形式偏好 *</label><select id="installation_preference" name="installation_preference" disabled data-required><option value="">请选择...</option><option value="cabinet">Integrated cabinet</option><option value="valve">Proportional valve</option><option value="unsure">Need recommendation</option></select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">控制接口 *</label><select id="control_interface" name="control_interface" disabled data-required><option value="">请选择...</option><option value="analog">Analog</option><option value="modbus">Modbus</option><option value="plc-custom">Custom PLC</option><option value="unsure">Not sure</option></select></div>
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">电子邮箱 *</label>
-                <input type="email" id="email" name="email" required placeholder="john@company.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">电话 / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="country">国家</label>
-              <input type="text" id="country" name="country" placeholder="如：中国、墨西哥、泰国、印度">
-            </div>
-
-
-            <div class="form-group">
-              <label for="website">公司网站</label>
-              <input type="url" id="website" name="website" placeholder="https://www.company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="buyer_type">采购方类型 *</label>
-              <select id="buyer_type" name="buyer_type" required><option value="">请选择...</option><option value="end_user">激光切割终端用户</option><option value="factory">自有激光切割的工厂</option><option value="integrator">激光系统集成商</option><option value="project_owner">项目方 / 采购团队</option><option value="other">其他</option></select>
-            </div>
-
-            <div class="form-group">
-              <label for="inquiry">咨询类型</label>
-              <select id="inquiry" name="inquiry">
-                <option value="">请选择...</option>
-                <option value="pricing">报价咨询</option>
-                <option value="technical">技术参数</option>
-                <option value="project_owner">项目负责人 / 采购团队</option>
-                <option value="OEM">OEM/定制</option>
-                <option value="other">其他</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_power">激光机功率</label>
-              <select id="laser_power" name="laser_power">
-                <option value="">选择激光功率...</option>
-                <option value="3KW">3KW</option>
-                <option value="6KW">6KW</option>
-                <option value="12KW">12KW</option>
-                <option value="20KW">20KW</option>
-                <option value="30KW">30KW</option>
-                <option value="40KW">40KW</option>
-                <option value="60KW">60KW</option>
-                <option value="Other">其他/多台</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_brand">激光机品牌</label>
-              <input type="text" id="laser_brand" name="laser_brand" placeholder="如：汉诺威(HAN'S)、大族(DNE)、奔腾(PENTA)、邦德(BODOR)">
-            </div>
-
-
-            <div class="form-row">
-              <div class="form-group"><label for="material">主要材料</label><select id="material" name="material"><option value="">请选择材料...</option><option value="carbon_steel">碳钢</option><option value="stainless_steel">不锈钢</option><option value="aluminum">铝</option><option value="mixed">多种材料</option></select></div>
-              <div class="form-group"><label for="thickness">厚度范围</label><input type="text" id="thickness" name="thickness" placeholder="例如：6-20 mm"></div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group"><label for="current_gas">当前辅助气体</label><select id="current_gas" name="current_gas"><option value="">请选择...</option><option value="oxygen">氧气</option><option value="nitrogen">氮气</option><option value="air">压缩空气</option><option value="mixed">已使用混合气</option><option value="unknown">不确定</option></select></div>
-              <div class="form-group"><label for="main_problem">主要问题</label><select id="main_problem" name="main_problem"><option value="">请选择...</option><option value="burr">毛刺 / 二次去毛刺</option><option value="slow_speed">切割速度慢</option><option value="gas_cost">氮气成本高</option><option value="edge_quality">切边质量不稳定</option><option value="capacity">需要提高班次产量</option></select></div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">留言 *</label>
-              <textarea id="message" name="message" required placeholder="请描述您的切割需求——材料类型、厚度、当前气体配置等。"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary form-submit">发送消息 →</button>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>上一步</button><button type="button" class="btn btn-primary" data-next>继续</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">03. 联系信息与确认</legend>
+              <div class="form-row"><div class="form-group"><label for="name">姓名 *</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">公司 *</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">国家 / 地区 *</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">工作邮箱 *</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">电话 / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">首选联系方式 *</label><select id="preferred_channel" name="preferred_channel" required><option value="">请选择...</option><option value="email">Email</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option></select></div></div>
+              <div class="form-group"><label for="customer_type">客户类型 *</label><select id="customer_type" name="customer_type" required><option value="">请选择...</option><option value="end_user">End user</option><option value="factory">Factory</option><option value="integrator">System integrator</option><option value="project_owner">Project / purchasing team</option><option value="other">Other</option></select></div>
+              <div class="form-group"><label for="message">项目说明 *</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>我同意济南钰峭机械有限公司使用这些信息评估并回复本次询盘。</span></label>
+              <div class="inquiry-review"><h4>确认摘要</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>上一步</button><button type="submit" class="btn btn-primary form-submit">发送评估申请</button></div>
+            </fieldset>
           </form>
-
-          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">
-            或直接通过 <a href="https://wa.me/525572080065" target="_blank">WhatsApp</a> 联系我们，更快得到回复。
-          </p>
-        </div>
-
-        <div id="success-message">
-          <h3>消息发送成功！</h3>
-          <p>感谢您的咨询，我们将在24小时内回复。</p>
-          <p style="margin-top: 16px;"><a href="/zh/" class="btn btn-primary">返回首页</a></p>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>表单暂时无法送达</h4><p>已填写内容仍保留在本页，请重试或直接联系我们。</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">WhatsApp</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>申请已收到</h4><p>项目资料已送达销售团队。</p><p>参考编号: <strong data-inquiry-reference></strong></p></div>
         </div>
       </div>
     </div>
@@ -351,6 +294,7 @@
   </footer>
 
   <script src="../script.min.js"></script>
+  <script src="/inquiry-form.js"></script>
   <a href="https://wa.me/525572080065" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
   <!-- Facebook Lead Event Tracking -->
   <script>
@@ -360,11 +304,6 @@
       content_category: 'Gas Mixing Device'
     });
   }
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function() {
-      trackLead('Contact Form');
-    });
-  });
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
     if (link) trackLead('WhatsApp Click');

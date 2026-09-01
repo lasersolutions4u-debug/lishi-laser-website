@@ -135,7 +135,7 @@
             <div>
               <h4>Email</h4>
               <p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></p>
-              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">Response within 24 hours</p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">Technical review after receipt</p>
             </div>
           </div>
 
@@ -196,151 +196,54 @@
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div class="contact-form fade-in">
-          <h3>Request Cutting Gas Assessment</h3>
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="2352c2d3-9578-4f1e-aa56-611e2ad355d1">
-            <input type="hidden" name="subject" value="New Cutting Gas Assessment Request - gasmixtech.com">
-            <input type="checkbox" name="botcheck" style="display: none;">
-            <input type="hidden" name="redirect" value="https://gasmixtech.com/contact#success">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required placeholder="John Smith">
+        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>Request a project assessment</h3>
+          <p class="inquiry-intro">Choose the solution area, add the operating conditions we need, then confirm your contact details.</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="Step {current} of 3"><span data-progress-text>Step 1 of 3</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="Sending..." data-required-message="Please complete the required fields in this step." novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">01. Choose a solution</legend>
+              <div class="form-group"><label for="product">Solution or product interest *</label><select id="product" name="product" required><option value="">Select one...</option><option value="psa-nitrogen-system">PSA nitrogen generation system</option><option value="integrated-mixing-cabinet">Integrated gas mixing cabinet</option><option value="mspv2-4000">MSPV2-4000 proportional valve</option><option value="need-recommendation">Help me choose</option></select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">Which supply area should we assess? *</label><select id="recommendation_branch" name="recommendation_branch" disabled><option value="">Select one...</option><option value="psa">Nitrogen generation</option><option value="mixer">Mixed-gas control</option><option value="both">Both</option></select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>Continue</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">02. Operating conditions</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">Target nitrogen flow *</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">Required purity *</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">Output pressure *</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">Number of lasers *</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">Laser power *</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">Operating hours *</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">Modules already available *</span><div class="inquiry-check-grid" data-required-group="retained_modules"><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-compressor" disabled> Air compressor</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="dryer" disabled> Air dryer</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="filters" disabled> Filters</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-buffer-tank" disabled> Air buffer tank</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="nitrogen-storage" disabled> Nitrogen storage</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="booster" disabled> Booster</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="none" disabled> None</label></div></div>
+                <div class="form-group"><label for="installation_space">Available installation space *</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
               </div>
-              <div class="form-group">
-                <label for="company">Company *</label>
-                <input type="text" id="company" name="company" required placeholder="ABC Metal Fabrication">
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">Laser brand / model *</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">Laser power *</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">Main material *</label><select id="material" name="material" disabled data-required><option value="">Select one...</option><option value="carbon_steel">Carbon steel</option><option value="stainless_steel">Stainless steel</option><option value="aluminum">Aluminum</option><option value="mixed">Mixed materials</option><option value="other">Other</option></select></div><div class="form-group"><label for="thickness">Thickness range *</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">Current assist gas *</label><select id="current_gas" name="current_gas" disabled data-required><option value="">Select one...</option><option value="oxygen">Oxygen</option><option value="nitrogen">Nitrogen</option><option value="air">Compressed air</option><option value="mixed">Mixed gas</option><option value="unknown">Not sure</option></select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">Nitrogen source *</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">Nitrogen inlet pressure *</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">Oxygen source *</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">Oxygen inlet pressure *</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">Required mixed-gas flow *</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">Installation preference *</label><select id="installation_preference" name="installation_preference" disabled data-required><option value="">Select one...</option><option value="cabinet">Integrated cabinet</option><option value="valve">Proportional valve</option><option value="unsure">Need recommendation</option></select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">Control interface *</label><select id="control_interface" name="control_interface" disabled data-required><option value="">Select one...</option><option value="analog">Analog</option><option value="modbus">Modbus</option><option value="plc-custom">Custom PLC</option><option value="unsure">Not sure</option></select></div>
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required placeholder="john@company.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="country">Country *</label>
-              <input type="text" id="country" name="country" required placeholder="e.g. United States, Germany, Canada">
-            </div>
-
-            <div class="form-group">
-              <label for="website">Company Website</label>
-              <input type="url" id="website" name="website" placeholder="https://www.company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="buyer_type">Buyer Type *</label>
-              <select id="buyer_type" name="buyer_type" required>
-                <option value="">Select one...</option>
-                <option value="end_user">End user / laser cutting shop</option>
-                <option value="factory">Factory with in-house laser cutting</option>
-                <option value="integrator">Laser system integrator</option>
-                <option value="project_owner">Project owner / purchasing team</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="inquiry">Assessment Goal</label>
-              <select id="inquiry" name="inquiry">
-                <option value="">Select one...</option>
-                <option value="compatibility">Check machine compatibility</option>
-                <option value="roi">Estimate ROI / gas cost impact</option>
-                <option value="burr">Reduce burrs on carbon steel</option>
-                <option value="speed">Increase cutting speed</option>
-                <option value="pricing">Request PI quotation</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_power">Laser Machine Power</label>
-              <select id="laser_power" name="laser_power">
-                <option value="">Select laser power...</option>
-                <option value="3KW">3KW</option>
-                <option value="6KW">6KW</option>
-                <option value="12KW">12KW</option>
-                <option value="20KW">20KW</option>
-                <option value="30KW">30KW</option>
-                <option value="40KW">40KW</option>
-                <option value="60KW">60KW</option>
-                <option value="Other">Other / Multiple</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_brand">Laser Machine Brand</label>
-              <input type="text" id="laser_brand" name="laser_brand" placeholder="e.g. HAN'S, DNE, PENTA, LEAD, BODOR">
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="material">Main Material</label>
-                <select id="material" name="material">
-                  <option value="">Select material...</option>
-                  <option value="carbon_steel">Carbon steel</option>
-                  <option value="stainless_steel">Stainless steel</option>
-                  <option value="aluminum">Aluminum</option>
-                  <option value="mixed">Mixed materials</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="thickness">Thickness Range</label>
-                <input type="text" id="thickness" name="thickness" placeholder="e.g. 6-20 mm">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="current_gas">Current Assist Gas</label>
-                <select id="current_gas" name="current_gas">
-                  <option value="">Select current gas...</option>
-                  <option value="oxygen">Oxygen</option>
-                  <option value="nitrogen">Nitrogen</option>
-                  <option value="air">Compressed air</option>
-                  <option value="mixed">Already using mixed gas</option>
-                  <option value="unknown">Not sure</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="main_problem">Main Problem</label>
-                <select id="main_problem" name="main_problem">
-                  <option value="">Select one...</option>
-                  <option value="burr">Burrs / secondary deburring</option>
-                  <option value="slow_speed">Slow cutting speed</option>
-                  <option value="gas_cost">High nitrogen cost</option>
-                  <option value="edge_quality">Unstable edge quality</option>
-                  <option value="capacity">Need more output per shift</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Project Details *</label>
-              <textarea id="message" name="message" required placeholder="Please describe your current cutting process, target material, thickness, laser model, gas supply, and what result you want to improve."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary form-submit" data-conversion="assessment_request">Request Assessment</button>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>Back</button><button type="button" class="btn btn-primary" data-next>Continue</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">03. Contact and review</legend>
+              <div class="form-row"><div class="form-group"><label for="name">Full name *</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">Company *</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">Country / region *</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">Business email *</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">Preferred contact channel *</label><select id="preferred_channel" name="preferred_channel" required><option value="">Select one...</option><option value="email">Email</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option></select></div></div>
+              <div class="form-group"><label for="customer_type">Customer type *</label><select id="customer_type" name="customer_type" required><option value="">Select one...</option><option value="end_user">End user</option><option value="factory">Factory</option><option value="integrator">System integrator</option><option value="project_owner">Project / purchasing team</option><option value="other">Other</option></select></div>
+              <div class="form-group"><label for="message">Project details *</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>I agree that Jinan Euchio Machinery Co., Ltd. may use these details to evaluate and respond to this inquiry.</span></label>
+              <div class="inquiry-review"><h4>Review summary</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>Back</button><button type="submit" class="btn btn-primary form-submit">Send assessment request</button></div>
+            </fieldset>
           </form>
-
-          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">
-            Or contact us directly via <a href="https://wa.me/525572080065" target="_blank">WhatsApp</a> for faster response.
-          </p>
-        </div>
-
-        <!-- Success Message (shown after form submission) -->
-        <div id="success-message">
-          <h3>Message Sent Successfully!</h3>
-          <p>Thank you for your inquiry. We'll respond within 24 hours.</p>
-          <p style="margin-top: 16px;"><a href="/" class="btn btn-primary">Back to Home</a></p>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>The form could not be delivered</h4><p>Your entries are still on this page. Please retry or contact us directly.</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">WhatsApp</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>Request received</h4><p>Your project information was delivered to the sales team.</p><p>Reference: <strong data-inquiry-reference></strong></p></div>
         </div>
       </div>
     </div>
@@ -402,6 +305,7 @@
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <script src="/script.min.js"></script>
+  <script src="/inquiry-form.js"></script>
   <!-- Facebook Lead Event Tracking -->
   <script>
   function trackLead(method) {
@@ -410,11 +314,6 @@
       content_category: 'Gas Mixing Device'
     });
   }
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function() {
-      trackLead('Contact Form');
-    });
-  });
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
     if (link) trackLead('WhatsApp Click');

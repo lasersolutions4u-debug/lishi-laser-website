@@ -128,7 +128,7 @@
             <div>
               <h4>メール</h4>
               <p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></p>
-              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">24時間以内に返信</p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">受領後に技術確認を実施</p>
             </div>
           </div>
 
@@ -188,111 +188,54 @@
           </div>
         </div>
 
-        <div class="contact-form fade-in">
-          <h3>メッセージを送る</h3>
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="2352c2d3-9578-4f1e-aa56-611e2ad355d1">
-            <input type="hidden" name="subject" value="New Contact Form Submission - gasmixtech.com">
-            <input type="checkbox" name="botcheck" style="display: none;">
-            <input type="hidden" name="redirect" value="https://gasmixtech.com/ja/contact#success">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">お名前 *</label>
-                <input type="text" id="name" name="name" required placeholder="山田太郎">
+        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>プロジェクト評価を依頼</h3>
+          <p class="inquiry-intro">対象ソリューション、運転条件、連絡先の順に入力してください。</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="3ステップ中 {current}"><span data-progress-text>3ステップ中 1</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="送信中..." data-required-message="このステップの必須項目を入力してください。" novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">01. ソリューション選択</legend>
+              <div class="form-group"><label for="product">対象ソリューションまたは製品 *</label><select id="product" name="product" required><option value="">選択してください...</option><option value="psa-nitrogen-system">PSA窒素発生システム</option><option value="integrated-mixing-cabinet">一体型ガス混合キャビネット</option><option value="mspv2-4000">MSPV2-4000比例弁</option><option value="need-recommendation">選定サポートが必要</option></select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">評価する供給範囲 *</label><select id="recommendation_branch" name="recommendation_branch" disabled><option value="">選択してください...</option><option value="psa">窒素発生</option><option value="mixer">混合ガス制御</option><option value="both">両方</option></select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>続ける</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">02. 運転条件</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">目標窒素流量 *</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">必要純度 *</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">出口圧力 *</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">レーザー台数 *</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">レーザー出力 *</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">稼働時間 *</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">既存モジュール *</span><div class="inquiry-check-grid" data-required-group="retained_modules"><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-compressor" disabled> Air compressor</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="dryer" disabled> Air dryer</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="filters" disabled> Filters</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-buffer-tank" disabled> Air buffer tank</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="nitrogen-storage" disabled> Nitrogen storage</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="booster" disabled> Booster</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="none" disabled> None</label></div></div>
+                <div class="form-group"><label for="installation_space">設置可能スペース *</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
               </div>
-              <div class="form-group">
-                <label for="company">会社</label>
-                <input type="text" id="company" name="company" placeholder="○○レーザー株式会社">
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">レーザーブランド / 型式 *</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">レーザー出力 *</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">主な材料 *</label><select id="material" name="material" disabled data-required><option value="">選択してください...</option><option value="carbon_steel">Carbon steel</option><option value="stainless_steel">Stainless steel</option><option value="aluminum">Aluminum</option><option value="mixed">Mixed materials</option><option value="other">Other</option></select></div><div class="form-group"><label for="thickness">板厚範囲 *</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">現在のアシストガス *</label><select id="current_gas" name="current_gas" disabled data-required><option value="">選択してください...</option><option value="oxygen">Oxygen</option><option value="nitrogen">Nitrogen</option><option value="air">Compressed air</option><option value="mixed">Mixed gas</option><option value="unknown">Not sure</option></select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">窒素供給源 *</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">窒素入口圧力 *</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">酸素供給源 *</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">酸素入口圧力 *</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">必要混合ガス流量 *</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">設置方式 *</label><select id="installation_preference" name="installation_preference" disabled data-required><option value="">選択してください...</option><option value="cabinet">Integrated cabinet</option><option value="valve">Proportional valve</option><option value="unsure">Need recommendation</option></select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">制御インターフェース *</label><select id="control_interface" name="control_interface" disabled data-required><option value="">選択してください...</option><option value="analog">Analog</option><option value="modbus">Modbus</option><option value="plc-custom">Custom PLC</option><option value="unsure">Not sure</option></select></div>
               </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">メールアドレス *</label>
-                <input type="email" id="email" name="email" required placeholder="yamada@company.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">電話 / WhatsApp</label>
-                <input type="tel" id="phone" name="phone" placeholder="+81 90 1234 5678">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="country">国</label>
-              <input type="text" id="country" name="country" placeholder="例：日本、メキシコ、タイ">
-            </div>
-
-
-            <div class="form-group">
-              <label for="website">会社ウェブサイト</label>
-              <input type="url" id="website" name="website" placeholder="https://www.company.com">
-            </div>
-
-            <div class="form-group">
-              <label for="buyer_type">購入者の種類 *</label>
-              <select id="buyer_type" name="buyer_type" required><option value="">選択してください...</option><option value="end_user">エンドユーザー / レーザー加工会社</option><option value="factory">自社内にレーザー加工設備を持つ工場</option><option value="integrator">レーザーシステムインテグレーター</option><option value="project_owner">プロジェクト所有者 / 調達チーム</option><option value="other">その他</option></select>
-            </div>
-
-            <div class="form-group">
-              <label for="inquiry">お問い合わせ種類</label>
-              <select id="inquiry" name="inquiry">
-                <option value="">選択...</option>
-                <option value="pricing">価格お問い合わせ</option>
-                <option value="technical">技術パラメータ</option>
-                <option value="project_owner">プロジェクト責任者 / 調達チーム</option>
-                <option value="OEM">OEM / カスタマイズ</option>
-                <option value="other">その他</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_power">レーザー出力</label>
-              <select id="laser_power" name="laser_power">
-                <option value="">レーザー出力を選択...</option>
-                <option value="3KW">3KW</option>
-                <option value="6KW">6KW</option>
-                <option value="12KW">12KW</option>
-                <option value="20KW">20KW</option>
-                <option value="30KW">30KW</option>
-                <option value="40KW">40KW</option>
-                <option value="60KW">60KW</option>
-                <option value="Other">その他 / 複数</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="laser_brand">レーザーブランド</label>
-              <input type="text" id="laser_brand" name="laser_brand" placeholder="例：HAN'S、DNE、PENTA、LEAD、BODOR">
-            </div>
-
-
-            <div class="form-row">
-              <div class="form-group"><label for="material">主な材料</label><select id="material" name="material"><option value="">材料を選択...</option><option value="carbon_steel">炭素鋼</option><option value="stainless_steel">ステンレス鋼</option><option value="aluminum">アルミニウム</option><option value="mixed">複数材料</option></select></div>
-              <div class="form-group"><label for="thickness">板厚範囲</label><input type="text" id="thickness" name="thickness" placeholder="例: 6-20 mm"></div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group"><label for="current_gas">現在のアシストガス</label><select id="current_gas" name="current_gas"><option value="">選択してください...</option><option value="oxygen">酸素</option><option value="nitrogen">窒素</option><option value="air">圧縮空気</option><option value="mixed">混合ガスを使用中</option><option value="unknown">不明</option></select></div>
-              <div class="form-group"><label for="main_problem">主な課題</label><select id="main_problem" name="main_problem"><option value="">選択してください...</option><option value="burr">バリ / 二次バリ取り</option><option value="slow_speed">切断速度が遅い</option><option value="gas_cost">窒素コストが高い</option><option value="edge_quality">エッジ品質が不安定</option><option value="capacity">1シフト当たりの生産量を増やしたい</option></select></div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">メッセージ *</label>
-              <textarea id="message" name="message" required placeholder="切断要件をお聞かせください — 材料種類、厚さ、現在のガス設定など"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary form-submit">メッセージを送信 →</button>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>戻る</button><button type="button" class="btn btn-primary" data-next>続ける</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">03. 連絡先と確認</legend>
+              <div class="form-row"><div class="form-group"><label for="name">氏名 *</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">会社 *</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">国 / 地域 *</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">業務用メール *</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">電話 / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">希望連絡方法 *</label><select id="preferred_channel" name="preferred_channel" required><option value="">選択してください...</option><option value="email">Email</option><option value="phone">Phone</option><option value="whatsapp">WhatsApp</option></select></div></div>
+              <div class="form-group"><label for="customer_type">顧客区分 *</label><select id="customer_type" name="customer_type" required><option value="">選択してください...</option><option value="end_user">End user</option><option value="factory">Factory</option><option value="integrator">System integrator</option><option value="project_owner">Project / purchasing team</option><option value="other">Other</option></select></div>
+              <div class="form-group"><label for="message">プロジェクト詳細 *</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>Jinan Euchio Machinery Co., Ltd. が本問い合わせの評価と回答にこれらの情報を使用することに同意します。</span></label>
+              <div class="inquiry-review"><h4>確認概要</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>戻る</button><button type="submit" class="btn btn-primary form-submit">評価依頼を送信</button></div>
+            </fieldset>
           </form>
-
-          <p style="margin-top: 16px; font-size: 0.85rem; color: var(--color-text-dim);">
-            より迅速な回答をご希望の場合は、<a href="https://wa.me/525572080065" target="_blank">WhatsApp</a>で直接ご連絡ください。
-          </p>
-        </div>
-
-        <div id="success-message">
-          <h3>メッセージが正常に送信されました！</h3>
-          <p>お問い合わせありがとうございます。24時間以内にご連絡いたします。</p>
-          <p style="margin-top: 16px;"><a href="./" class="btn btn-primary">ホームに戻る</a></p>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>フォームを送信できませんでした</h4><p>入力内容はこのページに保持されています。再試行するか直接ご連絡ください。</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">WhatsApp</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>依頼を受け付けました</h4><p>プロジェクト情報が営業チームに送信されました。</p><p>参照番号: <strong data-inquiry-reference></strong></p></div>
         </div>
       </div>
     </div>
@@ -355,6 +298,7 @@
     <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
   <script src="../script.min.js"></script>
+  <script src="/inquiry-form.js"></script>
   <!-- Facebook Lead Event Tracking -->
   <script>
   function trackLead(method) {
@@ -363,11 +307,6 @@
       content_category: 'Gas Mixing Device'
     });
   }
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function() {
-      trackLead('Contact Form');
-    });
-  });
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
     if (link) trackLead('WhatsApp Click');

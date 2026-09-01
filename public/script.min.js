@@ -114,16 +114,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Form Submission (Web3Forms)
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    const btn = this.querySelector('button[type="submit"]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-  });
-}
-
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   // Trigger fade-in for hero section immediately
@@ -368,67 +358,7 @@ function initRoiCalculator() {
   calculate();
 }
 
-// Lead capture form submission (global)
+// ROI lead capture now continues in the complete secure assessment form.
 function submitLead() {
-  const email = document.getElementById('leadEmail').value.trim();
-  const phone = document.getElementById('leadPhone').value.trim();
-  const msgEl = document.getElementById('roiLeadMsg');
-
-  function showMsg(type, html) {
-    if (!msgEl) return;
-    msgEl.className = 'roi-lead-msg show ' + type;
-    msgEl.innerHTML = html;
-    if (type === 'success') {
-      setTimeout(function(){ msgEl.className = 'roi-lead-msg'; }, 8000);
-    }
-  }
-
-  if (!email) {
-    showMsg('error', 'Please enter your email address.');
-    return;
-  }
-
-  var activePower = (document.querySelector('.power-btn.active') || {}).dataset?.power || 'N/A';
-  var thickness = (document.getElementById('thicknessSlider') || {}).value || 'N/A';
-  var annualProfit = (document.getElementById('annualProfit') || {}).textContent || 'N/A';
-
-  var formData = new FormData();
-  formData.append('access_key', '2352c2d3-9578-4f1e-aa56-611e2ad355d1');
-  formData.append('subject', 'ROI Calculator Lead - gasmixtech.com');
-  formData.append('email', email);
-  formData.append('phone', phone);
-  formData.append('message',
-    'ROI Calculator inquiry from ' + email +
-    (phone ? ' | WhatsApp: ' + phone : '') +
-    ' | Machine: ' + activePower + 'kW' +
-    ' | Thickness: ' + thickness + 'mm' +
-    ' | Est. Annual Profit: ' + annualProfit
-  );
-
-  var btn = document.querySelector('.roi-submit');
-  var origText = btn.textContent;
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: formData
-  })
-  .then(function(response) { return response.json(); })
-  .then(function(data) {
-    btn.textContent = origText;
-    btn.disabled = false;
-    if (data.success) {
-      document.getElementById('leadEmail').value = '';
-      document.getElementById('leadPhone').value = '';
-      showMsg('success', '&#10003; Thank you! We\'ll send your custom parameter table within 24 hours.');
-    } else {
-      showMsg('error', 'Submission failed. Please email us directly at <a href=\"mailto:sales@gasmixtech.com\">sales@gasmixtech.com</a> or <a href=\"https://wa.me/525572080065\">WhatsApp +86 186 1558 4520</a>.');
-    }
-  })
-  .catch(function() {
-    btn.textContent = origText;
-    btn.disabled = false;
-    showMsg('error', 'Network error. Please email us at <a href=\"mailto:sales@gasmixtech.com\">sales@gasmixtech.com</a> or <a href=\"https://wa.me/525572080065\">WhatsApp +86 186 1558 4520</a>.');
-  });
+  window.location.href = '/contact?product=need-recommendation';
 }

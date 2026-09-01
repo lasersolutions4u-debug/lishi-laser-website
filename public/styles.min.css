@@ -3956,3 +3956,31 @@ textarea:focus-visible {
    Assist-gas product architecture — 2026-09
    Source parity: keep this block synchronized with styles.css.
    ============================================= */
+
+/* Secure inquiry form */
+.inquiry-shell { max-width: 760px; }
+.inquiry-intro { margin: -4px 0 24px; color: var(--color-text-muted); }
+.inquiry-shell fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.inquiry-shell legend { width: 100%; margin-bottom: 24px; color: var(--color-text); font-size: 1.05rem; font-weight: 700; }
+.inquiry-shell legend:focus, .inquiry-alert:focus { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+.inquiry-progress { display: grid; gap: 8px; margin-bottom: 28px; color: var(--color-primary); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.inquiry-progress-track { height: 4px; overflow: hidden; background: rgba(255,255,255,0.1); border-radius: 999px; }
+.inquiry-progress-track > span { display: block; width: 33.333%; height: 100%; background: var(--color-primary); border-radius: inherit; transition: width 180ms ease; }
+.inquiry-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 28px; }
+.inquiry-actions:has(:only-child) { justify-content: flex-end; }
+.form-label { display: block; margin-bottom: 8px; color: var(--color-text); font-size: 0.9rem; font-weight: 600; }
+.inquiry-check-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.inquiry-check, .inquiry-consent { display: flex; align-items: flex-start; gap: 10px; padding: 12px 14px; color: var(--color-text-muted); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-md); background: rgba(255,255,255,0.025); }
+.inquiry-check input, .inquiry-consent input { width: auto; margin-top: 3px; accent-color: var(--color-primary); }
+.inquiry-consent { margin-top: 8px; font-size: 0.86rem; }
+.inquiry-review { margin-top: 22px; padding: 18px; border-left: 3px solid var(--color-primary); background: rgba(31,209,194,0.06); }
+.inquiry-review h4 { margin-bottom: 10px; }
+.inquiry-review dl { display: grid; grid-template-columns: minmax(120px,0.45fr) 1fr; gap: 6px 14px; margin: 0; }
+.inquiry-review dt { color: var(--color-text-dim); }
+.inquiry-review dd { margin: 0; color: var(--color-text); }
+.inquiry-alert { margin: 18px 0; padding: 16px 18px; border-radius: var(--radius-md); }
+.inquiry-alert-error { color: #ffd8dc; border: 1px solid rgba(255,74,86,0.45); background: rgba(255,74,86,0.1); }
+.inquiry-alert-success { color: #d7fff9; border: 1px solid rgba(31,209,194,0.5); background: rgba(31,209,194,0.1); }
+.inquiry-alert h4, .inquiry-alert p:last-child { margin-bottom: 0; }
+.inquiry-honeypot { position: absolute!important; left: -10000px!important; width: 1px!important; height: 1px!important; overflow: hidden!important; }
+@media (max-width:640px) { .inquiry-check-grid,.inquiry-review dl { grid-template-columns:1fr; } .inquiry-review dd { margin-bottom:8px; } .inquiry-actions { flex-direction:column-reverse; } .inquiry-actions .btn { width:100%; justify-content:center; } }
