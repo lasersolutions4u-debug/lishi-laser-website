@@ -70,6 +70,8 @@ class HomepageGenerationTests(unittest.TestCase):
                 self.assertEqual(html.count('class="lang-option'), 7)
                 for page_key in core_page_keys:
                     self.assertIn(f'href="{route_for(locale, page_key)}', html)
+                    if locale != "en":
+                        self.assertNotIn(f'href="{CORE_ROUTES[page_key]}', html)
 
     def test_missing_translation_key_fails_closed(self):
         result = subprocess.run(
