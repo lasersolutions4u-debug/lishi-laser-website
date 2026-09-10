@@ -5,6 +5,7 @@ import argparse
 import html
 import json
 import re
+from collections import Counter
 from pathlib import Path
 
 from site_locales import SUPPORTED_LOCALES, alternates_for, canonical_url, output_path, route_for
@@ -28,12 +29,86 @@ LANGUAGE_NAMES = {
     "pl": "Polski",
 }
 
-# These plan-level descriptors are retained for downstream locale work. The approved
-# English pages currently use more specific SEO copy, so changing output to consume
-# them would violate the byte-for-byte migration contract.
-REUSABLE_CONTENT_PATHS = frozenset(
-    {"about.title", "about.description", "contact.description"}
+REQUIRED_KEYS = (
+    "shared.language_label",
+    "shared.home",
+    "shared.products",
+    "shared.applications",
+    "shared.results",
+    "shared.resources",
+    "shared.about",
+    "shared.request",
+    "about.title",
+    "about.description",
+    "contact.title",
+    "contact.description",
 )
+
+# Exact counts cover only copy intentionally reused by the approved two-page source.
+# Every other translation leaf is allowed exactly once.
+REUSABLE_KEYS = {
+    "about.copy.contact_us": 2,
+    "about.copy.deployment": 3,
+    "about.copy.get_a_quote": 2,
+    "about.copy.website": 2,
+    "contact.copy.back": 2,
+    "contact.copy.continue": 2,
+    "contact.copy.laser_power": 2,
+    "contact.copy.not_sure": 2,
+    "contact.copy.other": 2,
+    "contact.copy.select_one": 8,
+    "contact.title": 4,
+    "shared.about": 4,
+    "shared.applications": 3,
+    "shared.copy.advantages": 2,
+    "shared.copy.all_rights_reserved": 2,
+    "shared.copy.application_assessment": 2,
+    "shared.copy.blog": 2,
+    "shared.copy.chat_on_whatsapp": 2,
+    "shared.copy.compact_valve": 2,
+    "shared.copy.company": 2,
+    "shared.copy.compare_both_mixers": 2,
+    "shared.copy.complete_machines": 2,
+    "shared.copy.complete_machines_and": 2,
+    "shared.copy.contact": 2,
+    "shared.copy.cutting_samples": 2,
+    "shared.copy.dhgate_store": 2,
+    "shared.copy.email": 3,
+    "shared.copy.gas_mixing_technology": 3,
+    "shared.copy.how_it_works": 2,
+    "shared.copy.integrated_gas_mixing_cabinet": 2,
+    "shared.copy.is_an_industrial_equipment_solutions_and_service_company_focused_on_shee": 2,
+    "shared.copy.laser_cutting_assist_gas_solutions": 2,
+    "shared.copy.linkedin": 3,
+    "shared.copy.main_navigation": 2,
+    "shared.copy.mexico": 2,
+    "shared.copy.mixed_gas_control": 2,
+    "shared.copy.mro_parts_and_service": 2,
+    "shared.copy.nitrogen_supply": 2,
+    "shared.copy.parameters": 2,
+    "shared.copy.parts": 2,
+    "shared.copy.phone_wechat": 2,
+    "shared.copy.privacy_policy": 2,
+    "shared.copy.product": 2,
+    "shared.copy.psa_nitrogen_generation_system": 2,
+    "shared.copy.related_links": 2,
+    "shared.copy.service": 5,
+    "shared.copy.skip_to_content": 2,
+    "shared.copy.thailand": 2,
+    "shared.copy.toggle_menu": 2,
+    "shared.copy.website": 2,
+    "shared.copy.whatsapp": 5,
+    "shared.copy.whatsapp_mexico": 2,
+    "shared.copy.whatsapp_thailand": 2,
+    "shared.home": 3,
+    "shared.language_label": 3,
+    "shared.products": 3,
+    "shared.request": 3,
+    "shared.resources": 3,
+    "shared.results": 3,
+}
+
+ALLOWED_UNUSED_KEYS = frozenset()
 
 PLACEHOLDER = re.compile(r"\{\{(?P<kind>text|attr|json|safe):(?P<key>[a-zA-Z0-9_.-]+)\}\}")
 
@@ -56,10 +131,14 @@ def parse_locales(values):
 def leaf_paths(value, prefix=""):
     paths = set()
     if isinstance(value, dict):
+        if not value and prefix:
+            paths.add(prefix)
         for key, child in value.items():
             child_prefix = f"{prefix}.{key}" if prefix else key
             paths.update(leaf_paths(child, child_prefix))
     elif isinstance(value, list):
+        if not value and prefix:
+            paths.add(prefix)
         for index, child in enumerate(value):
             paths.update(leaf_paths(child, f"{prefix}.{index}"))
     else:
@@ -70,7 +149,7 @@ def leaf_paths(value, prefix=""):
 class ContentTracker:
     def __init__(self, content):
         self.content = content
-        self.used = {"locale"}
+        self.used = Counter({"locale": 1})
 
     def use(self, path):
         value = self.content
@@ -87,12 +166,36 @@ class ContentTracker:
         self.used.update(leaf_paths(value, path))
         return value
 
-    def assert_all_used(self):
+    def validate_required(self):
+        for path in REQUIRED_KEYS:
+            value = self.use(path)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(
+                    f"Required content key must be a non-empty string: {path}"
+                )
+
+    def assert_usage(self):
+        leaves = leaf_paths(self.content)
         unused = sorted(
-            leaf_paths(self.content) - self.used - REUSABLE_CONTENT_PATHS
+            path
+            for path in leaves
+            if self.used[path] == 0 and path not in ALLOWED_UNUSED_KEYS
         )
         if unused:
-            raise ValueError("Unused content keys: " + ", ".join(unused))
+            details = ", ".join(
+                f"{path} (actual 0, allowed {REUSABLE_KEYS.get(path, 1)})"
+                for path in unused
+            )
+            raise ValueError("Unused content keys: " + details)
+        for path in sorted(leaves):
+            actual = self.used[path]
+            allowed = REUSABLE_KEYS.get(path, 1)
+            if path in ALLOWED_UNUSED_KEYS and actual == 0:
+                continue
+            if actual != allowed:
+                raise ValueError(
+                    f"Invalid content key usage: {path}: actual {actual}, allowed {allowed}"
+                )
 
 
 def load_content(locale, content_dir=CONTENT_DIR):
@@ -123,6 +226,29 @@ def _json_string(value):
 
 def _escape_attribute(value):
     return html.escape(value, quote=False).replace('"', "&quot;")
+
+
+def _validate_attribute_placeholders(template_text, locale, page_key):
+    for match in PLACEHOLDER.finditer(template_text):
+        if match.group("kind") != "attr":
+            continue
+        tag_start = template_text.rfind("<", 0, match.start())
+        tag_end = template_text.find(">", match.end())
+        if tag_start < 0 or tag_end < 0:
+            raise ValueError(
+                f"Attribute placeholder requires double-quoted attribute context: "
+                f"{locale}/{page_key}: {match.group('key')}"
+            )
+        before = template_text[tag_start:match.start()]
+        after = template_text[match.end():tag_end]
+        has_open_double_attribute = re.search(
+            r'(?:^|\s)[^\s=<>]+\s*=\s*"[^"]*$', before
+        )
+        if not has_open_double_attribute or '"' not in after:
+            raise ValueError(
+                f"Attribute placeholder requires double-quoted attribute context: "
+                f"{locale}/{page_key}: {match.group('key')}"
+            )
 
 
 def _language_menu(locale, page_key):
@@ -178,6 +304,7 @@ def _system_values(locale, page_key):
 
 
 def _render_page(locale, page_key, template_text, tracker):
+    _validate_attribute_placeholders(template_text, locale, page_key)
     system_values = _system_values(locale, page_key)
 
     def replace(match):
@@ -230,11 +357,12 @@ def build_pages(locales, public_dir=PUBLIC, content_dir=CONTENT_DIR, template_di
     rendered_pages = {}
     for locale in locales:
         tracker = ContentTracker(contents[locale])
+        tracker.validate_required()
         for page_key in PAGE_KEYS:
             rendered_pages[(locale, page_key)] = _render_page(
                 locale, page_key, templates[page_key], tracker
             )
-        tracker.assert_all_used()
+        tracker.assert_usage()
 
     public_dir = Path(public_dir)
     for (locale, page_key), rendered in rendered_pages.items():

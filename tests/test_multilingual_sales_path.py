@@ -712,6 +712,44 @@ class StaticCoreRendererTests(unittest.TestCase):
         self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
         self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
 
+    def test_non_reusable_translation_key_must_be_used_exactly_once(self):
+        self.write_content("en")
+        template_path = self.fixture_templates / "about.html"
+        template_path.write_text(
+            template_path.read_text(encoding="utf-8")
+            + "\n<p>{{text:about.copy.who_we_are}}</p>\n",
+            encoding="utf-8",
+        )
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Invalid content key usage: about\.copy\.who_we_are: actual 2, allowed 1",
+        ):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+        self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+    def test_reusable_translation_key_has_an_exact_allowed_count(self):
+        self.assertEqual(self.builder.REUSABLE_KEYS["contact.copy.select_one"], 8)
+        self.write_content("en")
+        self.build(("en",))
+
+        template_path = self.fixture_templates / "contact.html"
+        template_path.write_text(
+            template_path.read_text(encoding="utf-8")
+            + "\n<p>{{text:contact.copy.select_one}}</p>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Invalid content key usage: contact\.copy\.select_one: actual 9, allowed 8",
+        ):
+            self.build(("en",))
+
     def test_missing_translation_key_fails_without_writes(self):
         content = self.write_content("en")
         del content["shared"]["products"]
@@ -725,6 +763,54 @@ class StaticCoreRendererTests(unittest.TestCase):
 
         self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
         self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+    def test_required_core_keys_must_exist_as_non_empty_strings(self):
+        required_paths = (
+            "shared.language_label", "shared.home", "shared.products",
+            "shared.applications", "shared.results", "shared.resources",
+            "shared.about", "shared.request", "about.title", "about.description",
+            "contact.title", "contact.description",
+        )
+        for path in required_paths:
+            for replacement in (None, "", "   ", []):
+                with self.subTest(path=path, replacement=replacement):
+                    content = json.loads(json.dumps(self.english_content))
+                    parent = content
+                    parts = path.split(".")
+                    for part in parts[:-1]:
+                        parent = parent[part]
+                    if replacement is None:
+                        del parent[parts[-1]]
+                    else:
+                        parent[parts[-1]] = replacement
+                    self.write_content("en", content)
+                    destination = output_path(self.fixture_public, "en", "about")
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    destination.write_text("unchanged", encoding="utf-8")
+                    with self.assertRaisesRegex(
+                        (KeyError, ValueError),
+                        rf"Required content key.*{re.escape(path)}|Missing content key: {re.escape(path)}",
+                    ):
+                        self.build(("en",))
+                    self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+
+    def test_unknown_empty_and_scalar_content_structures_fail_without_writes(self):
+        for value in ({}, [], "unexpected"):
+            with self.subTest(value=value):
+                content = json.loads(json.dumps(self.english_content))
+                content["contact"]["unknown_fixture"] = value
+                self.write_content("en", content)
+                destination = output_path(self.fixture_public, "en", "about")
+                contact_destination = output_path(self.fixture_public, "en", "contact")
+                contact_destination.unlink(missing_ok=True)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text("unchanged", encoding="utf-8")
+                with self.assertRaisesRegex(
+                    ValueError, r"Unused content keys: contact\.unknown_fixture"
+                ):
+                    self.build(("en",))
+                self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+                self.assertFalse(contact_destination.exists())
 
     def test_bad_translation_files_fail_closed(self):
         cases = (
@@ -773,6 +859,49 @@ class StaticCoreRendererTests(unittest.TestCase):
         self.assertEqual(json.loads(json_text)["name"], payload)
         self.assertNotIn("<unsafe>", rendered)
         self.assertNotIn("</script></script>", rendered)
+
+    def test_single_quote_payload_cannot_create_a_new_attribute(self):
+        payload = "x' onmouseover='alert(1)"
+        rendered = self.builder.render_page(
+            "en",
+            "about",
+            '<div title="{{attr:shared.home}}"></div>',
+            {"locale": "en", "shared": {"home": payload}},
+        )
+
+        class AttributeParser(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.attrs = None
+
+            def handle_starttag(self, tag, attrs):
+                if tag == "div":
+                    self.attrs = dict(attrs)
+
+        parser = AttributeParser()
+        parser.feed(rendered)
+        self.assertEqual(parser.attrs, {"title": payload})
+        self.assertNotIn("onmouseover", parser.attrs)
+
+    def test_attribute_placeholders_require_double_quoted_attribute_context(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        for template in (
+            "<div>{{attr:shared.home}}</div>",
+            "<div title='{{attr:shared.home}}'></div>",
+        ):
+            with self.subTest(template=template):
+                with self.assertRaisesRegex(
+                    ValueError, "Attribute placeholder requires double-quoted attribute context"
+                ):
+                    self.builder.render_page("en", "about", template, content)
+
+    def test_about_hours_label_is_translated_without_moving_the_technical_value(self):
+        template = (PUBLIC / "core-page-templates" / "about.html").read_text(encoding="utf-8")
+        content = json.loads((PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8"))
+        self.assertNotIn("24 Hours", template)
+        self.assertIn("2 kWh", template)
+        self.assertIn("24 ", template)
+        self.assertEqual(content["about"]["copy"]["hours"], "Hours")
 
     def test_translation_html_is_not_treated_as_safe_markup(self):
         content = {"locale": "en", "shared": {"home": "Line one<br>Line two"}}
