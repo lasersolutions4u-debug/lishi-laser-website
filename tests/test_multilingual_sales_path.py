@@ -105,6 +105,26 @@ class ProductRouteTests(unittest.TestCase):
             template_dir=PUBLIC / "product-templates",
         )
 
+    def assert_fact_drift_fails_without_writes(self, mutate, error_pattern):
+        self.write_content("en")
+        self.write_content("ja")
+        self.write_content("zh", mutate)
+        english_output = output_path(self.fixture_public, "en", "psa")
+        japanese_output = output_path(self.fixture_public, "ja", "valve")
+        for path, sentinel in (
+            (english_output, "unchanged english"),
+            (japanese_output, "unchanged japanese"),
+        ):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(sentinel, encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, error_pattern):
+            self.build(("en", "ja", "zh"))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertEqual(japanese_output.read_text(encoding="utf-8"), "unchanged japanese")
+        self.assertFalse(output_path(self.fixture_public, "zh", "psa").exists())
+
     def test_all_24_localized_product_pages_exist(self):
         missing = [
             str(output_path(PUBLIC, locale, page_key).relative_to(PUBLIC))
@@ -127,7 +147,7 @@ class ProductRouteTests(unittest.TestCase):
         def localize(data):
             data["shared"]["home_aria"] = "ホーム"
             data["shared"]["nav_products"] = "製品"
-            data["pages"]["valve"]["short_name"] = "比例弁"
+            data["pages"]["valve"]["short_name"] = "MSPV2_4000 比例弁"
 
         self.write_content("ja", localize)
         self.build(("ja",))
@@ -179,7 +199,7 @@ class ProductRouteTests(unittest.TestCase):
         self.assertEqual(webpage["url"], canonical_url("ja", "valve"))
         self.assertEqual(
             [item["name"] for item in breadcrumb["itemListElement"]],
-            ["ホーム", "製品", "比例弁"],
+            ["ホーム", "製品", "MSPV2_4000 比例弁"],
         )
 
     def test_single_locale_build_writes_only_selected_product_pages(self):
@@ -235,17 +255,60 @@ class ProductRouteTests(unittest.TestCase):
         self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
 
     def test_translated_model_cannot_change_technical_identity(self):
-        self.write_content("en")
-
         def change_model(data):
             data["pages"]["valve"]["model"] = "翻译型号"
 
-        self.write_content("ja", change_model)
+        self.assert_fact_drift_fails_without_writes(
+            change_model,
+            r"Technical content mismatch: zh: pages\.valve\.model",
+        )
 
-        with self.assertRaisesRegex(ValueError, "Technical content mismatch: pages.valve.model"):
-            self.build(("ja",))
+    def test_spec_note_technical_tokens_cannot_drift(self):
+        def change_note_purity(data):
+            data["pages"]["psa"]["specs"][0]["note"] = "95% nitrogen, boosted to 2.0 MPa"
 
-        self.assertFalse(output_path(self.fixture_public, "ja", "valve").exists())
+        self.assert_fact_drift_fails_without_writes(
+            change_note_purity,
+            r"Technical token mismatch: zh: pages\.psa\.specs\.0\.note",
+        )
+
+    def test_comparison_row_technical_values_cannot_drift(self):
+        def change_dimensions(data):
+            data["pages"]["comparison"]["comparison_rows"][2]["cabinet"] = "900 × 350 × 1100 mm"
+
+        self.assert_fact_drift_fails_without_writes(
+            change_dimensions,
+            r"Technical token mismatch: zh: pages\.comparison\.comparison_rows\.2\.cabinet",
+        )
+
+    def test_technical_token_order_cannot_drift(self):
+        def reorder_dimensions(data):
+            data["pages"]["comparison"]["comparison_rows"][2]["cabinet"] = "1100 × 350 × 800 mm"
+
+        self.assert_fact_drift_fails_without_writes(
+            reorder_dimensions,
+            r"Technical token mismatch: zh: pages\.comparison\.comparison_rows\.2\.cabinet",
+        )
+
+    def test_spec_items_cannot_be_appended(self):
+        def append_spec(data):
+            data["pages"]["cabinet"]["specs"].append(
+                {"label": "Invented", "value": "999 bar", "note": "Invented setting"}
+            )
+
+        self.assert_fact_drift_fails_without_writes(
+            append_spec,
+            r"Technical structure mismatch: zh: pages\.cabinet\.specs",
+        )
+
+    def test_comparison_rows_cannot_be_deleted(self):
+        def delete_row(data):
+            del data["pages"]["comparison"]["comparison_rows"][2]
+
+        self.assert_fact_drift_fails_without_writes(
+            delete_row,
+            r"Technical structure mismatch: zh: pages\.comparison\.comparison_rows",
+        )
 
     def test_cli_unknown_locale_exits_nonzero_with_clear_error(self):
         result = subprocess.run(

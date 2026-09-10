@@ -23,6 +23,30 @@ PAGES = (
 )
 
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_.-]+)\}\}")
+TECHNICAL_TOKEN = re.compile(
+    r"https?://[^\s\"'<>]+"
+    r"|(?<![A-Za-z0-9_])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
+    r"|#[A-Za-z][A-Za-z0-9_-]*"
+    r"|(?<![A-Za-z0-9_])(?=[A-Za-z0-9_/-]*[A-Za-z])(?=[A-Za-z0-9_/-]*\d)"
+    r"[A-Za-z][A-Za-z0-9_/-]*(?![A-Za-z0-9_])"
+    r"|(?<![A-Za-z0-9])(?:N[₂2]\s*/\s*O[₂2]|N[₂2]|O[₂2])(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9_])\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?"
+    r"(?![A-Za-z0-9_])"
+    r"|(?<![A-Za-z0-9])(?:Nm³/h|m³/h|L/min|MPa|kPa|bar|kg|mm|ms|kW|V)"
+    r"(?![A-Za-z0-9])|%"
+    r"|[×≤≥±]"
+)
+
+IMMUTABLE_CONTENT_FIELDS = {
+    "anchor",
+    "href",
+    "id",
+    "media_index",
+    "model",
+    "og_image",
+    "src",
+    "url",
+}
 
 LANGUAGE_NAMES = {
     "en": "English",
@@ -335,26 +359,51 @@ def load_content(locale, content_dir):
     return content
 
 
-def technical_paths(content):
-    paths = set()
-    for page_key, page in content["pages"].items():
-        for key in ("model", "og_image", "silhouette_width", "silhouette_height"):
-            if key in page:
-                paths.add(f"pages.{page_key}.{key}")
-        for index, _ in enumerate(page.get("specs", [])):
-            paths.add(f"pages.{page_key}.specs.{index}.value")
-        for key in ("case_laser_value", "case_flow_value", "case_purity_value", "case_pressure_value"):
-            if key in page:
-                paths.add(f"pages.{page_key}.{key}")
-    return paths
+def technical_tokens(value):
+    return tuple(match.group(0) for match in TECHNICAL_TOKEN.finditer(value))
 
 
-def validate_technical_content(content, english_content):
-    content_tracker = ContentTracker(content)
-    english_tracker = ContentTracker(english_content)
-    for path in sorted(technical_paths(english_content)):
-        if content_tracker.peek(path) != english_tracker.peek(path):
-            raise ValueError(f"Technical content mismatch: {path}")
+def immutable_content_path(path):
+    field = path.rsplit(".", 1)[-1]
+    return field in IMMUTABLE_CONTENT_FIELDS or field.endswith(
+        ("_anchor", "_href", "_id", "_path", "_src", "_url")
+    )
+
+
+def validate_technical_content(content, english_content, locale, path=""):
+    if isinstance(english_content, dict):
+        if not isinstance(content, dict):
+            raise ValueError(f"Technical structure mismatch: {locale}: {path or '<root>'}")
+        missing = english_content.keys() - content.keys()
+        if missing:
+            missing_path = f"{path}.{sorted(missing)[0]}" if path else sorted(missing)[0]
+            raise KeyError(f"Missing content key: {missing_path} (locale {locale})")
+        if content.keys() - english_content.keys():
+            raise ValueError(f"Technical structure mismatch: {locale}: {path or '<root>'}")
+        for key, english_value in english_content.items():
+            child_path = f"{path}.{key}" if path else key
+            validate_technical_content(content[key], english_value, locale, child_path)
+        return
+
+    if isinstance(english_content, list):
+        if not isinstance(content, list) or len(content) != len(english_content):
+            raise ValueError(f"Technical structure mismatch: {locale}: {path}")
+        for index, english_value in enumerate(english_content):
+            validate_technical_content(content[index], english_value, locale, f"{path}.{index}")
+        return
+
+    if type(content) is not type(english_content):
+        raise ValueError(f"Technical structure mismatch: {locale}: {path}")
+
+    if path == "locale":
+        return
+    if isinstance(english_content, str):
+        if immutable_content_path(path) and content != english_content:
+            raise ValueError(f"Technical content mismatch: {locale}: {path}")
+        if technical_tokens(content) != technical_tokens(english_content):
+            raise ValueError(f"Technical token mismatch: {locale}: {path}")
+    elif content != english_content:
+        raise ValueError(f"Technical content mismatch: {locale}: {path}")
 
 
 def localize_fragment_routes(fragment, route):
@@ -368,7 +417,7 @@ def localize_fragment_routes(fragment, route):
 
 def render_locale(locale, content, english_content, public_dir, template_dir):
     if locale != "en":
-        validate_technical_content(content, english_content)
+        validate_technical_content(content, english_content, locale)
     tracker = ContentTracker(content)
     tracker.use("locale")
 
