@@ -35,8 +35,8 @@ PRODUCT_BUILDER_SPEC.loader.exec_module(PRODUCT_BUILDER)
 
 CORE_BUILDER_PATH = ROOT / "build-static-core-pages.py"
 APPROVED_CORE_PAGE_SHA256 = {
-    "about": "1154198a05d668b05853514a81753e0070b9e302588bcd0e80371578135c2b36",
-    "contact": "70258fd6ffe0019d0b1c5d2a0211d06328112d1749ecacaa8a497bafb5deb969",
+    "about": "6e1778c87ce105001c4ec9fa99715de8a0a78adf258e5c5a5c83cc71fc806e06",
+    "contact": "6aae65975ba8daab26a459afb7ea82933ec7080db7bce07b2cf3d78d2de1a140",
 }
 
 
@@ -690,13 +690,55 @@ class StaticCoreRendererTests(unittest.TestCase):
 
         for page_key in ("about", "contact"):
             with self.subTest(page_key=page_key):
-                expected = output_path(PUBLIC, "en", page_key).read_bytes()
+                expected = output_path(PUBLIC, "en", page_key).read_bytes().replace(
+                    b"\r\n", b"\n"
+                )
                 actual = output_path(self.fixture_public, "en", page_key).read_bytes()
                 self.assertEqual(actual, expected)
+                self.assertNotIn(b"\r\n", actual)
                 self.assertEqual(
                     hashlib.sha256(actual).hexdigest(),
                     APPROVED_CORE_PAGE_SHA256[page_key],
                 )
+
+    def test_lf_and_crlf_template_inputs_render_and_build_identically(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        template_lf = '<div title="{{attr:shared.home}}">{{text:shared.home}}</div>\n'
+        template_crlf = template_lf.replace("\n", "\r\n")
+        self.assertEqual(
+            self.builder.render_page("en", "about", template_lf, content),
+            self.builder.render_page("en", "about", template_crlf, content),
+        )
+
+        self.write_content("en")
+        outputs = []
+        for newline, suffix in (("\n", "lf"), ("\r\n", "crlf")):
+            template_dir = self.fixture_root / f"templates-{suffix}"
+            template_dir.mkdir()
+            for page_key in ("about", "contact"):
+                template = (PUBLIC / "core-page-templates" / f"{page_key}.html").read_text(
+                    encoding="utf-8"
+                )
+                with (template_dir / f"{page_key}.html").open(
+                    "w", encoding="utf-8", newline=""
+                ) as handle:
+                    handle.write(template.replace("\r\n", "\n").replace("\n", newline))
+            public_dir = self.fixture_root / f"output-{suffix}"
+            self.builder.build_pages(
+                ("en",),
+                public_dir=public_dir,
+                content_dir=self.fixture_content,
+                template_dir=template_dir,
+            )
+            page_bytes = tuple(
+                output_path(public_dir, "en", page_key).read_bytes()
+                for page_key in ("about", "contact")
+            )
+            for rendered in page_bytes:
+                self.assertNotIn(b"\r\n", rendered)
+            outputs.append(page_bytes)
+
+        self.assertEqual(outputs[0], outputs[1])
 
     def test_all_translation_leaves_must_be_used_before_writing(self):
         content = self.write_content("en")

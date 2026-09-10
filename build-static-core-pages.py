@@ -228,6 +228,10 @@ def _escape_attribute(value):
     return html.escape(value, quote=False).replace('"', "&quot;")
 
 
+def _normalize_newlines(value):
+    return value.replace("\r\n", "\n").replace("\r", "\n")
+
+
 def _validate_attribute_placeholders(template_text, locale, page_key):
     for match in PLACEHOLDER.finditer(template_text):
         if match.group("kind") != "attr":
@@ -304,6 +308,7 @@ def _system_values(locale, page_key):
 
 
 def _render_page(locale, page_key, template_text, tracker):
+    template_text = _normalize_newlines(template_text)
     _validate_attribute_placeholders(template_text, locale, page_key)
     system_values = _system_values(locale, page_key)
 
@@ -328,7 +333,7 @@ def _render_page(locale, page_key, template_text, tracker):
             return _escape_attribute(value)
         return _json_string(value)
 
-    rendered = PLACEHOLDER.sub(replace, template_text)
+    rendered = _normalize_newlines(PLACEHOLDER.sub(replace, template_text))
     if "{{" in rendered or "}}" in rendered:
         raise ValueError(f"{locale}/{page_key}: unresolved placeholder")
     return rendered
@@ -368,7 +373,8 @@ def build_pages(locales, public_dir=PUBLIC, content_dir=CONTENT_DIR, template_di
     for (locale, page_key), rendered in rendered_pages.items():
         destination = output_path(public_dir, locale, page_key)
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(rendered, encoding="utf-8")
+        with destination.open("w", encoding="utf-8", newline="\n") as handle:
+            handle.write(rendered)
     return tuple(rendered_pages)
 
 
