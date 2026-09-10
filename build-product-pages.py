@@ -6,6 +6,7 @@ import html
 import json
 import re
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from site_locales import SUPPORTED_LOCALES, alternates_for, canonical_url, output_path, route_for
 
@@ -40,7 +41,8 @@ TECHNICAL_TOKEN = re.compile(
 )
 
 HREF_ATTRIBUTE = re.compile(
-    r"(?<![-\w])href\s*=\s*(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)'|(?P<bare>[^\s>]+))",
+    r"(?P<prefix>(?<![-\w])href\s*=\s*)"
+    r"(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)'|(?P<bare>[^\s>]+))",
     re.IGNORECASE,
 )
 
@@ -468,34 +470,67 @@ def validate_technical_content(content, english_content, locale, path=""):
         raise ValueError(f"Technical content mismatch: {locale}: {path}")
 
 
+def validate_comparison_row_keys(content, locale):
+    rows = content["pages"]["comparison"]["comparison_rows"]
+    seen = set()
+    for index, row in enumerate(rows):
+        path = f"pages.comparison.comparison_rows.{index}.key"
+        key = row.get("key")
+        if not isinstance(key, str) or not key.strip():
+            raise ValueError(f"Invalid stable key: {locale}: {path}")
+        if key in seen:
+            raise ValueError(f"Duplicate stable key: {locale}: {path}")
+        seen.add(key)
+
+
+def href_value(match):
+    return match.group("double") or match.group("single") or match.group("bare")
+
+
+def same_site_product_url(value, english_routes):
+    decoded = html.unescape(value)
+    parsed = urlsplit(decoded)
+    if parsed.netloc:
+        if parsed.netloc.lower() != "gasmixtech.com" or parsed.scheme not in (
+            "",
+            "http",
+            "https",
+        ):
+            return None
+    elif parsed.scheme or not decoded.startswith("/"):
+        return None
+    if parsed.path not in english_routes:
+        return None
+    return parsed
+
+
 def localize_fragment_routes(fragment, route, locale):
-    for page_key in ("psa", "cabinet", "valve", "comparison"):
-        english_path = route_for("en", page_key)
-        route_pattern = re.compile(
-            rf"(?P<prefix>(?<![-\w])href\s*=\s*)(?P<quote>[\"'])"
-            rf"{re.escape(english_path)}(?P<suffix>[?#][^\"']*)?(?P=quote)",
-            re.IGNORECASE,
-        )
-        fragment = route_pattern.sub(
-            lambda match: (
-                f'{match.group("prefix")}{match.group("quote")}{route[page_key]}'
-                f'{match.group("suffix") or ""}{match.group("quote")}'
-            ),
-            fragment,
-        )
+    english_routes = {
+        route_for("en", page_key): route[page_key]
+        for page_key in ("psa", "cabinet", "valve", "comparison")
+    }
+
+    def rewrite(match):
+        value = href_value(match)
+        parsed = same_site_product_url(value, english_routes)
+        if parsed is None:
+            return match.group(0)
+        if urlsplit(value).path != parsed.path:
+            return match.group(0)
+        rewritten = parsed._replace(path=english_routes[parsed.path]).geturl()
+        if match.group("double") is not None:
+            return f'{match.group("prefix")}"{html.escape(rewritten, quote=True)}"'
+        if match.group("single") is not None:
+            return f"{match.group('prefix')}'{html.escape(rewritten, quote=True)}'"
+        return f"{match.group('prefix')}{html.escape(rewritten, quote=True)}"
+
+    fragment = HREF_ATTRIBUTE.sub(rewrite, fragment)
 
     if locale != "en":
-        english_routes = {
-            route_for("en", page_key)
-            for page_key in ("psa", "cabinet", "valve", "comparison")
-        }
         for match in HREF_ATTRIBUTE.finditer(fragment):
-            href = html.unescape(
-                match.group("double") or match.group("single") or match.group("bare")
-            )
-            href_path = re.split(r"[?#]", href, maxsplit=1)[0]
-            if href_path in english_routes:
-                raise ValueError(f"Unlocalized product route: {locale}: {href_path}")
+            parsed = same_site_product_url(href_value(match), english_routes)
+            if parsed is not None:
+                raise ValueError(f"Unlocalized product route: {locale}: {parsed.path}")
     return fragment
 
 
@@ -615,6 +650,7 @@ def render_locale(locale, content, english_content, public_dir, template_dir):
 def build_pages(locales, public_dir=PUBLIC, content_dir=CONTENT_DIR, template_dir=TEMPLATE_DIR):
     locales = parse_locales(locales)
     english_content = load_content("en", content_dir)
+    validate_comparison_row_keys(english_content, "en")
     pending = []
     for locale in locales:
         content = english_content if locale == "en" else load_content(locale, content_dir)

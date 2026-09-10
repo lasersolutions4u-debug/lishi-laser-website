@@ -382,6 +382,41 @@ class ProductRouteTests(unittest.TestCase):
             r"Technical content mismatch: zh: pages\.comparison\.comparison_rows\.6\.key",
         )
 
+    def test_english_comparison_row_key_cannot_be_empty(self):
+        def empty_stable_key(data):
+            data["pages"]["comparison"]["comparison_rows"][0]["key"] = ""
+
+        self.write_content("en", empty_stable_key)
+        english_output = output_path(self.fixture_public, "en", "comparison")
+        english_output.parent.mkdir(parents=True, exist_ok=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Invalid stable key: en: pages\.comparison\.comparison_rows\.0\.key",
+        ):
+            self.build(("en",))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
+    def test_english_comparison_row_keys_must_be_unique(self):
+        def duplicate_stable_key(data):
+            rows = data["pages"]["comparison"]["comparison_rows"]
+            rows[1]["key"] = rows[0]["key"]
+
+        self.write_content("en", duplicate_stable_key)
+        english_output = output_path(self.fixture_public, "en", "comparison")
+        english_output.parent.mkdir(parents=True, exist_ok=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Duplicate stable key: en: pages\.comparison\.comparison_rows\.1\.key",
+        ):
+            self.build(("en",))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
     def test_spaced_placeholder_marker_fails_without_writes(self):
         def insert_marker(data):
             data["pages"]["cabinet"]["fit_title"] = "{{ page.title }}"
@@ -482,6 +517,46 @@ class ProductRouteTests(unittest.TestCase):
                 )
                 self.assertIn(f"href='{localized_route}{suffix}'", rendered)
                 self.assertNotIn(f"href='{english_route}", rendered)
+
+    def test_same_site_absolute_product_routes_localize_without_touching_external_links(self):
+        self.write_content("en")
+        self.write_content("ja")
+        template_dir = self.fixture_root / "product-templates"
+        shutil.copytree(PUBLIC / "product-templates", template_dir)
+        template_path = template_dir / "mixed-gas-control-comparison.html"
+        english_path = route_for("en", "comparison")
+        localized_path = route_for("ja", "comparison")
+        suffix = "?source=fixture#selection"
+        template_path.write_text(
+            template_path.read_text(encoding="utf-8")
+            + f'''\n<a href="https://gasmixtech.com{english_path}">absolute</a>
+<a href="https://gasmixtech.com{english_path}{suffix}">absolute suffix</a>
+<a href="//gasmixtech.com{english_path}">protocol relative</a>
+<a href="//gasmixtech.com{english_path}{suffix}">protocol relative suffix</a>
+<a href="https://example.com{english_path}{suffix}">external</a>
+<a href="mailto:sales@gasmixtech.com">email</a>
+<a href="https://www.dhgate.com/store/21807795">DHgate</a>\n''',
+            encoding="utf-8",
+        )
+
+        self.build(("ja",), template_dir=template_dir)
+
+        rendered = output_path(self.fixture_public, "ja", "comparison").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(f'href="https://gasmixtech.com{localized_path}"', rendered)
+        self.assertIn(
+            f'href="https://gasmixtech.com{localized_path}{suffix}"', rendered
+        )
+        self.assertIn(f'href="//gasmixtech.com{localized_path}"', rendered)
+        self.assertIn(
+            f'href="//gasmixtech.com{localized_path}{suffix}"', rendered
+        )
+        self.assertIn(
+            f'href="https://example.com{english_path}{suffix}"', rendered
+        )
+        self.assertIn('href="mailto:sales@gasmixtech.com"', rendered)
+        self.assertIn('href="https://www.dhgate.com/store/21807795"', rendered)
 
     def test_encoded_residual_english_product_route_fails_without_writes(self):
         self.write_content("en")
