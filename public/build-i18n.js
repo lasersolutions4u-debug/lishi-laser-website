@@ -114,9 +114,21 @@ function updateMeta(html, lang) {
 function updateActiveLang(html, lang) {
   // Remove "active" from all lang-option links
   html = html.replace(/ class="lang-option active"/g, ' class="lang-option"');
+  // Keep the visible current-language code and switcher targets canonical.
+  html = html.replace(
+    /(<span class="lang-current">)[^<]*(<\/span>)/,
+    `$1${lang.toUpperCase()}$2`
+  );
+  html = html.replace(
+    /href="[^"]*"( class="lang-option" data-lang="([a-z]{2})")/g,
+    (match, attributes, optionLang) => {
+      const href = optionLang === 'en' ? '/' : `/${optionLang}/`;
+      return `href="${href}"${attributes}`;
+    }
+  );
   // Add "active" to the current language's option
   const langRe = new RegExp(`(class="lang-option")( data-lang="${lang}")`);
-  html = html.replace(langRe, ' class="lang-option active"$2');
+  html = html.replace(langRe, 'class="lang-option active"$2');
   return html;
 }
 

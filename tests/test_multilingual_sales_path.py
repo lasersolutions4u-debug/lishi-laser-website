@@ -1,3 +1,4 @@
+import difflib
 import json
 import shutil
 import subprocess
@@ -70,6 +71,14 @@ class HomepageGenerationTests(unittest.TestCase):
 </head>
 <body>
   <a href="/contact">Contact</a>
+  <span class="lang-current">EN</span>
+  <a href="/" class="lang-option active" data-lang="en">English</a>
+  <a href="/zh/" class="lang-option" data-lang="zh">中文</a>
+  <a href="/es/" class="lang-option" data-lang="es">Español</a>
+  <a href="/pt/" class="lang-option" data-lang="pt">Português</a>
+  <a href="/ja/" class="lang-option" data-lang="ja">日本語</a>
+  <a href="/ko/" class="lang-option" data-lang="ko">한국어</a>
+  <a href="/pl/" class="lang-option" data-lang="pl">Polski</a>
   <p>{{message}}</p>
 </body>
 </html>
@@ -115,6 +124,35 @@ class HomepageGenerationTests(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def create_real_source_fixture(self, root):
+        fixture_public = root / "public"
+        fixture_i18n = fixture_public / "i18n"
+        fixture_i18n.mkdir(parents=True)
+        shutil.copy2(PUBLIC / "build-i18n.js", fixture_public / "build-i18n.js")
+        shutil.copy2(PUBLIC / "_template.html", fixture_public / "_template.html")
+        for locale in SUPPORTED_LOCALES:
+            source = PUBLIC / "i18n" / f"{locale}.json"
+            if source.exists():
+                shutil.copy2(source, fixture_i18n / source.name)
+        return fixture_public
+
+    def assert_matches_committed_homepage(self, fixture_public, locale):
+        actual = output_path(fixture_public, locale, "home").read_text(encoding="utf-8")
+        expected = output_path(PUBLIC, locale, "home").read_text(encoding="utf-8")
+        if actual != expected:
+            difference = "".join(
+                list(
+                    difflib.unified_diff(
+                        expected.splitlines(keepends=True),
+                        actual.splitlines(keepends=True),
+                        fromfile=f"committed/{locale}",
+                        tofile=f"rebuilt/{locale}",
+                        n=1,
+                    )
+                )[:80]
+            )
+            self.fail(f"Rebuilt {locale} homepage differs from committed output:\n{difference}")
+
     def test_generated_homepages_have_complete_locale_aware_core_links(self):
         core_page_keys = ("about", "contact", "psa", "cabinet", "valve", "comparison")
 
@@ -145,6 +183,65 @@ class HomepageGenerationTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(tuple(json.loads(result.stdout)), SUPPORTED_LOCALES)
+
+    def test_generated_switcher_marks_current_locale_and_keeps_all_links(self):
+        for locale in SUPPORTED_LOCALES:
+            self.write_translation(locale)
+
+        result = self.run_node()
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for locale in SUPPORTED_LOCALES:
+            with self.subTest(locale=locale):
+                html = output_path(self.fixture_public, locale, "home").read_text(encoding="utf-8")
+                self.assertIn(f'<span class="lang-current">{locale.upper()}</span>', html)
+                self.assertEqual(html.count('class="lang-option'), len(SUPPORTED_LOCALES))
+                self.assertEqual(html.count('class="lang-option active"'), 1)
+                for option_locale in SUPPORTED_LOCALES:
+                    active = " active" if option_locale == locale else ""
+                    expected = (
+                        f'href="{route_for(option_locale, "home")}" '
+                        f'class="lang-option{active}" data-lang="{option_locale}"'
+                    )
+                    self.assertIn(expected, html)
+
+    def test_real_sources_rebuild_each_existing_homepage_exactly(self):
+        generated_locales = SUPPORTED_LOCALES[:-1]
+        for locale in generated_locales:
+            with self.subTest(locale=locale), tempfile.TemporaryDirectory() as temp_dir:
+                fixture_root = Path(temp_dir)
+                fixture_public = self.create_real_source_fixture(fixture_root)
+
+                result = subprocess.run(
+                    ["node", "public/build-i18n.js", "--locale", locale],
+                    cwd=fixture_root,
+                    capture_output=True,
+                    text=True,
+                    encoding="utf-8",
+                )
+
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assert_matches_committed_homepage(fixture_public, locale)
+
+    def test_real_sources_batch_rebuild_existing_homepages_exactly(self):
+        generated_locales = SUPPORTED_LOCALES[:-1]
+        with tempfile.TemporaryDirectory() as temp_dir:
+            fixture_root = Path(temp_dir)
+            fixture_public = self.create_real_source_fixture(fixture_root)
+            args = [value for locale in generated_locales for value in ("--locale", locale)]
+
+            result = subprocess.run(
+                ["node", "public/build-i18n.js", *args],
+                cwd=fixture_root,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for locale in generated_locales:
+                with self.subTest(locale=locale):
+                    self.assert_matches_committed_homepage(fixture_public, locale)
 
     def test_adjust_paths_respects_core_route_boundaries(self):
         result = self.run_node_eval(
