@@ -1,6 +1,8 @@
 import difflib
+import hashlib
 import importlib.util
 import json
+import re
 import shutil
 import subprocess
 import tempfile
@@ -19,6 +21,7 @@ from site_locales import (
     route_for,
 )
 from tests.test_product_expansion import ProductPageParser
+from tests.test_inquiry_form_markup import assert_inquiry_contract
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
@@ -29,6 +32,19 @@ PRODUCT_BUILDER_SPEC = importlib.util.spec_from_file_location(
 )
 PRODUCT_BUILDER = importlib.util.module_from_spec(PRODUCT_BUILDER_SPEC)
 PRODUCT_BUILDER_SPEC.loader.exec_module(PRODUCT_BUILDER)
+
+CORE_BUILDER_PATH = ROOT / "build-static-core-pages.py"
+APPROVED_CORE_PAGE_SHA256 = {
+    "about": "1154198a05d668b05853514a81753e0070b9e302588bcd0e80371578135c2b36",
+    "contact": "70258fd6ffe0019d0b1c5d2a0211d06328112d1749ecacaa8a497bafb5deb969",
+}
+
+
+def load_core_builder():
+    spec = importlib.util.spec_from_file_location("build_static_core_pages", CORE_BUILDER_PATH)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 class LocaleRouteContractTests(unittest.TestCase):
@@ -598,6 +614,199 @@ class ProductRouteTests(unittest.TestCase):
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Unsupported locale: xx", result.stderr)
+
+
+class StaticCoreRendererTests(unittest.TestCase):
+    def setUp(self):
+        self.builder = load_core_builder()
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.fixture_root = Path(self.temp_dir.name)
+        self.fixture_public = self.fixture_root / "public"
+        self.fixture_content = self.fixture_public / "i18n" / "core"
+        self.fixture_templates = self.fixture_public / "core-page-templates"
+        self.fixture_content.mkdir(parents=True)
+        shutil.copytree(PUBLIC / "core-page-templates", self.fixture_templates)
+        self.english_content = json.loads(
+            (PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8")
+        )
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    def write_content(self, locale, data=None):
+        content = json.loads(json.dumps(data or self.english_content))
+        content["locale"] = locale
+        (self.fixture_content / f"{locale}.json").write_text(
+            json.dumps(content, ensure_ascii=False), encoding="utf-8"
+        )
+        return content
+
+    def build(self, locales):
+        return self.builder.build_pages(
+            locales,
+            public_dir=self.fixture_public,
+            content_dir=self.fixture_content,
+            template_dir=self.fixture_templates,
+        )
+
+    def test_real_english_pages_render_complete_locale_contract(self):
+        self.write_content("en")
+        self.build(("en",))
+
+        for page_key in ("about", "contact"):
+            with self.subTest(page_key=page_key):
+                rendered = output_path(self.fixture_public, "en", page_key).read_text(encoding="utf-8")
+                self.assertNotIn("{{", rendered)
+                self.assertNotIn("}}", rendered)
+                self.assertEqual(len(re.findall(r"<h1(?:\s[^>]*)?>", rendered)), 1)
+                self.assertEqual(rendered.count('class="lang-option'), len(SUPPORTED_LOCALES))
+                self.assertEqual(rendered.count('class="lang-option active"'), 1)
+                self.assertIn('<html lang="en">', rendered)
+                self.assertEqual(
+                    rendered.count(f'<link rel="canonical" href="{canonical_url("en", page_key)}">'),
+                    1,
+                )
+                for alternate_locale, url in alternates_for(page_key).items():
+                    self.assertEqual(
+                        rendered.count(
+                            f'<link rel="alternate" hreflang="{alternate_locale}" href="{url}">'
+                        ),
+                        1,
+                    )
+                for option_locale in SUPPORTED_LOCALES:
+                    active = " active" if option_locale == "en" else ""
+                    self.assertIn(
+                        f'href="{route_for(option_locale, page_key)}" '
+                        f'class="lang-option{active}" data-lang="{option_locale}"',
+                        rendered,
+                    )
+
+        contact_html = output_path(self.fixture_public, "en", "contact").read_text(encoding="utf-8")
+        assert_inquiry_contract(self, contact_html)
+
+    def test_real_english_templates_rebuild_approved_pages_byte_for_byte(self):
+        self.write_content("en")
+        self.build(("en",))
+
+        for page_key in ("about", "contact"):
+            with self.subTest(page_key=page_key):
+                expected = output_path(PUBLIC, "en", page_key).read_bytes()
+                actual = output_path(self.fixture_public, "en", page_key).read_bytes()
+                self.assertEqual(actual, expected)
+                self.assertEqual(
+                    hashlib.sha256(actual).hexdigest(),
+                    APPROVED_CORE_PAGE_SHA256[page_key],
+                )
+
+    def test_all_translation_leaves_must_be_used_before_writing(self):
+        content = self.write_content("en")
+        content["contact"]["unused_fixture"] = "must fail"
+        self.write_content("en", content)
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, r"Unused content keys: contact\.unused_fixture"):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+        self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+    def test_missing_translation_key_fails_without_writes(self):
+        content = self.write_content("en")
+        del content["shared"]["products"]
+        self.write_content("en", content)
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(KeyError, r"Missing content key: shared\.products"):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+        self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+    def test_bad_translation_files_fail_closed(self):
+        cases = (
+            ("{invalid", "Invalid translation JSON: en.json"),
+            (json.dumps([]), "Invalid translation root: en.json"),
+            (json.dumps({"locale": "zh"}), "Translation locale mismatch: en.json"),
+        )
+        for raw, message in cases:
+            with self.subTest(message=message):
+                (self.fixture_content / "en.json").write_text(raw, encoding="utf-8")
+                destination = output_path(self.fixture_public, "en", "about")
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text("unchanged", encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, re.escape(message)):
+                    self.build(("en",))
+                self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+                self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+    def test_missing_translation_file_fails_without_writes(self):
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(FileNotFoundError, "en.json"):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+
+    def test_text_attributes_and_jsonld_escape_translation_content(self):
+        payload = 'Consult "A&B" <unsafe> </script>'
+        content = {"locale": "en", "shared": {"home": payload}}
+        template = (
+            '<p>{{text:shared.home}}</p>'
+            '<div title="{{attr:shared.home}}"></div>'
+            '<script type="application/ld+json">{"name":{{json:shared.home}}}</script>'
+            '{{safe:hreflang_links}}{{safe:language_menu}}'
+        )
+
+        rendered = self.builder.render_page("en", "about", template, content)
+
+        self.assertIn('Consult "A&amp;B" &lt;unsafe&gt; &lt;/script&gt;', rendered)
+        self.assertIn('title="Consult &quot;A&amp;B&quot; &lt;unsafe&gt; &lt;/script&gt;"', rendered)
+        json_text = re.search(
+            r'<script type="application/ld\+json">(.*?)</script>', rendered
+        ).group(1)
+        self.assertEqual(json.loads(json_text)["name"], payload)
+        self.assertNotIn("<unsafe>", rendered)
+        self.assertNotIn("</script></script>", rendered)
+
+    def test_translation_html_is_not_treated_as_safe_markup(self):
+        content = {"locale": "en", "shared": {"home": "Line one<br>Line two"}}
+        rendered = self.builder.render_page(
+            "en", "about", "<p>{{text:shared.home}}</p>", content
+        )
+        self.assertEqual(rendered, "<p>Line one&lt;br&gt;Line two</p>")
+
+    def test_unresolved_or_unknown_placeholders_fail(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        for template in ("{{text:missing.key}}", "{{ unknown }}", "{{safe:unknown_block}}"):
+            with self.subTest(template=template):
+                with self.assertRaises((KeyError, ValueError)):
+                    self.builder.render_page("en", "about", template, content)
+
+    def test_batch_validation_happens_before_any_output_is_written(self):
+        self.write_content("en")
+        (self.fixture_content / "zh.json").write_text("{invalid", encoding="utf-8")
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "Invalid translation JSON: zh.json"):
+            self.build(("en", "zh"))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+
+    def test_parse_locales_defaults_and_rejects_unknown_or_duplicate_values(self):
+        self.assertEqual(self.builder.parse_locales(None), SUPPORTED_LOCALES)
+        self.assertEqual(self.builder.parse_locales(["en", "ja"]), ("en", "ja"))
+        with self.assertRaisesRegex(ValueError, "Unsupported locale: xx"):
+            self.builder.parse_locales(["xx"])
+        with self.assertRaisesRegex(ValueError, "Duplicate locale: en"):
+            self.builder.parse_locales(["en", "en"])
 
 
 class HomepageGenerationTests(unittest.TestCase):
