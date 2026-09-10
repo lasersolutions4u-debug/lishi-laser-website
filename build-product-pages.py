@@ -32,7 +32,7 @@ TECHNICAL_TOKEN = re.compile(
     r"|(?<![A-Za-z0-9])(?:N[₂2]\s*/\s*O[₂2]|N[₂2]|O[₂2])(?![A-Za-z0-9])"
     r"|(?<![A-Za-z0-9_])\d+(?:\.\d+)?(?:\s*[–—-]\s*\d+(?:\.\d+)?)?"
     r"(?![A-Za-z0-9_])"
-    r"|(?<![A-Za-z0-9])(?:Nm³/h|m³/h|L/min|MPa|kPa|bar|kg|mm|ms|kW|V)"
+    r"|(?<![A-Za-z0-9])(?:Nm³/h|m³/h|L/min|MPa|kPa|bar|kg|mm|ms|kW|V|ft|m)"
     r"(?![A-Za-z0-9])|%"
     r"|[×≤≥±]"
 )
@@ -41,6 +41,7 @@ IMMUTABLE_CONTENT_FIELDS = {
     "anchor",
     "href",
     "id",
+    "key",
     "media_index",
     "model",
     "og_image",
@@ -370,6 +371,15 @@ def immutable_content_path(path):
     )
 
 
+def explicit_technical_value_path(path):
+    parts = path.split(".")
+    field = parts[-1]
+    collections = {"cases", "configurations", "specs"}
+    if field == "value" and collections.intersection(parts[:-1]):
+        return True
+    return field.endswith("_value") and field.startswith(("case_", "config_"))
+
+
 def validate_technical_content(content, english_content, locale, path=""):
     if isinstance(english_content, dict):
         if not isinstance(content, dict):
@@ -398,7 +408,7 @@ def validate_technical_content(content, english_content, locale, path=""):
     if path == "locale":
         return
     if isinstance(english_content, str):
-        if immutable_content_path(path) and content != english_content:
+        if (immutable_content_path(path) or explicit_technical_value_path(path)) and content != english_content:
             raise ValueError(f"Technical content mismatch: {locale}: {path}")
         if technical_tokens(content) != technical_tokens(english_content):
             raise ValueError(f"Technical token mismatch: {locale}: {path}")

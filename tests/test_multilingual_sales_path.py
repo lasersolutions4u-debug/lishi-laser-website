@@ -272,6 +272,27 @@ class ProductRouteTests(unittest.TestCase):
             r"Technical token mismatch: zh: pages\.psa\.specs\.0\.note",
         )
 
+    def test_text_only_spec_value_cannot_drift(self):
+        def change_interface(data):
+            data["pages"]["valve"]["specs"][7]["value"] = "Digital only"
+
+        self.assert_fact_drift_fails_without_writes(
+            change_interface,
+            r"Technical content mismatch: zh: pages\.valve\.specs\.7\.value",
+        )
+
+    def test_narrative_measurement_unit_cannot_drift(self):
+        def change_footprint_unit(data):
+            data["pages"]["psa"]["footprint_caption"] = (
+                "Reference footprint: approximately 10.17 × 1.60 ft. "
+                "Final footprint and module positions depend on the confirmed supply scope and site conditions."
+            )
+
+        self.assert_fact_drift_fails_without_writes(
+            change_footprint_unit,
+            r"Technical token mismatch: zh: pages\.psa\.footprint_caption",
+        )
+
     def test_comparison_row_technical_values_cannot_drift(self):
         def change_dimensions(data):
             data["pages"]["comparison"]["comparison_rows"][2]["cabinet"] = "900 × 350 × 1100 mm"
@@ -308,6 +329,16 @@ class ProductRouteTests(unittest.TestCase):
         self.assert_fact_drift_fails_without_writes(
             delete_row,
             r"Technical structure mismatch: zh: pages\.comparison\.comparison_rows",
+        )
+
+    def test_tokenless_comparison_rows_cannot_be_reordered(self):
+        def swap_rows(data):
+            rows = data["pages"]["comparison"]["comparison_rows"]
+            rows[6], rows[7] = rows[7], rows[6]
+
+        self.assert_fact_drift_fails_without_writes(
+            swap_rows,
+            r"Technical content mismatch: zh: pages\.comparison\.comparison_rows\.6\.key",
         )
 
     def test_cli_unknown_locale_exits_nonzero_with_clear_error(self):
