@@ -10,11 +10,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
 
 const PUBLIC_DIR = __dirname;
 const I18N_DIR = path.join(PUBLIC_DIR, 'i18n');
-const PYTHON = process.platform === 'win32' ? 'python' : 'python3';
 const SUPPORTED_LOCALES = ['en', 'zh', 'es', 'pt', 'ja', 'ko', 'pl'];
 const CORE_PATHS = [
   '/about',
@@ -69,7 +67,9 @@ function adjustPaths(html, lang) {
 
   // 2. Localized core sales-path links
   for (const route of CORE_PATHS) {
-    html = html.replaceAll(`href="${route}`, `href="/${lang}${route}`);
+    const escapedRoute = route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const routePattern = new RegExp(`href="${escapedRoute}(?=["?#])`, 'g');
+    html = html.replace(routePattern, `href="/${lang}${route}`);
   }
 
   // 2b. Root-relative script  /script.min.js → ../script.min.js
@@ -129,6 +129,10 @@ function requestedLocales(args) {
       throw new Error(`Unknown argument: ${args[index]}`);
     }
 
+    if (index + 1 >= args.length || args[index + 1] === '--locale') {
+      throw new Error('Missing value for --locale');
+    }
+
     const locale = args[++index];
     if (!SUPPORTED_LOCALES.includes(locale)) {
       throw new Error(`Unsupported locale: ${locale}`);
@@ -140,27 +144,26 @@ function requestedLocales(args) {
 
 function main(args = process.argv.slice(2)) {
   const locales = requestedLocales(args);
+  const templatePath = path.join(PUBLIC_DIR, '_template.html');
+  const template = fs.readFileSync(templatePath, 'utf-8');
 
-  // Normalize retained locale source copy before rendering. This keeps the JSON
-  // sources and generated HTML under the same evidence and positioning policy.
-  execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'normalize-i18n-homepages.py')], {
-    stdio: 'inherit'
-  });
-
-  const localeSources = new Map();
-  for (const locale of locales) {
+  const localeSources = locales.map((locale) => {
     const jsonPath = path.join(I18N_DIR, `${locale}.json`);
     if (!fs.existsSync(jsonPath)) {
       throw new Error(`Missing translation file: ${locale}.json`);
     }
-    localeSources.set(locale, jsonPath);
-  }
 
-  const templatePath = path.join(PUBLIC_DIR, '_template.html');
-  const template = fs.readFileSync(templatePath, 'utf-8');
+    try {
+      return {
+        locale,
+        strings: JSON.parse(fs.readFileSync(jsonPath, 'utf-8')),
+      };
+    } catch (error) {
+      throw new Error(`Invalid translation JSON: ${locale}.json`);
+    }
+  });
 
-  for (const locale of locales) {
-    const strings = JSON.parse(fs.readFileSync(localeSources.get(locale), 'utf-8'));
+  const renderedPages = localeSources.map(({ locale, strings }) => {
     let html = replacePlaceholders(template, strings);
     if (locale !== 'en') {
       html = adjustPaths(html, locale);
@@ -173,19 +176,16 @@ function main(args = process.argv.slice(2)) {
     }
 
     const outDir = locale === 'en' ? PUBLIC_DIR : path.join(PUBLIC_DIR, locale);
+    return { locale, html, outDir };
+  });
+
+  for (const { locale, html, outDir } of renderedPages) {
     if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
     fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf-8');
     console.log(locale === 'en' ? '  en/index.html (root)' : `  ${locale}/index.html`);
   }
 
-  // Apply the shared canonical, schema, language, identity, and evidence-policy
-  // contract after every homepage build so legacy translation strings cannot
-  // silently restore removed product branding or unsupported positioning.
-  execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'stabilize-core-locales.py')], {
-    stdio: 'inherit'
-  });
-
-  console.log(`\nDone — ${locales.length} language(s) built and normalized.`);
+  console.log(`\nDone — ${locales.length} language(s) built.`);
 }
 
 if (require.main === module) {

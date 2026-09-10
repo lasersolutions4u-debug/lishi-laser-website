@@ -1,5 +1,7 @@
 import json
+import shutil
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -60,6 +62,59 @@ class LocaleRouteContractTests(unittest.TestCase):
 
 
 class HomepageGenerationTests(unittest.TestCase):
+    MINIMAL_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://gasmixtech.com/">
+  <meta property="og:url" content="https://gasmixtech.com/">
+</head>
+<body>
+  <a href="/contact">Contact</a>
+  <p>{{message}}</p>
+</body>
+</html>
+"""
+
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.fixture_root = Path(self.temp_dir.name)
+        self.fixture_public = self.fixture_root / "public"
+        self.fixture_i18n = self.fixture_public / "i18n"
+        self.fixture_i18n.mkdir(parents=True)
+        shutil.copy2(PUBLIC / "build-i18n.js", self.fixture_public / "build-i18n.js")
+        (self.fixture_public / "_template.html").write_text(self.MINIMAL_TEMPLATE, encoding="utf-8")
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    def write_translation(self, locale, data=None):
+        content = json.dumps(data if data is not None else {"message": locale})
+        (self.fixture_i18n / f"{locale}.json").write_text(content, encoding="utf-8")
+
+    def write_output(self, locale, content):
+        path = self.fixture_public / "index.html" if locale == "en" else self.fixture_public / locale / "index.html"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        return path
+
+    def run_node(self, *args):
+        return subprocess.run(
+            ["node", "public/build-i18n.js", *args],
+            cwd=self.fixture_root,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+
+    def run_node_eval(self, script):
+        return subprocess.run(
+            ["node", "-e", script],
+            cwd=self.fixture_root,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+
     def test_generated_homepages_have_complete_locale_aware_core_links(self):
         core_page_keys = ("about", "contact", "psa", "cabinet", "valve", "comparison")
 
@@ -74,73 +129,117 @@ class HomepageGenerationTests(unittest.TestCase):
                         self.assertNotIn(f'href="{CORE_ROUTES[page_key]}', html)
 
     def test_missing_translation_key_fails_closed(self):
-        result = subprocess.run(
-            [
-                "node",
-                "-e",
-                "const { replacePlaceholders } = require('./public/build-i18n.js'); "
-                "replacePlaceholders('{{missing.required.key}}', {});",
-            ],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
+        result = self.run_node_eval(
+            "const { replacePlaceholders } = require('./public/build-i18n.js'); "
+            "replacePlaceholders('{{missing.required.key}}', {});"
         )
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Missing translation key: missing.required.key", result.stderr)
 
     def test_javascript_supported_locales_match_python_contract(self):
-        result = subprocess.run(
-            [
-                "node",
-                "-e",
-                "const { SUPPORTED_LOCALES } = require('./public/build-i18n.js'); "
-                "process.stdout.write(JSON.stringify(SUPPORTED_LOCALES));",
-            ],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
+        result = self.run_node_eval(
+            "const { SUPPORTED_LOCALES } = require('./public/build-i18n.js'); "
+            "process.stdout.write(JSON.stringify(SUPPORTED_LOCALES));"
         )
 
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(tuple(json.loads(result.stdout)), SUPPORTED_LOCALES)
 
-    def test_repeatable_locale_option_builds_only_selected_homepages(self):
-        result = subprocess.run(
-            ["node", "public/build-i18n.js", "--locale", "en", "--locale", "zh"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
+    def test_adjust_paths_respects_core_route_boundaries(self):
+        result = self.run_node_eval(
+            "const { adjustPaths } = require('./public/build-i18n.js'); "
+            "const input = ["
+            "'<a href=\"/contact\">exact</a>',"
+            "'<a href=\"/contact?topic=quote\">query</a>',"
+            "'<a href=\"/contact#form\">hash</a>',"
+            "'<a href=\"/contact-us\">prefix</a>',"
+            "'<a href=\"/products/mixed-gas-control-comparison-v2\">versioned</a>',"
+            "'<a href=\"/ja/contact\">localized</a>'"
+            "].join('\\n'); "
+            "const once = adjustPaths(input, 'ja'); "
+            "process.stdout.write(JSON.stringify({ once, twice: adjustPaths(once, 'ja') }));"
         )
 
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertIn("en/index.html (root)", result.stdout)
-        self.assertIn("zh/index.html", result.stdout)
-        self.assertNotIn("es/index.html", result.stdout)
+        values = json.loads(result.stdout)
+        self.assertIn('href="/ja/contact"', values["once"])
+        self.assertIn('href="/ja/contact?topic=quote"', values["once"])
+        self.assertIn('href="/ja/contact#form"', values["once"])
+        self.assertIn('href="/contact-us"', values["once"])
+        self.assertIn('href="/products/mixed-gas-control-comparison-v2"', values["once"])
+        self.assertEqual(values["once"], values["twice"])
+
+    def test_single_locale_build_writes_only_selected_output(self):
+        self.write_translation("ja")
+        english_output = self.write_output("en", "unchanged english")
+
+        result = self.run_node("--locale", "ja")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertIn("ja", (self.fixture_public / "ja" / "index.html").read_text(encoding="utf-8"))
+        self.assertFalse((self.fixture_public / "zh" / "index.html").exists())
+
+    def test_repeatable_locale_option_writes_only_selected_homepages(self):
+        self.write_translation("en")
+        self.write_translation("zh")
+        spanish_output = self.write_output("es", "unchanged spanish")
+
+        result = self.run_node("--locale", "en", "--locale", "zh")
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("en", (self.fixture_public / "index.html").read_text(encoding="utf-8"))
+        self.assertIn("zh", (self.fixture_public / "zh" / "index.html").read_text(encoding="utf-8"))
+        self.assertEqual(spanish_output.read_text(encoding="utf-8"), "unchanged spanish")
 
     def test_unknown_locale_fails_with_clear_error(self):
-        result = subprocess.run(
-            ["node", "public/build-i18n.js", "--locale", "xx"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-        )
+        english_output = self.write_output("en", "unchanged english")
+
+        result = self.run_node("--locale", "xx")
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Unsupported locale: xx", result.stderr)
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
+    def test_locale_option_requires_a_value(self):
+        english_output = self.write_output("en", "unchanged english")
+
+        result = self.run_node("--locale")
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Missing value for --locale", result.stderr)
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
 
     def test_missing_locale_translation_file_fails_closed(self):
-        result = subprocess.run(
-            ["node", "public/build-i18n.js", "--locale", "pl"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-        )
+        polish_output = self.write_output("pl", "unchanged polish")
+
+        result = self.run_node("--locale", "pl")
 
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Missing translation file: pl.json", result.stderr)
+        self.assertEqual(polish_output.read_text(encoding="utf-8"), "unchanged polish")
+
+    def test_missing_key_does_not_write_partial_outputs(self):
+        self.write_translation("en")
+        self.write_translation("zh", {})
+        english_output = self.write_output("en", "unchanged english")
+
+        result = self.run_node("--locale", "en", "--locale", "zh")
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Missing translation key: message", result.stderr)
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertFalse((self.fixture_public / "zh" / "index.html").exists())
+
+    def test_invalid_json_does_not_write_partial_outputs(self):
+        self.write_translation("en")
+        (self.fixture_i18n / "zh.json").write_text("{invalid", encoding="utf-8")
+        english_output = self.write_output("en", "unchanged english")
+
+        result = self.run_node("--locale", "en", "--locale", "zh")
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Invalid translation JSON: zh.json", result.stderr)
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertFalse((self.fixture_public / "zh" / "index.html").exists())
