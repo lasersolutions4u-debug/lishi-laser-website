@@ -13,6 +13,20 @@ PRODUCT_IDS = {
     "mspv2-4000",
     "need-recommendation",
 }
+EXPECTED_CHOICE_VALUES = {
+    "product": {"", *PRODUCT_IDS},
+    "recommendation_branch": {"", "psa", "mixer", "both"},
+    "retained_modules": {
+        "air-compressor", "dryer", "filters", "air-buffer-tank",
+        "nitrogen-storage", "booster", "none",
+    },
+    "material": {"", "carbon_steel", "stainless_steel", "aluminum", "mixed", "other"},
+    "current_gas": {"", "oxygen", "nitrogen", "air", "mixed", "unknown"},
+    "installation_preference": {"", "cabinet", "valve", "unsure"},
+    "control_interface": {"", "analog", "modbus", "plc-custom", "unsure"},
+    "preferred_channel": {"", "email", "phone", "whatsapp"},
+    "customer_type": {"", "end_user", "factory", "integrator", "project_owner", "other"},
+}
 EXPECTED_FIELD_NAMES = {
     "product", "recommendation_branch", "target_flow", "purity", "output_pressure",
     "laser_count", "psa_laser_power", "operating_hours", "retained_modules",
@@ -36,7 +50,8 @@ class InquiryParser(HTMLParser):
         self.legends = 0
         self.names = set()
         self.product_values = set()
-        self.in_product = False
+        self.current_select = None
+        self.choice_values = {}
         self.scripts = []
         self.ids = set()
         self.live_regions = 0
@@ -59,18 +74,28 @@ class InquiryParser(HTMLParser):
                 self.controls[attrs["id"]] = attrs
         if "inquiry-honeypot" in attrs.get("class", "").split():
             self.honeypots += 1
-        if tag == "select" and attrs.get("name") == "product":
-            self.in_product = True
-        if tag == "option" and self.in_product and attrs.get("value"):
-            self.product_values.add(attrs["value"])
+        if tag == "select" and attrs.get("name"):
+            self.current_select = attrs["name"]
+            self.choice_values.setdefault(self.current_select, set())
+        if tag == "option" and self.current_select and "value" in attrs:
+            self.choice_values[self.current_select].add(attrs["value"])
+            if self.current_select == "product" and attrs["value"]:
+                self.product_values.add(attrs["value"])
+        if (
+            tag == "input"
+            and attrs.get("type") in {"checkbox", "radio"}
+            and attrs.get("name")
+            and "value" in attrs
+        ):
+            self.choice_values.setdefault(attrs["name"], set()).add(attrs["value"])
         if tag == "script" and attrs.get("src"):
             self.scripts.append(attrs["src"])
         if attrs.get("aria-live") in {"polite", "assertive"}:
             self.live_regions += 1
 
     def handle_endtag(self, tag):
-        if tag == "select" and self.in_product:
-            self.in_product = False
+        if tag == "select":
+            self.current_select = None
 
 
 def parse_inquiry_html(html):
@@ -94,6 +119,7 @@ def assert_inquiry_contract(test_case, html):
     test_case.assertGreaterEqual(parser.live_regions, 2)
     test_case.assertIn("/inquiry-form.js", parser.scripts)
     test_case.assertEqual(parser.product_values, PRODUCT_IDS)
+    test_case.assertEqual(parser.choice_values, EXPECTED_CHOICE_VALUES)
     test_case.assertEqual(parser.names, EXPECTED_FIELD_NAMES)
     test_case.assertTrue({
         "inquiryProgress", "inquiryErrors", "inquiryReview", "inquirySuccess", "inquiryFailure",

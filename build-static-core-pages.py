@@ -57,9 +57,11 @@ REUSABLE_KEYS = {
     "contact.copy.not_sure": 2,
     "contact.copy.other": 2,
     "contact.copy.select_one": 8,
-    "contact.title": 4,
-    "shared.about": 4,
-    "shared.applications": 3,
+    "about.title": 2,
+    "contact.description": 2,
+    "contact.title": 3,
+    "shared.about": 3,
+    "shared.applications": 2,
     "shared.copy.advantages": 2,
     "shared.copy.all_rights_reserved": 2,
     "shared.copy.application_assessment": 2,
@@ -100,15 +102,16 @@ REUSABLE_KEYS = {
     "shared.copy.whatsapp": 5,
     "shared.copy.whatsapp_mexico": 2,
     "shared.copy.whatsapp_thailand": 2,
-    "shared.home": 3,
-    "shared.language_label": 3,
-    "shared.products": 3,
-    "shared.request": 3,
-    "shared.resources": 3,
-    "shared.results": 3,
+    "shared.home": 2,
+    "shared.language_label": 2,
+    "shared.products": 2,
+    "shared.request": 2,
+    "shared.resources": 2,
+    "shared.results": 2,
 }
 
 ALLOWED_UNUSED_KEYS = frozenset()
+ALLOWED_EMPTY_KEYS = frozenset()
 
 PLACEHOLDER = re.compile(r"\{\{(?P<kind>text|attr|json|safe):(?P<key>[a-zA-Z0-9_.-]+)\}\}")
 
@@ -151,7 +154,7 @@ class ContentTracker:
         self.content = content
         self.used = Counter({"locale": 1})
 
-    def use(self, path):
+    def peek(self, path):
         value = self.content
         for part in path.split("."):
             if isinstance(value, list):
@@ -163,15 +166,31 @@ class ContentTracker:
                 if not isinstance(value, dict) or part not in value:
                     raise KeyError(f"Missing content key: {path}")
                 value = value[part]
+        return value
+
+    def use(self, path):
+        value = self.peek(path)
         self.used.update(leaf_paths(value, path))
         return value
 
     def validate_required(self):
         for path in REQUIRED_KEYS:
-            value = self.use(path)
+            value = self.peek(path)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(
                     f"Required content key must be a non-empty string: {path}"
+                )
+
+    def validate_non_empty(self):
+        for path in sorted(leaf_paths(self.content)):
+            value = self.peek(path)
+            if (
+                isinstance(value, str)
+                and not value.strip()
+                and path not in ALLOWED_EMPTY_KEYS
+            ):
+                raise ValueError(
+                    f"Translation content key must be a non-empty string: {path}"
                 )
 
     def assert_usage(self):
@@ -198,6 +217,21 @@ class ContentTracker:
                 )
 
 
+class DuplicateTranslationKey(ValueError):
+    def __init__(self, key):
+        self.key = key
+        super().__init__(key)
+
+
+def _reject_duplicate_keys(pairs):
+    value = {}
+    for key, child in pairs:
+        if key in value:
+            raise DuplicateTranslationKey(key)
+        value[key] = child
+    return value
+
+
 def load_content(locale, content_dir=CONTENT_DIR):
     path = Path(content_dir) / f"{locale}.json"
     try:
@@ -205,7 +239,9 @@ def load_content(locale, content_dir=CONTENT_DIR):
     except FileNotFoundError as exc:
         raise FileNotFoundError(f"Missing translation file: {path.name}") from exc
     try:
-        content = json.loads(raw)
+        content = json.loads(raw, object_pairs_hook=_reject_duplicate_keys)
+    except DuplicateTranslationKey as exc:
+        raise ValueError(f"Duplicate translation key in {path.name}: {exc.key}") from exc
     except json.JSONDecodeError as exc:
         raise ValueError(f"Invalid translation JSON: {path.name}") from exc
     if not isinstance(content, dict):
@@ -232,27 +268,112 @@ def _normalize_newlines(value):
     return value.replace("\r\n", "\n").replace("\r", "\n")
 
 
-def _validate_attribute_placeholders(template_text, locale, page_key):
+def _active_start_tag(template_text, position, tag_name):
+    lowered = template_text.lower()
+    opening_tags = list(
+        re.finditer(rf"<{re.escape(tag_name)}(?=[\s>/])", lowered[:position])
+    )
+    closing_tags = list(
+        re.finditer(rf"</{re.escape(tag_name)}(?=[\s>])", lowered[:position])
+    )
+    start = opening_tags[-1].start() if opening_tags else -1
+    close = closing_tags[-1].start() if closing_tags else -1
+    if start < 0 or start < close:
+        return None
+    end = template_text.find(">", start, position)
+    if end < 0:
+        return None
+    return template_text[start : end + 1]
+
+
+def _raise_context_error(locale, page_key, match, detail):
+    raise ValueError(
+        f"Invalid placeholder context: {locale}/{page_key}: "
+        f"{match.group('kind')}:{match.group('key')}: {detail}"
+    )
+
+
+def _validate_placeholder_contexts(template_text, locale, page_key):
     for match in PLACEHOLDER.finditer(template_text):
-        if match.group("kind") != "attr":
-            continue
+        kind = match.group("kind")
+        key = match.group("key")
         tag_start = template_text.rfind("<", 0, match.start())
-        tag_end = template_text.find(">", match.end())
-        if tag_start < 0 or tag_end < 0:
-            raise ValueError(
-                f"Attribute placeholder requires double-quoted attribute context: "
-                f"{locale}/{page_key}: {match.group('key')}"
+        tag_close = template_text.rfind(">", 0, match.start())
+        inside_tag = tag_start > tag_close
+
+        if inside_tag:
+            if kind != "attr":
+                _raise_context_error(
+                    locale, page_key, match, "only attr placeholders are allowed in tags"
+                )
+            tag_end = template_text.find(">", match.end())
+            if tag_end < 0:
+                _raise_context_error(
+                    locale,
+                    page_key,
+                    match,
+                    "Attribute placeholder requires double-quoted attribute context",
+                )
+            before = template_text[tag_start:match.start()]
+            after = template_text[match.end():tag_end]
+            has_open_double_attribute = re.search(
+                r'(?:^|\s)[^\s=<>]+\s*=\s*"[^"]*$', before
             )
-        before = template_text[tag_start:match.start()]
-        after = template_text[match.end():tag_end]
-        has_open_double_attribute = re.search(
-            r'(?:^|\s)[^\s=<>]+\s*=\s*"[^"]*$', before
-        )
-        if not has_open_double_attribute or '"' not in after:
-            raise ValueError(
-                f"Attribute placeholder requires double-quoted attribute context: "
-                f"{locale}/{page_key}: {match.group('key')}"
+            if not has_open_double_attribute or '"' not in after:
+                _raise_context_error(
+                    locale,
+                    page_key,
+                    match,
+                    "Attribute placeholder requires double-quoted attribute context",
+                )
+            continue
+
+        script_tag = _active_start_tag(template_text, match.start(), "script")
+        style_tag = _active_start_tag(template_text, match.start(), "style")
+        if kind == "attr":
+            _raise_context_error(
+                locale,
+                page_key,
+                match,
+                "Attribute placeholder requires double-quoted attribute context",
             )
+        if kind == "text":
+            if script_tag or style_tag:
+                _raise_context_error(
+                    locale, page_key, match, "text placeholders cannot appear in script or style"
+                )
+            continue
+        if kind == "json":
+            if not script_tag or not re.search(
+                r'\btype\s*=\s*(["\'])application/ld\+json\1', script_tag, re.IGNORECASE
+            ):
+                _raise_context_error(
+                    locale,
+                    page_key,
+                    match,
+                    "json placeholders require application/ld+json script content",
+                )
+            continue
+        if script_tag or style_tag:
+            _raise_context_error(
+                locale, page_key, match, "safe placeholders cannot appear in script or style"
+            )
+        if key in {"hreflang_links", "__hreflang_links"}:
+            if not _active_start_tag(template_text, match.start(), "head"):
+                _raise_context_error(
+                    locale, page_key, match, "hreflang markup must be a direct head block"
+                )
+            continue
+        if key in {"language_menu", "__language_menu"}:
+            div_tag = _active_start_tag(template_text, match.start(), "div")
+            if not div_tag or not re.search(
+                r'\bclass\s*=\s*(["\'])[^"\']*\blang-dropdown\b[^"\']*\1', div_tag
+            ) or not re.search(r'\bid\s*=\s*(["\'])langDropdown\1', div_tag):
+                _raise_context_error(
+                    locale, page_key, match, "language menu markup requires langDropdown block"
+                )
+            continue
+        _raise_context_error(locale, page_key, match, "safe block is not approved")
 
 
 def _language_menu(locale, page_key):
@@ -309,7 +430,7 @@ def _system_values(locale, page_key):
 
 def _render_page(locale, page_key, template_text, tracker):
     template_text = _normalize_newlines(template_text)
-    _validate_attribute_placeholders(template_text, locale, page_key)
+    _validate_placeholder_contexts(template_text, locale, page_key)
     system_values = _system_values(locale, page_key)
 
     def replace(match):
@@ -348,7 +469,9 @@ def render_page(locale, page_key, template_text, content):
         raise ValueError("Invalid translation root")
     if content.get("locale") != locale:
         raise ValueError(f"Translation locale mismatch: {locale}")
-    return _render_page(locale, page_key, template_text, ContentTracker(content))
+    tracker = ContentTracker(content)
+    tracker.validate_non_empty()
+    return _render_page(locale, page_key, template_text, tracker)
 
 
 def template_text(page_key, template_dir=TEMPLATE_DIR):
@@ -363,6 +486,7 @@ def build_pages(locales, public_dir=PUBLIC, content_dir=CONTENT_DIR, template_di
     for locale in locales:
         tracker = ContentTracker(contents[locale])
         tracker.validate_required()
+        tracker.validate_non_empty()
         for page_key in PAGE_KEYS:
             rendered_pages[(locale, page_key)] = _render_page(
                 locale, page_key, templates[page_key], tracker

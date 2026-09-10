@@ -792,6 +792,30 @@ class StaticCoreRendererTests(unittest.TestCase):
         ):
             self.build(("en",))
 
+    def test_required_key_still_fails_when_the_templates_do_not_use_it(self):
+        self.write_content("en")
+        template_path = self.fixture_templates / "about.html"
+        template = template_path.read_text(encoding="utf-8")
+        for placeholder in (
+            "{{text:about.title}}",
+            "{{attr:about.title}}",
+            "{{json:about.title}}",
+        ):
+            template = template.replace(placeholder, "Gas Mixing Device Supplier in China | About Us")
+        template_path.write_text(template, encoding="utf-8")
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Unused content keys: about\.title \(actual 0, allowed \d+\)",
+        ):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+        self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
     def test_missing_translation_key_fails_without_writes(self):
         content = self.write_content("en")
         del content["shared"]["products"]
@@ -854,6 +878,34 @@ class StaticCoreRendererTests(unittest.TestCase):
                 self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
                 self.assertFalse(contact_destination.exists())
 
+    def test_every_translation_string_must_be_non_empty(self):
+        content = json.loads(json.dumps(self.english_content))
+        content["about"]["copy"]["who_we_are"] = "   "
+        self.write_content("en", content)
+        destination = output_path(self.fixture_public, "en", "about")
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text("unchanged", encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Translation content key must be a non-empty string: about\.copy\.who_we_are",
+        ):
+            self.build(("en",))
+
+        self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+        self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Translation content key must be a non-empty string: shared\.home",
+        ):
+            self.builder.render_page(
+                "en",
+                "about",
+                "<p>{{text:shared.home}}</p>",
+                {"locale": "en", "shared": {"home": ""}},
+            )
+
     def test_bad_translation_files_fail_closed(self):
         cases = (
             ("{invalid", "Invalid translation JSON: en.json"),
@@ -871,6 +923,36 @@ class StaticCoreRendererTests(unittest.TestCase):
                 self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
                 self.assertFalse(output_path(self.fixture_public, "en", "contact").exists())
 
+    def test_duplicate_json_object_key_fails_without_writes(self):
+        source = (PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8")
+        cases = (
+            (
+                source.replace('"locale": "en"', '"locale": "en",\n  "locale": "en"', 1),
+                "locale",
+            ),
+            (
+                source.replace('"home": "Home"', '"home": "Home",\n    "home": "Home"', 1),
+                "home",
+            ),
+        )
+        for raw, duplicate_key in cases:
+            with self.subTest(duplicate_key=duplicate_key):
+                (self.fixture_content / "en.json").write_text(raw, encoding="utf-8")
+                destination = output_path(self.fixture_public, "en", "about")
+                contact_destination = output_path(self.fixture_public, "en", "contact")
+                contact_destination.unlink(missing_ok=True)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text("unchanged", encoding="utf-8")
+
+                with self.assertRaisesRegex(
+                    ValueError,
+                    rf"Duplicate translation key in en\.json: {duplicate_key}",
+                ):
+                    self.build(("en",))
+
+                self.assertEqual(destination.read_text(encoding="utf-8"), "unchanged")
+                self.assertFalse(contact_destination.exists())
+
     def test_missing_translation_file_fails_without_writes(self):
         destination = output_path(self.fixture_public, "en", "about")
         destination.parent.mkdir(parents=True, exist_ok=True)
@@ -885,10 +967,12 @@ class StaticCoreRendererTests(unittest.TestCase):
         payload = 'Consult "A&B" <unsafe> </script>'
         content = {"locale": "en", "shared": {"home": payload}}
         template = (
-            '<p>{{text:shared.home}}</p>'
-            '<div title="{{attr:shared.home}}"></div>'
+            '<head>{{safe:hreflang_links}}'
             '<script type="application/ld+json">{"name":{{json:shared.home}}}</script>'
-            '{{safe:hreflang_links}}{{safe:language_menu}}'
+            '</head><body><p>{{text:shared.home}}</p>'
+            '<div title="{{attr:shared.home}}"></div>'
+            '<div class="lang-dropdown" id="langDropdown">{{safe:language_menu}}</div>'
+            '</body>'
         )
 
         rendered = self.builder.render_page("en", "about", template, content)
@@ -901,6 +985,48 @@ class StaticCoreRendererTests(unittest.TestCase):
         self.assertEqual(json.loads(json_text)["name"], payload)
         self.assertNotIn("<unsafe>", rendered)
         self.assertNotIn("</script></script>", rendered)
+
+    def test_placeholder_types_are_accepted_only_in_their_approved_contexts(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        accepted = (
+            '<p>{{text:shared.home}}</p>',
+            '<div title="{{attr:shared.home}}"></div>',
+            '<script type="application/ld+json">{"name":{{json:shared.home}}}</script>',
+            '<head>{{safe:hreflang_links}}</head>',
+            '<div class="lang-dropdown" id="langDropdown">{{safe:language_menu}}</div>',
+        )
+        for template in accepted:
+            with self.subTest(accepted=template):
+                rendered = self.builder.render_page("en", "about", template, content)
+                self.assertNotIn("{{", rendered)
+
+        rejected = (
+            '<div title="{{text:shared.home}}"></div>',
+            '<div title="{{json:shared.home}}"></div>',
+            '<div title="{{safe:language_menu}}"></div>',
+            '<p>{{attr:shared.home}}</p>',
+            '<p>{{json:shared.home}}</p>',
+            '<script>{{text:shared.home}}</script>',
+            '<style>{{text:shared.home}}</style>',
+            '<script type="application/ld+json">{{safe:language_menu}}</script>',
+            '<script type="text/javascript">{{json:shared.home}}</script>',
+            '<scripture type="application/ld+json">{{json:shared.home}}</scripture>',
+            '<p>{{safe:hreflang_links}}</p>',
+        )
+        for template in rejected:
+            with self.subTest(rejected=template):
+                with self.assertRaisesRegex(ValueError, "placeholder context"):
+                    self.builder.render_page("en", "about", template, content)
+
+    def test_text_placeholder_in_attribute_is_rejected_before_payload_rendering(self):
+        payload = 'x" onmouseover="alert(1)'
+        with self.assertRaisesRegex(ValueError, "placeholder context"):
+            self.builder.render_page(
+                "en",
+                "about",
+                '<div title="{{text:shared.home}}"></div>',
+                {"locale": "en", "shared": {"home": payload}},
+            )
 
     def test_single_quote_payload_cannot_create_a_new_attribute(self):
         payload = "x' onmouseover='alert(1)"

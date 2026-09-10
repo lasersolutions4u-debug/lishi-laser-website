@@ -53,8 +53,8 @@
     }
   },
   "about": {
-    "title": "About GasMixTech",
-    "description": "Jinan Euchio Machinery Co., Ltd. coordinates laser-cutting assist-gas equipment selection, application review, delivery and support for overseas industrial customers.",
+    "title": "Gas Mixing Device Supplier in China | About Us",
+    "description": "Learn how Jinan Euchio Machinery Co., Ltd. supports laser-cutting gas mixer selection, integration, delivery, and after-sales coordination from China.",
     "copy": {
       "gas_mixing_device_deployed_at_a": "Gas mixing device deployed at a ",
       "laser_cutting_factory_in_foshan_china": " laser cutting factory in Foshan, China",
@@ -163,14 +163,10 @@
       "is_a_china_based_supplier_and_solution_provider_for_laser_cutting_gas_mi": " is a China-based supplier and solution provider for laser-cutting gas mixing equipment. We coordinate application assessment, product selection, integration requirements, delivery, and after-sales support with qualified manufacturing partners.",
       "a_china_based_gas_mixing_device_supplier_and_solution_provider": "A China-Based Gas Mixing Device Supplier and Solution Provider",
       "solution_provider": "Solution Provider",
-      "china_based_supplier": "China-Based Supplier",
-      "gas_mixing_device_supplier_in_china_about_us": "Gas Mixing Device Supplier in China | About Us"
+      "china_based_supplier": "China-Based Supplier"
     },
     "meta": {
-      "description_prefix": "Learn how ",
-      "description_suffix": " supports laser-cutting gas mixer selection, integration, delivery, and after-sales coordination from China.",
       "keywords": "gas mixing device supplier in China, gas mixer from China, laser cutting gas mixer supplier, gas mixing solution provider",
-      "og_title": "Gas Mixing Device Supplier in China | About Us",
       "og_description": "Laser-cutting gas mixer selection, integration, delivery, and support coordination from a China-based supplier and solution provider."
     },
     "schema": {
@@ -181,7 +177,7 @@
   },
   "contact": {
     "title": "Contact a Laser Cutting Gas Mixer Supplier in China",
-    "description": "Send the machine, material, gas-source and installation conditions for a laser-cutting assist-gas application review.",
+    "description": "Contact a China-based laser cutting gas mixer supplier for compatibility assessment, selection support, integration questions, and quotation.",
     "copy": {
       "step_current_of_3": "Step {current} of 3",
       "sending": "Sending...",
@@ -284,12 +280,10 @@
       "discuss_your_laser_cutting_gas_mixing_requirements": "Discuss Your Laser Cutting Gas Mixing Requirements"
     },
     "meta": {
-      "description": "Contact a China-based laser cutting gas mixer supplier for compatibility assessment, selection support, integration questions, and quotation.",
       "keywords": "laser cutting gas mixer supplier China, gas mixer from China, gas mixing device in China, laser cutting gas mixer quotation",
       "og_description": "Send your application details for compatibility assessment, integration support, and quotation."
     },
     "schema": {
-      "contact_a_china_based_laser_cutting_gas_mixer_supplier_for_compatibility": "Contact a China-based laser cutting gas mixer supplier for compatibility assessment, selection support, integration questions, and quotation.",
       "contact": "Contact"
     }
   }
