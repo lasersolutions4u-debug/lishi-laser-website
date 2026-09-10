@@ -2,6 +2,7 @@
 """Build reviewed product pages from strict templates and locale JSON content."""
 
 import argparse
+import html
 import json
 import re
 from pathlib import Path
@@ -25,7 +26,8 @@ PAGES = (
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_.-]+)\}\}")
 TECHNICAL_TOKEN = re.compile(
     r"https?://[^\s\"'<>]+"
-    r"|(?<![A-Za-z0-9_])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
+    r"|(?<![A-Za-z0-9])NPN/PNP(?![A-Za-z0-9])"
+    r"|(?<![A-Za-z0-9_<])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
     r"|#[A-Za-z][A-Za-z0-9_-]*"
     r"|(?<![A-Za-z0-9_])(?=[A-Za-z0-9_/-]*[A-Za-z])(?=[A-Za-z0-9_/-]*\d)"
     r"[A-Za-z][A-Za-z0-9_/-]*(?![A-Za-z0-9_])"
@@ -36,6 +38,17 @@ TECHNICAL_TOKEN = re.compile(
     r"(?![A-Za-z0-9])|%"
     r"|[×≤≥±]"
 )
+
+HREF_ATTRIBUTE = re.compile(
+    r"(?<![-\w])href\s*=\s*(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)'|(?P<bare>[^\s>]+))",
+    re.IGNORECASE,
+)
+
+ALLOWED_BR_CONTENT_PATHS = {
+    "pages.cabinet.silhouette_label",
+    "pages.comparison.hero_cabinet_title",
+    "pages.comparison.hero_valve_title",
+}
 
 IMMUTABLE_CONTENT_FIELDS = {
     "anchor",
@@ -60,6 +73,10 @@ LANGUAGE_NAMES = {
 }
 
 
+class SafeMarkup(str):
+    pass
+
+
 def content_path(locale):
     return CONTENT_DIR / f"{locale}.json"
 
@@ -69,6 +86,9 @@ def parse_locales(values):
     unknown = sorted(set(locales) - set(SUPPORTED_LOCALES))
     if unknown:
         raise ValueError("Unsupported locale: " + ", ".join(unknown))
+    duplicates = sorted(locale for locale in set(locales) if locales.count(locale) > 1)
+    if duplicates:
+        raise ValueError("Duplicate locale: " + ", ".join(duplicates))
     return locales
 
 
@@ -114,57 +134,81 @@ class ContentTracker:
 
 
 def render_list(items, css_class="engineering-list"):
-    return '<ul class="{}">{}</ul>'.format(
-        css_class,
-        "".join(f"<li>{item}</li>" for item in items),
-    )
+    return SafeMarkup('<ul class="{}">{}</ul>'.format(
+        html.escape(css_class, quote=True),
+        "".join(f"<li>{html.escape(item, quote=True)}</li>" for item in items),
+    ))
 
 
 def render_specs(items):
     cards = []
     for item in items:
-        note = f'<span class="spec-note">{item["note"]}</span>' if item.get("note") else ""
+        note = (
+            f'<span class="spec-note">{html.escape(item["note"], quote=True)}</span>'
+            if item.get("note")
+            else ""
+        )
         cards.append(
             '<div class="spec-card">'
-            f'<span class="spec-label">{item["label"]}</span>'
-            f'<strong>{item["value"]}</strong>{note}'
+            f'<span class="spec-label">{html.escape(item["label"], quote=True)}</span>'
+            f'<strong>{html.escape(item["value"], quote=True)}</strong>{note}'
             "</div>"
         )
-    return '<div class="spec-grid">' + "".join(cards) + "</div>"
+    return SafeMarkup('<div class="spec-grid">' + "".join(cards) + "</div>")
 
 
 def render_cards(items, css_class="engineering-card-grid"):
     cards = []
     for item in items:
-        eyebrow = f'<span class="card-kicker">{item["kicker"]}</span>' if item.get("kicker") else ""
-        meta = f'<p class="card-meta">{item["meta"]}</p>' if item.get("meta") else ""
+        eyebrow = (
+            f'<span class="card-kicker">{html.escape(item["kicker"], quote=True)}</span>'
+            if item.get("kicker")
+            else ""
+        )
+        meta = (
+            f'<p class="card-meta">{html.escape(item["meta"], quote=True)}</p>'
+            if item.get("meta")
+            else ""
+        )
         cards.append(
             '<article class="engineering-card">'
-            f"{eyebrow}<h3>{item['title']}</h3><p>{item['text']}</p>{meta}"
+            f"{eyebrow}<h3>{html.escape(item['title'], quote=True)}</h3>"
+            f"<p>{html.escape(item['text'], quote=True)}</p>{meta}"
             "</article>"
         )
-    return f'<div class="{css_class}">' + "".join(cards) + "</div>"
+    return SafeMarkup(
+        f'<div class="{html.escape(css_class, quote=True)}">' + "".join(cards) + "</div>"
+    )
 
 
 def render_faq(items):
-    return '<div class="product-faq">' + "".join(
+    return SafeMarkup('<div class="product-faq">' + "".join(
         '<details class="faq-item">'
-        f'<summary>{item["question"]}</summary>'
-        f'<div class="faq-answer"><p>{item["answer"]}</p></div>'
+        f'<summary>{html.escape(item["question"], quote=True)}</summary>'
+        f'<div class="faq-answer"><p>{html.escape(item["answer"], quote=True)}</p></div>'
         "</details>"
         for item in items
-    ) + "</div>"
+    ) + "</div>")
 
 
 def render_comparison_rows(items):
-    return "".join(
+    return SafeMarkup("".join(
         "<tr>"
-        f'<th scope="row">{item["factor"]}</th>'
-        f'<td>{item["cabinet"]}</td>'
-        f'<td>{item["valve"]}</td>'
+        f'<th scope="row">{html.escape(item["factor"], quote=True)}</th>'
+        f'<td>{html.escape(item["cabinet"], quote=True)}</td>'
+        f'<td>{html.escape(item["valve"], quote=True)}</td>'
         "</tr>"
         for item in items
-    )
+    ))
+
+
+def render_content_value(value, path, locale):
+    if path not in ALLOWED_BR_CONTENT_PATHS:
+        return value
+    parts = value.split("<br>")
+    if any("<" in part or ">" in part for part in parts):
+        raise ValueError(f"Unsafe HTML markup: {locale}: {path}")
+    return SafeMarkup("<br>".join(html.escape(part, quote=True) for part in parts))
 
 
 def render_template(template, resolver, source_name):
@@ -173,12 +217,13 @@ def render_template(template, resolver, source_name):
         value = resolver(key)
         if not isinstance(value, str):
             raise TypeError(f"{source_name}: placeholder {key} must resolve to a string")
-        return value
+        if isinstance(value, SafeMarkup):
+            return value
+        return html.escape(value, quote=True)
 
     rendered = PLACEHOLDER.sub(replace, template)
-    unresolved = PLACEHOLDER.findall(rendered)
-    if unresolved:
-        raise ValueError(f"{source_name}: unresolved placeholders: {unresolved}")
+    if "{{" in rendered or "}}" in rendered:
+        raise ValueError(f"{source_name}: unresolved template markers")
     return rendered
 
 
@@ -254,23 +299,28 @@ def build_schema(
                 "inLanguage": locale,
             }
         )
-    return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
+    serialized = json.dumps(
+        {"@context": "https://schema.org", "@graph": graph},
+        ensure_ascii=False,
+        indent=2,
+    )
+    return SafeMarkup(serialized.replace("<", "\\u003c"))
 
 
 def render_hreflangs(alternates):
-    return "\n".join(
+    return SafeMarkup("\n".join(
         f'  <link rel="alternate" hreflang="{locale}" href="{url}">'
         for locale, url in alternates.items()
-    )
+    ))
 
 
 def render_language_menu(page_key, current_locale):
-    return "\n".join(
+    return SafeMarkup("\n".join(
         f'          <a href="{route_for(locale, page_key)}" '
         f'class="lang-option{" active" if locale == current_locale else ""}" '
         f'data-lang="{locale}">{LANGUAGE_NAMES[locale]}</a>'
         for locale in SUPPORTED_LOCALES
-    )
+    ))
 
 
 SHELL = """<!DOCTYPE html>
@@ -348,13 +398,15 @@ SHELL = """<!DOCTYPE html>
 
 
 def load_content(locale, content_dir):
-    path = content_dir / f"{locale}.json"
+    path = content_path(locale) if content_dir == CONTENT_DIR else content_dir / f"{locale}.json"
     if not path.is_file():
         raise FileNotFoundError(f"Missing translation file: {path.name}")
     try:
         content = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as error:
         raise ValueError(f"Invalid translation JSON: {path.name}") from error
+    if not isinstance(content, dict):
+        raise ValueError(f"Invalid translation root: {path.name}")
     if content.get("locale") != locale:
         raise ValueError(f"Translation locale mismatch: {path.name}")
     return content
@@ -416,12 +468,34 @@ def validate_technical_content(content, english_content, locale, path=""):
         raise ValueError(f"Technical content mismatch: {locale}: {path}")
 
 
-def localize_fragment_routes(fragment, route):
+def localize_fragment_routes(fragment, route, locale):
     for page_key in ("psa", "cabinet", "valve", "comparison"):
-        fragment = fragment.replace(
-            f'href="{route_for("en", page_key)}"',
-            f'href="{route[page_key]}"',
+        english_path = route_for("en", page_key)
+        route_pattern = re.compile(
+            rf"(?P<prefix>(?<![-\w])href\s*=\s*)(?P<quote>[\"'])"
+            rf"{re.escape(english_path)}(?P<suffix>[?#][^\"']*)?(?P=quote)",
+            re.IGNORECASE,
         )
+        fragment = route_pattern.sub(
+            lambda match: (
+                f'{match.group("prefix")}{match.group("quote")}{route[page_key]}'
+                f'{match.group("suffix") or ""}{match.group("quote")}'
+            ),
+            fragment,
+        )
+
+    if locale != "en":
+        english_routes = {
+            route_for("en", page_key)
+            for page_key in ("psa", "cabinet", "valve", "comparison")
+        }
+        for match in HREF_ATTRIBUTE.finditer(fragment):
+            href = html.unescape(
+                match.group("double") or match.group("single") or match.group("bare")
+            )
+            href_path = re.split(r"[?#]", href, maxsplit=1)[0]
+            if href_path in english_routes:
+                raise ValueError(f"Unlocalized product route: {locale}: {href_path}")
     return fragment
 
 
@@ -486,11 +560,15 @@ def render_locale(locale, content, english_content, public_dir, template_dir):
             tracker.use("shared.nav_products"),
         )
 
+        def translated(path):
+            return render_content_value(tracker.use(path), path, locale)
+
         def resolve_fragment(key):
             if key.startswith("page."):
-                return tracker.use(f"{page_path}.{key[5:]}")
+                path = f"{page_path}.{key[5:]}"
+                return translated(path)
             if key.startswith("shared."):
-                return tracker.use(key)
+                return translated(key)
             if key.startswith("blocks."):
                 block_name = key[7:]
                 if block_name not in block_renderers:
@@ -503,12 +581,12 @@ def render_locale(locale, content, english_content, public_dir, template_dir):
         fragment = render_template(
             template_path.read_text(encoding="utf-8"),
             resolve_fragment,
-            template_path.name,
+            f"{locale} {template_path.name}",
         )
-        fragment = localize_fragment_routes(fragment, route)
+        fragment = localize_fragment_routes(fragment, route, locale)
 
         shell_values = {
-            "page.body": fragment,
+            "page.body": SafeMarkup(fragment),
             "schema.graph": schema,
             "locale.code": locale,
             "locale.label": locale.upper(),
@@ -519,14 +597,15 @@ def render_locale(locale, content, english_content, public_dir, template_dir):
             if key in shell_values:
                 return shell_values[key]
             if key.startswith("page."):
-                return tracker.use(f"{page_path}.{key[5:]}")
+                path = f"{page_path}.{key[5:]}"
+                return translated(path)
             if key.startswith("shared."):
-                return tracker.use(key)
+                return translated(key)
             if key.startswith("route."):
                 return route[key[6:]]
             raise KeyError(f"Unsupported shell key: {key}")
 
-        rendered = render_template(SHELL, resolve_shell, "product shell")
+        rendered = render_template(SHELL, resolve_shell, f"{locale} product shell")
         rendered_pages.append((destination, rendered))
 
     tracker.assert_all_used()

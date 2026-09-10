@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 from site_locales import (
@@ -97,12 +98,12 @@ class ProductRouteTests(unittest.TestCase):
             encoding="utf-8",
         )
 
-    def build(self, locales):
+    def build(self, locales, template_dir=None):
         return PRODUCT_BUILDER.build_pages(
             locales,
             public_dir=self.fixture_public,
             content_dir=self.fixture_content,
-            template_dir=PUBLIC / "product-templates",
+            template_dir=template_dir or PUBLIC / "product-templates",
         )
 
     def assert_fact_drift_fails_without_writes(self, mutate, error_pattern):
@@ -140,6 +141,17 @@ class ProductRouteTests(unittest.TestCase):
         self.assertEqual(PRODUCT_BUILDER.parse_locales(["en", "ja"]), ("en", "ja"))
         with self.assertRaisesRegex(ValueError, "Unsupported locale: xx, yy"):
             PRODUCT_BUILDER.parse_locales(["yy", "xx"])
+
+    def test_duplicate_locale_fails_without_writing(self):
+        self.write_content("en")
+        english_output = output_path(self.fixture_public, "en", "psa")
+        english_output.parent.mkdir(parents=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "Duplicate locale: en"):
+            self.build(("en", "en"))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
 
     def test_localized_build_sets_routes_hreflangs_language_menu_and_schema(self):
         self.write_content("en")
@@ -238,6 +250,24 @@ class ProductRouteTests(unittest.TestCase):
 
         self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
 
+    def test_non_object_translation_roots_fail_without_partial_writes(self):
+        for root_value in (None, [], "translation"):
+            with self.subTest(root_value=root_value):
+                self.write_content("en")
+                (self.fixture_content / "zh.json").write_text(
+                    json.dumps(root_value), encoding="utf-8"
+                )
+                english_output = output_path(self.fixture_public, "en", "psa")
+                english_output.parent.mkdir(parents=True, exist_ok=True)
+                english_output.write_text("unchanged english", encoding="utf-8")
+
+                with self.assertRaisesRegex(ValueError, "Invalid translation root: zh.json"):
+                    self.build(("en", "zh"))
+
+                self.assertEqual(
+                    english_output.read_text(encoding="utf-8"), "unchanged english"
+                )
+
     def test_missing_key_fails_without_partial_writes(self):
         self.write_content("en")
 
@@ -279,6 +309,17 @@ class ProductRouteTests(unittest.TestCase):
         self.assert_fact_drift_fails_without_writes(
             change_interface,
             r"Technical content mismatch: zh: pages\.valve\.specs\.7\.value",
+        )
+
+    def test_approved_slash_technical_identifier_cannot_drift(self):
+        def change_interface_identifier(data):
+            data["pages"]["comparison"]["comparison_rows"][6]["valve"] = (
+                "Analog input/output and relay digital interfaces"
+            )
+
+        self.assert_fact_drift_fails_without_writes(
+            change_interface_identifier,
+            r"Technical token mismatch: zh: pages\.comparison\.comparison_rows\.6\.valve",
         )
 
     def test_narrative_measurement_unit_cannot_drift(self):
@@ -340,6 +381,136 @@ class ProductRouteTests(unittest.TestCase):
             swap_rows,
             r"Technical content mismatch: zh: pages\.comparison\.comparison_rows\.6\.key",
         )
+
+    def test_spaced_placeholder_marker_fails_without_writes(self):
+        def insert_marker(data):
+            data["pages"]["cabinet"]["fit_title"] = "{{ page.title }}"
+
+        self.assert_fact_drift_fails_without_writes(
+            insert_marker,
+            r"unresolved template markers",
+        )
+
+    def test_unknown_placeholder_marker_fails_without_writes(self):
+        def insert_marker(data):
+            data["pages"]["cabinet"]["fit_title"] = "{{unknown.key}}"
+
+        self.assert_fact_drift_fails_without_writes(
+            insert_marker,
+            r"unresolved template markers",
+        )
+
+    def test_illegal_placeholder_marker_fails_without_writes(self):
+        def insert_marker(data):
+            data["pages"]["cabinet"]["fit_title"] = "{{page:title}}"
+
+        self.assert_fact_drift_fails_without_writes(
+            insert_marker,
+            r"unresolved template markers",
+        )
+
+    def test_translation_text_is_safe_in_html_attributes_body_and_jsonld(self):
+        self.write_content("en")
+        payload = 'Consult "A&B" <unsafe> </script>'
+
+        def add_special_characters(data):
+            data["pages"]["cabinet"]["description"] += " " + payload
+            data["pages"]["cabinet"]["fit_text"] += " " + payload
+            data["pages"]["cabinet"]["cards"][0]["text"] += " " + payload
+
+        self.write_content("zh", add_special_characters)
+        self.build(("zh",))
+
+        rendered = output_path(self.fixture_public, "zh", "cabinet").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("<unsafe>", rendered)
+        self.assertEqual(rendered.count("</script>"), 2)
+        self.assertIn("&quot;A&amp;B&quot; &lt;unsafe&gt; &lt;/script&gt;", rendered)
+
+        class MetadataParser(HTMLParser):
+            def __init__(self):
+                super().__init__(convert_charrefs=True)
+                self.descriptions = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == "meta" and attrs.get("name") == "description":
+                    self.descriptions.append(attrs.get("content"))
+
+        metadata = MetadataParser()
+        metadata.feed(rendered)
+        expected_description = self.english_content["pages"]["cabinet"]["description"] + " " + payload
+        self.assertEqual(metadata.descriptions, [expected_description])
+
+        parser = ProductPageParser()
+        parser.feed(rendered)
+        graph = json.loads(parser.jsonld_blocks[0])["@graph"]
+        webpage = next(item for item in graph if item["@type"] == "Product")
+        self.assertEqual(webpage["description"], expected_description)
+
+    def test_only_br_is_allowed_in_whitelisted_content_fields(self):
+        def inject_markup(data):
+            data["pages"]["cabinet"]["silhouette_label"] = "PACKAGED<br><em>CONTROL</em>"
+
+        self.assert_fact_drift_fails_without_writes(
+            inject_markup,
+            r"Unsafe HTML markup: zh: pages\.cabinet\.silhouette_label",
+        )
+
+    def test_all_product_fragments_localize_single_quoted_routes_with_query_and_hash(self):
+        self.write_content("en")
+        self.write_content("ja")
+        template_dir = self.fixture_root / "product-templates"
+        shutil.copytree(PUBLIC / "product-templates", template_dir)
+        english_route = route_for("en", "comparison")
+        localized_route = route_for("ja", "comparison")
+        suffix = "?source=fixture#selection"
+        for template_path in template_dir.glob("*.html"):
+            template_path.write_text(
+                template_path.read_text(encoding="utf-8")
+                + f"\n<a href='{english_route}{suffix}'>fixture route</a>\n",
+                encoding="utf-8",
+            )
+
+        self.build(("ja",), template_dir=template_dir)
+
+        for page_key in self.PRODUCT_PAGE_KEYS:
+            with self.subTest(page_key=page_key):
+                rendered = output_path(self.fixture_public, "ja", page_key).read_text(
+                    encoding="utf-8"
+                )
+                self.assertIn(f"href='{localized_route}{suffix}'", rendered)
+                self.assertNotIn(f"href='{english_route}", rendered)
+
+    def test_encoded_residual_english_product_route_fails_without_writes(self):
+        self.write_content("en")
+        self.write_content("ja")
+        template_dir = self.fixture_root / "product-templates"
+        shutil.copytree(PUBLIC / "product-templates", template_dir)
+        template_path = template_dir / "psa-nitrogen-generation-system.html"
+        template_path.write_text(
+            template_path.read_text(encoding="utf-8")
+            + '\n<a href="&#47;products/mixed-gas-control-comparison">fixture route</a>\n',
+            encoding="utf-8",
+        )
+        english_output = output_path(self.fixture_public, "en", "psa")
+        japanese_output = output_path(self.fixture_public, "ja", "psa")
+        for path, sentinel in (
+            (english_output, "unchanged english"),
+            (japanese_output, "unchanged japanese"),
+        ):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(sentinel, encoding="utf-8")
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Unlocalized product route: ja: /products/mixed-gas-control-comparison",
+        ):
+            self.build(("en", "ja"), template_dir=template_dir)
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertEqual(japanese_output.read_text(encoding="utf-8"), "unchanged japanese")
 
     def test_cli_unknown_locale_exits_nonzero_with_clear_error(self):
         result = subprocess.run(
