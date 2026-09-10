@@ -6,6 +6,7 @@ from site_locales import (
     LOCALIZED_LOCALES,
     SUPPORTED_LOCALES,
     UNSUPPORTED_LOCALES,
+    alternates_for,
     canonical_url,
     output_path,
     route_for,
@@ -23,10 +24,31 @@ class LocaleRouteContractTests(unittest.TestCase):
         self.assertFalse(set(SUPPORTED_LOCALES) & set(UNSUPPORTED_LOCALES))
 
     def test_core_route_map_is_exact(self):
-        self.assertEqual(set(CORE_ROUTES), {"home", "about", "contact", "psa", "cabinet", "valve", "comparison"})
+        self.assertEqual(
+            CORE_ROUTES,
+            {
+                "home": "/",
+                "about": "/about",
+                "contact": "/contact",
+                "psa": "/products/psa-nitrogen-generation-system",
+                "cabinet": "/products/integrated-gas-mixing-cabinet",
+                "valve": "/products/mspv2-4000-proportional-valve",
+                "comparison": "/products/mixed-gas-control-comparison",
+            },
+        )
         self.assertEqual(route_for("en", "valve"), "/products/mspv2-4000-proportional-valve")
         self.assertEqual(route_for("ja", "valve"), "/ja/products/mspv2-4000-proportional-valve")
         self.assertEqual(route_for("pl", "home"), "/pl/")
+
+    def test_alternates_cover_every_supported_locale_and_x_default(self):
+        expected_keys = set(SUPPORTED_LOCALES) | {"x-default"}
+        for page_key in CORE_ROUTES:
+            with self.subTest(page_key=page_key):
+                values = alternates_for(page_key)
+                self.assertEqual(set(values), expected_keys)
+                for locale in SUPPORTED_LOCALES:
+                    self.assertEqual(values[locale], canonical_url(locale, page_key))
+                self.assertEqual(values["x-default"], canonical_url("en", page_key))
 
     def test_output_and_canonical_mapping(self):
         self.assertEqual(output_path(PUBLIC, "en", "contact"), PUBLIC / "contact.html")
