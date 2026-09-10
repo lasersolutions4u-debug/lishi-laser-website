@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""Build reviewed English product pages from strict templates and JSON content."""
+"""Build reviewed product pages from strict templates and locale JSON content."""
 
-import html
+import argparse
 import json
 import re
 from pathlib import Path
+
+from site_locales import SUPPORTED_LOCALES, alternates_for, canonical_url, output_path, route_for
 
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / "public"
 TEMPLATE_DIR = PUBLIC / "product-templates"
-CONTENT_PATH = PUBLIC / "i18n" / "products" / "en.json"
-OUTPUT_DIR = PUBLIC / "products"
-DOMAIN = "https://gasmixtech.com"
+CONTENT_DIR = PUBLIC / "i18n" / "products"
+DOMAIN = canonical_url("en", "home").rstrip("/")
 
 PAGES = (
     ("psa", "psa-nitrogen-generation-system", "psa-nitrogen-system", "Product"),
@@ -22,6 +23,28 @@ PAGES = (
 )
 
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_.-]+)\}\}")
+
+LANGUAGE_NAMES = {
+    "en": "English",
+    "zh": "中文",
+    "es": "Español",
+    "pt": "Português",
+    "ja": "日本語",
+    "ko": "한국어",
+    "pl": "Polski",
+}
+
+
+def content_path(locale):
+    return CONTENT_DIR / f"{locale}.json"
+
+
+def parse_locales(values):
+    locales = tuple(values) if values else SUPPORTED_LOCALES
+    unknown = sorted(set(locales) - set(SUPPORTED_LOCALES))
+    if unknown:
+        raise ValueError("Unsupported locale: " + ", ".join(unknown))
+    return locales
 
 
 def leaf_paths(value, prefix=""):
@@ -134,7 +157,17 @@ def render_template(template, resolver, source_name):
     return rendered
 
 
-def build_schema(page, page_type, canonical, image_url, faq_items, product_id):
+def build_schema(
+    page,
+    page_type,
+    canonical,
+    image_url,
+    faq_items,
+    product_id,
+    locale,
+    breadcrumb_home,
+    breadcrumb_products,
+):
     graph = [
         {
             "@type": page_type,
@@ -142,19 +175,30 @@ def build_schema(page, page_type, canonical, image_url, faq_items, product_id):
             "url": canonical,
             "name": page["title"],
             "description": page["description"],
-            "inLanguage": "en",
+            "inLanguage": locale,
             "image": image_url,
         },
         {
             "@type": "BreadcrumbList",
             "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{DOMAIN}/"},
-                {"@type": "ListItem", "position": 2, "name": "Products", "item": f"{DOMAIN}/#products"},
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": breadcrumb_home,
+                    "item": canonical_url(locale, "home"),
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": breadcrumb_products,
+                    "item": f'{canonical_url(locale, "home")}#products',
+                },
                 {"@type": "ListItem", "position": 3, "name": page["short_name"], "item": canonical},
             ],
         },
         {
             "@type": "FAQPage",
+            "inLanguage": locale,
             "mainEntity": [
                 {
                     "@type": "Question",
@@ -182,22 +226,37 @@ def build_schema(page, page_type, canonical, image_url, faq_items, product_id):
                 "thumbnailUrl": f"{DOMAIN}/images/products/mspv2-4000/mspv2-4000-angle-02.png",
                 "contentUrl": f"{DOMAIN}/images/products/mspv2-4000/mspv2-4000-360.webm",
                 "uploadDate": "2026-08-25",
-                "inLanguage": "en",
+                "inLanguage": locale,
             }
         )
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
 
 
+def render_hreflangs(alternates):
+    return "\n".join(
+        f'  <link rel="alternate" hreflang="{locale}" href="{url}">'
+        for locale, url in alternates.items()
+    )
+
+
+def render_language_menu(page_key, current_locale):
+    return "\n".join(
+        f'          <a href="{route_for(locale, page_key)}" '
+        f'class="lang-option{" active" if locale == current_locale else ""}" '
+        f'data-lang="{locale}">{LANGUAGE_NAMES[locale]}</a>'
+        for locale in SUPPORTED_LOCALES
+    )
+
+
 SHELL = """<!DOCTYPE html>
-<html lang="en">
+<html lang="{{locale.code}}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{page.description}}">
   <title>{{page.title}}</title>
   <link rel="canonical" href="{{route.canonical}}">
-  <link rel="alternate" hreflang="en" href="{{route.canonical}}">
-  <link rel="alternate" hreflang="x-default" href="{{route.canonical}}">
+{{route.hreflangs}}
   <meta property="og:title" content="{{page.title}}">
   <meta property="og:description" content="{{page.description}}">
   <meta property="og:image" content="{{route.og_image}}">
@@ -217,7 +276,7 @@ SHELL = """<!DOCTYPE html>
   <a href="#main" class="skip-link">{{shared.skip_to_content}}</a>
   <header class="header product-header">
     <div class="container header-inner">
-      <a href="/" class="logo" aria-label="{{shared.home_aria}}">
+      <a href="{{route.home}}" class="logo" aria-label="{{shared.home_aria}}">
         <picture><source srcset="/images/logo.webp" type="image/webp"><img src="/images/logo.png" alt="{{shared.logo_alt}}"></picture>
         <span class="logo-text"><span class="logo-brand">{{shared.brand}}</span><span class="logo-tagline">{{shared.tagline}}</span></span>
       </a>
@@ -225,26 +284,20 @@ SHELL = """<!DOCTYPE html>
         <div class="product-nav-group">
           <button class="product-menu-button" id="productMenuButton" type="button" aria-expanded="false" aria-controls="productMenu">{{shared.nav_products}} <span aria-hidden="true">⌄</span></button>
           <div class="product-menu" id="productMenu">
-            <div><span class="product-menu-label">{{shared.nav_nitrogen_supply}}</span><a href="/products/psa-nitrogen-generation-system">{{shared.nav_psa}}</a></div>
-            <div><span class="product-menu-label">{{shared.nav_mixed_control}}</span><a href="/products/integrated-gas-mixing-cabinet">{{shared.nav_cabinet}}</a><a href="/products/mspv2-4000-proportional-valve">{{shared.nav_valve}}</a><a href="/products/mixed-gas-control-comparison">{{shared.nav_compare}}</a></div>
+            <div><span class="product-menu-label">{{shared.nav_nitrogen_supply}}</span><a href="{{route.psa}}">{{shared.nav_psa}}</a></div>
+            <div><span class="product-menu-label">{{shared.nav_mixed_control}}</span><a href="{{route.cabinet}}">{{shared.nav_cabinet}}</a><a href="{{route.valve}}">{{shared.nav_valve}}</a><a href="{{route.comparison}}">{{shared.nav_compare}}</a></div>
           </div>
         </div>
-        <a href="/#applications">{{shared.nav_applications}}</a>
-        <a href="/#samples">{{shared.nav_results}}</a>
+        <a href="{{route.home}}#applications">{{shared.nav_applications}}</a>
+        <a href="{{route.home}}#samples">{{shared.nav_results}}</a>
         <a href="/blog/">{{shared.nav_resources}}</a>
-        <a href="/about">{{shared.nav_about}}</a>
+        <a href="{{route.about}}">{{shared.nav_about}}</a>
         <a href="{{route.contact}}" class="nav-cta">{{shared.nav_request}}</a>
       </nav>
       <div class="lang-switch" id="langSwitch">
-        <button class="lang-btn" id="langBtn" type="button"><span class="lang-current">EN</span><span class="lang-sep">|</span><span class="lang-arrow">▼</span></button>
+        <button class="lang-btn" id="langBtn" type="button"><span class="lang-current">{{locale.label}}</span><span class="lang-sep">|</span><span class="lang-arrow">▼</span></button>
         <div class="lang-dropdown" id="langDropdown">
-          <a href="{{route.canonical_path}}" class="lang-option active" data-lang="en">English</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="zh">中文</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="es">Español</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="ko">한국어</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="ja">日本語</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="pt">Português</a>
-          <a href="{{route.canonical_path}}" class="lang-option" data-lang="pl">Polski</a>
+{{locale.menu}}
         </div>
       </div>
       <button class="mobile-toggle" id="mobileToggle" aria-label="{{shared.mobile_aria}}">☰</button>
@@ -257,8 +310,8 @@ SHELL = """<!DOCTYPE html>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand"><span class="logo-brand">{{shared.brand}}</span><p>{{shared.footer_intro}}</p></div>
-        <div class="footer-links"><h4>{{shared.footer_products}}</h4><ul><li><a href="/products/psa-nitrogen-generation-system">{{shared.nav_psa}}</a></li><li><a href="/products/integrated-gas-mixing-cabinet">{{shared.nav_cabinet}}</a></li><li><a href="/products/mspv2-4000-proportional-valve">{{shared.nav_valve}}</a></li><li><a href="/products/mixed-gas-control-comparison">{{shared.nav_compare}}</a></li></ul></div>
-        <div class="footer-links"><h4>{{shared.footer_contact}}</h4><ul><li><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></li><li><a href="/contact">{{shared.nav_request}}</a></li><li><a href="/privacy.html">{{shared.footer_privacy}}</a></li></ul></div>
+        <div class="footer-links"><h4>{{shared.footer_products}}</h4><ul><li><a href="{{route.psa}}">{{shared.nav_psa}}</a></li><li><a href="{{route.cabinet}}">{{shared.nav_cabinet}}</a></li><li><a href="{{route.valve}}">{{shared.nav_valve}}</a></li><li><a href="{{route.comparison}}">{{shared.nav_compare}}</a></li></ul></div>
+        <div class="footer-links"><h4>{{shared.footer_contact}}</h4><ul><li><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></li><li><a href="{{route.contact}}">{{shared.nav_request}}</a></li><li><a href="/privacy.html">{{shared.footer_privacy}}</a></li></ul></div>
       </div>
       <div class="footer-bottom"><p>© 2026 Jinan Euchio Machinery Co., Ltd.</p></div>
     </div>
@@ -269,27 +322,68 @@ SHELL = """<!DOCTYPE html>
 """
 
 
-def main():
-    content = json.loads(CONTENT_PATH.read_text(encoding="utf-8"))
-    if content.get("locale") != "en":
-        raise ValueError("English product build requires locale=en")
+def load_content(locale, content_dir):
+    path = content_dir / f"{locale}.json"
+    if not path.is_file():
+        raise FileNotFoundError(f"Missing translation file: {path.name}")
+    try:
+        content = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        raise ValueError(f"Invalid translation JSON: {path.name}") from error
+    if content.get("locale") != locale:
+        raise ValueError(f"Translation locale mismatch: {path.name}")
+    return content
+
+
+def technical_paths(content):
+    paths = set()
+    for page_key, page in content["pages"].items():
+        for key in ("model", "og_image", "silhouette_width", "silhouette_height"):
+            if key in page:
+                paths.add(f"pages.{page_key}.{key}")
+        for index, _ in enumerate(page.get("specs", [])):
+            paths.add(f"pages.{page_key}.specs.{index}.value")
+        for key in ("case_laser_value", "case_flow_value", "case_purity_value", "case_pressure_value"):
+            if key in page:
+                paths.add(f"pages.{page_key}.{key}")
+    return paths
+
+
+def validate_technical_content(content, english_content):
+    content_tracker = ContentTracker(content)
+    english_tracker = ContentTracker(english_content)
+    for path in sorted(technical_paths(english_content)):
+        if content_tracker.peek(path) != english_tracker.peek(path):
+            raise ValueError(f"Technical content mismatch: {path}")
+
+
+def localize_fragment_routes(fragment, route):
+    for page_key in ("psa", "cabinet", "valve", "comparison"):
+        fragment = fragment.replace(
+            f'href="{route_for("en", page_key)}"',
+            f'href="{route[page_key]}"',
+        )
+    return fragment
+
+
+def render_locale(locale, content, english_content, public_dir, template_dir):
+    if locale != "en":
+        validate_technical_content(content, english_content)
     tracker = ContentTracker(content)
     tracker.use("locale")
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    output_paths = set()
+    rendered_pages = []
+    destinations = set()
     for page_key, slug, product_id, page_type in PAGES:
-        template_path = TEMPLATE_DIR / f"{slug}.html"
+        template_path = template_dir / f"{slug}.html"
         if not template_path.is_file():
             raise FileNotFoundError(template_path)
         page_path = f"pages.{page_key}"
         page = tracker.peek(page_path)
-        canonical_path = f"/products/{slug}"
-        canonical = f"{DOMAIN}{canonical_path}"
-        output_path = OUTPUT_DIR / f"{slug}.html"
-        if output_path in output_paths:
-            raise ValueError(f"Duplicate output path: {output_path}")
-        output_paths.add(output_path)
+        destination = output_path(public_dir, locale, page_key)
+        if destination in destinations:
+            raise ValueError(f"Duplicate output path: {destination}")
+        destinations.add(destination)
 
         block_renderers = {
             "specs": lambda: render_specs(tracker.use(f"{page_path}.specs")),
@@ -308,13 +402,30 @@ def main():
             schema_fields.extend(["video_name", "video_description"])
         for field in schema_fields:
             tracker.use(f"{page_path}.{field}")
-        schema = build_schema(page, page_type, canonical, image_url, page["faq"], product_id)
         route = {
-            "canonical": canonical,
-            "canonical_path": canonical_path,
-            "contact": f"/contact?product={product_id}",
+            "canonical": canonical_url(locale, page_key),
+            "canonical_path": route_for(locale, page_key),
+            "contact": f'{route_for(locale, "contact")}?product={product_id}',
+            "home": route_for(locale, "home"),
+            "about": route_for(locale, "about"),
+            "psa": route_for(locale, "psa"),
+            "cabinet": route_for(locale, "cabinet"),
+            "valve": route_for(locale, "valve"),
+            "comparison": route_for(locale, "comparison"),
+            "hreflangs": render_hreflangs(alternates_for(page_key)),
             "og_image": image_url,
         }
+        schema = build_schema(
+            page,
+            page_type,
+            route["canonical"],
+            image_url,
+            page["faq"],
+            product_id,
+            locale,
+            tracker.use("shared.home_aria"),
+            tracker.use("shared.nav_products"),
+        )
 
         def resolve_fragment(key):
             if key.startswith("page."):
@@ -335,10 +446,14 @@ def main():
             resolve_fragment,
             template_path.name,
         )
+        fragment = localize_fragment_routes(fragment, route)
 
         shell_values = {
             "page.body": fragment,
             "schema.graph": schema,
+            "locale.code": locale,
+            "locale.label": locale.upper(),
+            "locale.menu": render_language_menu(page_key, locale),
         }
 
         def resolve_shell(key):
@@ -353,10 +468,42 @@ def main():
             raise KeyError(f"Unsupported shell key: {key}")
 
         rendered = render_template(SHELL, resolve_shell, "product shell")
-        output_path.write_text(rendered, encoding="utf-8")
-        print(f"built: {output_path.relative_to(ROOT)}")
+        rendered_pages.append((destination, rendered))
 
     tracker.assert_all_used()
+    return rendered_pages
+
+
+def build_pages(locales, public_dir=PUBLIC, content_dir=CONTENT_DIR, template_dir=TEMPLATE_DIR):
+    locales = parse_locales(locales)
+    english_content = load_content("en", content_dir)
+    pending = []
+    for locale in locales:
+        content = english_content if locale == "en" else load_content(locale, content_dir)
+        pending.extend(
+            render_locale(locale, content, english_content, public_dir, template_dir)
+        )
+
+    for destination, rendered in pending:
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(rendered, encoding="utf-8")
+    return tuple(destination for destination, _ in pending)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--locale", action="append", dest="locales")
+    args = parser.parse_args(argv)
+    try:
+        locales = parse_locales(args.locales)
+    except ValueError as error:
+        parser.error(str(error))
+    for destination in build_pages(locales):
+        try:
+            display_path = destination.relative_to(ROOT)
+        except ValueError:
+            display_path = destination
+        print(f"built: {display_path}")
 
 
 if __name__ == "__main__":

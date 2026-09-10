@@ -1,4 +1,5 @@
 import difflib
+import importlib.util
 import json
 import shutil
 import subprocess
@@ -16,9 +17,17 @@ from site_locales import (
     output_path,
     route_for,
 )
+from tests.test_product_expansion import ProductPageParser
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
+
+PRODUCT_BUILDER_SPEC = importlib.util.spec_from_file_location(
+    "build_product_pages",
+    ROOT / "build-product-pages.py",
+)
+PRODUCT_BUILDER = importlib.util.module_from_spec(PRODUCT_BUILDER_SPEC)
+PRODUCT_BUILDER_SPEC.loader.exec_module(PRODUCT_BUILDER)
 
 
 class LocaleRouteContractTests(unittest.TestCase):
@@ -60,6 +69,195 @@ class LocaleRouteContractTests(unittest.TestCase):
         self.assertEqual(output_path(PUBLIC, "es", "contact"), PUBLIC / "es" / "contact.html")
         self.assertEqual(output_path(PUBLIC, "ko", "psa"), PUBLIC / "ko" / "products" / "psa-nitrogen-generation-system.html")
         self.assertEqual(canonical_url("pt", "comparison"), "https://gasmixtech.com/pt/products/mixed-gas-control-comparison")
+
+
+class ProductRouteTests(unittest.TestCase):
+    PRODUCT_PAGE_KEYS = ("psa", "cabinet", "valve", "comparison")
+
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.fixture_root = Path(self.temp_dir.name)
+        self.fixture_public = self.fixture_root / "public"
+        self.fixture_content = self.fixture_public / "i18n" / "products"
+        self.fixture_content.mkdir(parents=True)
+        self.english_content = json.loads(
+            (PUBLIC / "i18n" / "products" / "en.json").read_text(encoding="utf-8")
+        )
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    def write_content(self, locale, mutate=None):
+        data = json.loads(json.dumps(self.english_content))
+        data["locale"] = locale
+        if mutate:
+            mutate(data)
+        (self.fixture_content / f"{locale}.json").write_text(
+            json.dumps(data, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    def build(self, locales):
+        return PRODUCT_BUILDER.build_pages(
+            locales,
+            public_dir=self.fixture_public,
+            content_dir=self.fixture_content,
+            template_dir=PUBLIC / "product-templates",
+        )
+
+    def test_all_24_localized_product_pages_exist(self):
+        missing = [
+            str(output_path(PUBLIC, locale, page_key).relative_to(PUBLIC))
+            for locale in LOCALIZED_LOCALES
+            for page_key in self.PRODUCT_PAGE_KEYS
+            if not output_path(PUBLIC, locale, page_key).is_file()
+        ]
+
+        self.assertEqual(missing, [])
+
+    def test_parse_locales_defaults_to_contract_and_rejects_unknown_values(self):
+        self.assertEqual(PRODUCT_BUILDER.parse_locales(None), SUPPORTED_LOCALES)
+        self.assertEqual(PRODUCT_BUILDER.parse_locales(["en", "ja"]), ("en", "ja"))
+        with self.assertRaisesRegex(ValueError, "Unsupported locale: xx, yy"):
+            PRODUCT_BUILDER.parse_locales(["yy", "xx"])
+
+    def test_localized_build_sets_routes_hreflangs_language_menu_and_schema(self):
+        self.write_content("en")
+
+        def localize(data):
+            data["shared"]["home_aria"] = "ホーム"
+            data["shared"]["nav_products"] = "製品"
+            data["pages"]["valve"]["short_name"] = "比例弁"
+
+        self.write_content("ja", localize)
+        self.build(("ja",))
+
+        path = output_path(self.fixture_public, "ja", "valve")
+        rendered = path.read_text(encoding="utf-8")
+        self.assertRegex(rendered, r'<html lang="ja">')
+        self.assertEqual(
+            rendered.count(
+                '<link rel="canonical" href="https://gasmixtech.com/ja/products/mspv2-4000-proportional-valve">'
+            ),
+            1,
+        )
+        for alternate_locale, url in alternates_for("valve").items():
+            with self.subTest(alternate_locale=alternate_locale):
+                self.assertEqual(
+                    rendered.count(
+                        f'<link rel="alternate" hreflang="{alternate_locale}" href="{url}">'
+                    ),
+                    1,
+                )
+
+        self.assertEqual(rendered.count('class="lang-option'), len(SUPPORTED_LOCALES))
+        self.assertEqual(rendered.count('class="lang-option active"'), 1)
+        for option_locale in SUPPORTED_LOCALES:
+            active = " active" if option_locale == "ja" else ""
+            self.assertIn(
+                f'href="{route_for(option_locale, "valve")}" '
+                f'class="lang-option{active}" data-lang="{option_locale}"',
+                rendered,
+            )
+
+        for page_key in ("home", "about", *self.PRODUCT_PAGE_KEYS):
+            self.assertIn(f'href="{route_for("ja", page_key)}', rendered)
+        self.assertIn('href="/ja/contact?product=mspv2-4000"', rendered)
+        self.assertNotIn('href="/products/mixed-gas-control-comparison"', rendered)
+        self.assertNotIn("window.location", rendered)
+
+        parser = ProductPageParser()
+        parser.feed(rendered)
+        graph = json.loads(parser.jsonld_blocks[0])["@graph"]
+        webpage = next(item for item in graph if item["@type"] == "Product")
+        video = next(item for item in graph if item["@type"] == "VideoObject")
+        faq = next(item for item in graph if item["@type"] == "FAQPage")
+        breadcrumb = next(item for item in graph if item["@type"] == "BreadcrumbList")
+        self.assertEqual(webpage["inLanguage"], "ja")
+        self.assertEqual(video["inLanguage"], "ja")
+        self.assertEqual(faq["inLanguage"], "ja")
+        self.assertEqual(webpage["url"], canonical_url("ja", "valve"))
+        self.assertEqual(
+            [item["name"] for item in breadcrumb["itemListElement"]],
+            ["ホーム", "製品", "比例弁"],
+        )
+
+    def test_single_locale_build_writes_only_selected_product_pages(self):
+        self.write_content("en")
+        self.write_content("ja")
+        english_output = output_path(self.fixture_public, "en", "psa")
+        english_output.parent.mkdir(parents=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        self.build(("ja",))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+        self.assertTrue(output_path(self.fixture_public, "ja", "psa").is_file())
+        self.assertFalse(output_path(self.fixture_public, "zh", "psa").exists())
+
+    def test_missing_translation_file_fails_without_partial_writes(self):
+        self.write_content("en")
+        english_output = output_path(self.fixture_public, "en", "psa")
+        english_output.parent.mkdir(parents=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(FileNotFoundError, "zh.json"):
+            self.build(("en", "zh"))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
+    def test_invalid_json_fails_without_partial_writes(self):
+        self.write_content("en")
+        (self.fixture_content / "zh.json").write_text("{invalid", encoding="utf-8")
+        english_output = output_path(self.fixture_public, "en", "psa")
+        english_output.parent.mkdir(parents=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(ValueError, "Invalid translation JSON: zh.json"):
+            self.build(("en", "zh"))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
+    def test_missing_key_fails_without_partial_writes(self):
+        self.write_content("en")
+
+        def remove_key(data):
+            del data["pages"]["valve"]["h1"]
+
+        self.write_content("zh", remove_key)
+        english_output = output_path(self.fixture_public, "en", "psa")
+        english_output.parent.mkdir(parents=True)
+        english_output.write_text("unchanged english", encoding="utf-8")
+
+        with self.assertRaisesRegex(KeyError, "Missing content key: pages.valve.h1"):
+            self.build(("en", "zh"))
+
+        self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
+
+    def test_translated_model_cannot_change_technical_identity(self):
+        self.write_content("en")
+
+        def change_model(data):
+            data["pages"]["valve"]["model"] = "翻译型号"
+
+        self.write_content("ja", change_model)
+
+        with self.assertRaisesRegex(ValueError, "Technical content mismatch: pages.valve.model"):
+            self.build(("ja",))
+
+        self.assertFalse(output_path(self.fixture_public, "ja", "valve").exists())
+
+    def test_cli_unknown_locale_exits_nonzero_with_clear_error(self):
+        result = subprocess.run(
+            ["python", "build-product-pages.py", "--locale", "xx"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Unsupported locale: xx", result.stderr)
 
 
 class HomepageGenerationTests(unittest.TestCase):

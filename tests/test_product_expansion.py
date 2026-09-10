@@ -82,19 +82,20 @@ class ProductPageParser(HTMLParser):
         return " ".join("".join(self.h1_parts).split())
 
 
-def page_path(name):
-    return PRODUCT_DIR / PAGES[name]
+def page_path(name, locale="en"):
+    product_dir = PRODUCT_DIR if locale == "en" else PUBLIC / locale / "products"
+    return product_dir / PAGES[name]
 
 
-def read_page(testcase, name):
-    path = page_path(name)
+def read_page(testcase, name, locale="en"):
+    path = page_path(name, locale)
     testcase.assertTrue(path.is_file(), f"Missing product page: {path}")
     return path.read_text(encoding="utf-8") if path.is_file() else ""
 
 
-def parse_page(testcase, name):
+def parse_page(testcase, name, locale="en"):
     parser = ProductPageParser()
-    parser.feed(read_page(testcase, name))
+    parser.feed(read_page(testcase, name, locale))
     return parser
 
 
@@ -290,6 +291,8 @@ class ProductExpansionTests(unittest.TestCase):
                     broken.append((name, src))
             for link in parser.links:
                 href = link.get("href", "")
+                if "lang-option" in link.get("class", "").split():
+                    continue
                 parsed = urlparse(href)
                 if parsed.scheme or parsed.netloc or href.startswith(("#", "mailto:", "tel:")):
                     continue
