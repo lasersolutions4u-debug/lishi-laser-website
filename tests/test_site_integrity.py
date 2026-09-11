@@ -185,7 +185,13 @@ class SiteIntegrityTests(unittest.TestCase):
                         self.assertEqual(hrefs.count(href), 1, hrefs)
                     about = hrefs.index(f"/{lang}/about")
                     contact = hrefs.index(f"/{lang}/contact")
-                    self.assertLess(about, contact)
+                    self.assertEqual(about + 1, contact)
+                    contact_anchor = re.search(
+                        rf'<a\b(?=[^>]*\bhref="/{re.escape(lang)}/contact")'
+                        r'(?=[^>]*\bclass="[^"]*\bnav-cta\b[^"]*")[^>]*>',
+                        nav.group(1),
+                    )
+                    self.assertIsNotNone(contact_anchor)
 
     def test_all_about_pages_have_localized_content(self):
         for lang, marker in TRANSLATED_ABOUT_MARKERS.items():
