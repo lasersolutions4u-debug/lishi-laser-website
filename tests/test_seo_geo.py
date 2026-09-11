@@ -1,9 +1,11 @@
 import json
+import importlib.util
 import re
 import unittest
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
+from unittest import mock
 
 from site_locales import (
     CORE_ROUTES,
@@ -82,6 +84,36 @@ DISCOVERY_SCOPE = (
     "core sales pages are maintained. Technical articles, ROI, parameters, "
     "compatibility, payment, and privacy resources are maintained in English."
 )
+EXPECTED_ENGLISH_DISCOVERY_URLS = {
+    f"{DOMAIN}/compatibility.html",
+    f"{DOMAIN}/parameters",
+    f"{DOMAIN}/roi.html",
+    f"{DOMAIN}/payment.html",
+    f"{DOMAIN}/blog/",
+    f"{DOMAIN}/blog/assist-gas-complete-guide.html",
+    f"{DOMAIN}/blog/assist-gas-is-the-real-bottleneck.html",
+    f"{DOMAIN}/blog/cutting-parameters-guide.html",
+    f"{DOMAIN}/blog/how-to-choose-gas-mixer.html",
+    f"{DOMAIN}/blog/laser-cutting-gas-faq.html",
+    f"{DOMAIN}/blog/mixed-gas-for-stainless-steel-aluminum.html",
+    f"{DOMAIN}/blog/mixed-gas-nitrogen-savings.html",
+    f"{DOMAIN}/blog/mixed-gas-vs-oxygen-comparison.html",
+    f"{DOMAIN}/blog/nitrogen-vs-mixed-gas-comparison.html",
+    f"{DOMAIN}/blog/one-to-three-gas-mixing-setup.html",
+    f"{DOMAIN}/blog/roi-calculator-real-numbers.html",
+    f"{DOMAIN}/case-studies/60kw-thick-plate.html",
+    f"{DOMAIN}/case-studies/bodor-12kw-aluminum.html",
+    f"{DOMAIN}/case-studies/foshan-hans-20kw.html",
+    f"{DOMAIN}/case-studies/southeast-asia-bodor.html",
+    f"{DOMAIN}/case-studies/taiwan-penta-30kw.html",
+}
+
+SITEMAP_GENERATOR_SPEC = importlib.util.spec_from_file_location(
+    "generate_sitemap_geo",
+    ROOT / "generate-sitemap-geo.py",
+)
+SITEMAP_GENERATOR = importlib.util.module_from_spec(SITEMAP_GENERATOR_SPEC)
+SITEMAP_GENERATOR_SPEC.loader.exec_module(SITEMAP_GENERATOR)
 
 
 class Probe(HTMLParser):
@@ -226,6 +258,7 @@ class SeoGeoTests(unittest.TestCase):
             for locale in SUPPORTED_LOCALES
             for page_key in CORE_ROUTES
         }
+        self.assertEqual(len(entries), 70)
         clustered = {url for url, alternates in entries.items() if alternates}
         self.assertEqual(clustered, expected_core)
         self.assertEqual(len(clustered), 49)
@@ -236,18 +269,7 @@ class SeoGeoTests(unittest.TestCase):
                     self.assertEqual(entries[url], alternates_for(page_key))
 
         standalone = set(entries) - expected_core
-        expected_standalone = set()
-        for directory in ("blog", "case-studies"):
-            for path in (PUBLIC / directory).rglob("*.html"):
-                page = parse(path)
-                if "noindex" in page.meta.get("robots", "").casefold():
-                    continue
-                relative = path.relative_to(PUBLIC).as_posix()
-                if relative.endswith("/index.html"):
-                    expected_standalone.add(f"{DOMAIN}/{relative[:-10]}")
-                else:
-                    expected_standalone.add(f"{DOMAIN}/{relative}")
-        self.assertEqual(standalone, expected_standalone)
+        self.assertEqual(standalone, EXPECTED_ENGLISH_DISCOVERY_URLS)
         self.assertTrue(all(not entries[url] for url in standalone))
 
         locs = list(entries)
@@ -257,6 +279,24 @@ class SeoGeoTests(unittest.TestCase):
             for legacy in ("compatibility", "parameters", "roi", "payment", "privacy", "404"):
                 self.assertFalse(any(f"/{locale}/{legacy}" in loc for loc in locs))
         self.assertEqual(tree.findall("s:url/s:lastmod", ns), [])
+
+    def test_sitemap_generator_encodes_resource_paths_and_emits_parseable_xml(self):
+        relative = "blog/R&D # gas mix 气体.html"
+        expected_url = (
+            f"{DOMAIN}/blog/R%26D%20%23%20gas%20mix%20%E6%B0%94%E4%BD%93.html"
+        )
+        with mock.patch.object(
+            SITEMAP_GENERATOR,
+            "get_english_resource_pages",
+            return_value=[relative],
+        ):
+            sitemap = SITEMAP_GENERATOR.generate_sitemap()
+
+        root = ET.fromstring(sitemap)
+        ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        locs = [node.text for node in root.findall("s:url/s:loc", ns)]
+        self.assertIn(expected_url, locs)
+        self.assertNotIn(f"{DOMAIN}/{relative}", locs)
 
     def test_discovery_files_state_exact_maintained_scope(self):
         filenames = ("llms.txt", "llms-full.txt") + tuple(

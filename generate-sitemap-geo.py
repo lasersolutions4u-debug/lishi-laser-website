@@ -2,7 +2,9 @@
 """Generate the indexable sitemap and conservative AI-readable site summaries."""
 
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.parse import quote
 
 from site_locales import (
     CORE_ROUTES,
@@ -49,6 +51,14 @@ DISCOVERY_SCOPE = (
     "core sales pages are maintained. Technical articles, ROI, parameters, "
     "compatibility, payment, and privacy resources are maintained in English."
 )
+SITEMAP_NAMESPACE = "http://www.sitemaps.org/schemas/sitemap/0.9"
+XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml"
+ENGLISH_TECHNICAL_PAGES = (
+    ("compatibility.html", f"{DOMAIN}/compatibility.html"),
+    ("parameters.html", f"{DOMAIN}/parameters"),
+    ("roi.html", f"{DOMAIN}/roi.html"),
+    ("payment.html", f"{DOMAIN}/payment.html"),
+)
 SUPPLIER_FACT = (
     "Jinan Euchio Machinery Co., Ltd. is the China-based supplier and solution "
     "provider operating this website. Product selection is assessed against "
@@ -81,35 +91,44 @@ def rel_to_url(rel):
     if rel == "index.html":
         return f"{DOMAIN}/"
     if rel.endswith("/index.html"):
-        return f"{DOMAIN}/{rel[:-10]}"
-    return f"{DOMAIN}/{rel}"
+        rel = rel[:-10]
+    return f"{DOMAIN}/{quote(rel, safe='/')}"
 
 
 def generate_sitemap():
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-        '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
-    ]
+    ET.register_namespace("", SITEMAP_NAMESPACE)
+    ET.register_namespace("xhtml", XHTML_NAMESPACE)
+    root = ET.Element(f"{{{SITEMAP_NAMESPACE}}}urlset")
+
+    def add_url(location, alternates=None):
+        url = ET.SubElement(root, f"{{{SITEMAP_NAMESPACE}}}url")
+        ET.SubElement(url, f"{{{SITEMAP_NAMESPACE}}}loc").text = location
+        for hreflang, href in (alternates or {}).items():
+            ET.SubElement(
+                url,
+                f"{{{XHTML_NAMESPACE}}}link",
+                {"rel": "alternate", "hreflang": hreflang, "href": href},
+            )
+
     for locale in SUPPORTED_LOCALES:
         for page_key in CORE_ROUTES:
             path = output_path(BASE, locale, page_key)
             if not path.is_file():
                 raise FileNotFoundError(f"Missing core page: {path}")
-            lines.append("  <url>")
-            lines.append(f"    <loc>{canonical_url(locale, page_key)}</loc>")
-            for hreflang, href in alternates_for(page_key).items():
-                lines.append(
-                    f'    <xhtml:link rel="alternate" hreflang="{hreflang}" '
-                    f'href="{href}" />'
-                )
-            lines.append("  </url>")
+            add_url(canonical_url(locale, page_key), alternates_for(page_key))
+
+    for filename, location in ENGLISH_TECHNICAL_PAGES:
+        path = BASE / filename
+        if not path.is_file() or not is_indexable_html(path):
+            raise FileNotFoundError(f"Missing indexable English technical page: {path}")
+        add_url(location)
+
     for rel in get_english_resource_pages():
-        lines.append("  <url>")
-        lines.append(f"    <loc>{rel_to_url(rel)}</loc>")
-        lines.append("  </url>")
-    lines.append("</urlset>")
-    return "\n".join(lines) + "\n"
+        add_url(rel_to_url(rel))
+
+    ET.indent(root, space="  ")
+    body = ET.tostring(root, encoding="unicode", short_empty_elements=True)
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + body + "\n"
 
 
 def core_link_lines(locale="en"):
