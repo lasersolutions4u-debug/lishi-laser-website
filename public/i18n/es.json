@@ -273,6 +273,12 @@
     "q8": "¿Qué información necesitan antes de cotizar?",
     "a8": "Envíe marca y potencia del láser, materiales y espesores, método actual de suministro de gas, fuentes de nitrógeno y oxígeno, presión y caudal disponibles, espacio de instalación y objetivo de producción. Para una evaluación cualificada de una estación para tres máquinas, añada la demanda simultánea, el trazado de tuberías y la interfaz de cada máquina."
   },
+  "organization": {
+    "description": "Proveedor con sede en China de equipos y soluciones de mezcla de gases para corte láser."
+  },
+  "accessibility": {
+    "whatsappChat": "Chatear por WhatsApp"
+  },
   "footer": {
     "tagline": "Tecnología de mezcla de gases",
     "headerTagline": "Soluciones de gas de asistencia para corte láser",

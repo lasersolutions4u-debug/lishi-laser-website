@@ -273,6 +273,12 @@
     "q8": "What information is required before quotation?",
     "a8": "Send the laser brand and power, materials and thicknesses, current gas method, nitrogen and oxygen sources, available pressure and flow, installation space, and production objective. For a qualified One-to-Three multi-machine review, also provide simultaneous demand, pipe routing, and each machine interface."
   },
+  "organization": {
+    "description": "China-based supplier and solution provider for laser-cutting gas mixing equipment."
+  },
+  "accessibility": {
+    "whatsappChat": "Chat on WhatsApp"
+  },
   "footer": {
     "tagline": "Gas Mixing Technology",
     "headerTagline": "Laser Cutting Assist-Gas Solutions",

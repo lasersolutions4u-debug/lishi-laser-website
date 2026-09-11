@@ -1460,6 +1460,43 @@ class HomepageGenerationTests(unittest.TestCase):
                     if locale != "en":
                         self.assertNotIn(f'href="{CORE_ROUTES[page_key]}', html)
 
+    def test_whatsapp_label_and_organization_description_are_localized(self):
+        template = (PUBLIC / "_template.html").read_text(encoding="utf-8")
+        self.assertIn('aria-label="{{accessibility.whatsappChat}}"', template)
+        self.assertIn('"description": "{{organization.description}}"', template)
+        self.assertNotIn('aria-label="Chat on WhatsApp"', template)
+        self.assertNotIn(
+            '"description": "China-based supplier and solution provider for laser-cutting gas mixing equipment."',
+            template,
+        )
+
+        english = json.loads((PUBLIC / "i18n" / "en.json").read_text(encoding="utf-8"))
+        for locale in SUPPORTED_LOCALES:
+            with self.subTest(locale=locale):
+                content = json.loads(
+                    (PUBLIC / "i18n" / f"{locale}.json").read_text(encoding="utf-8")
+                )
+                html = output_path(PUBLIC, locale, "home").read_text(encoding="utf-8")
+                whatsapp_label = content["accessibility"]["whatsappChat"]
+                organization_description = content["organization"]["description"]
+                self.assertIn(f'aria-label="{whatsapp_label}"', html)
+                schema_text = re.search(
+                    r'<script type="application/ld\+json">\s*(.*?)\s*</script>',
+                    html,
+                    re.DOTALL,
+                ).group(1)
+                organization = json.loads(schema_text)["@graph"][0]
+                self.assertEqual(organization["description"], organization_description)
+                if locale != "en":
+                    self.assertNotEqual(
+                        whatsapp_label,
+                        english["accessibility"]["whatsappChat"],
+                    )
+                    self.assertNotEqual(
+                        organization_description,
+                        english["organization"]["description"],
+                    )
+
     def test_missing_translation_key_fails_closed(self):
         result = self.run_node_eval(
             "const { replacePlaceholders } = require('./public/build-i18n.js'); "

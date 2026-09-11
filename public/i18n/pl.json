@@ -273,6 +273,12 @@
     "q8": "Jakie informacje są potrzebne przed wyceną?",
     "a8": "Prześlij markę i moc lasera, materiały i grubości, obecny sposób wykorzystania gazu, źródła azotu i tlenu, dostępne ciśnienie i natężenie przepływu, miejsce montażu i cel produkcyjny. Do kwalifikowanej oceny jednej stacji dla trzech maszyn dodaj jednoczesne zapotrzebowanie, trasę rurociągów i interfejs każdej maszyny."
   },
+  "organization": {
+    "description": "Dostawca z Chin oferujący urządzenia i rozwiązania do mieszania gazów w cięciu laserowym."
+  },
+  "accessibility": {
+    "whatsappChat": "Czat na WhatsAppie"
+  },
   "footer": {
     "tagline": "Technologia mieszania gazów",
     "headerTagline": "Rozwiązania gazu pomocniczego do cięcia laserowego",

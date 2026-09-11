@@ -273,6 +273,12 @@
     "q8": "Quais informações são necessárias antes da cotação?",
     "a8": "Envie marca e potência laser, materiais e espessuras, método atual de uso de gás, fontes de nitrogênio e oxigênio, pressão e vazão disponíveis, espaço de instalação e objetivo de produção. Para uma avaliação qualificada de uma estação para três equipamentos, informe também a demanda simultânea, o trajeto das tubulações e a interface de cada equipamento."
   },
+  "organization": {
+    "description": "Fornecedor sediado na China de equipamentos e soluções de mistura de gases para corte a laser."
+  },
+  "accessibility": {
+    "whatsappChat": "Conversar pelo WhatsApp"
+  },
   "footer": {
     "tagline": "Tecnologia de mistura de gases",
     "headerTagline": "Soluções de gás de assistência para corte a laser",
