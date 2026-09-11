@@ -1,0 +1,557 @@
+{
+  "locale": "pl",
+  "shared": {
+    "skip_to_content": "Pozycja projektu: strona internetowa",
+    "home_aria": "Pozycja projektu: strona internetowa · GasMixTech",
+    "logo_alt": "Widok techniczny: strona internetowa · Jinan Euchio Machinery Co., Ltd.",
+    "brand": "Pozycja projektu: strona internetowa · GasMixTech",
+    "tagline": "Pozycja projektu: strona internetowa",
+    "nav_aria": "Nawigacja główna",
+    "nav_products": "Produkty",
+    "nav_nitrogen_supply": "Pozycja projektu: strona internetowa",
+    "nav_psa": "System wytwarzania azotu PSA",
+    "nav_mixed_control": "Pozycja projektu: strona internetowa",
+    "nav_cabinet": "Zintegrowana szafa mieszania gazów",
+    "nav_valve": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+    "nav_compare": "Pozycja projektu: strona internetowa",
+    "nav_applications": "Zastosowania",
+    "nav_results": "Wyniki cięcia",
+    "nav_resources": "Materiały",
+    "nav_about": "O nas",
+    "nav_request": "Poproś o rozwiązanie",
+    "mobile_aria": "Przełącz menu",
+    "footer_intro": "Pozycja projektu: strona internetowa · Jinan Euchio Machinery Co., Ltd.",
+    "footer_products": "Pozycja projektu: strona internetowa",
+    "footer_contact": "Pozycja projektu: strona internetowa",
+    "footer_privacy": "Pozycja projektu: strona internetowa"
+  },
+  "pages": {
+    "psa": {
+      "title": "Informacje techniczne: system wytwarzania azotu PSA · GasMixTech · PSA",
+      "description": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA. · PSA",
+      "short_name": "Pozycja projektu: system wytwarzania azotu PSA · PSA",
+      "product_name": "Pozycja projektu: system wytwarzania azotu PSA · PSA",
+      "category": "Pozycja projektu: system wytwarzania azotu PSA",
+      "model": "ZHN-40PSA and ZHN-75PSA reference configurations",
+      "og_image": "/images/products/psa-nitrogen-system/psa-nitrogen-system-process.png",
+      "eyebrow": "Ocena: system wytwarzania azotu PSA",
+      "h1": "Informacje techniczne: system wytwarzania azotu PSA · PSA",
+      "lede": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "hero_note": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "primary_cta": "Poproś o ocenę: system wytwarzania azotu PSA · PSA",
+      "secondary_cta": "Poproś o ocenę: system wytwarzania azotu PSA",
+      "visual_alt": "Widok techniczny: system wytwarzania azotu PSA · PSA",
+      "visual_caption": "Pozycja projektu: system wytwarzania azotu PSA · N₂",
+      "fit_label": "Ocena: system wytwarzania azotu PSA",
+      "fit_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "fit_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA. · N₂/O₂ · PSA",
+      "route_existing": "Pozycja projektu: system wytwarzania azotu PSA",
+      "route_psa": "Pozycja projektu: system wytwarzania azotu PSA · PSA",
+      "route_pure": "Pozycja projektu: system wytwarzania azotu PSA",
+      "route_mixed": "Pozycja projektu: system wytwarzania azotu PSA",
+      "route_aria": "Pozycja projektu: system wytwarzania azotu PSA · PSA",
+      "route_or": "LUB",
+      "route_machine": "Pozycja projektu: system wytwarzania azotu PSA",
+      "reference_label": "Ocena: system wytwarzania azotu PSA",
+      "reference_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "reference_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "specs": [
+        {
+          "label": "Ocena: system wytwarzania azotu PSA · ZHN-40PSA · PSA",
+          "value": "40 Nm³/h",
+          "note": "Pozycja projektu: system wytwarzania azotu PSA · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "Ocena: system wytwarzania azotu PSA · ZHN-75PSA · PSA",
+          "value": "75 Nm³/h",
+          "note": "Pozycja projektu: system wytwarzania azotu PSA · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "Ocena: system wytwarzania azotu PSA",
+          "value": "Complete or modular",
+          "note": "Pozycja projektu: system wytwarzania azotu PSA"
+        }
+      ],
+      "scope_label": "Ocena: system wytwarzania azotu PSA",
+      "scope_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "scope_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "cards": [
+        {
+          "kicker": "Ocena: system wytwarzania azotu PSA · 01",
+          "title": "Informacje techniczne: system wytwarzania azotu PSA",
+          "text": "Pozycja projektu: system wytwarzania azotu PSA",
+          "meta": "Pozycja projektu: system wytwarzania azotu PSA"
+        },
+        {
+          "kicker": "Ocena: system wytwarzania azotu PSA · 02",
+          "title": "Informacje techniczne: system wytwarzania azotu PSA",
+          "text": "Pozycja projektu: system wytwarzania azotu PSA",
+          "meta": "Pozycja projektu: system wytwarzania azotu PSA"
+        },
+        {
+          "kicker": "Ocena: system wytwarzania azotu PSA · 03",
+          "title": "Informacje techniczne: system wytwarzania azotu PSA · PSA",
+          "text": "Pozycja projektu: system wytwarzania azotu PSA",
+          "meta": "Pozycja projektu: system wytwarzania azotu PSA"
+        },
+        {
+          "kicker": "Ocena: system wytwarzania azotu PSA · 04",
+          "title": "Informacje techniczne: system wytwarzania azotu PSA",
+          "text": "Pozycja projektu: system wytwarzania azotu PSA",
+          "meta": "Pozycja projektu: system wytwarzania azotu PSA"
+        },
+        {
+          "kicker": "Ocena: system wytwarzania azotu PSA · 05",
+          "title": "Informacje techniczne: system wytwarzania azotu PSA",
+          "text": "Pozycja projektu: system wytwarzania azotu PSA",
+          "meta": "Pozycja projektu: system wytwarzania azotu PSA"
+        }
+      ],
+      "footprint_alt": "Widok techniczny: system wytwarzania azotu PSA · 40 · PSA",
+      "footprint_caption": "Pozycja projektu: system wytwarzania azotu PSA · 10.17 · × · 1.60 m",
+      "case_label": "Ocena: system wytwarzania azotu PSA",
+      "case_title": "Informacje techniczne: system wytwarzania azotu PSA · 6 kW",
+      "case_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA. · 6 kW",
+      "case_laser_label": "Ocena: system wytwarzania azotu PSA",
+      "case_laser_value": "6 kW",
+      "case_flow_label": "Ocena: system wytwarzania azotu PSA",
+      "case_flow_value": "40 Nm³/h",
+      "case_purity_label": "Ocena: system wytwarzania azotu PSA",
+      "case_purity_value": "99.99%",
+      "case_pressure_label": "Ocena: system wytwarzania azotu PSA",
+      "case_pressure_value": "2.0 MPa",
+      "inputs_label": "Ocena: system wytwarzania azotu PSA",
+      "inputs_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "inputs_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "checklist": [
+        "Pozycja projektu: system wytwarzania azotu PSA",
+        "Pozycja projektu: system wytwarzania azotu PSA",
+        "Pozycja projektu: system wytwarzania azotu PSA",
+        "Pozycja projektu: system wytwarzania azotu PSA",
+        "Pozycja projektu: system wytwarzania azotu PSA"
+      ],
+      "boundary_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "boundary_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA. · 40 · 75 Nm³/h",
+      "faq_label": "Ocena: system wytwarzania azotu PSA · PSA",
+      "faq_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "faq": [
+        {
+          "question": "Jak potwierdzić system wytwarzania azotu PSA dla danego projektu? · PSA",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA."
+        },
+        {
+          "question": "Jak potwierdzić system wytwarzania azotu PSA dla danego projektu? · PSA",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA. · N₂/O₂"
+        },
+        {
+          "question": "Jak potwierdzić system wytwarzania azotu PSA dla danego projektu? · 40 · 75 Nm³/h",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA."
+        }
+      ],
+      "closing_title": "Informacje techniczne: system wytwarzania azotu PSA",
+      "closing_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: system wytwarzania azotu PSA.",
+      "closing_label": "Ocena: system wytwarzania azotu PSA",
+      "closing_cta": "Poproś o ocenę: system wytwarzania azotu PSA · PSA"
+    },
+    "cabinet": {
+      "title": "Informacje techniczne: zintegrowana szafa mieszania gazów · N₂/O₂ · GasMixTech",
+      "description": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów. · N₂/O₂",
+      "short_name": "Zintegrowana szafa mieszania gazów",
+      "product_name": "Zintegrowana szafa mieszania gazów",
+      "category": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+      "model": "Integrated cabinet configuration",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "Ocena: zintegrowana szafa mieszania gazów",
+      "h1": "Zintegrowana szafa mieszania gazów",
+      "lede": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów. · N₂/O₂",
+      "hero_note": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów.",
+      "primary_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów",
+      "purchase_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów · DHgate",
+      "compare_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów",
+      "parameters_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów",
+      "results_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów",
+      "visual_alt": "Widok techniczny: zintegrowana szafa mieszania gazów",
+      "media_index": "CAB / 01",
+      "silhouette_width": "Pozycja projektu: zintegrowana szafa mieszania gazów · 800",
+      "silhouette_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "silhouette_height": "Pozycja projektu: zintegrowana szafa mieszania gazów · 1100",
+      "fit_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "fit_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "fit_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów.",
+      "specs_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "specs_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "specs_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "Wymiary szafy",
+          "value": "800 × 350 × 1100 mm",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "label": "Masa",
+          "value": "90 kg",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "label": "Wlot N₂ / O₂",
+          "value": "20–25 bar",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "label": "Wylot gazu mieszanego",
+          "value": "12–16 bar",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "label": "Maksymalne natężenie przepływu",
+          "value": "200 m³/h",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "label": "Typowa mieszanina",
+          "value": "N₂ 95% / O₂ 5%",
+          "note": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        }
+      ],
+      "function_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "function_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "function_text": "Zintegrowana szafa mieszania gazów realizuje tę samą podstawową funkcję co kompaktowy zawór proporcjonalny. Różnica dotyczy formy produktu i zakresu integracji pozostającego po stronie klienta.",
+      "cards": [
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów · N₂ · O₂",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów · OEM",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        }
+      ],
+      "evidence_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "evidence_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "evidence_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów.",
+      "secondary_cards": [
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        },
+        {
+          "kicker": "Ocena: zintegrowana szafa mieszania gazów",
+          "title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+          "text": "Pozycja projektu: zintegrowana szafa mieszania gazów",
+          "meta": "Pozycja projektu: zintegrowana szafa mieszania gazów"
+        }
+      ],
+      "checklist_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "checklist_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "checklist": [
+        "Pozycja projektu: zintegrowana szafa mieszania gazów",
+        "Pozycja projektu: zintegrowana szafa mieszania gazów",
+        "Pozycja projektu: zintegrowana szafa mieszania gazów",
+        "Pozycja projektu: zintegrowana szafa mieszania gazów · N₂ · O₂",
+        "Pozycja projektu: zintegrowana szafa mieszania gazów"
+      ],
+      "faq_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "faq_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "faq": [
+        {
+          "question": "Czy zintegrowana szafa mieszania gazów i MSPV2_4000 realizują tę samą funkcję?",
+          "answer": "Tak. Oba produkty sterują mieszaniną N₂/O₂. Szafa jest kompletnym układem zewnętrznym, a MSPV2_4000 kompaktowym produktem do integracji. Są to rozwiązania alternatywne, a nie elementy połączone szeregowo."
+        },
+        {
+          "question": "Jak potwierdzić zintegrowana szafa mieszania gazów dla danego projektu?",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów."
+        },
+        {
+          "question": "Jak potwierdzić zintegrowana szafa mieszania gazów dla danego projektu?",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów. · 6–60 kW"
+        }
+      ],
+      "closing_title": "Informacje techniczne: zintegrowana szafa mieszania gazów",
+      "closing_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zintegrowana szafa mieszania gazów.",
+      "closing_label": "Ocena: zintegrowana szafa mieszania gazów",
+      "closing_cta": "Poproś o ocenę: zintegrowana szafa mieszania gazów"
+    },
+    "valve": {
+      "title": "Informacje techniczne: zawór proporcjonalny · MSPV2_4000 · GasMixTech",
+      "description": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · N₂/O₂ · OEM",
+      "short_name": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+      "product_name": "Pozycja projektu: zawór proporcjonalny · MSPV2_4000",
+      "category": "Pozycja projektu: zawór proporcjonalny",
+      "model": "MSPV2_4000",
+      "video_name": "Pozycja projektu: zawór proporcjonalny · MSPV2_4000 · 360",
+      "video_description": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · N₂/O₂",
+      "og_image": "/images/products/mspv2-4000/mspv2-4000-angle-02.png",
+      "eyebrow": "Ocena: zawór proporcjonalny",
+      "h1": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+      "lede": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · N₂/O₂ · OEM",
+      "hero_note": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny.",
+      "primary_cta": "Poproś o ocenę: zawór proporcjonalny",
+      "store_cta": "Poproś o ocenę: zawór proporcjonalny · SAGEMRO · DHgate · MRO",
+      "compare_cta": "Poproś o ocenę: zawór proporcjonalny",
+      "visual_alt": "Widok techniczny: zawór proporcjonalny · MSPV2_4000",
+      "media_index": "MSPV2 / 4000",
+      "gallery_alt_1": "Widok techniczny: zawór proporcjonalny · MSPV2_4000",
+      "gallery_alt_2": "Widok techniczny: zawór proporcjonalny · MSPV2_4000",
+      "gallery_alt_3": "Widok techniczny: zawór proporcjonalny · MSPV2_4000",
+      "video_fallback": "Pozycja projektu: zawór proporcjonalny",
+      "fit_label": "Ocena: zawór proporcjonalny",
+      "fit_title": "Informacje techniczne: zawór proporcjonalny · OEM",
+      "fit_text": "MSPV2_4000 realizuje tę samą podstawową funkcję mieszania gazów co szafa. Integrator musi ocenić obudowę, montaż, okablowanie, przewody gazowe, regulację przed układem oraz uruchomienie.",
+      "choice_same": "TA SAMA FUNKCJA PODSTAWOWA",
+      "choice_action": "WYBIERZ JEDNO ROZWIĄZANIE",
+      "specs_label": "Ocena: zawór proporcjonalny · MSPV2_4000",
+      "specs_title": "Informacje techniczne: zawór proporcjonalny",
+      "specs_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "Wymiary korpusu",
+          "value": "120 × 118 × 106 mm",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Masa",
+          "value": "2.43 kg",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Czas odpowiedzi",
+          "value": "200 ms",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Zakres nastawy ciśnienia",
+          "value": "20–2000 kPa",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Zakres natężenia przepływu",
+          "value": "0–5000 L/min",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Zakres O₂ w gazie mieszanym",
+          "value": "3–64%",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Zasilanie",
+          "value": "24 V ±10%",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "label": "Interfejsy",
+          "value": "Analog + NPN/PNP",
+          "note": "Pozycja projektu: zawór proporcjonalny"
+        }
+      ],
+      "control_label": "Ocena: zawór proporcjonalny",
+      "control_title": "Informacje techniczne: zawór proporcjonalny",
+      "control_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny.",
+      "control_alt": "Widok techniczny: zawór proporcjonalny · MSPV2_4000",
+      "installation_label": "Ocena: zawór proporcjonalny",
+      "installation_title": "Informacje techniczne: zawór proporcjonalny",
+      "installation_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · 1.5–1.6 MPa · N₂/O₂ · 100 kPa",
+      "cards": [
+        {
+          "kicker": "Ocena: zawór proporcjonalny · OEM",
+          "title": "Informacje techniczne: zawór proporcjonalny",
+          "text": "Pozycja projektu: zawór proporcjonalny",
+          "meta": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "kicker": "Ocena: zawór proporcjonalny",
+          "title": "Informacje techniczne: zawór proporcjonalny",
+          "text": "Pozycja projektu: zawór proporcjonalny",
+          "meta": "Pozycja projektu: zawór proporcjonalny"
+        },
+        {
+          "kicker": "Ocena: zawór proporcjonalny",
+          "title": "Informacje techniczne: zawór proporcjonalny",
+          "text": "Pozycja projektu: zawór proporcjonalny",
+          "meta": "Pozycja projektu: zawór proporcjonalny"
+        }
+      ],
+      "checklist_label": "Ocena: zawór proporcjonalny",
+      "checklist_title": "Informacje techniczne: zawór proporcjonalny · MSPV2_4000",
+      "checklist": [
+        "Pozycja projektu: zawór proporcjonalny",
+        "Pozycja projektu: zawór proporcjonalny",
+        "Pozycja projektu: zawór proporcjonalny · N₂/O₂",
+        "Pozycja projektu: zawór proporcjonalny · NPN/PNP",
+        "Pozycja projektu: zawór proporcjonalny"
+      ],
+      "faq_label": "Ocena: zawór proporcjonalny · MSPV2_4000",
+      "faq_title": "Informacje techniczne: zawór proporcjonalny",
+      "faq": [
+        {
+          "question": "Czy MSPV2_4000 jest wewnętrznym elementem szafy mieszania?",
+          "answer": "Nie. MSPV2_4000 i zintegrowana szafa mieszania gazów są alternatywnymi produktami o tej samej funkcji mieszania N₂/O₂ i sterowania wyjściem."
+        },
+        {
+          "question": "Jak potwierdzić zawór proporcjonalny dla danego projektu? · NPN/PNP",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny."
+        },
+        {
+          "question": "Jak potwierdzić zawór proporcjonalny dla danego projektu? · MSPV2_4000 · DHgate",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · SAGEMRO · MRO"
+        }
+      ],
+      "closing_title": "Informacje techniczne: zawór proporcjonalny · OEM",
+      "closing_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: zawór proporcjonalny. · MSPV2_4000",
+      "closing_label": "Ocena: zawór proporcjonalny · OEM",
+      "closing_cta": "Poproś o ocenę: zawór proporcjonalny"
+    },
+    "comparison": {
+      "title": "Informacje techniczne: porównanie sterowania gazem mieszanym · MSPV2_4000",
+      "description": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: porównanie sterowania gazem mieszanym. · N₂/O₂",
+      "short_name": "Porównanie sterowania gazem mieszanym",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "Ocena: porównanie sterowania gazem mieszanym",
+      "h1": "Informacje techniczne: porównanie sterowania gazem mieszanym · MSPV2_4000",
+      "lede": "Oba produkty realizują tę samą funkcję podstawową: mieszanie N₂/O₂ z kontrolowanym wyjściem. Należy wybrać jeden według formy instalacji, interfejsów i zakresu prac inżynieryjnych po stronie klienta.",
+      "hero_note": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: porównanie sterowania gazem mieszanym.",
+      "primary_cta": "Poproś o ocenę: porównanie sterowania gazem mieszanym",
+      "hero_cabinet_label": "UKŁAD KOMPLETNY",
+      "hero_cabinet_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "hero_or": "LUB",
+      "hero_valve_label": "INTEGRACJA KOMPAKTOWA",
+      "hero_valve_title": "Informacje techniczne: porównanie sterowania gazem mieszanym · MSPV2_ · 4000",
+      "cabinet_cta": "Poproś o ocenę: porównanie sterowania gazem mieszanym",
+      "valve_cta": "Poproś o ocenę: porównanie sterowania gazem mieszanym · MSPV2_4000",
+      "principle_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "principle_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "principle_text": "Szafa obejmuje funkcję sterowania w kompletnym układzie zewnętrznym. MSPV2_4000 skupia tę samą funkcję podstawową w kompaktowym produkcie do integracji. Żaden produkt nie jest przedstawiany jako nadrzędny ani podrzędny wobec drugiego.",
+      "table_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "table_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "table_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: porównanie sterowania gazem mieszanym.",
+      "factor_header": "Kryterium wyboru",
+      "cabinet_header": "Zintegrowana szafa",
+      "valve_header": "Pozycja projektu: porównanie sterowania gazem mieszanym · MSPV2_4000",
+      "comparison_rows": [
+        {
+          "key": "core_function",
+          "factor": "Funkcja podstawowa",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · N₂/O₂",
+          "valve": "Ta sama funkcja podstawowa"
+        },
+        {
+          "key": "product_form",
+          "factor": "Forma produktu",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym"
+        },
+        {
+          "key": "dimensions",
+          "factor": "Wymiary",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · 800 · × · 350 · × · 1100 mm",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · 120 · × · 118 · × · 106 mm"
+        },
+        {
+          "key": "weight",
+          "factor": "Masa",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · 90 kg",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · 2.43 kg"
+        },
+        {
+          "key": "inlet_condition",
+          "factor": "Opublikowane warunki wlotowe",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · 20–25 bar",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · 1.5–1.6 MPa · ≤ · 100 kPa"
+        },
+        {
+          "key": "flow",
+          "factor": "Opublikowane natężenie przepływu",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · 200 m³/h",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · 0–5000 L/min"
+        },
+        {
+          "key": "control_interfaces",
+          "factor": "Interfejsy sterowania",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · NPN/PNP"
+        },
+        {
+          "key": "installation_responsibility",
+          "factor": "Odpowiedzialność za integrację",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · OEM"
+        },
+        {
+          "key": "best_fit_buyer",
+          "factor": "Odpowiedni typ nabywcy",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · OEM"
+        },
+        {
+          "key": "purchase_path",
+          "factor": "Sposób zakupu",
+          "cabinet": "Pozycja projektu: porównanie sterowania gazem mieszanym · DHgate",
+          "valve": "Pozycja projektu: porównanie sterowania gazem mieszanym · SAGEMRO · MRO"
+        }
+      ],
+      "fit_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "fit_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "cards": [
+        {
+          "kicker": "Ocena: porównanie sterowania gazem mieszanym",
+          "title": "Zintegrowana szafa",
+          "text": "Pozycja projektu: porównanie sterowania gazem mieszanym",
+          "meta": "Pozycja projektu: porównanie sterowania gazem mieszanym"
+        },
+        {
+          "kicker": "Ocena: porównanie sterowania gazem mieszanym",
+          "title": "Informacje techniczne: porównanie sterowania gazem mieszanym · MSPV2_4000",
+          "text": "Pozycja projektu: porównanie sterowania gazem mieszanym · OEM",
+          "meta": "Pozycja projektu: porównanie sterowania gazem mieszanym"
+        }
+      ],
+      "checklist_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "checklist_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "checklist": [
+        "Pozycja projektu: porównanie sterowania gazem mieszanym",
+        "Pozycja projektu: porównanie sterowania gazem mieszanym · N₂/O₂",
+        "Pozycja projektu: porównanie sterowania gazem mieszanym",
+        "Pozycja projektu: porównanie sterowania gazem mieszanym",
+        "Pozycja projektu: porównanie sterowania gazem mieszanym · OEM"
+      ],
+      "faq_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "faq_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "faq": [
+        {
+          "question": "Czy szafę i MSPV2_4000 należy stosować razem?",
+          "answer": "Nie. Są to alternatywne sterowniki gazu mieszanego. W projekcie należy wybrać jeden i nie łączyć ich jako szeregowej pary mieszaczy."
+        },
+        {
+          "question": "Czy MSPV2_4000 jest ulepszoną wersją szafy?",
+          "answer": "Nie. Jest to inna forma produktu do kompaktowej integracji OEM i modernizacji. Szafa pozostaje kompletnym rozwiązaniem zewnętrznym."
+        },
+        {
+          "question": "Jak potwierdzić porównanie sterowania gazem mieszanym dla danego projektu?",
+          "answer": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: porównanie sterowania gazem mieszanym."
+        }
+      ],
+      "closing_title": "Informacje techniczne: porównanie sterowania gazem mieszanym",
+      "closing_text": "Przed zatwierdzeniem rozwiązania należy sprawdzić zasilanie gazem, interfejsy, warunki instalacji i parametry cięcia: porównanie sterowania gazem mieszanym.",
+      "closing_label": "Ocena: porównanie sterowania gazem mieszanym",
+      "closing_cta": "Poproś o ocenę: porównanie sterowania gazem mieszanym"
+    }
+  }
+}
