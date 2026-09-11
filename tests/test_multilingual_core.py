@@ -8,25 +8,24 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
+from site_locales import (
+    CORE_ROUTES,
+    LOCALIZED_LOCALES,
+    SUPPORTED_LOCALES,
+    UNSUPPORTED_LOCALES,
+    output_path,
+    route_for,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
-RETAINED_LANGS = ("en", "zh", "es", "ko", "ja", "pt", "pl")
-REMOVED_LANGS = ("tr", "ru", "vi", "th", "it", "de", "fr", "nl", "ar")
-LAUNCH_READY_LOCALIZED_LANGS = ("zh", "es", "ko", "ja", "pt", "pl")
-CORE_PAGES = (
-    "index.html",
-    "about.html",
-    "parameters.html",
-    "contact.html",
-    "compatibility.html",
-    "roi.html",
-    "payment.html",
-    "privacy.html",
-    "404.html",
-)
-INDEXABLE_CORE_PAGES = tuple(page for page in CORE_PAGES if page not in {"privacy.html", "404.html"})
-SWITCHER_CORE_PAGES = tuple(page for page in CORE_PAGES if page != "404.html")
+RETAINED_LANGS = SUPPORTED_LOCALES
+REMOVED_LANGS = UNSUPPORTED_LOCALES + ("ar",)
+LAUNCH_READY_LOCALIZED_LANGS = LOCALIZED_LOCALES
+CORE_PAGES = tuple(CORE_ROUTES)
+INDEXABLE_CORE_PAGES = CORE_PAGES
+SWITCHER_CORE_PAGES = CORE_PAGES
 COMPONENT_CLASSES = (
     "advantage-card",
     "brand-card",
@@ -42,8 +41,8 @@ COMPONENT_CLASSES = (
 )
 
 
-def page_path(lang, filename):
-    return PUBLIC / filename if lang == "en" else PUBLIC / lang / filename
+def page_path(lang, page_key):
+    return output_path(PUBLIC, lang, page_key)
 
 
 class CorePageParser(HTMLParser):
@@ -134,11 +133,18 @@ class MultilingualCoreTests(unittest.TestCase):
     def test_exact_core_page_matrix(self):
         for lang in RETAINED_LANGS:
             with self.subTest(lang=lang):
-                for filename in CORE_PAGES:
-                    self.assertTrue(page_path(lang, filename).is_file())
+                for page_key in CORE_PAGES:
+                    self.assertTrue(page_path(lang, page_key).is_file())
                 if lang != "en":
-                    actual = {path.name for path in (PUBLIC / lang).glob("*.html")}
-                    self.assertEqual(actual, set(CORE_PAGES))
+                    actual = {
+                        path.relative_to(PUBLIC / lang)
+                        for path in (PUBLIC / lang).rglob("*.html")
+                    }
+                    expected = {
+                        page_path(lang, page_key).relative_to(PUBLIC / lang)
+                        for page_key in CORE_PAGES
+                    }
+                    self.assertEqual(actual, expected)
 
     def test_removed_language_directories_and_outputs_are_absent(self):
         for lang in REMOVED_LANGS:
@@ -148,7 +154,7 @@ class MultilingualCoreTests(unittest.TestCase):
                 pagefind_names = [path.name for path in (PUBLIC / "pagefind").rglob("*")]
                 self.assertFalse(any(re.search(rf"(?:\.|_|wasm\.){lang}(?:_|\.|$)", name) for name in pagefind_names))
 
-        removed_url = re.compile(r"/(?:tr|ru|vi|th|it|de|fr|nl)/")
+        removed_url = re.compile(rf"/(?:{'|'.join(REMOVED_LANGS)})/")
         for path in list(PUBLIC.rglob("*.html")) + [PUBLIC / "sitemap.xml", PUBLIC / "llms.txt", PUBLIC / "llms-full.txt"]:
             with self.subTest(path=path):
                 self.assertNotRegex(path.read_text(encoding="utf-8"), removed_url)
@@ -189,7 +195,7 @@ class MultilingualCoreTests(unittest.TestCase):
         self.assertTrue(expected)
         for lang in RETAINED_LANGS[1:]:
             with self.subTest(lang=lang):
-                self.assertEqual(parse_page(page_path(lang, "contact.html")).form_fields, expected)
+                self.assertEqual(parse_page(page_path(lang, "contact")).form_fields, expected)
 
     def test_local_assets_resolve(self):
         broken = []
@@ -243,7 +249,7 @@ class MultilingualCoreTests(unittest.TestCase):
                         self.assertNotIn(phrase, content)
 
     def test_polish_contact_page_has_no_legacy_mojibake(self):
-        content = page_path("pl", "contact.html").read_text(encoding="utf-8")
+        content = page_path("pl", "contact").read_text(encoding="utf-8")
         self.assertIn("Skontaktuj się", content)
         self.assertIn("Wyślij prośbę o ocenę</button>", content)
         self.assertIn('action="/api/inquiry"', content)
@@ -259,11 +265,10 @@ class MultilingualCoreTests(unittest.TestCase):
                     self.assertEqual(len(codes), len(expected_codes))
                     self.assertEqual(set(codes), expected_codes)
 
-    def test_low_value_pages_are_not_in_hreflang_clusters(self):
-        for lang in RETAINED_LANGS:
-            for filename in ("privacy.html", "404.html"):
-                with self.subTest(lang=lang, filename=filename):
-                    self.assertEqual(parse_page(page_path(lang, filename)).hreflangs, [])
+    def test_english_low_value_pages_are_not_in_hreflang_clusters(self):
+        for filename in ("privacy.html", "404.html"):
+            with self.subTest(filename=filename):
+                self.assertEqual(parse_page(PUBLIC / filename).hreflangs, [])
 
     def test_active_locale_core_pages_do_not_present_a_product_brand(self):
         forbidden = (
@@ -300,7 +305,7 @@ class MultilingualCoreTests(unittest.TestCase):
                     )
 
     def test_polish_homepage_avoids_unverified_scope_and_absolute_claims(self):
-        content = page_path("pl", "index.html").read_text(encoding="utf-8").casefold()
+        content = page_path("pl", "home").read_text(encoding="utf-8").casefold()
         forbidden = (
             "1,000+ instalacji",
             "certyfikat ce",
@@ -329,20 +334,12 @@ class MultilingualCoreTests(unittest.TestCase):
             self.assertNotIn(phrase, content)
 
     def test_canonical_urls_match_page_locale(self):
-        pretty_pages = {"about.html", "parameters.html", "contact.html"}
         for lang in RETAINED_LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            for filename in INDEXABLE_CORE_PAGES:
-                if filename == "index.html":
-                    expected_path = f"{prefix}/"
-                elif filename in pretty_pages:
-                    expected_path = f"{prefix}/{filename.removesuffix('.html')}"
-                else:
-                    expected_path = f"{prefix}/{filename}"
-                with self.subTest(lang=lang, filename=filename):
-                    canonicals = parse_page(page_path(lang, filename)).canonicals
+            for page_key in INDEXABLE_CORE_PAGES:
+                with self.subTest(lang=lang, page_key=page_key):
+                    canonicals = parse_page(page_path(lang, page_key)).canonicals
                     self.assertEqual(len(canonicals), 1)
-                    self.assertEqual(urlparse(canonicals[0]).path, expected_path)
+                    self.assertEqual(urlparse(canonicals[0]).path, route_for(lang, page_key))
 
     def test_jsonld_is_valid(self):
         pattern = re.compile(
@@ -361,7 +358,8 @@ class MultilingualCoreTests(unittest.TestCase):
             r'<script\b[^>]*type="application/ld\+json"[^>]*>(.*?)</script>',
             re.DOTALL | re.IGNORECASE,
         )
-        forbidden = {"Product", "Offer", "Review", "AggregateRating", "FAQPage", "HowTo"}
+        forbidden_everywhere = {"Offer", "Review", "AggregateRating", "HowTo"}
+        forbidden_on_non_product_pages = {"Product", "FAQPage"}
 
         def collect_types(value):
             found = set()
@@ -377,27 +375,29 @@ class MultilingualCoreTests(unittest.TestCase):
             return found
 
         for lang in RETAINED_LANGS:
-            for filename in CORE_PAGES:
-                path = page_path(lang, filename)
+            for page_key in CORE_PAGES:
+                path = page_path(lang, page_key)
                 blocks = pattern.findall(path.read_text(encoding="utf-8"))
                 types = set()
                 for block in blocks:
                     types.update(collect_types(json.loads(html.unescape(block))))
-                with self.subTest(lang=lang, filename=filename):
+                forbidden = set(forbidden_everywhere)
+                if page_key in {"home", "about", "contact"}:
+                    forbidden.update(forbidden_on_non_product_pages)
+                with self.subTest(lang=lang, page_key=page_key):
                     self.assertFalse(types & forbidden, (path, types & forbidden))
 
-    def test_low_value_core_pages_are_noindex_in_every_locale(self):
+    def test_english_low_value_pages_are_noindex(self):
         robots_pattern = re.compile(
             r'<meta\s+name="robots"\s+content="([^"]+)"',
             re.IGNORECASE,
         )
-        for lang in RETAINED_LANGS:
-            for filename in ("privacy.html", "404.html"):
-                path = page_path(lang, filename)
-                match = robots_pattern.search(path.read_text(encoding="utf-8"))
-                with self.subTest(lang=lang, filename=filename):
-                    self.assertIsNotNone(match)
-                    self.assertEqual(match.group(1).casefold(), "noindex, follow")
+        for filename in ("privacy.html", "404.html"):
+            path = PUBLIC / filename
+            match = robots_pattern.search(path.read_text(encoding="utf-8"))
+            with self.subTest(filename=filename):
+                self.assertIsNotNone(match)
+                self.assertEqual(match.group(1).casefold(), "noindex, follow")
 
     def test_no_placeholders_or_duplicate_ids(self):
         for lang in RETAINED_LANGS:

@@ -5,6 +5,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 
+from site_locales import CORE_ROUTES, SUPPORTED_LOCALES, output_path, route_for
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
@@ -25,6 +27,7 @@ class PageParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.title = []
         self.h1 = []
+        self.h1_count = 0
         self.h2 = []
         self.anchors = []
         self.links = []
@@ -36,6 +39,8 @@ class PageParser(HTMLParser):
         attrs = dict(attrs)
         if tag in {"title", "h1", "h2"}:
             self._capture = tag
+        if tag == "h1":
+            self.h1_count += 1
         if tag == "a":
             self._anchor = {"href": attrs.get("href", ""), "text": []}
         if tag == "link":
@@ -69,7 +74,11 @@ def parse_page(path):
 
 def header_nav_hrefs(path):
     content = path.read_text(encoding="utf-8")
-    nav = re.search(r'<nav class="nav"[^>]*>(.*?)</nav>', content, re.DOTALL)
+    nav = re.search(
+        r'<nav class="[^"]*\bnav\b[^"]*"[^>]*>(.*?)</nav>',
+        content,
+        re.DOTALL,
+    )
     if nav is None:
         return []
     return re.findall(r'<a\b[^>]*href="([^"]+)"', nav.group(1))
@@ -224,36 +233,62 @@ class SiteIntegrityTests(unittest.TestCase):
         self.assertRegex((PUBLIC / "index.html").read_text(encoding="utf-8"), r"One-to-Three|one-to-three")
         self.assertRegex((PUBLIC / "about.html").read_text(encoding="utf-8"), r"one-to-three")
 
-    def test_parameter_and_contact_pages_have_one_h1(self):
-        for lang in LANGS:
-            for filename in ("parameters.html", "contact.html"):
-                with self.subTest(lang=lang, filename=filename):
-                    page = parse_page(page_path(lang, filename))
+    def test_core_sales_pages_exist_and_have_one_h1(self):
+        for lang in SUPPORTED_LOCALES:
+            for page_key in CORE_ROUTES:
+                with self.subTest(lang=lang, page_key=page_key):
+                    path = output_path(PUBLIC, lang, page_key)
+                    self.assertTrue(path.is_file())
+                    page = parse_page(path)
                     self.assertTrue(page.h1)
+                    self.assertEqual(page.h1_count, 1)
 
     def test_localized_titles_are_valid_utf8_and_language_consistent(self):
         mojibake = re.compile(r"[贸莽茫陌艧谋臋膮谩]")
-        for lang in SUB_LANGS:
-            for filename in ("parameters.html", "contact.html"):
-                with self.subTest(lang=lang, filename=filename):
-                    title = parse_page(page_path(lang, filename)).title
+        for lang in SUPPORTED_LOCALES[1:]:
+            for page_key in CORE_ROUTES:
+                with self.subTest(lang=lang, page_key=page_key):
+                    title = parse_page(output_path(PUBLIC, lang, page_key)).title
+                    self.assertTrue(title)
                     self.assertFalse(mojibake.search(title), title)
-        self.assertNotRegex(parse_page(page_path("ja", "parameters.html")).title, r"[가-힣]")
-        self.assertNotRegex(parse_page(page_path("ja", "parameters.html")).h1, r"[가-힣]")
+        for page_key in CORE_ROUTES:
+            with self.subTest(lang="ja", page_key=page_key):
+                page = parse_page(output_path(PUBLIC, "ja", page_key))
+                self.assertNotRegex(page.title, r"[가-힣]")
+                self.assertNotRegex(page.h1, r"[가-힣]")
+
     def test_pretty_urls_are_used_for_canonical_hreflang_and_sitemap(self):
-        for lang in LANGS:
-            prefix = "" if lang == "en" else f"/{lang}"
-            for filename in ("about.html", "parameters.html", "contact.html"):
-                with self.subTest(lang=lang, filename=filename):
-                    page = parse_page(page_path(lang, filename))
-                    canonical = next(link["href"] for link in page.links if link.get("rel") == "canonical")
-                    self.assertEqual(urlparse(canonical).path, f"{prefix}/{filename.removesuffix('.html')}")
-                    alternates = [link["href"] for link in page.links if link.get("rel") == "alternate"]
-                    self.assertTrue(alternates)
+        expected_alternate_count = len(SUPPORTED_LOCALES) + 1
+        nav_page_keys = ("about", "contact", "psa", "cabinet", "valve", "comparison")
+        for lang in SUPPORTED_LOCALES:
+            for page_key in CORE_ROUTES:
+                with self.subTest(lang=lang, page_key=page_key):
+                    path = output_path(PUBLIC, lang, page_key)
+                    page = parse_page(path)
+                    canonicals = [
+                        link["href"]
+                        for link in page.links
+                        if link.get("rel") == "canonical"
+                    ]
+                    self.assertEqual(len(canonicals), 1)
+                    self.assertEqual(urlparse(canonicals[0]).path, route_for(lang, page_key))
+                    alternates = [
+                        link["href"]
+                        for link in page.links
+                        if link.get("rel") == "alternate"
+                    ]
+                    self.assertEqual(len(alternates), expected_alternate_count)
                     self.assertTrue(all(not urlparse(href).path.endswith(".html") for href in alternates))
+                    nav_hrefs = [urlparse(href).path for href in header_nav_hrefs(path)]
+                    for nav_page_key in nav_page_keys:
+                        self.assertIn(route_for(lang, nav_page_key), nav_hrefs)
 
         sitemap = (PUBLIC / "sitemap.xml").read_text(encoding="utf-8")
-        self.assertNotRegex(sitemap, r"(?:about|parameters|contact)\.html")
+        self.assertNotRegex(
+            sitemap,
+            r"(?:about|contact|psa-nitrogen-generation-system|integrated-gas-mixing-cabinet|"
+            r"mspv2-4000-proportional-valve|mixed-gas-control-comparison)\.html",
+        )
 
     def test_sitemap_excludes_error_pages_and_includes_all_about_pages(self):
         tree = ET.parse(PUBLIC / "sitemap.xml")

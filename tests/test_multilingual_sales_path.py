@@ -172,6 +172,132 @@ class LocaleRouteContractTests(unittest.TestCase):
         self.assertEqual(canonical_url("pt", "comparison"), "https://gasmixtech.com/pt/products/mixed-gas-control-comparison")
 
 
+class GeneratedMatrixTests(unittest.TestCase):
+    LEGACY_FILENAMES = (
+        "404.html",
+        "compatibility.html",
+        "parameters.html",
+        "payment.html",
+        "privacy.html",
+        "roi.html",
+    )
+
+    def test_exact_49_page_core_sales_matrix_exists(self):
+        expected = {
+            output_path(PUBLIC, locale, page_key)
+            for locale in SUPPORTED_LOCALES
+            for page_key in CORE_ROUTES
+        }
+
+        self.assertEqual(len(expected), 49)
+        self.assertEqual([path for path in expected if not path.is_file()], [])
+
+        for locale in LOCALIZED_LOCALES:
+            with self.subTest(locale=locale):
+                expected_locale = {
+                    output_path(PUBLIC, locale, page_key).relative_to(PUBLIC / locale)
+                    for page_key in CORE_ROUTES
+                }
+                actual_locale = {
+                    path.relative_to(PUBLIC / locale)
+                    for path in (PUBLIC / locale).rglob("*.html")
+                }
+                self.assertEqual(actual_locale, expected_locale)
+
+    def test_withdrawn_localized_legacy_files_are_absent(self):
+        for locale in LOCALIZED_LOCALES:
+            for filename in self.LEGACY_FILENAMES:
+                with self.subTest(locale=locale, filename=filename):
+                    self.assertFalse((PUBLIC / locale / filename).exists())
+
+
+class RedirectContractTests(unittest.TestCase):
+    LEGACY_PAGE_TARGETS = {
+        "compatibility.html": "/compatibility.html",
+        "parameters.html": "/parameters",
+        "payment.html": "/payment.html",
+        "privacy.html": "/privacy.html",
+        "roi.html": "/roi.html",
+        "404.html": "/",
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        cls.rules = []
+        for line in (PUBLIC / "_redirects").read_text(encoding="utf-8").splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            parts = stripped.split()
+            if len(parts) != 3:
+                raise AssertionError(f"Malformed redirect rule: {line}")
+            cls.rules.append(tuple(parts))
+
+    def rule_index(self, source, target):
+        matches = [
+            index
+            for index, rule in enumerate(self.rules)
+            if rule == (source, target, "301")
+        ]
+        self.assertEqual(len(matches), 1, (source, target, matches))
+        return matches[0]
+
+    def test_supported_locale_legacy_pages_redirect_exactly_to_english(self):
+        for locale in LOCALIZED_LOCALES:
+            for filename, target in self.LEGACY_PAGE_TARGETS.items():
+                with self.subTest(locale=locale, filename=filename):
+                    self.rule_index(f"/{locale}/{filename}", target)
+
+    def test_unsupported_core_routes_redirect_explicitly_before_fallbacks(self):
+        exact_indices = []
+        fallback_indices = []
+        for locale in UNSUPPORTED_LOCALES:
+            for page_key in CORE_ROUTES:
+                if page_key == "home":
+                    continue
+                with self.subTest(locale=locale, page_key=page_key):
+                    exact_indices.append(
+                        self.rule_index(route_for(locale, page_key), CORE_ROUTES[page_key])
+                    )
+            for source in (f"/{locale}", f"/{locale}/", f"/{locale}/*"):
+                with self.subTest(locale=locale, source=source):
+                    fallback_indices.append(self.rule_index(source, "/"))
+
+        self.assertTrue(exact_indices)
+        self.assertTrue(fallback_indices)
+        self.assertLess(max(exact_indices), min(fallback_indices))
+
+    def test_redirect_order_and_supported_core_routes_are_protected(self):
+        legacy_indices = [
+            self.rule_index(f"/{locale}/{filename}", target)
+            for locale in LOCALIZED_LOCALES
+            for filename, target in self.LEGACY_PAGE_TARGETS.items()
+        ]
+        unsupported_exact_indices = [
+            self.rule_index(route_for(locale, page_key), CORE_ROUTES[page_key])
+            for locale in UNSUPPORTED_LOCALES
+            for page_key in CORE_ROUTES
+            if page_key != "home"
+        ]
+        self.assertLess(max(legacy_indices), min(unsupported_exact_indices))
+
+        sources = {source for source, _, _ in self.rules}
+        for locale in LOCALIZED_LOCALES:
+            with self.subTest(locale=locale):
+                self.assertNotIn(f"/{locale}", sources)
+                self.assertNotIn(f"/{locale}/", sources)
+                self.assertNotIn(f"/{locale}/*", sources)
+                for page_key in CORE_ROUTES:
+                    self.assertNotIn(route_for(locale, page_key), sources)
+
+    def test_ar_defensive_fallbacks_remain_and_every_rule_is_permanent(self):
+        for source in ("/ar", "/ar/", "/ar/*"):
+            with self.subTest(source=source):
+                self.rule_index(source, "/")
+        self.assertTrue(self.rules)
+        self.assertTrue(all(status == "301" for _, _, status in self.rules))
+
+
 class ProductRouteTests(unittest.TestCase):
     PRODUCT_PAGE_KEYS = ("psa", "cabinet", "valve", "comparison")
 
