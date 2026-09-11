@@ -1638,13 +1638,13 @@ class TranslationDataTests(unittest.TestCase):
     RUNTIME_PLACEHOLDER = re.compile(r"(?<!\{)\{([A-Za-z_][A-Za-z0-9_]*)\}(?!\})")
     TECHNICAL_FACT = re.compile(
         r"https?://[^\s\"'<>]+"
-        r"|(?<![A-Za-z0-9_<])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
+        r"|(?<![A-Za-z0-9_<³])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
         r"|(?<![A-Za-z0-9_])(?=[A-Za-z0-9_/-]*[A-Za-z])(?=[A-Za-z0-9_/-]*\d)"
         r"[A-Za-z][A-Za-z0-9_/-]*(?![A-Za-z0-9_])"
         r"|(?<![A-Za-z0-9])(?:NPN/PNP|N[₂2]\s*/\s*O[₂2]|N[₂2]|O[₂2])(?![A-Za-z0-9])"
-        r"|(?<![\w.])[-+]?\d+(?:[.,]\d+)?(?:\s*[–—-]\s*[-+]?\d+(?:[.,]\d+)?)?\s*"
-        r"(?:Nm³/h|m³/h|L/min|m/min|MPa|kPa|bar|kg|mm|ms|kW|MW|V|ft|m|%)(?![A-Za-z])"
-        r"|(?<![\w.])\d+(?:[.,]\d+)?(?![\w.])"
+        r"|(?<![A-Za-z0-9_.])[-+]?\d+(?:[.,]\d+)?(?:\s*[‐‑‒–—−-]\s*[-+]?\d+(?:[.,]\d+)?)?\s*"
+        r"(?:Nm³/h|m³/h|L/min|m/min|MPa|kPa|bar|kg|mm|ms|kW|MW|V|ft|m|%)(?![A-Za-z0-9_])"
+        r"|(?<![A-Za-z0-9_.])\d+(?:[.,]\d+)?(?![A-Za-z0-9_.])"
         r"|[×≤≥±]",
         re.IGNORECASE,
     )
@@ -1788,59 +1788,60 @@ class TranslationDataTests(unittest.TestCase):
         "zh": (
             r"(?:(?:已安装|装机)\s*\d+[\d,]*\+?\s*(?:套|台)|已有\s*\d+[\d,]*\+?\s*(?:套|台).{0,8}安装)",
             r"(?:CE|ISO\s*\d*)\s*认证(?:产品|设备)?",
-            r"\d+\s*天内(?:交货|发货)",
-            r"(?:\d+\s*年|终身)保修",
-            r"(?:独家技术|唯一供应商|世界最佳|保证结果|100%\s*兼容)",
+            r"(?:\d+\s*天内?(?:交货|发货)|(?:明确)?交期(?:为|[:：])?\s*\d+\s*天)",
+            r"(?:\d+\s*年|终身)(?:保修|质保)",
+            r"(?:独家技术|唯一供应商|世界最佳|行业最佳|保证结果|结果保证|100%\s*兼容)",
             r"(?:混气柜|气体混合柜).{0,12}(?:比例阀|阀).{0,12}(?:串联|同时安装)",
         ),
         "es": (
-            r"más de \d+[\d.]* instalaciones",
-            r"certificad[oa] (?:ce|iso(?:\s*\d+)?)",
-            r"entrega en \d+ días",
+            r"(?:más de )?\d+[\d.]* instalaciones",
+            r"(?:certificad[oa] (?:ce|iso(?:\s*\d+)?)|certificación (?:ce|iso(?:\s*\d+)?))",
+            r"(?:entrega en \d+ días|plazo de entrega\s*[:：]?\s*\d+ días)",
             r"garantía (?:de por vida|de \d+ años)",
-            r"(?:tecnología exclusiva|único proveedor|mejor del mundo|resultados garantizados|100\s*% compatible)",
+            r"(?:tecnología exclusiva|único proveedor|proveedor único|mejor del mundo|resultados garantizados|100\s*% compatible)",
             r"(?:armario|gabinete).{0,30}válvula.{0,30}(?:se instalan en serie|se instalan juntos|instalados? juntos?)",
         ),
         "pt": (
-            r"mais de \d+[\d.]* instalações",
-            r"certificad[oa] (?:ce|iso(?:\s*\d+)?)",
-            r"entrega em \d+ dias",
-            r"garantia (?:vitalícia|de \d+ anos)",
-            r"(?:tecnologia exclusiva|único fornecedor|melhor do mundo|resultados garantidos|100\s*% compatível)",
+            r"(?:mais de )?\d+[\d.]* instalações",
+            r"(?:certificad[oa] (?:ce|iso(?:\s*\d+)?)|certificação (?:ce|iso(?:\s*\d+)?))",
+            r"(?:entrega em \d+ dias|prazo de entrega(?: de)?\s*\d+ dias)",
+            r"(?:garantia (?:vitalícia|de \d+ anos)|\d+ anos de garantia)",
+            r"(?:tecnologia exclusiva|único fornecedor|fornecedor único|melhor do mundo|resultados garantidos|100\s*% compatível)",
             r"gabinete.{0,30}válvula.{0,30}(?:instalad[oa]s? em série|instalad[oa]s? juntos?)",
         ),
         "ja": (
             r"\d+[\d,]*\+?\s*(?:台|件)(?:以上)?(?:の)?導入実績",
-            r"(?:CE|ISO\s*\d*)認証済み",
-            r"\d+日以内に(?:納品|発送)",
+            r"(?:CE|ISO\s*\d*)認証(?:取得済み|済み)?",
+            r"(?:\d+日(?:以内|で)に?(?:納品|発送)|納期は?\s*\d+日)",
             r"(?:\d+年|永久)保証",
-            r"(?:独占技術|唯一のサプライヤー|世界最高|結果保証|100%\s*互換)",
+            r"(?:独占技術|唯一の(?:サプライヤー|供給者)|世界最高|結果(?:を)?保証|100%\s*互換)",
             r"キャビネット.{0,20}バルブ.{0,20}(?:直列|同時に設置)",
         ),
         "ko": (
             r"\d+[\d,]*\+?\s*(?:대|건)(?:\s*이상(?:의)?)?\s*설치 실적",
-            r"(?:CE|ISO\s*\d*)\s*인증 완료",
-            r"\d+일 이내 (?:납품|발송)",
-            r"(?:\d+년|평생) 보증",
-            r"(?:독점 기술|유일한 공급업체|세계 최고|결과 보장|100%\s*호환)",
+            r"(?:CE|ISO\s*\d*)\s*인증(?:\s*(?:완료|취득))?",
+            r"(?:\d+일\s*이내\s*(?:납품|발송)|납기는?\s*\d+일)",
+            r"(?:\d+년|평생)\s*보증",
+            r"(?:독점 기술|유일한 공급업체|세계 최고|결과(?:를)?\s*보장|100%\s*호환)",
             r"캐비닛.{0,20}밸브.{0,20}(?:직렬로|함께)\s*설치",
         ),
         "pl": (
-            r"ponad \d+[\d.]* instalacji",
-            r"certyfikowan[yae] (?:ce|iso(?:\s*\d+)?)",
-            r"dostaw[ay] w ciągu \d+ dni",
-            r"(?:\d+[- ]letnia|dożywotnia) gwarancja",
+            r"(?:ponad )?\d+[\d.]* instalacji",
+            r"(?:certyfikowan[yae] (?:ce|iso(?:\s*\d+)?)|certyfikat (?:ce|iso(?:\s*\d+)?))",
+            r"(?:dostaw[ay] w ciągu \d+ dni|termin dostawy\s*[:：]?\s*\d+ dni)",
+            r"(?:\d+[- ]letnia gwarancja|\d+ lata gwarancji|dożywotnia gwarancja)",
             r"(?:wyłączna technologia|jedyny dostawca|najlepszy na świecie|gwarantowane wyniki|100\s*% kompatybiln)",
             r"szafa.{0,30}zawór.{0,30}(?:instalowane szeregowo|instalowane razem)",
         ),
     }
-    CLAIM_DISCLAIMER_PATTERNS = {
-        "zh": (r"混气柜与比例阀不是串联组件，不应同时安装。?",),
-        "es": (r"No son componentes en serie y no deben instalarse juntos\.?",),
-        "pt": (r"Não são componentes em série e não devem ser instalados juntos\.?",),
-        "ja": (r"直列部品ではなく、同時に設置しません。?",),
-        "ko": (r"직렬 구성품이 아니며 함께 설치하지 않습니다\.?",),
-        "pl": (r"To nie są elementy szeregowe i nie należy instalować ich razem\.?",),
+    CLAIM_NEGATION_PATTERNS = {
+        "*": r"\b(?:not|without)\b",
+        "zh": r"(?:不|未|没有|并非)",
+        "es": r"\b(?:no|sin)\b",
+        "pt": r"\b(?:não|sem)\b",
+        "ja": r"(?:ない|ありません|未取得|なく)",
+        "ko": r"(?:않|없|아닙니다)",
+        "pl": r"\b(?:nie|bez)\b",
     }
 
     def _translation_path(self, dataset, locale):
@@ -1909,7 +1910,9 @@ class TranslationDataTests(unittest.TestCase):
         for match in self.TECHNICAL_FACT.finditer(value):
             fact = match.group(0)
             if not fact.startswith(("http://", "https://", "/")):
-                fact = re.sub(r"\s+", "", fact).casefold()
+                fact = re.sub(r"\s+", "", fact)
+                fact = fact.translate(str.maketrans("‐‑‒–—−", "------"))
+                fact = re.sub(r"(?<=\d),(?=\d)", ".", fact)
             facts.append(fact)
         return Counter(facts)
 
@@ -2056,12 +2059,15 @@ class TranslationDataTests(unittest.TestCase):
                 ),
                 f"{locale}/{dataset}/{path}: legacy LISHI branding is forbidden",
             )
-            claim_text = value
-            for disclaimer in self.CLAIM_DISCLAIMER_PATTERNS[locale]:
-                claim_text = re.sub(disclaimer, "", claim_text, flags=re.IGNORECASE)
+            claim_is_negated = bool(
+                re.search(self.CLAIM_NEGATION_PATTERNS["*"], value, re.IGNORECASE)
+                or re.search(self.CLAIM_NEGATION_PATTERNS[locale], value, re.IGNORECASE)
+            )
+            if claim_is_negated:
+                continue
             for pattern in self.FORBIDDEN_CLAIM_PATTERNS["*"] + self.FORBIDDEN_CLAIM_PATTERNS[locale]:
                 self.assertIsNone(
-                    re.search(pattern, claim_text, re.IGNORECASE),
+                    re.search(pattern, value, re.IGNORECASE),
                     f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}",
                 )
 
@@ -2268,6 +2274,92 @@ class TranslationGuardRuleTests(unittest.TestCase):
             "disclaimer": "To nie są elementy szeregowe i nie należy instalować ich razem.",
         },
     }
+    CLAIM_REVIEW_FIXTURES = {
+        "zh": {
+            "forbidden": (
+                "本设备已取得CE认证",
+                "提供3年质保",
+                "明确交期为7天",
+                "行业唯一供应商，保证结果",
+                "已有500套安装案例",
+                "一体式混气柜与比例阀同时安装",
+            ),
+            "allowed": (
+                "本设备未取得CE认证",
+                "混气柜与比例阀不串联安装",
+            ),
+        },
+        "es": {
+            "forbidden": (
+                "Equipo con certificación CE",
+                "Garantía de 3 años",
+                "Plazo de entrega: 7 días",
+                "Proveedor único con resultados garantizados",
+                "500 instalaciones completadas",
+                "El armario y la válvula se instalan juntos",
+            ),
+            "allowed": (
+                "Equipo sin certificación CE",
+                "El armario y la válvula no se instalan en serie",
+            ),
+        },
+        "pt": {
+            "forbidden": (
+                "Equipamento com certificação CE",
+                "3 anos de garantia",
+                "Prazo de entrega de 7 dias",
+                "Fornecedor único com resultados garantidos",
+                "500 instalações concluídas",
+                "O gabinete e a válvula são instalados juntos",
+            ),
+            "allowed": (
+                "Equipamento sem certificação CE",
+                "O gabinete e a válvula não são instalados em série",
+            ),
+        },
+        "ja": {
+            "forbidden": (
+                "CE認証取得済み",
+                "3年保証",
+                "納期は7日",
+                "唯一の供給者で結果を保証",
+                "500台の導入実績",
+                "キャビネットとバルブを同時に設置",
+            ),
+            "allowed": (
+                "CE認証は未取得です",
+                "キャビネットとバルブを直列には設置しない",
+            ),
+        },
+        "ko": {
+            "forbidden": (
+                "CE 인증 취득",
+                "3년 보증",
+                "납기는 7일",
+                "유일한 공급업체이며 결과를 보장",
+                "500대 설치 실적",
+                "캐비닛과 밸브를 함께 설치",
+            ),
+            "allowed": (
+                "CE 인증이 없습니다",
+                "캐비닛과 밸브는 직렬 구성품이 아닙니다",
+            ),
+        },
+        "pl": {
+            "forbidden": (
+                "Urządzenie ma certyfikat CE",
+                "3 lata gwarancji",
+                "Termin dostawy: 7 dni",
+                "Jedyny dostawca z gwarantowanymi wynikami",
+                "500 instalacji zakończonych",
+                "Szafa i zawór są instalowane razem",
+            ),
+            "allowed": (
+                "Urządzenie bez certyfikatu CE",
+                "Szafa i zawór nie są instalowane szeregowo",
+            ),
+        },
+    }
 
     def setUp(self):
         self.guard = TranslationDataTests("test_00_locale_order_is_exact")
@@ -2302,6 +2394,49 @@ class TranslationGuardRuleTests(unittest.TestCase):
             )
         }
         self.guard._assert_critical_facts("es", "fixture", english, localized)
+
+    def test_fact_guard_allows_cjk_adjacent_measurements(self):
+        english = {"measurement": "Thickness 20 mm; output 20 kW; flow 200 m³/h"}
+        localized_values = {
+            "zh": "厚度20mm；出力20kW；流量200 m³/h",
+            "ja": "厚さ20mm、出力20kW、流量200 m³/h",
+            "ko": "두께20mm, 출력20kW, 유량200 m³/h",
+        }
+        for locale, value in localized_values.items():
+            with self.subTest(locale=locale):
+                self.guard._assert_critical_facts(
+                    locale, "fixture", english, {"measurement": value}
+                )
+
+    def test_fact_guard_normalizes_decimal_separator_and_range_dash(self):
+        self.guard._assert_critical_facts(
+            "es",
+            "fixture",
+            {"measurement": "Pressure 1.5–1.6 MPa"},
+            {"measurement": "Presión 1,5-1,6 MPa"},
+        )
+
+    def test_fact_guard_preserves_unit_and_model_case(self):
+        for english_value, localized_value in (
+            ("Pressure 1.5 MPa", "Presión 1,5 mPa"),
+            ("Power 20 kW", "Potencia 20 MW"),
+            ("Power 20 kW", "Potencia 20 KW"),
+            ("Use model MSPV2_4000", "Usar modelo MSPv2_4000"),
+        ):
+            with self.subTest(localized=localized_value):
+                self.assert_guard_failure(
+                    lambda english_value=english_value, localized_value=localized_value: self.guard._assert_critical_facts(
+                        "es",
+                        "fixture",
+                        {"measurement": english_value},
+                        {"measurement": localized_value},
+                    )
+                )
+
+    def test_fact_guard_does_not_extract_hour_suffix_as_path(self):
+        facts = self.guard._technical_facts("Flow unit m³/h; measured 200 m³/h")
+        self.assertNotIn("/h", facts)
+        self.assertEqual(facts["200m³/h"], 1)
 
     def test_fact_guard_is_independent_of_product_builder_validation(self):
         english = {"measurement": "Pressure 20 bar"}
@@ -2391,6 +2526,21 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 self.guard._assert_brand_and_claim_boundaries(
                     locale, "fixture", {}, {"text": fixtures["disclaimer"]}
                 )
+
+    def test_claim_guard_review_examples_respect_local_negation_context(self):
+        for locale, fixtures in self.CLAIM_REVIEW_FIXTURES.items():
+            for text in fixtures["forbidden"]:
+                with self.subTest(locale=locale, kind="forbidden", text=text):
+                    self.assert_guard_failure(
+                        lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                            locale, "fixture", {}, {"text": text}
+                        )
+                    )
+            for text in fixtures["allowed"]:
+                with self.subTest(locale=locale, kind="allowed", text=text):
+                    self.guard._assert_brand_and_claim_boundaries(
+                        locale, "fixture", {}, {"text": text}
+                    )
 
     def test_english_allowlist_has_global_and_locale_specific_layers(self):
         for locale in self.guard.LOCALES:
