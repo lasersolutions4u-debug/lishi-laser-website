@@ -268,24 +268,6 @@ def _normalize_newlines(value):
     return value.replace("\r\n", "\n").replace("\r", "\n")
 
 
-def _active_start_tag(template_text, position, tag_name):
-    lowered = template_text.lower()
-    opening_tags = list(
-        re.finditer(rf"<{re.escape(tag_name)}(?=[\s>/])", lowered[:position])
-    )
-    closing_tags = list(
-        re.finditer(rf"</{re.escape(tag_name)}(?=[\s>])", lowered[:position])
-    )
-    start = opening_tags[-1].start() if opening_tags else -1
-    close = closing_tags[-1].start() if closing_tags else -1
-    if start < 0 or start < close:
-        return None
-    end = template_text.find(">", start, position)
-    if end < 0:
-        return None
-    return template_text[start : end + 1]
-
-
 def _raise_context_error(locale, page_key, match, detail):
     raise ValueError(
         f"Invalid placeholder context: {locale}/{page_key}: "
@@ -293,33 +275,200 @@ def _raise_context_error(locale, page_key, match, detail):
     )
 
 
+def _raise_template_error(locale, page_key, detail):
+    raise ValueError(f"Invalid template context: {locale}/{page_key}: {detail}")
+
+
+def _tag_has_attribute(tag_text, name, value=None):
+    match = re.search(
+        rf"\b{re.escape(name)}\s*=\s*([\"'])(?P<value>.*?)\1",
+        tag_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return False
+    if value is None:
+        return True
+    return match.group("value") == value
+
+
+def _is_language_menu_tag(tag_text):
+    class_match = re.search(
+        r"\bclass\s*=\s*([\"'])(?P<value>.*?)\1",
+        tag_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    return bool(
+        class_match
+        and "lang-dropdown" in class_match.group("value").split()
+        and _tag_has_attribute(tag_text, "id", "langDropdown")
+    )
+
+
+def _scan_template_contexts(template_text, locale, page_key):
+    placeholder_starts = {match.start() for match in PLACEHOLDER.finditer(template_text)}
+    contexts = {}
+    state = "data"
+    quote = None
+    attribute_name = None
+    tag_start = None
+    raw_open_tag = None
+    closing_raw_tag = None
+    in_head = False
+    div_stack = []
+    index = 0
+    lowered = template_text.lower()
+
+    while index < len(template_text):
+        if index in placeholder_starts:
+            placeholder_state = "attribute" if state == "tag" and quote else state
+            contexts[index] = {
+                "state": placeholder_state,
+                "quote": quote,
+                "attribute_name": attribute_name,
+                "raw_open_tag": raw_open_tag,
+                "in_head": in_head,
+                "in_language_menu": bool(div_stack and div_stack[-1]),
+            }
+
+        if state == "comment":
+            if template_text.startswith("-->", index):
+                state = "data"
+                index += 3
+            else:
+                index += 1
+            continue
+
+        if state in {"script", "style"}:
+            closing = f"</{state}"
+            if lowered.startswith(closing, index):
+                boundary = index + len(closing)
+                if boundary < len(template_text) and not (
+                    template_text[boundary].isspace() or template_text[boundary] == ">"
+                ):
+                    index += 1
+                    continue
+                closing_raw_tag = state
+                state = "tag"
+                tag_start = index
+                quote = None
+                attribute_name = None
+                index += 1
+            else:
+                index += 1
+            continue
+
+        if state == "data":
+            if template_text.startswith("<!--", index):
+                state = "comment"
+                index += 4
+                continue
+            if template_text[index] == "<":
+                state = "tag"
+                tag_start = index
+                quote = None
+                attribute_name = None
+            index += 1
+            continue
+
+        character = template_text[index]
+        if quote:
+            if character == quote:
+                quote = None
+                attribute_name = None
+            index += 1
+            continue
+        if character in {'"', "'"}:
+            before_quote = template_text[tag_start + 1 : index]
+            attribute_match = re.search(
+                r"(?:^|\s)(?P<name>[^\s=<>/]+)\s*=\s*$", before_quote
+            )
+            if not attribute_match:
+                _raise_template_error(locale, page_key, "quote outside an attribute value")
+            quote = character
+            attribute_name = attribute_match.group("name")
+            index += 1
+            continue
+        if character == "<":
+            _raise_template_error(locale, page_key, "unexpected < inside a tag")
+        if character != ">":
+            index += 1
+            continue
+
+        tag_text = template_text[tag_start : index + 1]
+        tag_match = re.match(
+            r"<\s*(?P<closing>/)?\s*(?P<name>[a-zA-Z][a-zA-Z0-9:-]*)\b",
+            tag_text,
+        )
+        if not tag_match:
+            if not re.match(r"<\s*[!?]", tag_text):
+                _raise_template_error(locale, page_key, "unrecognized tag boundary")
+            state = "data"
+            index += 1
+            continue
+
+        name = tag_match.group("name").lower()
+        closing = bool(tag_match.group("closing"))
+        self_closing = tag_text.rstrip().endswith("/>")
+        if closing_raw_tag:
+            if not closing or name != closing_raw_tag:
+                _raise_template_error(locale, page_key, f"invalid {closing_raw_tag} closing tag")
+            closing_raw_tag = None
+            raw_open_tag = None
+            state = "data"
+        elif closing and name in {"script", "style"}:
+            _raise_template_error(locale, page_key, f"unexpected closing {name} tag")
+        elif not closing and name in {"script", "style"}:
+            if self_closing:
+                _raise_template_error(locale, page_key, f"self-closing {name} tag")
+            raw_open_tag = tag_text
+            state = name
+        else:
+            state = "data"
+
+        if name == "head":
+            if closing:
+                if not in_head:
+                    _raise_template_error(locale, page_key, "unexpected closing head tag")
+                in_head = False
+            elif not self_closing:
+                if in_head:
+                    _raise_template_error(locale, page_key, "nested head tag")
+                in_head = True
+        elif name == "div":
+            if closing:
+                if not div_stack:
+                    _raise_template_error(locale, page_key, "unexpected closing div tag")
+                div_stack.pop()
+            elif not self_closing:
+                div_stack.append(_is_language_menu_tag(tag_text))
+        index += 1
+
+    if state != "data":
+        _raise_template_error(locale, page_key, f"unterminated {state} context")
+    if quote:
+        _raise_template_error(locale, page_key, "unterminated attribute value")
+    if in_head:
+        _raise_template_error(locale, page_key, "unterminated head tag")
+    if div_stack:
+        _raise_template_error(locale, page_key, "unterminated div tag")
+    return contexts
+
+
 def _validate_placeholder_contexts(template_text, locale, page_key):
+    contexts = _scan_template_contexts(template_text, locale, page_key)
     for match in PLACEHOLDER.finditer(template_text):
         kind = match.group("kind")
         key = match.group("key")
-        tag_start = template_text.rfind("<", 0, match.start())
-        tag_close = template_text.rfind(">", 0, match.start())
-        inside_tag = tag_start > tag_close
+        context = contexts[match.start()]
+        state = context["state"]
 
-        if inside_tag:
+        if state == "attribute":
             if kind != "attr":
                 _raise_context_error(
-                    locale, page_key, match, "only attr placeholders are allowed in tags"
+                    locale, page_key, match, "only attr placeholders are allowed in attributes"
                 )
-            tag_end = template_text.find(">", match.end())
-            if tag_end < 0:
-                _raise_context_error(
-                    locale,
-                    page_key,
-                    match,
-                    "Attribute placeholder requires double-quoted attribute context",
-                )
-            before = template_text[tag_start:match.start()]
-            after = template_text[match.end():tag_end]
-            has_open_double_attribute = re.search(
-                r'(?:^|\s)[^\s=<>]+\s*=\s*"[^"]*$', before
-            )
-            if not has_open_double_attribute or '"' not in after:
+            if context["quote"] != '"' or not context["attribute_name"]:
                 _raise_context_error(
                     locale,
                     page_key,
@@ -327,9 +476,10 @@ def _validate_placeholder_contexts(template_text, locale, page_key):
                     "Attribute placeholder requires double-quoted attribute context",
                 )
             continue
-
-        script_tag = _active_start_tag(template_text, match.start(), "script")
-        style_tag = _active_start_tag(template_text, match.start(), "style")
+        if state in {"tag", "comment"}:
+            _raise_context_error(
+                locale, page_key, match, f"placeholders cannot appear in {state} context"
+            )
         if kind == "attr":
             _raise_context_error(
                 locale,
@@ -338,14 +488,14 @@ def _validate_placeholder_contexts(template_text, locale, page_key):
                 "Attribute placeholder requires double-quoted attribute context",
             )
         if kind == "text":
-            if script_tag or style_tag:
+            if state in {"script", "style"}:
                 _raise_context_error(
                     locale, page_key, match, "text placeholders cannot appear in script or style"
                 )
             continue
         if kind == "json":
-            if not script_tag or not re.search(
-                r'\btype\s*=\s*(["\'])application/ld\+json\1', script_tag, re.IGNORECASE
+            if state != "script" or not _tag_has_attribute(
+                context["raw_open_tag"], "type", "application/ld+json"
             ):
                 _raise_context_error(
                     locale,
@@ -354,21 +504,18 @@ def _validate_placeholder_contexts(template_text, locale, page_key):
                     "json placeholders require application/ld+json script content",
                 )
             continue
-        if script_tag or style_tag:
+        if state in {"script", "style"}:
             _raise_context_error(
                 locale, page_key, match, "safe placeholders cannot appear in script or style"
             )
         if key in {"hreflang_links", "__hreflang_links"}:
-            if not _active_start_tag(template_text, match.start(), "head"):
+            if not context["in_head"]:
                 _raise_context_error(
                     locale, page_key, match, "hreflang markup must be a direct head block"
                 )
             continue
         if key in {"language_menu", "__language_menu"}:
-            div_tag = _active_start_tag(template_text, match.start(), "div")
-            if not div_tag or not re.search(
-                r'\bclass\s*=\s*(["\'])[^"\']*\blang-dropdown\b[^"\']*\1', div_tag
-            ) or not re.search(r'\bid\s*=\s*(["\'])langDropdown\1', div_tag):
+            if not context["in_language_menu"]:
                 _raise_context_error(
                     locale, page_key, match, "language menu markup requires langDropdown block"
                 )

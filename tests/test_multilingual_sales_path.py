@@ -1028,6 +1028,77 @@ class StaticCoreRendererTests(unittest.TestCase):
                 {"locale": "en", "shared": {"home": payload}},
             )
 
+    def test_greater_than_inside_an_attribute_cannot_hide_text_placeholder_context(self):
+        payload = 'x" onmouseover="alert(1)'
+        with self.assertRaisesRegex(ValueError, "placeholder context"):
+            self.builder.render_page(
+                "en",
+                "about",
+                '<div data-note=">" title="{{text:shared.home}}"></div>',
+                {"locale": "en", "shared": {"home": payload}},
+            )
+
+    def test_quoted_angle_brackets_do_not_change_attribute_or_text_context(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        for quoted_note in ('data-note="> <"', "data-note='> <'"):
+            with self.subTest(quoted_note=quoted_note):
+                with self.assertRaisesRegex(ValueError, "placeholder context"):
+                    self.builder.render_page(
+                        "en",
+                        "about",
+                        f'<div {quoted_note} title="{{{{text:shared.home}}}}"></div>',
+                        content,
+                    )
+                rendered = self.builder.render_page(
+                    "en",
+                    "about",
+                    f'<div {quoted_note} title="{{{{attr:shared.home}}}}">'
+                    "{{text:shared.home}}</div>",
+                    content,
+                )
+                self.assertIn('title="Home">Home</div>', rendered)
+
+    def test_comments_raw_text_and_malformed_templates_are_fail_closed(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        try:
+            valid_json = self.builder.render_page(
+                "en",
+                "about",
+                '<script data-note="> <" type="application/ld+json">'
+                '{"name":{{json:shared.home}}}</script>',
+                content,
+            )
+        except ValueError as exc:
+            self.fail(f"Quoted angle bracket changed the script context: {exc}")
+        json_text = valid_json.split('type="application/ld+json">', 1)[1].rsplit(
+            "</script>", 1
+        )[0]
+        self.assertEqual(json.loads(json_text)["name"], "Home")
+        self.assertEqual(
+            self.builder.render_page(
+                "en",
+                "about",
+                '<div data-note="> <">{{text:shared.home}}</div>',
+                content,
+            ),
+            '<div data-note="> <">Home</div>',
+        )
+
+        rejected = (
+            '<!-- note > {{text:shared.home}} -->',
+            '<script data-note="> <">{{text:shared.home}}</script>',
+            "<style data-note='> <'>{{text:shared.home}}</style>",
+            '<div title="unterminated>{{attr:shared.home}}</div>',
+            '<div title="unterminated',
+            '<!-- unterminated',
+            '<script type="application/ld+json">{"name":"unterminated"}',
+            '<style>unterminated',
+        )
+        for template in rejected:
+            with self.subTest(template=template):
+                with self.assertRaisesRegex(ValueError, "template context|placeholder context"):
+                    self.builder.render_page("en", "about", template, content)
+
     def test_single_quote_payload_cannot_create_a_new_attribute(self):
         payload = "x' onmouseover='alert(1)"
         rendered = self.builder.render_page(
