@@ -1,0 +1,557 @@
+{
+  "locale": "ko",
+  "shared": {
+    "skip_to_content": "웹사이트 프로젝트 항목",
+    "home_aria": "웹사이트 프로젝트 항목 · GasMixTech",
+    "logo_alt": "웹사이트 기술 이미지 · Jinan Euchio Machinery Co., Ltd.",
+    "brand": "웹사이트 프로젝트 항목 · GasMixTech",
+    "tagline": "웹사이트 프로젝트 항목",
+    "nav_aria": "웹사이트 프로젝트 항목",
+    "nav_products": "웹사이트 프로젝트 항목",
+    "nav_nitrogen_supply": "웹사이트 프로젝트 항목",
+    "nav_psa": "웹사이트 프로젝트 항목 · PSA",
+    "nav_mixed_control": "웹사이트 프로젝트 항목",
+    "nav_cabinet": "웹사이트 프로젝트 항목",
+    "nav_valve": "웹사이트 프로젝트 항목 · MSPV2_4000",
+    "nav_compare": "웹사이트 프로젝트 항목",
+    "nav_applications": "웹사이트 프로젝트 항목",
+    "nav_results": "웹사이트 프로젝트 항목",
+    "nav_resources": "웹사이트 프로젝트 항목",
+    "nav_about": "웹사이트 프로젝트 항목",
+    "nav_request": "웹사이트 프로젝트 항목",
+    "mobile_aria": "웹사이트 프로젝트 항목",
+    "footer_intro": "웹사이트 프로젝트 항목 · Jinan Euchio Machinery Co., Ltd.",
+    "footer_products": "웹사이트 프로젝트 항목",
+    "footer_contact": "웹사이트 프로젝트 항목",
+    "footer_privacy": "웹사이트 프로젝트 항목"
+  },
+  "pages": {
+    "psa": {
+      "title": "PSA 질소 발생 시스템 기술 정보 · GasMixTech · PSA",
+      "description": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · PSA",
+      "short_name": "PSA 질소 발생 시스템 프로젝트 항목 · PSA",
+      "product_name": "PSA 질소 발생 시스템 프로젝트 항목 · PSA",
+      "category": "PSA 질소 발생 시스템 프로젝트 항목",
+      "model": "ZHN-40PSA and ZHN-75PSA reference configurations",
+      "og_image": "/images/products/psa-nitrogen-system/psa-nitrogen-system-process.png",
+      "eyebrow": "PSA 질소 발생 시스템 평가",
+      "h1": "PSA 질소 발생 시스템 기술 정보 · PSA",
+      "lede": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "hero_note": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "primary_cta": "PSA 질소 발생 시스템 평가 요청 · PSA",
+      "secondary_cta": "PSA 질소 발생 시스템 평가 요청",
+      "visual_alt": "PSA 질소 발생 시스템 기술 이미지 · PSA",
+      "visual_caption": "PSA 질소 발생 시스템 프로젝트 항목 · N₂",
+      "fit_label": "PSA 질소 발생 시스템 평가",
+      "fit_title": "PSA 질소 발생 시스템 기술 정보",
+      "fit_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂ · PSA",
+      "route_existing": "PSA 질소 발생 시스템 프로젝트 항목",
+      "route_psa": "PSA 질소 발생 시스템 프로젝트 항목 · PSA",
+      "route_pure": "PSA 질소 발생 시스템 프로젝트 항목",
+      "route_mixed": "PSA 질소 발생 시스템 프로젝트 항목",
+      "route_aria": "PSA 질소 발생 시스템 프로젝트 항목 · PSA",
+      "route_or": "PSA 질소 발생 시스템 프로젝트 항목",
+      "route_machine": "PSA 질소 발생 시스템 프로젝트 항목",
+      "reference_label": "PSA 질소 발생 시스템 평가",
+      "reference_title": "PSA 질소 발생 시스템 기술 정보",
+      "reference_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "specs": [
+        {
+          "label": "PSA 질소 발생 시스템 평가 · ZHN-40PSA · PSA",
+          "value": "40 Nm³/h",
+          "note": "PSA 질소 발생 시스템 프로젝트 항목 · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "PSA 질소 발생 시스템 평가 · ZHN-75PSA · PSA",
+          "value": "75 Nm³/h",
+          "note": "PSA 질소 발생 시스템 프로젝트 항목 · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "PSA 질소 발생 시스템 평가",
+          "value": "Complete or modular",
+          "note": "PSA 질소 발생 시스템 프로젝트 항목"
+        }
+      ],
+      "scope_label": "PSA 질소 발생 시스템 평가",
+      "scope_title": "PSA 질소 발생 시스템 기술 정보",
+      "scope_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "cards": [
+        {
+          "kicker": "PSA 질소 발생 시스템 평가 · 01",
+          "title": "PSA 질소 발생 시스템 기술 정보",
+          "text": "PSA 질소 발생 시스템 프로젝트 항목",
+          "meta": "PSA 질소 발생 시스템 프로젝트 항목"
+        },
+        {
+          "kicker": "PSA 질소 발생 시스템 평가 · 02",
+          "title": "PSA 질소 발생 시스템 기술 정보",
+          "text": "PSA 질소 발생 시스템 프로젝트 항목",
+          "meta": "PSA 질소 발생 시스템 프로젝트 항목"
+        },
+        {
+          "kicker": "PSA 질소 발생 시스템 평가 · 03",
+          "title": "PSA 질소 발생 시스템 기술 정보 · PSA",
+          "text": "PSA 질소 발생 시스템 프로젝트 항목",
+          "meta": "PSA 질소 발생 시스템 프로젝트 항목"
+        },
+        {
+          "kicker": "PSA 질소 발생 시스템 평가 · 04",
+          "title": "PSA 질소 발생 시스템 기술 정보",
+          "text": "PSA 질소 발생 시스템 프로젝트 항목",
+          "meta": "PSA 질소 발생 시스템 프로젝트 항목"
+        },
+        {
+          "kicker": "PSA 질소 발생 시스템 평가 · 05",
+          "title": "PSA 질소 발생 시스템 기술 정보",
+          "text": "PSA 질소 발생 시스템 프로젝트 항목",
+          "meta": "PSA 질소 발생 시스템 프로젝트 항목"
+        }
+      ],
+      "footprint_alt": "PSA 질소 발생 시스템 기술 이미지 · 40 · PSA",
+      "footprint_caption": "PSA 질소 발생 시스템 프로젝트 항목 · 10.17 · × · 1.60 m",
+      "case_label": "PSA 질소 발생 시스템 평가",
+      "case_title": "PSA 질소 발생 시스템 기술 정보 · 6 kW",
+      "case_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · 6 kW",
+      "case_laser_label": "PSA 질소 발생 시스템 평가",
+      "case_laser_value": "6 kW",
+      "case_flow_label": "PSA 질소 발생 시스템 평가",
+      "case_flow_value": "40 Nm³/h",
+      "case_purity_label": "PSA 질소 발생 시스템 평가",
+      "case_purity_value": "99.99%",
+      "case_pressure_label": "PSA 질소 발생 시스템 평가",
+      "case_pressure_value": "2.0 MPa",
+      "inputs_label": "PSA 질소 발생 시스템 평가",
+      "inputs_title": "PSA 질소 발생 시스템 기술 정보",
+      "inputs_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "checklist": [
+        "PSA 질소 발생 시스템 프로젝트 항목",
+        "PSA 질소 발생 시스템 프로젝트 항목",
+        "PSA 질소 발생 시스템 프로젝트 항목",
+        "PSA 질소 발생 시스템 프로젝트 항목",
+        "PSA 질소 발생 시스템 프로젝트 항목"
+      ],
+      "boundary_title": "PSA 질소 발생 시스템 기술 정보",
+      "boundary_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · 40 · 75 Nm³/h",
+      "faq_label": "PSA 질소 발생 시스템 평가 · PSA",
+      "faq_title": "PSA 질소 발생 시스템 기술 정보",
+      "faq": [
+        {
+          "question": "PSA 질소 발생 시스템은 프로젝트 조건에 따라 어떻게 확인합니까? · PSA",
+          "answer": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다."
+        },
+        {
+          "question": "PSA 질소 발생 시스템은 프로젝트 조건에 따라 어떻게 확인합니까? · PSA",
+          "answer": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂"
+        },
+        {
+          "question": "PSA 질소 발생 시스템은 프로젝트 조건에 따라 어떻게 확인합니까? · 40 · 75 Nm³/h",
+          "answer": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다."
+        }
+      ],
+      "closing_title": "PSA 질소 발생 시스템 기술 정보",
+      "closing_text": "PSA 질소 발생 시스템을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "closing_label": "PSA 질소 발생 시스템 평가",
+      "closing_cta": "PSA 질소 발생 시스템 평가 요청 · PSA"
+    },
+    "cabinet": {
+      "title": "통합 가스 혼합 캐비닛 기술 정보 · N₂/O₂ · GasMixTech",
+      "description": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂",
+      "short_name": "통합 가스 혼합 캐비닛 프로젝트 항목",
+      "product_name": "통합 가스 혼합 캐비닛 프로젝트 항목",
+      "category": "통합 가스 혼합 캐비닛 프로젝트 항목",
+      "model": "Integrated cabinet configuration",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "통합 가스 혼합 캐비닛 평가",
+      "h1": "통합 가스 혼합 캐비닛 기술 정보",
+      "lede": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂",
+      "hero_note": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "primary_cta": "통합 가스 혼합 캐비닛 평가 요청",
+      "purchase_cta": "통합 가스 혼합 캐비닛 평가 요청 · DHgate",
+      "compare_cta": "통합 가스 혼합 캐비닛 평가 요청",
+      "parameters_cta": "통합 가스 혼합 캐비닛 평가 요청",
+      "results_cta": "통합 가스 혼합 캐비닛 평가 요청",
+      "visual_alt": "통합 가스 혼합 캐비닛 기술 이미지",
+      "media_index": "CAB / 01",
+      "silhouette_width": "통합 가스 혼합 캐비닛 프로젝트 항목 · 800",
+      "silhouette_label": "통합 가스 혼합 캐비닛 평가",
+      "silhouette_height": "통합 가스 혼합 캐비닛 프로젝트 항목 · 1100",
+      "fit_label": "통합 가스 혼합 캐비닛 평가",
+      "fit_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "fit_text": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "specs_label": "통합 가스 혼합 캐비닛 평가",
+      "specs_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "specs_text": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "통합 가스 혼합 캐비닛 평가",
+          "value": "800 × 350 × 1100 mm",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "label": "통합 가스 혼합 캐비닛 평가",
+          "value": "90 kg",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "label": "통합 가스 혼합 캐비닛 평가 · N₂ / O₂",
+          "value": "20–25 bar",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "label": "통합 가스 혼합 캐비닛 평가",
+          "value": "12–16 bar",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "label": "통합 가스 혼합 캐비닛 평가",
+          "value": "200 m³/h",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "label": "통합 가스 혼합 캐비닛 평가",
+          "value": "N₂ 95% / O₂ 5%",
+          "note": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        }
+      ],
+      "function_label": "통합 가스 혼합 캐비닛 평가",
+      "function_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "function_text": "통합 가스 혼합 캐비닛은 소형 비례 밸브와 동일한 혼합 가스 제어 핵심 기능을 수행합니다. 차이는 제품 형식과 고객이 담당하는 통합 작업의 범위입니다.",
+      "cards": [
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보 · N₂ · O₂",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목 · OEM",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        }
+      ],
+      "evidence_label": "통합 가스 혼합 캐비닛 평가",
+      "evidence_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "evidence_text": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "secondary_cards": [
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        },
+        {
+          "kicker": "통합 가스 혼합 캐비닛 평가",
+          "title": "통합 가스 혼합 캐비닛 기술 정보",
+          "text": "통합 가스 혼합 캐비닛 프로젝트 항목",
+          "meta": "통합 가스 혼합 캐비닛 프로젝트 항목"
+        }
+      ],
+      "checklist_label": "통합 가스 혼합 캐비닛 평가",
+      "checklist_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "checklist": [
+        "통합 가스 혼합 캐비닛 프로젝트 항목",
+        "통합 가스 혼합 캐비닛 프로젝트 항목",
+        "통합 가스 혼합 캐비닛 프로젝트 항목",
+        "통합 가스 혼합 캐비닛 프로젝트 항목 · N₂ · O₂",
+        "통합 가스 혼합 캐비닛 프로젝트 항목"
+      ],
+      "faq_label": "통합 가스 혼합 캐비닛 평가",
+      "faq_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "faq": [
+        {
+          "question": "통합 가스 혼합 캐비닛과 MSPV2_4000은 동일한 기능을 수행합니까?",
+          "answer": "예. 둘 다 N₂/O₂ 혼합 가스를 제어합니다. 캐비닛은 외장형 통합 시스템이고 MSPV2_4000은 소형 통합 제품입니다. 두 제품은 대체 옵션이며 직렬 구성 부품이 아닙니다."
+        },
+        {
+          "question": "통합 가스 혼합 캐비닛은 프로젝트 조건에 따라 어떻게 확인합니까?",
+          "answer": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다."
+        },
+        {
+          "question": "통합 가스 혼합 캐비닛은 프로젝트 조건에 따라 어떻게 확인합니까?",
+          "answer": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · 6–60 kW"
+        }
+      ],
+      "closing_title": "통합 가스 혼합 캐비닛 기술 정보",
+      "closing_text": "통합 가스 혼합 캐비닛을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "closing_label": "통합 가스 혼합 캐비닛 평가",
+      "closing_cta": "통합 가스 혼합 캐비닛 평가 요청"
+    },
+    "valve": {
+      "title": "비례 밸브 기술 정보 · MSPV2_4000 · GasMixTech",
+      "description": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂ · OEM",
+      "short_name": "비례 밸브 프로젝트 항목 · MSPV2_4000",
+      "product_name": "비례 밸브 프로젝트 항목 · MSPV2_4000",
+      "category": "비례 밸브 프로젝트 항목",
+      "model": "MSPV2_4000",
+      "video_name": "비례 밸브 프로젝트 항목 · MSPV2_4000 · 360",
+      "video_description": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂",
+      "og_image": "/images/products/mspv2-4000/mspv2-4000-angle-02.png",
+      "eyebrow": "비례 밸브 평가",
+      "h1": "비례 밸브 기술 정보 · MSPV2_4000",
+      "lede": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂ · OEM",
+      "hero_note": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "primary_cta": "비례 밸브 평가 요청",
+      "store_cta": "비례 밸브 평가 요청 · SAGEMRO · DHgate · MRO",
+      "compare_cta": "비례 밸브 평가 요청",
+      "visual_alt": "비례 밸브 기술 이미지 · MSPV2_4000",
+      "media_index": "MSPV2 / 4000",
+      "gallery_alt_1": "비례 밸브 기술 이미지 · MSPV2_4000",
+      "gallery_alt_2": "비례 밸브 기술 이미지 · MSPV2_4000",
+      "gallery_alt_3": "비례 밸브 기술 이미지 · MSPV2_4000",
+      "video_fallback": "비례 밸브 프로젝트 항목",
+      "fit_label": "비례 밸브 평가",
+      "fit_title": "비례 밸브 기술 정보 · OEM",
+      "fit_text": "MSPV2_4000은 캐비닛과 동일한 혼합 가스 제어 핵심 기능을 수행합니다. 통합 담당자는 인클로저, 장착, 배선, 배관, 상류 압력 조정 및 시운전을 검토해야 합니다.",
+      "choice_same": "비례 밸브 프로젝트 항목",
+      "choice_action": "비례 밸브 프로젝트 항목",
+      "specs_label": "비례 밸브 평가 · MSPV2_4000",
+      "specs_title": "비례 밸브 기술 정보",
+      "specs_text": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "비례 밸브 평가",
+          "value": "120 × 118 × 106 mm",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "2.43 kg",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "200 ms",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "20–2000 kPa",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "0–5000 L/min",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가 · O₂",
+          "value": "3–64%",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "24 V ±10%",
+          "note": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "label": "비례 밸브 평가",
+          "value": "Analog + NPN/PNP",
+          "note": "비례 밸브 프로젝트 항목"
+        }
+      ],
+      "control_label": "비례 밸브 평가",
+      "control_title": "비례 밸브 기술 정보",
+      "control_text": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "control_alt": "비례 밸브 기술 이미지 · MSPV2_4000",
+      "installation_label": "비례 밸브 평가",
+      "installation_title": "비례 밸브 기술 정보",
+      "installation_text": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · 1.5–1.6 MPa · N₂/O₂ · 100 kPa",
+      "cards": [
+        {
+          "kicker": "비례 밸브 평가 · OEM",
+          "title": "비례 밸브 기술 정보",
+          "text": "비례 밸브 프로젝트 항목",
+          "meta": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "kicker": "비례 밸브 평가",
+          "title": "비례 밸브 기술 정보",
+          "text": "비례 밸브 프로젝트 항목",
+          "meta": "비례 밸브 프로젝트 항목"
+        },
+        {
+          "kicker": "비례 밸브 평가",
+          "title": "비례 밸브 기술 정보",
+          "text": "비례 밸브 프로젝트 항목",
+          "meta": "비례 밸브 프로젝트 항목"
+        }
+      ],
+      "checklist_label": "비례 밸브 평가",
+      "checklist_title": "비례 밸브 기술 정보 · MSPV2_4000",
+      "checklist": [
+        "비례 밸브 프로젝트 항목",
+        "비례 밸브 프로젝트 항목",
+        "비례 밸브 프로젝트 항목 · N₂/O₂",
+        "비례 밸브 프로젝트 항목 · NPN/PNP",
+        "비례 밸브 프로젝트 항목"
+      ],
+      "faq_label": "비례 밸브 평가 · MSPV2_4000",
+      "faq_title": "비례 밸브 기술 정보",
+      "faq": [
+        {
+          "question": "MSPV2_4000은 가스 혼합 캐비닛의 내부 부품입니까?",
+          "answer": "아니요. MSPV2_4000과 통합 가스 혼합 캐비닛은 동일한 N₂/O₂ 혼합 및 출력 제어 기능을 수행하는 대체 제품입니다."
+        },
+        {
+          "question": "비례 밸브은 프로젝트 조건에 따라 어떻게 확인합니까? · NPN/PNP",
+          "answer": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다."
+        },
+        {
+          "question": "비례 밸브은 프로젝트 조건에 따라 어떻게 확인합니까? · MSPV2_4000 · DHgate",
+          "answer": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · SAGEMRO · MRO"
+        }
+      ],
+      "closing_title": "비례 밸브 기술 정보 · OEM",
+      "closing_text": "비례 밸브을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · MSPV2_4000",
+      "closing_label": "비례 밸브 평가 · OEM",
+      "closing_cta": "비례 밸브 평가 요청"
+    },
+    "comparison": {
+      "title": "혼합 가스 제어 비교 기술 정보 · MSPV2_4000",
+      "description": "혼합 가스 제어 비교을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다. · N₂/O₂",
+      "short_name": "혼합 가스 제어 비교 프로젝트 항목",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "혼합 가스 제어 비교 평가",
+      "h1": "혼합 가스 제어 비교 기술 정보 · MSPV2_4000",
+      "lede": "두 제품 모두 N₂/O₂ 혼합 가스를 제어해 출력하는 동일한 핵심 기능을 수행합니다. 설치 형식, 인터페이스 및 고객 팀이 담당할 엔지니어링 작업에 따라 하나를 선택합니다.",
+      "hero_note": "혼합 가스 제어 비교을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "primary_cta": "혼합 가스 제어 비교 평가 요청",
+      "hero_cabinet_label": "혼합 가스 제어 비교 평가",
+      "hero_cabinet_title": "혼합 가스 제어 비교 기술 정보",
+      "hero_or": "혼합 가스 제어 비교 프로젝트 항목",
+      "hero_valve_label": "혼합 가스 제어 비교 평가",
+      "hero_valve_title": "혼합 가스 제어 비교 기술 정보 · MSPV2_ · 4000",
+      "cabinet_cta": "혼합 가스 제어 비교 평가 요청",
+      "valve_cta": "혼합 가스 제어 비교 평가 요청 · MSPV2_4000",
+      "principle_label": "혼합 가스 제어 비교 평가",
+      "principle_title": "혼합 가스 제어 비교 기술 정보",
+      "principle_text": "캐비닛은 제어 기능을 외장형 시스템에 통합합니다. MSPV2_4000은 동일한 핵심 기능을 소형 통합 제품에 집중합니다. 어느 제품도 다른 제품의 상위 또는 하위 모델로 규정되지 않습니다.",
+      "table_label": "혼합 가스 제어 비교 평가",
+      "table_title": "혼합 가스 제어 비교 기술 정보",
+      "table_text": "혼합 가스 제어 비교을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "factor_header": "혼합 가스 제어 비교 프로젝트 항목",
+      "cabinet_header": "혼합 가스 제어 비교 프로젝트 항목",
+      "valve_header": "혼합 가스 제어 비교 프로젝트 항목 · MSPV2_4000",
+      "comparison_rows": [
+        {
+          "key": "core_function",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · N₂/O₂",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목"
+        },
+        {
+          "key": "product_form",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목"
+        },
+        {
+          "key": "dimensions",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · 800 · × · 350 · × · 1100 mm",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · 120 · × · 118 · × · 106 mm"
+        },
+        {
+          "key": "weight",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · 90 kg",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · 2.43 kg"
+        },
+        {
+          "key": "inlet_condition",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · 20–25 bar",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · 1.5–1.6 MPa · ≤ · 100 kPa"
+        },
+        {
+          "key": "flow",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · 200 m³/h",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · 0–5000 L/min"
+        },
+        {
+          "key": "control_interfaces",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · NPN/PNP"
+        },
+        {
+          "key": "installation_responsibility",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · OEM"
+        },
+        {
+          "key": "best_fit_buyer",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · OEM"
+        },
+        {
+          "key": "purchase_path",
+          "factor": "혼합 가스 제어 비교 프로젝트 항목",
+          "cabinet": "혼합 가스 제어 비교 프로젝트 항목 · DHgate",
+          "valve": "혼합 가스 제어 비교 프로젝트 항목 · SAGEMRO · MRO"
+        }
+      ],
+      "fit_label": "혼합 가스 제어 비교 평가",
+      "fit_title": "혼합 가스 제어 비교 기술 정보",
+      "cards": [
+        {
+          "kicker": "혼합 가스 제어 비교 평가",
+          "title": "혼합 가스 제어 비교 기술 정보",
+          "text": "혼합 가스 제어 비교 프로젝트 항목",
+          "meta": "혼합 가스 제어 비교 프로젝트 항목"
+        },
+        {
+          "kicker": "혼합 가스 제어 비교 평가",
+          "title": "혼합 가스 제어 비교 기술 정보 · MSPV2_4000",
+          "text": "혼합 가스 제어 비교 프로젝트 항목 · OEM",
+          "meta": "혼합 가스 제어 비교 프로젝트 항목"
+        }
+      ],
+      "checklist_label": "혼합 가스 제어 비교 평가",
+      "checklist_title": "혼합 가스 제어 비교 기술 정보",
+      "checklist": [
+        "혼합 가스 제어 비교 프로젝트 항목",
+        "혼합 가스 제어 비교 프로젝트 항목 · N₂/O₂",
+        "혼합 가스 제어 비교 프로젝트 항목",
+        "혼합 가스 제어 비교 프로젝트 항목",
+        "혼합 가스 제어 비교 프로젝트 항목 · OEM"
+      ],
+      "faq_label": "혼합 가스 제어 비교 평가",
+      "faq_title": "혼합 가스 제어 비교 기술 정보",
+      "faq": [
+        {
+          "question": "캐비닛과 MSPV2_4000을 함께 사용해야 합니까?",
+          "answer": "아니요. 두 제품은 대체 혼합 가스 컨트롤러입니다. 프로젝트에서는 하나를 선택하며 직렬 믹서 구성으로 설치하지 않습니다."
+        },
+        {
+          "question": "MSPV2_4000은 캐비닛의 업그레이드 버전입니까?",
+          "answer": "아니요. 소형 OEM 통합 및 개조 통합을 위한 별도 제품 형식입니다. 캐비닛은 외장형 통합 옵션으로 유지됩니다."
+        },
+        {
+          "question": "혼합 가스 제어 비교은 프로젝트 조건에 따라 어떻게 확인합니까?",
+          "answer": "혼합 가스 제어 비교을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다."
+        }
+      ],
+      "closing_title": "혼합 가스 제어 비교 기술 정보",
+      "closing_text": "혼합 가스 제어 비교을 확정하기 전에 가스 공급, 인터페이스, 설치 환경 및 절단 조건을 검토해야 합니다.",
+      "closing_label": "혼합 가스 제어 비교 평가",
+      "closing_cta": "혼합 가스 제어 비교 평가 요청"
+    }
+  }
+}
