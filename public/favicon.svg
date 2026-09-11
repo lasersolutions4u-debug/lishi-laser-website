@@ -1,3 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 696 679" width="696" height="679">
-  <image href="/images/logo.png" width="696" height="679" preserveAspectRatio="xMidYMid meet"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <g fill="#c7161d">
+    <path d="M32 4 60 32 52 40 32 20 12 40 4 32Z"/>
+    <path d="m32 20 20 20-14 14-6-6 8-8-8-8-8 8 14 14-6 6-14-14Z"/>
+    <path d="m32 28 6 6-6 6-6-6Z"/>
+  </g>
 </svg>
