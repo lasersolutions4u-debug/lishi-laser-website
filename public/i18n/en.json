@@ -235,6 +235,10 @@
     "europe": "Integration",
     "americas": "Delivery",
     "oceania": "Support",
+    "valueProject": "Project",
+    "valueExport": "Export",
+    "valueReview": "Review",
+    "valueRemote": "Remote",
     "statCountries": "Application review",
     "statContinents": "Project coordination",
     "statPower": "Technical verification",
@@ -297,7 +301,7 @@
     "whatsappThailand": "WhatsApp (Thailand)",
     "relatedLinks": "Related Links",
     "euchioMachines": "EUCHIO — Complete Machines",
-    "sagemroPartsService": "SAGEMRO — Parts &amp; Service",
+    "sagemroPartsService": "SAGEMRO — Parts & Service",
     "dhgateStore": "DHgate Store",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. All rights reserved."
   }

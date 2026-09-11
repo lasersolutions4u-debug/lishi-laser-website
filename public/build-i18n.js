@@ -22,6 +22,10 @@ const CORE_PATHS = [
   '/products/mspv2-4000-proportional-valve',
   '/products/mixed-gas-control-comparison',
 ];
+const SAFE_HTML_KEYS = new Set([
+  'hero.badge',
+  'globalPresence.title',
+]);
 
 // ═══════════════════════════════════════════════════════════════════════
 // Helpers
@@ -32,14 +36,44 @@ const CORE_PATHS = [
  * Keys use dot-notation: {{hero.title}} → strings.hero.title
  */
 function replacePlaceholders(html, strings) {
-  return html.replace(/\{\{([^}]+)\}\}/g, (match, key) => {
+  return html.replace(/\{\{(?:(text|attr|json|safe):)?([^}]+)\}\}/g, (match, context, key) => {
     const normalizedKey = key.trim();
     const value = getNestedValue(strings, normalizedKey);
     if (value === undefined) {
       throw new Error(`Missing translation key: ${normalizedKey}`);
     }
-    return String(value);
+    if (context === 'safe') {
+      if (!SAFE_HTML_KEYS.has(normalizedKey)) {
+        throw new Error(`Unsafe rich text placeholder: ${normalizedKey}`);
+      }
+      return String(value);
+    }
+    if (context === 'attr') return escapeHtmlAttribute(value);
+    if (context === 'json') return serializeJsonString(value);
+    return escapeHtmlText(value);
   });
+}
+
+function escapeHtmlText(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeHtmlAttribute(value) {
+  return escapeHtmlText(value);
+}
+
+function serializeJsonString(value) {
+  return JSON.stringify(String(value))
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }
 
 /**

@@ -1462,8 +1462,8 @@ class HomepageGenerationTests(unittest.TestCase):
 
     def test_whatsapp_label_and_organization_description_are_localized(self):
         template = (PUBLIC / "_template.html").read_text(encoding="utf-8")
-        self.assertIn('aria-label="{{accessibility.whatsappChat}}"', template)
-        self.assertIn('"description": "{{organization.description}}"', template)
+        self.assertIn('aria-label="{{attr:accessibility.whatsappChat}}"', template)
+        self.assertIn('"description": {{json:organization.description}}', template)
         self.assertNotIn('aria-label="Chat on WhatsApp"', template)
         self.assertNotIn(
             '"description": "China-based supplier and solution provider for laser-cutting gas mixing equipment."',
@@ -1496,6 +1496,68 @@ class HomepageGenerationTests(unittest.TestCase):
                         organization_description,
                         english["organization"]["description"],
                     )
+
+    def test_homepage_placeholder_contexts_escape_untrusted_translation_values(self):
+        template = (
+            "{{text}}|{{attr:attribute}}|{{json:schema}}|"
+            "{{safe:hero.badge}}|{{warning}}"
+        )
+        strings = {
+            "text": '<img src=x onerror="alert(1)">',
+            "attribute": '" onmouseover="alert(1)',
+            "schema": "</script><script>alert(1)</script>",
+            "hero": {"badge": "<span>Approved</span>"},
+            "warning": "Above {{max}}mm with {{power}}kW",
+        }
+        result = self.run_node_eval(
+            "const { replacePlaceholders } = require('./public/build-i18n.js'); "
+            f"const template = {json.dumps(template)}; "
+            f"const strings = {json.dumps(strings)}; "
+            "process.stdout.write(replacePlaceholders(template, strings));"
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        text, attribute, schema, rich_text, warning = result.stdout.split("|")
+        self.assertEqual(text, '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;')
+        self.assertEqual(attribute, '&quot; onmouseover=&quot;alert(1)')
+        self.assertNotIn("</script>", schema)
+        self.assertIn(r"\u003c/script\u003e", schema)
+        self.assertEqual(json.loads(schema), strings["schema"])
+        self.assertEqual(rich_text, "<span>Approved</span>")
+        self.assertEqual(warning, "Above {{max}}mm with {{power}}kW")
+
+        unsafe = self.run_node_eval(
+            "const { replacePlaceholders } = require('./public/build-i18n.js'); "
+            "replacePlaceholders('{{safe:text}}', {text: '<b>unsafe</b>'});"
+        )
+        self.assertNotEqual(unsafe.returncode, 0)
+        self.assertIn("Unsafe rich text placeholder: text", unsafe.stderr)
+
+    def test_presence_stat_values_are_localized_in_final_homepages(self):
+        keys = ("valueProject", "valueExport", "valueReview", "valueRemote")
+        template = (PUBLIC / "_template.html").read_text(encoding="utf-8")
+        for english_label, key in zip(("Project", "Export", "Review", "Remote"), keys):
+            self.assertNotIn(f'class="stat-num static-num">{english_label}</div>', template)
+            self.assertIn(
+                f'class="stat-num static-num">{{{{globalPresence.{key}}}}}</div>',
+                template,
+            )
+
+        for locale in SUPPORTED_LOCALES:
+            with self.subTest(locale=locale):
+                content = json.loads(
+                    (PUBLIC / "i18n" / f"{locale}.json").read_text(encoding="utf-8")
+                )
+                html = output_path(PUBLIC, locale, "home").read_text(encoding="utf-8")
+                expected_values = [content["globalPresence"][key] for key in keys]
+                for value in expected_values:
+                    self.assertIn(f'class="stat-num static-num">{value}</div>', html)
+                if locale != "en":
+                    for english_label in ("Project", "Export", "Review", "Remote"):
+                        self.assertNotIn(
+                            f'class="stat-num static-num">{english_label}</div>',
+                            html,
+                        )
 
     def test_missing_translation_key_fails_closed(self):
         result = self.run_node_eval(
