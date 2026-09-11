@@ -1,0 +1,3 @@
+site: public
+output_subdir: pagefind
+glob: '{{index,about,contact,compatibility,parameters,roi,payment}.html,{products,blog,case-studies}/*.html,{zh,es,pt,ja,ko,pl}/{{index,about,contact}.html,products/*.html}}'

@@ -39,6 +39,11 @@ COMPONENT_CLASSES = (
     "faq-item",
     "case-card",
 )
+PAGEFIND_GLOB = (
+    "{{index,about,contact,compatibility,parameters,roi,payment}.html,"
+    "{products,blog,case-studies}/*.html,"
+    "{zh,es,pt,ja,ko,pl}/{{index,about,contact}.html,products/*.html}}"
+)
 
 
 def page_path(lang, page_key):
@@ -130,6 +135,52 @@ def target_exists(target, url):
 
 
 class MultilingualCoreTests(unittest.TestCase):
+    def test_pagefind_manifest_and_index_cover_only_discovery_pages(self):
+        manifest_path = ROOT / "pagefind.yml"
+        self.assertTrue(manifest_path.is_file(), "Missing reproducible Pagefind manifest")
+        if not manifest_path.is_file():
+            return
+        manifest = manifest_path.read_text(encoding="utf-8")
+        self.assertEqual(
+            manifest.splitlines(),
+            [
+                "site: public",
+                "output_subdir: pagefind",
+                f"glob: '{PAGEFIND_GLOB}'",
+            ],
+        )
+
+        entry = json.loads((PUBLIC / "pagefind" / "pagefind-entry.json").read_text(encoding="utf-8"))
+        self.assertEqual(entry["version"], "1.5.2")
+        self.assertEqual(
+            {
+                language: metadata["page_count"]
+                for language, metadata in entry["languages"].items()
+            },
+            {"en": 28, "zh": 7, "es": 7, "pt": 7, "ja": 7, "ko": 7, "pl": 7},
+        )
+
+        generated_paths = [
+            path.relative_to(PUBLIC / "pagefind").as_posix()
+            for path in (PUBLIC / "pagefind").rglob("*")
+        ]
+        for token in REMOVED_LANGS:
+            with self.subTest(token=token):
+                self.assertFalse(
+                    any(
+                        re.search(rf"(?:\.|_|wasm\.){re.escape(token)}(?:_|\.|$)", path)
+                        for path in generated_paths
+                    ),
+                    token,
+                )
+        self.assertFalse(any("{{attr" in path for path in generated_paths))
+        self.assertFalse(
+            any(
+                re.search(r"(?:^|/)(?:pagefind\.unknown_|index/unknown_|fragment/unknown_)", path)
+                for path in generated_paths
+            )
+        )
+
     def test_exact_core_page_matrix(self):
         for lang in RETAINED_LANGS:
             with self.subTest(lang=lang):
