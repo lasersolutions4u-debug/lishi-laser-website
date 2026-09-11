@@ -36,6 +36,13 @@ python -m unittest discover -s tests -p 'test_*.py'
 node --test tests/*.test.mjs
 ```
 
+Rebuild and normalize the committed Pagefind index with the pinned version:
+
+```powershell
+npx pagefind@1.5.2 --site public
+python normalize-pagefind.py
+```
+
 ## Deploy to Cloudflare Pages
 
 Deploy using Wrangler CLI (no Git connection required):

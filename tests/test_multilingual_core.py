@@ -1,6 +1,10 @@
 import html
+import gzip
+import importlib.util
 import json
 import re
+import shutil
+import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 from collections import Counter
@@ -44,6 +48,151 @@ PAGEFIND_GLOB = (
     "{products,blog,case-studies}/*.html,"
     "{zh,es,pt,ja,ko,pl}/{{index,about,contact}.html,products/*.html}}"
 )
+
+
+def sitemap_paths():
+    tree = ET.parse(PUBLIC / "sitemap.xml")
+    ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    return {
+        urlparse(node.text or "").path
+        for node in tree.findall("s:url/s:loc", ns)
+    }
+
+
+def decode_cbor(data):
+    position = 0
+
+    def read_length(additional):
+        nonlocal position
+        if additional < 24:
+            return additional
+        widths = {24: 1, 25: 2, 26: 4, 27: 8}
+        width = widths[additional]
+        value = int.from_bytes(data[position : position + width], "big")
+        position += width
+        return value
+
+    def read():
+        nonlocal position
+        initial = data[position]
+        position += 1
+        major, additional = divmod(initial, 32)
+        if major == 7:
+            return {20: False, 21: True, 22: None}[additional]
+        length = read_length(additional)
+        if major == 0:
+            return length
+        if major == 1:
+            return -1 - length
+        if major in {2, 3}:
+            value = data[position : position + length]
+            position += length
+            return value if major == 2 else value.decode("utf-8")
+        if major == 4:
+            return [read() for _ in range(length)]
+        if major == 5:
+            return {read(): read() for _ in range(length)}
+        if major == 6:
+            return read()
+        raise ValueError(f"Unsupported CBOR major type: {major}")
+
+    value = read()
+    if position != len(data):
+        raise ValueError("Trailing CBOR bytes")
+    return value
+
+
+def read_pagefind_payload(path):
+    payload = gzip.decompress(path.read_bytes())
+    signature = b"pagefind_dcd"
+    if not payload.startswith(signature):
+        raise AssertionError(f"Missing Pagefind signature: {path.name}")
+    return payload[len(signature) :]
+
+
+def collect_strings(value):
+    if isinstance(value, str):
+        return {value}
+    if isinstance(value, dict):
+        return set().union(
+            *(collect_strings(item) for pair in value.items() for item in pair),
+            set(),
+        )
+    if isinstance(value, list):
+        return set().union(*(collect_strings(item) for item in value), set())
+    return set()
+
+
+def fragment_canonical_path(fragment):
+    fragment_path = urlparse(fragment["url"]).path
+    source = PUBLIC / fragment_path.lstrip("/")
+    if fragment_path.endswith("/"):
+        source /= "index.html"
+    if source.is_file():
+        canonicals = parse_page(source).canonicals
+        if len(canonicals) == 1:
+            return urlparse(canonicals[0]).path
+    return fragment_path
+
+
+def audit_pagefind(pagefind_dir):
+    errors = []
+    entry = json.loads((pagefind_dir / "pagefind-entry.json").read_text(encoding="utf-8"))
+    languages = entry.get("languages", {})
+    supported = set(SUPPORTED_LOCALES)
+    if set(languages) != supported:
+        errors.append("language set")
+
+    expected_meta = set()
+    for language, metadata in languages.items():
+        hash_value = metadata.get("hash", "")
+        if not re.fullmatch(rf"{re.escape(language)}_[0-9a-f]{{10}}", hash_value):
+            errors.append(f"invalid entry hash: {hash_value}")
+        expected_meta.add(f"pagefind.{hash_value}.pf_meta")
+    actual_meta = {path.name for path in pagefind_dir.glob("pagefind.*.pf_meta")}
+    if actual_meta != expected_meta:
+        errors.append("meta file set")
+
+    fragment_files = list((pagefind_dir / "fragment").glob("*.pf_fragment"))
+    index_files = list((pagefind_dir / "index").glob("*.pf_index"))
+    total_pages = sum(metadata.get("page_count", 0) for metadata in languages.values())
+    if len(fragment_files) != total_pages:
+        errors.append("fragment count")
+    for language, metadata in languages.items():
+        language_count = sum(
+            path.name.startswith(f"{language}_") for path in fragment_files
+        )
+        if language_count != metadata.get("page_count", 0):
+            errors.append(f"fragment count for {language}")
+
+    asset_pattern = re.compile(
+        rf"(?:{'|'.join(map(re.escape, SUPPORTED_LOCALES))})_[0-9a-f]{{7}}"
+    )
+    actual_asset_stems = {path.stem for path in fragment_files + index_files}
+    for path in fragment_files + index_files:
+        if not asset_pattern.fullmatch(path.stem):
+            errors.append(f"invalid asset prefix or hash: {path.name}")
+
+    referenced_assets = set()
+    for meta_name in expected_meta & actual_meta:
+        metadata = decode_cbor(read_pagefind_payload(pagefind_dir / meta_name))
+        referenced_assets.update(
+            token for token in collect_strings(metadata) if asset_pattern.fullmatch(token)
+        )
+    if actual_asset_stems != referenced_assets:
+        errors.append("referenced asset set")
+
+    fragment_urls = set()
+    for path in fragment_files:
+        try:
+            fragment = json.loads(read_pagefind_payload(path).decode("utf-8"))
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError, AssertionError):
+            errors.append(f"invalid fragment: {path.name}")
+            continue
+        fragment_urls.add(fragment_canonical_path(fragment))
+    if fragment_urls != sitemap_paths():
+        errors.append("fragment URL set")
+    return errors
 
 
 def page_path(lang, page_key):
@@ -135,6 +284,41 @@ def target_exists(target, url):
 
 
 class MultilingualCoreTests(unittest.TestCase):
+    def test_pagefind_entry_normalizer_is_stable(self):
+        script_path = ROOT / "normalize-pagefind.py"
+        self.assertTrue(script_path.is_file(), "Missing Pagefind entry normalizer")
+        if not script_path.is_file():
+            return
+        spec = importlib.util.spec_from_file_location("normalize_pagefind", script_path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as directory:
+            entry_path = Path(directory) / "pagefind-entry.json"
+            entry_path.write_text(
+                json.dumps(
+                    {
+                        "version": "1.5.2",
+                        "languages": {"zh": {"page_count": 7}, "en": {"page_count": 28}},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            module.normalize_pagefind_entry(entry_path)
+            first = entry_path.read_bytes()
+            module.normalize_pagefind_entry(entry_path)
+            self.assertEqual(entry_path.read_bytes(), first)
+            self.assertEqual(
+                first.decode("utf-8"),
+                '{\n  "version": "1.5.2",\n  "languages": {\n    "en": {\n      "page_count": 28\n    },\n    "zh": {\n      "page_count": 7\n    }\n  }\n}\n',
+            )
+
+    def test_readme_documents_reproducible_pagefind_build(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertRegex(
+            readme,
+            r"npx pagefind@1\.5\.2 --site public\s+python normalize-pagefind\.py",
+        )
+
     def test_pagefind_manifest_and_index_cover_only_discovery_pages(self):
         manifest_path = ROOT / "pagefind.yml"
         self.assertTrue(manifest_path.is_file(), "Missing reproducible Pagefind manifest")
@@ -152,13 +336,19 @@ class MultilingualCoreTests(unittest.TestCase):
 
         entry = json.loads((PUBLIC / "pagefind" / "pagefind-entry.json").read_text(encoding="utf-8"))
         self.assertEqual(entry["version"], "1.5.2")
+        self.assertEqual(list(entry["languages"]), sorted(SUPPORTED_LOCALES))
+        expected_counts = {locale: len(CORE_ROUTES) for locale in SUPPORTED_LOCALES}
+        expected_counts["en"] += len(sitemap_paths()) - (
+            len(SUPPORTED_LOCALES) * len(CORE_ROUTES)
+        )
         self.assertEqual(
             {
                 language: metadata["page_count"]
                 for language, metadata in entry["languages"].items()
             },
-            {"en": 28, "zh": 7, "es": 7, "pt": 7, "ja": 7, "ko": 7, "pl": 7},
+            expected_counts,
         )
+        self.assertEqual(audit_pagefind(PUBLIC / "pagefind"), [])
 
         generated_paths = [
             path.relative_to(PUBLIC / "pagefind").as_posix()
@@ -180,6 +370,24 @@ class MultilingualCoreTests(unittest.TestCase):
                 for path in generated_paths
             )
         )
+
+    def test_pagefind_audit_rejects_removed_and_stale_artifacts(self):
+        mutations = (
+            ("fragment/fr_dead.pf_fragment", "removed-language fragment"),
+            ("index/fr_dead.pf_index", "removed-language index"),
+            ("fragment/en_stale.pf_fragment", "supported-language stale fragment"),
+            ("index/en_stale.pf_index", "supported-language stale index"),
+            ("fragment/en_deadbee.pf_fragment", "valid-looking stale fragment hash"),
+            ("pagefind.en_deadbeef00.pf_meta", "second supported-language meta"),
+        )
+        for relative_path, label in mutations:
+            with self.subTest(label=label), tempfile.TemporaryDirectory() as directory:
+                pagefind_dir = Path(directory) / "pagefind"
+                shutil.copytree(PUBLIC / "pagefind", pagefind_dir)
+                stale_path = pagefind_dir / relative_path
+                stale_path.parent.mkdir(parents=True, exist_ok=True)
+                stale_path.write_bytes(b"stale")
+                self.assertTrue(audit_pagefind(pagefind_dir), label)
 
     def test_exact_core_page_matrix(self):
         for lang in RETAINED_LANGS:
