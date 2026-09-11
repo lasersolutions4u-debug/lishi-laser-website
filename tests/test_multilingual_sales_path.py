@@ -6,6 +6,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest import mock
@@ -58,35 +59,61 @@ def load_build_orchestrator():
 
 
 class BuildOrchestrationTests(unittest.TestCase):
-    EXPECTED_STAGES = (
-        "homepages",
-        "about-contact",
-        "products",
-        "integrity-check",
-    )
+    def expected_commands(self, node):
+        python = str(Path(sys.executable).resolve())
+        return (
+            [node, str(ROOT / "public" / "build-i18n.js")],
+            [python, str(ROOT / "build-static-core-pages.py")],
+            [python, str(ROOT / "build-product-pages.py")],
+            [python, "-m", "unittest", "-v", "tests.test_multilingual_sales_path"],
+        )
 
     def test_runs_all_stages_in_order_with_checked_argument_arrays(self):
         orchestrator = load_build_orchestrator()
+        node = str((ROOT / "test-bin" / "node.exe").resolve())
+        expected_commands = self.expected_commands(node)
 
-        with mock.patch.object(orchestrator.subprocess, "run") as run:
+        with mock.patch.object(orchestrator.shutil, "which", return_value=node), mock.patch.object(
+            orchestrator.subprocess, "run"
+        ) as run, mock.patch("builtins.print") as output:
             orchestrator.main()
 
         self.assertEqual(
-            tuple(name for name, _ in orchestrator.STAGES),
-            self.EXPECTED_STAGES,
+            run.call_args_list,
+            [
+                mock.call(command, cwd=ROOT, check=True)
+                for command in expected_commands
+            ],
         )
-        self.assertEqual(run.call_count, len(self.EXPECTED_STAGES))
-        for call, (_, command) in zip(run.call_args_list, orchestrator.STAGES):
-            args, kwargs = call
-            self.assertIsInstance(args[0], list)
-            self.assertEqual(args[0], list(command))
-            self.assertEqual(kwargs, {"cwd": orchestrator.ROOT, "check": True})
+        self.assertEqual(
+            output.call_args_list,
+            [
+                mock.call("[homepages]", flush=True),
+                mock.call("[about-contact]", flush=True),
+                mock.call("[products]", flush=True),
+                mock.call("[integrity-check]", flush=True),
+            ],
+        )
+
+    def test_import_succeeds_without_node_and_execution_reports_clear_error(self):
+        with mock.patch("shutil.which", return_value=None) as which, mock.patch(
+            "subprocess.run"
+        ) as run:
+            orchestrator = load_build_orchestrator()
+            which.assert_not_called()
+            with self.assertRaisesRegex(RuntimeError, "Node.js executable was not found"):
+                orchestrator.main()
+
+        which.assert_called_once_with("node")
+        run.assert_not_called()
 
     def test_stops_immediately_when_a_stage_fails(self):
         orchestrator = load_build_orchestrator()
-        failure = subprocess.CalledProcessError(1, list(orchestrator.STAGES[2][1]))
+        node = str((ROOT / "test-bin" / "node.exe").resolve())
+        expected_commands = self.expected_commands(node)
+        failure = subprocess.CalledProcessError(1, expected_commands[2])
 
-        with mock.patch.object(
+        with mock.patch.object(orchestrator.shutil, "which", return_value=node), mock.patch.object(
             orchestrator.subprocess,
             "run",
             side_effect=(None, None, failure),
@@ -95,7 +122,13 @@ class BuildOrchestrationTests(unittest.TestCase):
                 orchestrator.main()
 
         self.assertIs(raised.exception, failure)
-        self.assertEqual(run.call_count, 3)
+        self.assertEqual(
+            run.call_args_list,
+            [
+                mock.call(command, cwd=ROOT, check=True)
+                for command in expected_commands[:3]
+            ],
+        )
 
 
 class LocaleRouteContractTests(unittest.TestCase):
