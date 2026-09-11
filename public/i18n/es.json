@@ -21,7 +21,8 @@
     "mobileAria": "Abrir o cerrar el menú"
   },
   "hero": {
-    "badge": "<span>Arquitectura del sistema de gas de asistencia</span> para láseres de fibra",
+    "badgeHighlight": "Arquitectura del sistema de gas de asistencia",
+    "badgeContext": " para láseres de fibra",
     "title": "Configure el sistema de gas de asistencia según su proceso láser",
     "subtitle": "Empiece por la fuente de nitrógeno y seleccione un controlador de mezcla cuando el corte requiera N₂/O₂. GasMixTech ayuda a compradores industriales a evaluar el suministro, la integración y las condiciones de corte antes de cotizar.",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "RED GLOBAL",
-    "title": "Asistencia desde China para<br><span class=\"gp-accent\">proyectos completos de gas de asistencia.</span>",
+    "titleLead": "Asistencia desde China para",
+    "titleAccent": "proyectos completos de gas de asistencia.",
     "description": "Jinan Euchio Machinery Co., Ltd. coordina la evaluación de la fuente de nitrógeno, la selección del controlador de mezcla, las consultas de integración, la cotización, la entrega y la comunicación posventa para compradores internacionales.",
     "asia": "Aplicación",
     "europe": "Integración",

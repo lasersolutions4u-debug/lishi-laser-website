@@ -21,7 +21,8 @@
     "mobileAria": "Toggle menu"
   },
   "hero": {
-    "badge": "<span>Assist-Gas System Architecture</span> for Fiber Lasers",
+    "badgeHighlight": "Assist-Gas System Architecture",
+    "badgeContext": " for Fiber Lasers",
     "title": "Build the assist-gas system around your laser process",
     "subtitle": "Start with the nitrogen source, then select one mixed-gas controller when N₂/O₂ cutting is required. GasMixTech helps industrial buyers review supply, integration and cutting conditions before quotation.",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "GLOBAL NETWORK",
-    "title": "China-Based Support for<br><span class=\"gp-accent\">Complete Assist-Gas Projects.</span>",
+    "titleLead": "China-Based Support for",
+    "titleAccent": "Complete Assist-Gas Projects.",
     "description": "Jinan Euchio Machinery Co., Ltd. coordinates nitrogen-source review, mixed-gas controller selection, integration questions, quotation, delivery, and after-sales communication for overseas buyers.",
     "asia": "Application",
     "europe": "Integration",

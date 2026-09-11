@@ -22,10 +22,6 @@ const CORE_PATHS = [
   '/products/mspv2-4000-proportional-valve',
   '/products/mixed-gas-control-comparison',
 ];
-const SAFE_HTML_KEYS = new Set([
-  'hero.badge',
-  'globalPresence.title',
-]);
 
 // ═══════════════════════════════════════════════════════════════════════
 // Helpers
@@ -36,17 +32,11 @@ const SAFE_HTML_KEYS = new Set([
  * Keys use dot-notation: {{hero.title}} → strings.hero.title
  */
 function replacePlaceholders(html, strings) {
-  return html.replace(/\{\{(?:(text|attr|json|safe):)?([^}]+)\}\}/g, (match, context, key) => {
+  return html.replace(/\{\{(?:(text|attr|json):)?([^}]+)\}\}/g, (match, context, key) => {
     const normalizedKey = key.trim();
     const value = getNestedValue(strings, normalizedKey);
     if (value === undefined) {
       throw new Error(`Missing translation key: ${normalizedKey}`);
-    }
-    if (context === 'safe') {
-      if (!SAFE_HTML_KEYS.has(normalizedKey)) {
-        throw new Error(`Unsafe rich text placeholder: ${normalizedKey}`);
-      }
-      return String(value);
     }
     if (context === 'attr') return escapeHtmlAttribute(value);
     if (context === 'json') return serializeJsonString(value);

@@ -21,7 +21,8 @@
     "mobileAria": "메뉴 열기 또는 닫기"
   },
   "hero": {
-    "badge": "파이버 레이저용 <span>보조 가스 시스템 구성</span>",
+    "badgeHighlight": "보조 가스 시스템 구성",
+    "badgeContext": " — 파이버 레이저용",
     "title": "레이저 공정에 맞는 보조 가스 시스템을 구성하세요",
     "subtitle": "먼저 질소 공급원을 결정한 뒤, N₂/O₂ 절단이 필요한 경우 혼합 가스 제어 장치 하나를 선택합니다. GasMixTech는 산업용 장비 구매자가 견적 전에 공급, 통합, 절단 조건을 검토할 수 있도록 지원합니다.",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "글로벌 네트워크",
-    "title": "중국을 기반으로<br><span class=\"gp-accent\">보조 가스 프로젝트 전체를 지원합니다.</span>",
+    "titleLead": "중국을 기반으로",
+    "titleAccent": "보조 가스 프로젝트 전체를 지원합니다.",
     "description": "Jinan Euchio Machinery Co., Ltd.는 해외 구매자를 위해 질소 공급원 검토, 혼합 가스 제어 장치 선정, 통합 관련 질문, 견적, 납품, 사후 지원 연락을 조율합니다.",
     "asia": "용도",
     "europe": "통합",

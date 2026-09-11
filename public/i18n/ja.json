@@ -21,7 +21,8 @@
     "mobileAria": "メニューを開閉"
   },
   "hero": {
-    "badge": "ファイバーレーザー向け<span>アシストガスシステム構成</span>",
+    "badgeHighlight": "アシストガスシステム構成",
+    "badgeContext": " — ファイバーレーザー向け",
     "title": "レーザー加工に合わせたアシストガスシステムを構築",
     "subtitle": "まず窒素源を決め、N₂/O₂による切断が必要な場合は混合ガス制御装置を一種類選定します。GasMixTechは、見積もり前に供給条件、組み込み要件、切断条件を確認し、産業機器の調達を支援します。",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "グローバルネットワーク",
-    "title": "中国を拠点に、<br><span class=\"gp-accent\">アシストガス設備計画全体を支援。</span>",
+    "titleLead": "中国を拠点に、",
+    "titleAccent": "アシストガス設備計画全体を支援。",
     "description": "Jinan Euchio Machinery Co., Ltd.は、海外の調達担当者向けに、窒素源の評価、混合ガス制御装置の選定、組み込みに関する相談、見積もり、納入、アフターサービスの連絡を調整します。",
     "asia": "用途",
     "europe": "組み込み",

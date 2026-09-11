@@ -21,7 +21,8 @@
     "mobileAria": "Otwórz lub zamknij menu"
   },
   "hero": {
-    "badge": "Gaz pomocniczy: <span>architektura systemu</span> dla laserów światłowodowych",
+    "badgeHighlight": "Gaz pomocniczy — architektura systemu",
+    "badgeContext": " dla laserów światłowodowych",
     "title": "Dostosuj system gazu pomocniczego do swojego procesu laserowego",
     "subtitle": "Zacznij od źródła azotu, a jeśli potrzebne jest cięcie z N₂/O₂, wybierz jeden sterownik mieszanki. GasMixTech pomaga nabywcom przemysłowym ocenić dostawę gazu, integrację i warunki cięcia przed wyceną.",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "SIEĆ GLOBALNA",
-    "title": "Wsparcie z Chin dla<br><span class=\"gp-accent\">kompletnych projektów gazu pomocniczego.</span>",
+    "titleLead": "Wsparcie z Chin dla",
+    "titleAccent": "kompletnych projektów gazu pomocniczego.",
     "description": "Jinan Euchio Machinery Co., Ltd. koordynuje ocenę źródła azotu, wybór sterownika mieszanki, kwestie integracji, wycenę, dostawę i kontakt posprzedażowy dla nabywców zagranicznych.",
     "asia": "Zastosowanie",
     "europe": "Integracja",

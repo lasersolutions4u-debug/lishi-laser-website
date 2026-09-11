@@ -21,7 +21,8 @@
     "mobileAria": "展开或收起菜单"
   },
   "hero": {
-    "badge": "光纤激光器<span>辅助气体系统架构</span>",
+    "badgeHighlight": "辅助气体系统架构",
+    "badgeContext": "，适用于光纤激光器",
     "title": "围绕您的激光切割工艺配置辅助气体系统",
     "subtitle": "先确定氮气来源；需要 N₂/O₂ 混气切割时，再选择一种混气控制设备。GasMixTech 协助工业采购客户在报价前评估供气、集成要求与切割工况。",
     "statSpeedValue": "01",
@@ -229,7 +230,8 @@
   },
   "globalPresence": {
     "label": "全球服务网络",
-    "title": "立足中国，为<br><span class=\"gp-accent\">完整辅助气体项目提供支持。</span>",
+    "titleLead": "立足中国，为",
+    "titleAccent": "完整辅助气体项目提供支持。",
     "description": "Jinan Euchio Machinery Co., Ltd. 为海外采购客户协调氮气来源评估、混气控制设备选型、集成问题、报价、交付及售后沟通。",
     "asia": "应用",
     "europe": "集成",

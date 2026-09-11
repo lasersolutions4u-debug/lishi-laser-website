@@ -1500,13 +1500,14 @@ class HomepageGenerationTests(unittest.TestCase):
     def test_homepage_placeholder_contexts_escape_untrusted_translation_values(self):
         template = (
             "{{text}}|{{attr:attribute}}|{{json:schema}}|"
-            "{{safe:hero.badge}}|{{warning}}"
+            "{{hero.badge}}|{{globalPresence.title}}|{{warning}}"
         )
         strings = {
             "text": '<img src=x onerror="alert(1)">',
             "attribute": '" onmouseover="alert(1)',
             "schema": "</script><script>alert(1)</script>",
-            "hero": {"badge": "<span>Approved</span>"},
+            "hero": {"badge": '<img src=x onerror="alert(1)">'},
+            "globalPresence": {"title": "<script>alert(1)</script>"},
             "warning": "Above {{max}}mm with {{power}}kW",
         }
         result = self.run_node_eval(
@@ -1517,21 +1518,47 @@ class HomepageGenerationTests(unittest.TestCase):
         )
 
         self.assertEqual(result.returncode, 0, result.stderr)
-        text, attribute, schema, rich_text, warning = result.stdout.split("|")
+        text, attribute, schema, former_badge, former_title, warning = result.stdout.split("|")
         self.assertEqual(text, '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;')
         self.assertEqual(attribute, '&quot; onmouseover=&quot;alert(1)')
         self.assertNotIn("</script>", schema)
         self.assertIn(r"\u003c/script\u003e", schema)
         self.assertEqual(json.loads(schema), strings["schema"])
-        self.assertEqual(rich_text, "<span>Approved</span>")
+        self.assertEqual(former_badge, '&lt;img src=x onerror=&quot;alert(1)&quot;&gt;')
+        self.assertEqual(former_title, "&lt;script&gt;alert(1)&lt;/script&gt;")
         self.assertEqual(warning, "Above {{max}}mm with {{power}}kW")
 
         unsafe = self.run_node_eval(
             "const { replacePlaceholders } = require('./public/build-i18n.js'); "
-            "replacePlaceholders('{{safe:text}}', {text: '<b>unsafe</b>'});"
+            "replacePlaceholders('{{safe:hero.badge}}', "
+            "{hero: {badge: '<b>unsafe</b>'}});"
         )
         self.assertNotEqual(unsafe.returncode, 0)
-        self.assertIn("Unsafe rich text placeholder: text", unsafe.stderr)
+
+    def test_homepage_rich_markup_is_fixed_in_template_not_translation_json(self):
+        template = (PUBLIC / "_template.html").read_text(encoding="utf-8")
+        self.assertNotIn("{{safe:", template)
+        self.assertIn(
+            "<span>{{hero.badgeHighlight}}</span>{{hero.badgeContext}}",
+            template,
+        )
+        self.assertIn(
+            '<h2>{{globalPresence.titleLead}}<br><span class="gp-accent">'
+            "{{globalPresence.titleAccent}}</span></h2>",
+            template,
+        )
+        for locale in SUPPORTED_LOCALES:
+            with self.subTest(locale=locale):
+                content = json.loads(
+                    (PUBLIC / "i18n" / f"{locale}.json").read_text(encoding="utf-8")
+                )
+                for value in (
+                    content["hero"]["badgeHighlight"],
+                    content["hero"]["badgeContext"],
+                    content["globalPresence"]["titleLead"],
+                    content["globalPresence"]["titleAccent"],
+                ):
+                    self.assertNotRegex(value, r"[<>]")
 
     def test_presence_stat_values_are_localized_in_final_homepages(self):
         keys = ("valueProject", "valueExport", "valueReview", "valueRemote")
@@ -1879,7 +1906,7 @@ class TranslationDataTests(unittest.TestCase):
         },
     }
     TERM_PATHS = (
-        ("assist gas", "homepage", "hero.badge"),
+        ("assist gas", "homepage", "hero.badgeHighlight"),
         (
             "PSA nitrogen generation system",
             "homepage",
@@ -3034,11 +3061,11 @@ class TranslationGuardRuleTests(unittest.TestCase):
             self.guard._assert_preferred_terms(
                 "es",
                 "homepage",
-                {"hero": {"badge": "assist gas"}},
-                {"hero": {"badge": 7}},
+                {"hero": {"badgeHighlight": "assist gas"}},
+                {"hero": {"badgeHighlight": 7}},
             )
         except AssertionError as error:
-            self.assertIn("es/homepage/hero.badge", str(error))
+            self.assertIn("es/homepage/hero.badgeHighlight", str(error))
         except Exception as error:
             self.fail(
                 f"preferred terms raised {type(error).__name__} instead of AssertionError: {error}"
