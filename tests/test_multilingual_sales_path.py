@@ -1806,7 +1806,7 @@ class TranslationDataTests(unittest.TestCase):
             r"(?:entrega en \d+ días|plazo de entrega\s*[:：]?\s*\d+ días)",
             r"garantía (?:de por vida|de \d+ años)",
             r"(?:tecnología exclusiva|único proveedor|proveedor único|mejor del mundo|resultados garantizados|100\s*% compatible)",
-            r"(?:armario|gabinete).{0,30}válvula.{0,30}(?:se instalan en serie|se instalan juntos|instalados? juntos?)",
+            r"(?=.*\barmario integrado de mezcla de gases\b)(?=.*\bválvula proporcional\b).*(?:se instalan en serie|se instalan juntos|instalados? juntos?)",
         ),
         "pt": (
             r"(?:mais de )?\d+[\d.]* instalações",
@@ -1814,7 +1814,7 @@ class TranslationDataTests(unittest.TestCase):
             r"(?:entrega em \d+ dias|prazo de entrega(?: de)?\s*\d+ dias)",
             r"(?:garantia (?:vitalícia|de \d+ anos)|\d+ anos de garantia)",
             r"(?:tecnologia exclusiva|único fornecedor|fornecedor único|melhor do mundo|resultados garantidos|100\s*% compatível)",
-            r"gabinete.{0,30}válvula.{0,30}(?:instalad[oa]s? em série|instalad[oa]s? juntos?)",
+            r"(?=.*\bgabinete integrado de mistura de gases\b)(?=.*\bválvula proporcional\b).*(?:instalad[oa]s? em série|instalad[oa]s? juntos?)",
         ),
         "ja": (
             r"\d+[\d,]*\+?\s*(?:台|件)(?:以上)?(?:の)?導入実績",
@@ -1822,7 +1822,7 @@ class TranslationDataTests(unittest.TestCase):
             r"(?:\d+日(?:以内|で)に?(?:納品|発送)|納期は?\s*\d+日)",
             r"(?:\d+年|永久)保証",
             r"(?:独占技術|唯一の(?:サプライヤー|供給者)|世界最高|結果(?:を)?保証|100%\s*互換)",
-            r"キャビネット.{0,20}バルブ.{0,20}(?:直列|同時に設置)",
+            r"(?=.*一体型ガス混合キャビネット)(?=.*(?:比例弁|MSPV2[-_]4000)).*(?:同時|直列|一緒)(?:に)?(?:設置)?",
         ),
         "ko": (
             r"\d+[\d,]*\+?\s*(?:대|건)(?:\s*이상(?:의)?)?\s*설치 실적",
@@ -1855,14 +1855,14 @@ class TranslationDataTests(unittest.TestCase):
         "zh": re.compile(r"(?<!\d)[,，](?!\d)|(?:但(?:是)?|不过)"),
         "es": re.compile(r"(?<!\d)[,，](?!\d)|\bpero\b", re.IGNORECASE),
         "pt": re.compile(r"(?<!\d)[,，](?!\d)|\b(?:mas|porém)\b", re.IGNORECASE),
-        "ja": re.compile(r"(?<!\d)[,，](?!\d)|(?:だ?が|しかし)"),
+        "ja": re.compile(r"(?<!\d)[,，](?!\d)|(?:だが|ですが|しかし|けれども?|ただし)"),
         "ko": re.compile(r"(?<!\d)[,，](?!\d)|(?:하지만|그러나)"),
         "pl": re.compile(r"(?<!\d)[,，](?!\d)|\bale\b", re.IGNORECASE),
     }
     CLAIM_POSTPOSED_NEGATION = {
         "zh": re.compile(r"^\s*(?:尚?未|不|没有|并非|无需|无须)"),
         "ja": re.compile(
-            r"^\s*(?:に?は|が|を)?\s*(?:(?:設置|取得|保証)?し)?(?:ない|ありません|未取得|なく)"
+            r"^\s*(?:に?は|が|を|では)?\s*(?:(?:設置|取得|保証)?し)?(?:ない|ません|ありません|未取得|なく)"
         ),
         "ko": re.compile(
             r"^\s*(?:이|가|은|는|을|를)?\s*(?:하지\s*)?(?:않|없|아닙니다)"
@@ -2275,10 +2275,10 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "Entrega en 7 días",
                 "Garantía de 5 años",
                 "La mejor del mundo con resultados garantizados",
-                "El armario y la válvula se instalan en serie",
-                "El armario y la válvula se instalan juntos",
+                "El armario integrado de mezcla de gases y la válvula proporcional se instalan en serie",
+                "El armario integrado de mezcla de gases y la válvula proporcional se instalan juntos",
             ),
-            "disclaimer": "No son componentes en serie y no deben instalarse juntos.",
+            "disclaimer": "El armario integrado de mezcla de gases y la válvula proporcional no se instalan juntos.",
         },
         "pt": {
             "forbidden": (
@@ -2287,10 +2287,10 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "Entrega em 7 dias",
                 "Garantia de 5 anos",
                 "A melhor do mundo com resultados garantidos",
-                "O gabinete e a válvula são instalados em série",
-                "O gabinete e a válvula são instalados juntos",
+                "O gabinete integrado de mistura de gases e a válvula proporcional são instalados em série",
+                "O gabinete integrado de mistura de gases e a válvula proporcional são instalados juntos",
             ),
-            "disclaimer": "Não são componentes em série e não devem ser instalados juntos.",
+            "disclaimer": "O gabinete integrado de mistura de gases e a válvula proporcional não são instalados juntos.",
         },
         "ja": {
             "forbidden": (
@@ -2299,10 +2299,10 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "7日以内に納品",
                 "5年保証",
                 "世界最高、結果保証",
-                "キャビネットとバルブを直列に設置",
-                "キャビネットとバルブを同時に設置",
+                "一体型ガス混合キャビネットと比例弁を直列に設置",
+                "一体型ガス混合キャビネットと比例弁を同時に設置",
             ),
-            "disclaimer": "直列部品ではなく、同時に設置しません。",
+            "disclaimer": "一体型ガス混合キャビネットと比例弁は直列ではありません。",
         },
         "ko": {
             "forbidden": (
@@ -2353,11 +2353,11 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "Plazo de entrega: 7 días",
                 "Proveedor único con resultados garantizados",
                 "500 instalaciones completadas",
-                "El armario y la válvula se instalan juntos",
+                "El armario integrado de mezcla de gases y la válvula proporcional se instalan juntos",
             ),
             "allowed": (
                 "Equipo sin certificación CE",
-                "El armario y la válvula no se instalan en serie",
+                "El armario integrado de mezcla de gases y la válvula proporcional no se instalan en serie",
             ),
         },
         "pt": {
@@ -2367,11 +2367,11 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "Prazo de entrega de 7 dias",
                 "Fornecedor único com resultados garantidos",
                 "500 instalações concluídas",
-                "O gabinete e a válvula são instalados juntos",
+                "O gabinete integrado de mistura de gases e a válvula proporcional são instalados juntos",
             ),
             "allowed": (
                 "Equipamento sem certificação CE",
-                "O gabinete e a válvula não são instalados em série",
+                "O gabinete integrado de mistura de gases e a válvula proporcional não são instalados em série",
             ),
         },
         "ja": {
@@ -2381,11 +2381,11 @@ class TranslationGuardRuleTests(unittest.TestCase):
                 "納期は7日",
                 "唯一の供給者で結果を保証",
                 "500台の導入実績",
-                "キャビネットとバルブを同時に設置",
+                "一体型ガス混合キャビネットと比例弁を同時に設置",
             ),
             "allowed": (
                 "CE認証は未取得です",
-                "キャビネットとバルブを直列には設置しない",
+                "一体型ガス混合キャビネットと比例弁は直列ではありません",
             ),
         },
         "ko": {
@@ -2665,16 +2665,69 @@ class TranslationGuardRuleTests(unittest.TestCase):
                     locale, "fixture", {}, {"statement": text}
                 )
 
-    def test_claim_guard_skips_questions_but_not_answers(self):
-        questions = {
-            "zh": "混气柜与比例阀是否同时安装？",
-            "es": "¿El armario y la válvula se instalan juntos?",
-            "pt": "O gabinete e a válvula são instalados juntos?",
-            "ja": "キャビネットとバルブを同時に設置しますか？",
-            "ko": "캐비닛과 밸브를 함께 설치합니까?",
-            "pl": "Czy szafa i zawór są instalowane razem?",
+    def test_serial_installation_guard_uses_locked_preferred_terms(self):
+        templates = {
+            "zh": "{cabinet}与{valve}同时安装",
+            "es": "El {cabinet} y la {valve} se instalan juntos",
+            "pt": "O {cabinet} e a {valve} são instalados juntos",
+            "ja": "{cabinet}と{valve}を同時に設置",
+            "ko": "{cabinet}과 {valve}를 함께 설치",
+            "pl": "{cabinet} i {valve} są instalowane razem",
         }
-        for locale, text in questions.items():
+        for locale, template in templates.items():
+            terms = self.guard.PREFERRED_TERMS[locale]
+            text = template.format(
+                cabinet=terms["integrated gas mixing cabinet"],
+                valve=terms["proportional valve"],
+            )
+            with self.subTest(locale=locale):
+                self.assert_guard_failure(
+                    lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                        locale, "fixture", {}, {"statement": text}
+                    )
+                )
+
+        japanese_cabinet = self.guard.PREFERRED_TERMS["ja"]["integrated gas mixing cabinet"]
+        self.assert_guard_failure(
+            lambda: self.guard._assert_brand_and_claim_boundaries(
+                "ja",
+                "fixture",
+                {},
+                {"statement": f"{japanese_cabinet}とMSPV2-4000を直列に設置"},
+            )
+        )
+
+    def test_japanese_claim_negation_keeps_particles_inside_clause(self):
+        cabinet = self.guard.PREFERRED_TERMS["ja"]["integrated gas mixing cabinet"]
+        valve = self.guard.PREFERRED_TERMS["ja"]["proportional valve"]
+        allowed = (
+            "CE認証がありません",
+            f"{cabinet}と{valve}は直列ではありません",
+            "結果を保証しません",
+        )
+        for text in allowed:
+            with self.subTest(text=text):
+                self.guard._assert_brand_and_claim_boundaries(
+                    "ja", "fixture", {}, {"statement": text}
+                )
+
+    def test_claim_guard_skips_questions_but_not_answers(self):
+        templates = {
+            "zh": "{cabinet}与{valve}是否同时安装？",
+            "es": "¿El {cabinet} y la {valve} se instalan juntos?",
+            "pt": "O {cabinet} e a {valve} são instalados juntos?",
+            "ja": "{cabinet}と{valve}を同時に設置しますか？",
+            "ko": "{cabinet}과 {valve}를 함께 설치합니까?",
+            "pl": "Czy {cabinet} i {valve} są instalowane razem?",
+        }
+        questions = {}
+        for locale, template in templates.items():
+            terms = self.guard.PREFERRED_TERMS[locale]
+            text = template.format(
+                cabinet=terms["integrated gas mixing cabinet"],
+                valve=terms["proportional valve"],
+            )
+            questions[locale] = text
             with self.subTest(locale=locale, field="question"):
                 self.guard._assert_brand_and_claim_boundaries(
                     locale,
