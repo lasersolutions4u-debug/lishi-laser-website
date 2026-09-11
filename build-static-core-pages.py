@@ -280,6 +280,10 @@ def _raise_template_error(locale, page_key, detail):
     raise ValueError(f"Invalid template context: {locale}/{page_key}: {detail}")
 
 
+def _raise_malformed_template_syntax(locale, page_key, detail):
+    _raise_template_error(locale, page_key, f"malformed template syntax: {detail}")
+
+
 SENTINEL_PREFIX = "STATICCOREPLACEHOLDER"
 SENTINEL = re.compile(rf"{SENTINEL_PREFIX}\d+END")
 VOID_ELEMENTS = frozenset(
@@ -533,6 +537,11 @@ class TemplateContextValidator(HTMLParser):
         self.stack.pop()
 
     def handle_data(self, data):
+        parent_tag = self.stack[-1]["tag"] if self.stack else None
+        if "<" in data and parent_tag not in {"script", "style"}:
+            _raise_malformed_template_syntax(
+                self.locale, self.page_key, "unescaped less-than sign in text"
+            )
         for sentinel in self._matches(data):
             self._validate_data_placeholder(sentinel)
 
@@ -544,21 +553,38 @@ class TemplateContextValidator(HTMLParser):
             )
 
     def handle_decl(self, decl):
-        if self._matches(decl):
-            _raise_template_error(self.locale, self.page_key, "placeholder in declaration")
+        if " ".join(decl.lower().split()) != "doctype html":
+            _raise_malformed_template_syntax(
+                self.locale, self.page_key, "unsupported declaration"
+            )
 
     def handle_pi(self, data):
-        if self._matches(data):
-            _raise_template_error(self.locale, self.page_key, "placeholder in instruction")
+        _raise_malformed_template_syntax(
+            self.locale, self.page_key, "processing instructions are not allowed"
+        )
 
     def unknown_decl(self, data):
-        if self._matches(data):
-            _raise_template_error(self.locale, self.page_key, "placeholder in declaration")
+        _raise_malformed_template_syntax(
+            self.locale, self.page_key, "unknown declaration"
+        )
+
+    def parse_html_declaration(self, index):
+        if not (
+            self.rawdata.startswith("<!--", index)
+            or self.rawdata[index : index + 9].lower() == "<!doctype"
+        ):
+            _raise_malformed_template_syntax(
+                self.locale, self.page_key, "bogus declaration"
+            )
+        return super().parse_html_declaration(index)
 
     def finish(self):
-        if self.rawdata:
-            _raise_template_error(self.locale, self.page_key, "unterminated HTML construct")
+        buffered_before_close = self.rawdata
         self.close()
+        if buffered_before_close or self.rawdata:
+            _raise_malformed_template_syntax(
+                self.locale, self.page_key, "unterminated HTML construct"
+            )
         if self.stack:
             _raise_template_error(
                 self.locale,

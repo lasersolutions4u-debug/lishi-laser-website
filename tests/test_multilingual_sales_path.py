@@ -1186,6 +1186,73 @@ class StaticCoreRendererTests(unittest.TestCase):
                 self.assertEqual(about_output.read_text(encoding="utf-8"), "unchanged about")
                 self.assertEqual(contact_output.read_text(encoding="utf-8"), "unchanged contact")
 
+    def test_bogus_template_tokens_fail_before_rendering_or_writing(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        malformed = (
+            "< p>{{text:shared.home}}</ p>",
+            "<1>{{text:shared.home}}</1>",
+            "<!oops>{{text:shared.home}}",
+            "<?oops>{{text:shared.home}}",
+        )
+        for template in malformed:
+            with self.subTest(template=template):
+                with self.assertRaisesRegex(ValueError, "malformed template syntax"):
+                    self.builder.render_page("en", "about", template, content)
+
+        self.write_content("en")
+        template_path = self.fixture_templates / "about.html"
+        original = template_path.read_text(encoding="utf-8")
+        for suffix in malformed:
+            with self.subTest(build_suffix=suffix):
+                template_path.write_text(original + suffix, encoding="utf-8")
+                about_output = output_path(self.fixture_public, "en", "about")
+                contact_output = output_path(self.fixture_public, "en", "contact")
+                about_output.parent.mkdir(parents=True, exist_ok=True)
+                about_output.write_text("unchanged about", encoding="utf-8")
+                contact_output.write_text("unchanged contact", encoding="utf-8")
+
+                with self.assertRaisesRegex(ValueError, "malformed template syntax"):
+                    self.build(("en",))
+
+                self.assertEqual(about_output.read_text(encoding="utf-8"), "unchanged about")
+                self.assertEqual(contact_output.read_text(encoding="utf-8"), "unchanged contact")
+
+    def test_escaped_less_than_and_json_unicode_escape_are_valid_data(self):
+        rendered = self.builder.render_page(
+            "en",
+            "about",
+            '<p>&lt; {{text:shared.home}}</p>'
+            '<script type="application/ld+json">'
+            '{"marker":"\\u003c","name":{{json:shared.home}}}</script>',
+            {"locale": "en", "shared": {"home": "Home"}},
+        )
+        self.assertIn("<p>&lt; Home</p>", rendered)
+        self.assertEqual(
+            json.loads(rendered.split('<script type="application/ld+json">', 1)[1]
+                       .split("</script>", 1)[0])["marker"],
+            "<",
+        )
+
+    def test_only_normalized_html_doctype_declarations_are_allowed(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        rendered = self.builder.render_page(
+            "en",
+            "about",
+            "<!doctype\n  HTML><p>{{text:shared.home}}</p>",
+            content,
+        )
+        self.assertEqual(rendered, "<!doctype\n  HTML><p>Home</p>")
+
+        for declaration in ("<!DOCTYPE svg>", "<![CDATA[oops]]>", "<![oops]>"):
+            with self.subTest(declaration=declaration):
+                with self.assertRaisesRegex(ValueError, "malformed template syntax"):
+                    self.builder.render_page(
+                        "en",
+                        "about",
+                        declaration + "<p>{{text:shared.home}}</p>",
+                        content,
+                    )
+
     def test_slashes_in_attribute_values_and_svg_self_closing_tags_are_valid(self):
         rendered = self.builder.render_page(
             "en",
