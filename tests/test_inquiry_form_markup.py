@@ -196,6 +196,15 @@ OPTION_KEYS_BY_SELECT = {
         "other": "other",
     },
 }
+RETAINED_MODULE_KEYS = {
+    "air-compressor": "air_compressor",
+    "dryer": "air_dryer",
+    "filters": "filters",
+    "air-buffer-tank": "air_buffer_tank",
+    "nitrogen-storage": "nitrogen_storage",
+    "booster": "booster",
+    "none": "none",
+}
 JOURNEY_TEXT_KEYS = {
     "modules_already_available",
     "air_compressor",
@@ -234,6 +243,13 @@ INQUIRY_DATA_ATTRIBUTES = {
     "data-msp-only",
     "data-back",
     "data-template",
+    "data-progress-text",
+    "data-progress-bar",
+    "data-inquiry-reference",
+}
+STRUCTURAL_HOOKS = {
+    "data-recommendation-only",
+    "data-msp-only",
     "data-progress-text",
     "data-progress-bar",
     "data-inquiry-reference",
@@ -295,6 +311,9 @@ class InquiryParser(HTMLParser):
         self.branch_control_ids = {"psa": set(), "mixer": set()}
         self.branch_choice_values = {"psa": {}, "mixer": {}}
         self.step_button_bindings = []
+        self.button_texts = {}
+        self.choice_label_texts = {}
+        self.hook_bindings = {name: [] for name in STRUCTURAL_HOOKS}
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -344,10 +363,17 @@ class InquiryParser(HTMLParser):
             and "value" in attrs
         ):
             self.choice_values.setdefault(attrs["name"], set()).add(attrs["value"])
+            if any(
+                ancestor_tag == "label"
+                for ancestor_tag, _ancestor_attrs, _hook_records in self.element_stack
+            ):
+                self.captures.append(
+                    ("label", "choice", (attrs["name"], attrs["value"]), [])
+                )
         current_step = next(
             (
                 ancestor_attrs["data-step"]
-                for _ancestor_tag, ancestor_attrs in reversed(self.element_stack)
+                for _ancestor_tag, ancestor_attrs, _hook_records in reversed(self.element_stack)
                 if "data-step" in ancestor_attrs
             ),
             None,
@@ -355,7 +381,7 @@ class InquiryParser(HTMLParser):
         current_branch = next(
             (
                 ancestor_attrs["data-branch"]
-                for _ancestor_tag, ancestor_attrs in reversed(self.element_stack)
+                for _ancestor_tag, ancestor_attrs, _hook_records in reversed(self.element_stack)
                 if "data-branch" in ancestor_attrs
             ),
             None,
@@ -367,17 +393,45 @@ class InquiryParser(HTMLParser):
                 self.branch_choice_values[current_branch].setdefault(
                     attrs["name"], set()
                 ).add(attrs["value"])
+        if tag in {"input", "select", "textarea"} and attrs.get("id"):
+            for _ancestor_tag, _ancestor_attrs, hook_records in self.element_stack:
+                for record in hook_records:
+                    record["control_ids"].add(attrs["id"])
         if tag == "button" and current_step:
             if "data-next" in attrs:
                 self.step_button_bindings.append(("next", current_step))
+                self.captures.append((tag, "button", ("next", current_step), []))
             if "data-back" in attrs:
                 self.step_button_bindings.append(("back", current_step))
+                self.captures.append((tag, "button", ("back", current_step), []))
+            if attrs.get("type", "").lower() == "submit":
+                self.captures.append((tag, "button", ("submit", current_step), []))
         if tag == "script" and attrs.get("src"):
             self.scripts.append(attrs["src"])
         if attrs.get("aria-live") in {"polite", "assertive"}:
             self.live_regions += 1
+        hook_records = []
+        ancestor_ids = tuple(
+            ancestor_attrs["id"]
+            for _ancestor_tag, ancestor_attrs, _ancestor_hooks in self.element_stack
+            if ancestor_attrs.get("id")
+        )
+        parent_attrs = self.element_stack[-1][1] if self.element_stack else {}
+        for hook in STRUCTURAL_HOOKS:
+            if hook not in attrs:
+                continue
+            record = {
+                "tag": tag,
+                "ancestor_ids": ancestor_ids,
+                "parent_tag": self.element_stack[-1][0] if self.element_stack else None,
+                "parent_id": parent_attrs.get("id"),
+                "parent_classes": set(parent_attrs.get("class", "").split()),
+                "control_ids": set(),
+            }
+            self.hook_bindings[hook].append(record)
+            hook_records.append(record)
         if tag not in VOID_ELEMENTS:
-            self.element_stack.append((tag, attrs))
+            self.element_stack.append((tag, attrs, hook_records))
 
     def handle_endtag(self, tag):
         for index in range(len(self.captures) - 1, -1, -1):
@@ -393,6 +447,11 @@ class InquiryParser(HTMLParser):
             elif kind == "option":
                 select_name, option_value = key
                 self.option_texts.setdefault(select_name, {})[option_value] = value
+                self.choice_label_texts[(select_name, option_value)] = value
+            elif kind == "choice":
+                self.choice_label_texts[key] = value
+            elif kind == "button":
+                self.button_texts[key] = value
             elif kind == "consent":
                 self.consent_text = value
             else:
@@ -452,6 +511,34 @@ def assert_inquiry_contract(test_case, html):
         },
     )
     test_case.assertEqual(parser.step_button_bindings, EXPECTED_STEP_BUTTON_BINDINGS)
+    recommendation_hooks = parser.hook_bindings["data-recommendation-only"]
+    test_case.assertEqual(len(recommendation_hooks), 1)
+    test_case.assertEqual(recommendation_hooks[0]["tag"], "div")
+    test_case.assertIn("contactForm", recommendation_hooks[0]["ancestor_ids"])
+    test_case.assertEqual(
+        recommendation_hooks[0]["control_ids"], {"recommendation_branch"}
+    )
+    msp_hooks = parser.hook_bindings["data-msp-only"]
+    test_case.assertEqual(len(msp_hooks), 1)
+    test_case.assertEqual(msp_hooks[0]["tag"], "div")
+    test_case.assertIn("contactForm", msp_hooks[0]["ancestor_ids"])
+    test_case.assertEqual(msp_hooks[0]["control_ids"], {"control_interface"})
+
+    progress_text_hooks = parser.hook_bindings["data-progress-text"]
+    test_case.assertEqual(len(progress_text_hooks), 1)
+    test_case.assertEqual(progress_text_hooks[0]["tag"], "span")
+    test_case.assertEqual(progress_text_hooks[0]["parent_id"], "inquiryProgress")
+    progress_bar_hooks = parser.hook_bindings["data-progress-bar"]
+    test_case.assertEqual(len(progress_bar_hooks), 1)
+    test_case.assertEqual(progress_bar_hooks[0]["tag"], "span")
+    test_case.assertIn("inquiryProgress", progress_bar_hooks[0]["ancestor_ids"])
+    test_case.assertIn(
+        "inquiry-progress-track", progress_bar_hooks[0]["parent_classes"]
+    )
+    reference_hooks = parser.hook_bindings["data-inquiry-reference"]
+    test_case.assertEqual(len(reference_hooks), 1)
+    test_case.assertEqual(reference_hooks[0]["tag"], "strong")
+    test_case.assertIn("inquirySuccess", reference_hooks[0]["ancestor_ids"])
     for attribute, expected_values in EXPECTED_MACHINE_DATA_ATTRIBUTES.items():
         test_case.assertCountEqual(
             parser.inquiry_data_attributes[attribute],
@@ -466,6 +553,8 @@ def assert_inquiry_contract(test_case, html):
         "inquirySuccess", "inquiryFailure",
     }:
         test_case.assertEqual(parser.id_counts.get(element_id), 1, element_id)
+    for control_id in EXPECTED_CONTROL_NAMES_BY_ID:
+        test_case.assertEqual(parser.id_counts.get(control_id), 1, control_id)
     for attribute in {"data-sending", "data-required-message", "data-template"}:
         test_case.assertEqual(
             len(parser.inquiry_data_attributes[attribute]),
@@ -527,6 +616,35 @@ class InquiryFormMarkupTests(unittest.TestCase):
                 expected_options,
                 f"{locale}:{select_name}",
             )
+        expected_choice_labels = {
+            (select_name, value): normalize_text(
+                self.expected_copy(data, key_spec)
+            )
+            for select_name, option_specs in OPTION_KEYS_BY_SELECT.items()
+            for value, key_spec in option_specs.items()
+        }
+        expected_choice_labels.update(
+            {
+                ("retained_modules", value): normalize_text(copy[copy_key])
+                for value, copy_key in RETAINED_MODULE_KEYS.items()
+            }
+        )
+        self.assertEqual(
+            parser.choice_label_texts,
+            expected_choice_labels,
+            f"{locale}:choice labels",
+        )
+        self.assertEqual(
+            parser.button_texts,
+            {
+                ("next", "1"): normalize_text(copy["continue"]),
+                ("back", "2"): normalize_text(copy["back"]),
+                ("next", "2"): normalize_text(copy["continue"]),
+                ("back", "3"): normalize_text(copy["back"]),
+                ("submit", "3"): normalize_text(copy["send_assessment_request"]),
+            },
+            f"{locale}:step buttons",
+        )
 
         form = parser.forms[0]
         self.assertEqual(form["data-sending"], copy["sending"])
@@ -671,6 +789,54 @@ class InquiryFormMarkupTests(unittest.TestCase):
         mutated = html.replace('data-branch="psa"', 'data-branch="__mixer__"', 1)
         mutated = mutated.replace('data-branch="mixer"', 'data-branch="psa"', 1)
         mutated = mutated.replace('data-branch="__mixer__"', 'data-branch="mixer"', 1)
+        with self.assertRaises(AssertionError):
+            assert_inquiry_contract(self, mutated)
+
+    def assert_english_journey_contract(self, html):
+        data = json.loads(
+            (PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8")
+        )
+        parser = assert_inquiry_contract(self, html)
+        self.assert_localized_journey(parser, data, data, "en")
+
+    def test_contract_rejects_moved_recommendation_hook(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace(" data-recommendation-only hidden", " hidden", 1)
+        mutated = mutated.replace(
+            '<select id="recommendation_branch"',
+            '<select data-recommendation-only id="recommendation_branch"',
+            1,
+        )
+        with self.assertRaises(AssertionError):
+            assert_inquiry_contract(self, mutated)
+
+    def test_contract_rejects_swapped_progress_hooks(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace("data-progress-text", "data-__progress__", 1)
+        mutated = mutated.replace("data-progress-bar", "data-progress-text", 1)
+        mutated = mutated.replace("data-__progress__", "data-progress-bar", 1)
+        with self.assertRaises(AssertionError):
+            assert_inquiry_contract(self, mutated)
+
+    def test_contract_rejects_swapped_retained_module_labels(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace("> Air compressor</label>", "> __dryer__</label>", 1)
+        mutated = mutated.replace("> Air dryer</label>", "> Air compressor</label>", 1)
+        mutated = mutated.replace("> __dryer__</label>", "> Air dryer</label>", 1)
+        with self.assertRaises(AssertionError):
+            self.assert_english_journey_contract(mutated)
+
+    def test_contract_rejects_swapped_step_button_text(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace(">Continue</button>", ">__back__</button>", 1)
+        mutated = mutated.replace(">Back</button>", ">Continue</button>", 1)
+        mutated = mutated.replace(">__back__</button>", ">Back</button>", 1)
+        with self.assertRaises(AssertionError):
+            self.assert_english_journey_contract(mutated)
+
+    def test_contract_rejects_duplicate_control_id(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace('id="purity"', 'id="target_flow"', 1)
         with self.assertRaises(AssertionError):
             assert_inquiry_contract(self, mutated)
 
