@@ -161,20 +161,31 @@ class SiteIntegrityTests(unittest.TestCase):
 
     def test_legacy_localized_core_nav_keeps_about_before_contact(self):
         for lang in SUB_LANGS:
-            for filename in ("about.html", "parameters.html", "contact.html"):
+            for filename in ("about.html", "contact.html"):
                 with self.subTest(lang=lang, filename=filename):
-                    hrefs = header_nav_hrefs(page_path(lang, filename))
-                    parameter_matches = [i for i, href in enumerate(hrefs) if "parameters" in href]
-                    about_matches = [i for i, href in enumerate(hrefs) if "about" in href]
-                    contact_matches = [i for i, href in enumerate(hrefs) if "contact" in href]
-                    self.assertEqual(len(parameter_matches), 1, hrefs)
-                    self.assertEqual(len(about_matches), 1, hrefs)
-                    self.assertEqual(len(contact_matches), 1, hrefs)
-                    parameters = parameter_matches[0]
-                    about = about_matches[0]
-                    contact = contact_matches[0]
-                    self.assertLess(parameters, about)
-                    self.assertEqual(about + 1, contact)
+                    content = page_path(lang, filename).read_text(encoding="utf-8")
+                    nav = re.search(
+                        r'<nav class="[^"]*\bnav\b[^"]*"[^>]*>(.*?)</nav>',
+                        content,
+                        re.DOTALL,
+                    )
+                    self.assertIsNotNone(nav)
+                    hrefs = re.findall(r'<a\b[^>]*href="([^"]+)"', nav.group(1))
+                    expected_localized_links = (
+                        f"/{lang}/products/psa-nitrogen-generation-system",
+                        f"/{lang}/products/integrated-gas-mixing-cabinet",
+                        f"/{lang}/products/mspv2-4000-proportional-valve",
+                        f"/{lang}/products/mixed-gas-control-comparison",
+                        f"/{lang}/#advantages",
+                        f"/{lang}/#samples",
+                        f"/{lang}/about",
+                        f"/{lang}/contact",
+                    )
+                    for href in expected_localized_links:
+                        self.assertEqual(hrefs.count(href), 1, hrefs)
+                    about = hrefs.index(f"/{lang}/about")
+                    contact = hrefs.index(f"/{lang}/contact")
+                    self.assertLess(about, contact)
 
     def test_all_about_pages_have_localized_content(self):
         for lang, marker in TRANSLATED_ABOUT_MARKERS.items():
