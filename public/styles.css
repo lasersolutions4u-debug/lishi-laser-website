@@ -5798,7 +5798,8 @@ a.assist-product-card:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .product-page .logo-tagline {
+  .product-page .logo-tagline,
+  .portfolio-page .logo-tagline {
     display: none;
   }
 
