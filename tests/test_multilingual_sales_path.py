@@ -220,6 +220,7 @@ class RedirectContractTests(unittest.TestCase):
         "roi.html": "/roi.html",
         "404.html": "/",
     }
+    LEGACY_CANONICAL_TARGETS = {"parameters": "/parameters"}
 
     @classmethod
     def setUpClass(cls):
@@ -248,6 +249,12 @@ class RedirectContractTests(unittest.TestCase):
                 with self.subTest(locale=locale, filename=filename):
                     self.rule_index(f"/{locale}/{filename}", target)
 
+    def test_supported_locale_legacy_canonical_routes_redirect_exactly_to_english(self):
+        for locale in LOCALIZED_LOCALES:
+            for route, target in self.LEGACY_CANONICAL_TARGETS.items():
+                with self.subTest(locale=locale, route=route):
+                    self.rule_index(f"/{locale}/{route}", target)
+
     def test_unsupported_core_routes_redirect_explicitly_before_fallbacks(self):
         exact_indices = []
         fallback_indices = []
@@ -273,6 +280,11 @@ class RedirectContractTests(unittest.TestCase):
             for locale in LOCALIZED_LOCALES
             for filename, target in self.LEGACY_PAGE_TARGETS.items()
         ]
+        legacy_indices.extend(
+            self.rule_index(f"/{locale}/{route}", target)
+            for locale in LOCALIZED_LOCALES
+            for route, target in self.LEGACY_CANONICAL_TARGETS.items()
+        )
         unsupported_exact_indices = [
             self.rule_index(route_for(locale, page_key), CORE_ROUTES[page_key])
             for locale in UNSUPPORTED_LOCALES
@@ -296,6 +308,19 @@ class RedirectContractTests(unittest.TestCase):
                 self.rule_index(source, "/")
         self.assertTrue(self.rules)
         self.assertTrue(all(status == "301" for _, _, status in self.rules))
+
+    def test_redirect_sources_are_unique_and_static_graph_is_acyclic(self):
+        sources = [source for source, _, _ in self.rules]
+        self.assertEqual(len(sources), len(set(sources)))
+
+        graph = {source: target for source, target, _ in self.rules}
+        for source in graph:
+            visited = set()
+            current = source
+            while current in graph:
+                self.assertNotIn(current, visited, f"Redirect cycle from {source}: {visited}")
+                visited.add(current)
+                current = graph[current]
 
 
 class ProductRouteTests(unittest.TestCase):
