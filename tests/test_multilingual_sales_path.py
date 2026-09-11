@@ -12,6 +12,7 @@ import unittest
 from unittest import mock
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
 from site_locales import (
     CORE_ROUTES,
@@ -39,7 +40,7 @@ PRODUCT_BUILDER_SPEC.loader.exec_module(PRODUCT_BUILDER)
 CORE_BUILDER_PATH = ROOT / "build-static-core-pages.py"
 ORCHESTRATOR_PATH = ROOT / "build-core-locales.py"
 APPROVED_CORE_PAGE_SHA256 = {
-    "about": "6e1778c87ce105001c4ec9fa99715de8a0a78adf258e5c5a5c83cc71fc806e06",
+    "about": "26a17b1ec58d0a897240adf6a8015d14e1254f7f2bfa64e89fda31a5764db689",
     "contact": "6aae65975ba8daab26a459afb7ea82933ec7080db7bce07b2cf3d78d2de1a140",
 }
 
@@ -65,6 +66,7 @@ class BuildOrchestrationTests(unittest.TestCase):
             [node, str(ROOT / "public" / "build-i18n.js")],
             [python, str(ROOT / "build-static-core-pages.py")],
             [python, str(ROOT / "build-product-pages.py")],
+            [python, str(ROOT / "generate-sitemap-geo.py")],
             [python, "-m", "unittest", "-v", "tests.test_multilingual_sales_path"],
         )
 
@@ -91,6 +93,7 @@ class BuildOrchestrationTests(unittest.TestCase):
                 mock.call("[homepages]", flush=True),
                 mock.call("[about-contact]", flush=True),
                 mock.call("[products]", flush=True),
+                mock.call("[sitemap-llms]", flush=True),
                 mock.call("[integrity-check]", flush=True),
             ],
         )
@@ -209,6 +212,122 @@ class GeneratedMatrixTests(unittest.TestCase):
             for filename in self.LEGACY_FILENAMES:
                 with self.subTest(locale=locale, filename=filename):
                     self.assertFalse((PUBLIC / locale / filename).exists())
+
+
+class CoreSeoParser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.html_lang = ""
+        self.canonical = ""
+        self.hreflangs = {}
+        self.title_parts = []
+        self.description = ""
+        self.anchor_hrefs = []
+        self._capture_title = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "html":
+            self.html_lang = attrs.get("lang", "")
+        elif tag == "title":
+            self._capture_title = True
+        elif tag == "meta" and attrs.get("name", "").casefold() == "description":
+            self.description = attrs.get("content", "").strip()
+        elif tag == "link" and attrs.get("rel", "").casefold() == "canonical":
+            self.canonical = attrs.get("href", "")
+        elif tag == "link" and attrs.get("rel", "").casefold() == "alternate":
+            hreflang = attrs.get("hreflang")
+            if hreflang:
+                self.hreflangs[hreflang] = attrs.get("href", "")
+        elif tag == "a" and attrs.get("href"):
+            self.anchor_hrefs.append(attrs["href"])
+
+    def handle_endtag(self, tag):
+        if tag == "title":
+            self._capture_title = False
+
+    def handle_data(self, data):
+        if self._capture_title:
+            self.title_parts.append(data)
+
+    @property
+    def title(self):
+        return " ".join("".join(self.title_parts).split())
+
+
+class SeoMatrixTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.pages = {}
+        for locale in SUPPORTED_LOCALES:
+            for page_key in CORE_ROUTES:
+                parser = CoreSeoParser()
+                parser.feed(output_path(PUBLIC, locale, page_key).read_text(encoding="utf-8"))
+                cls.pages[(locale, page_key)] = parser
+
+    def test_core_pages_have_exact_canonical_language_and_reciprocal_alternates(self):
+        expected_hreflangs = set(SUPPORTED_LOCALES) | {"x-default"}
+        for (locale, page_key), page in self.pages.items():
+            with self.subTest(locale=locale, page_key=page_key):
+                self.assertEqual(page.canonical, canonical_url(locale, page_key))
+                self.assertEqual(page.html_lang, locale)
+                self.assertEqual(set(page.hreflangs), expected_hreflangs)
+                self.assertEqual(page.hreflangs, alternates_for(page_key))
+                self.assertEqual(page.hreflangs["x-default"], canonical_url("en", page_key))
+                for alternate_locale in SUPPORTED_LOCALES:
+                    alternate = self.pages[(alternate_locale, page_key)]
+                    self.assertEqual(
+                        alternate.hreflangs[locale],
+                        canonical_url(locale, page_key),
+                    )
+
+    def test_core_metadata_is_present_unique_per_locale_and_lishi_free(self):
+        for locale in SUPPORTED_LOCALES:
+            pairs = []
+            for page_key in CORE_ROUTES:
+                page = self.pages[(locale, page_key)]
+                with self.subTest(locale=locale, page_key=page_key):
+                    self.assertTrue(page.title)
+                    self.assertTrue(page.description)
+                    self.assertNotIn("lishi", page.title.casefold())
+                    self.assertNotIn("lishi", page.description.casefold())
+                    html = output_path(PUBLIC, locale, page_key).read_text(encoding="utf-8")
+                    self.assertNotIn("lishi", html.casefold())
+                pairs.append((page.title, page.description))
+            self.assertEqual(len(pairs), len(set(pairs)), locale)
+
+    def test_same_site_page_links_resolve_to_generated_files(self):
+        core_urls = {
+            canonical_url(locale, page_key): output_path(PUBLIC, locale, page_key)
+            for locale in SUPPORTED_LOCALES
+            for page_key in CORE_ROUTES
+        }
+        for (locale, page_key), page in self.pages.items():
+            source_url = canonical_url(locale, page_key)
+            for raw_href in page.anchor_hrefs:
+                parsed_raw = urlparse(raw_href)
+                if parsed_raw.scheme in {"mailto", "tel", "javascript"} or raw_href.startswith("#"):
+                    continue
+                resolved = urlparse(urljoin(source_url, raw_href))
+                if resolved.netloc not in {"", "gasmixtech.com", "www.gasmixtech.com"}:
+                    continue
+                target_url = f"https://gasmixtech.com{resolved.path}"
+                if target_url.endswith("/") and target_url != "https://gasmixtech.com/":
+                    target_url = target_url.rstrip("/")
+                if target_url in core_urls:
+                    target_path = core_urls[target_url]
+                else:
+                    relative = resolved.path.lstrip("/")
+                    if not relative:
+                        target_path = PUBLIC / "index.html"
+                    elif resolved.path.endswith("/"):
+                        target_path = PUBLIC / relative / "index.html"
+                    elif Path(relative).suffix:
+                        target_path = PUBLIC / relative
+                    else:
+                        target_path = PUBLIC / f"{relative}.html"
+                with self.subTest(locale=locale, page_key=page_key, href=raw_href):
+                    self.assertTrue(target_path.is_file(), f"Unresolved same-site link: {raw_href} -> {target_path}")
 
 
 class RedirectContractTests(unittest.TestCase):

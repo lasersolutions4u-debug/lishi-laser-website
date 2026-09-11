@@ -20,6 +20,7 @@ def resolve_stages():
         ("homepages", (node, str(ROOT / "public" / "build-i18n.js"))),
         ("about-contact", (python, str(ROOT / "build-static-core-pages.py"))),
         ("products", (python, str(ROOT / "build-product-pages.py"))),
+        ("sitemap-llms", (python, str(ROOT / "generate-sitemap-geo.py"))),
         (
             "integrity-check",
             (python, "-m", "unittest", "-v", "tests.test_multilingual_sales_path"),

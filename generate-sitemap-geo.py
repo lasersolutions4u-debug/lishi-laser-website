@@ -4,40 +4,50 @@
 import re
 from pathlib import Path
 
+from site_locales import (
+    CORE_ROUTES,
+    DOMAIN,
+    SUPPORTED_LOCALES,
+    alternates_for,
+    canonical_url,
+    output_path,
+)
+
 
 ROOT = Path(__file__).resolve().parent
 BASE = ROOT / "public"
-DOMAIN = "https://gasmixtech.com"
-LANGS = ("en", "zh", "es", "ko", "ja", "pt", "pl")
-LOCALES = (
-    ("en", "English", "/"),
-    ("zh", "Chinese", "/zh/"),
-    ("es", "Spanish", "/es/"),
-    ("ko", "Korean", "/ko/"),
-    ("ja", "Japanese", "/ja/"),
-    ("pt", "Portuguese", "/pt/"),
-    ("pl", "Polish", "/pl/"),
-)
-PRETTY_PAGES = {"about.html", "contact.html", "parameters.html"}
-LOCALIZED_PAGES = {
-    "index.html",
-    "about.html",
-    "contact.html",
-    "parameters.html",
-    "compatibility.html",
-    "roi.html",
-    "payment.html",
+LOCALE_NAMES = {
+    "en": "English",
+    "zh": "Simplified Chinese",
+    "es": "Spanish",
+    "pt": "Portuguese",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "pl": "Polish",
 }
-CORE_LINKS = (
+CORE_PAGE_LABELS = {
+    "home": "Laser cutting assist-gas systems",
+    "about": "Supplier and solution-provider profile",
+    "contact": "Selection support and quotation",
+    "psa": "PSA nitrogen generation system",
+    "cabinet": "Integrated gas mixing cabinet",
+    "valve": "MSPV2-4000 proportional valve",
+    "comparison": "Mixed-gas controller comparison",
+}
+TECHNICAL_LINKS = (
     ("Gas mixer for laser cutting", f"{DOMAIN}/"),
-    ("Supplier and solution-provider profile", f"{DOMAIN}/about"),
     ("Compatibility assessment", f"{DOMAIN}/compatibility.html"),
     ("Gas ratios and cutting parameters", f"{DOMAIN}/parameters"),
     ("ROI and cost factors", f"{DOMAIN}/roi.html"),
     ("Payment and procurement process", f"{DOMAIN}/payment.html"),
-    ("Selection support and quotation", f"{DOMAIN}/contact"),
+    ("Privacy policy", f"{DOMAIN}/privacy.html"),
     ("English technical articles", f"{DOMAIN}/blog/"),
     ("English case examples", f"{DOMAIN}/#samples"),
+)
+DISCOVERY_SCOPE = (
+    "English, Simplified Chinese, Spanish, Portuguese, Japanese, Korean, and Polish "
+    "core sales pages are maintained. Technical articles, ROI, parameters, "
+    "compatibility, payment, and privacy resources are maintained in English."
 )
 SUPPLIER_FACT = (
     "Jinan Euchio Machinery Co., Ltd. is the China-based supplier and solution "
@@ -58,14 +68,12 @@ def is_indexable_html(path):
     )
 
 
-def get_all_pages():
+def get_english_resource_pages():
     pages = []
-    for path in BASE.rglob("*.html"):
-        rel_parts = path.relative_to(BASE).parts
-        if any(part in {"pagefind", ".wrangler"} for part in rel_parts):
-            continue
-        if is_indexable_html(path):
-            pages.append(path.relative_to(BASE).as_posix())
+    for directory in ("blog", "case-studies"):
+        for path in (BASE / directory).rglob("*.html"):
+            if is_indexable_html(path):
+                pages.append(path.relative_to(BASE).as_posix())
     return sorted(pages)
 
 
@@ -74,68 +82,65 @@ def rel_to_url(rel):
         return f"{DOMAIN}/"
     if rel.endswith("/index.html"):
         return f"{DOMAIN}/{rel[:-10]}"
-    if Path(rel).name in PRETTY_PAGES:
-        return f"{DOMAIN}/{rel[:-5]}"
     return f"{DOMAIN}/{rel}"
 
 
-def localized_rel(lang, filename):
-    return filename if lang == "en" else f"{lang}/{filename}"
-
-
-def alternate_group(rel):
-    parts = rel.split("/")
-    filename = parts[-1]
-    is_core_location = len(parts) == 1 or (len(parts) == 2 and parts[0] in LANGS[1:])
-    if is_core_location and filename in LOCALIZED_PAGES:
-        return {lang: localized_rel(lang, filename) for lang in LANGS}
-    return None
-
-
 def generate_sitemap():
-    pages = get_all_pages()
-    page_set = set(pages)
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
         '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ]
-    for rel in pages:
+    for locale in SUPPORTED_LOCALES:
+        for page_key in CORE_ROUTES:
+            path = output_path(BASE, locale, page_key)
+            if not path.is_file():
+                raise FileNotFoundError(f"Missing core page: {path}")
+            lines.append("  <url>")
+            lines.append(f"    <loc>{canonical_url(locale, page_key)}</loc>")
+            for hreflang, href in alternates_for(page_key).items():
+                lines.append(
+                    f'    <xhtml:link rel="alternate" hreflang="{hreflang}" '
+                    f'href="{href}" />'
+                )
+            lines.append("  </url>")
+    for rel in get_english_resource_pages():
         lines.append("  <url>")
         lines.append(f"    <loc>{rel_to_url(rel)}</loc>")
-        alternates = alternate_group(rel)
-        if alternates:
-            for lang in LANGS:
-                alternate_rel = alternates[lang]
-                if alternate_rel in page_set:
-                    lines.append(
-                        f'    <xhtml:link rel="alternate" hreflang="{lang}" '
-                        f'href="{rel_to_url(alternate_rel)}" />'
-                    )
-            lines.append(
-                f'    <xhtml:link rel="alternate" hreflang="x-default" '
-                f'href="{rel_to_url(alternates["en"])}" />'
-            )
         lines.append("  </url>")
     lines.append("</urlset>")
     return "\n".join(lines) + "\n"
 
 
-def link_lines():
-    return [f"- {name}: {url}" for name, url in CORE_LINKS]
+def core_link_lines(locale="en"):
+    return [
+        f"- {CORE_PAGE_LABELS[page_key]}: {canonical_url(locale, page_key)}"
+        for page_key in CORE_ROUTES
+    ]
+
+
+def technical_link_lines():
+    return [f"- {name}: {url}" for name, url in TECHNICAL_LINKS]
 
 
 def generate_llms_txt():
-    locale_lines = [f"- {label} ({code}): {DOMAIN}{path}" for code, label, path in LOCALES]
+    locale_lines = [
+        f"- {LOCALE_NAMES[locale]} ({locale}): {canonical_url(locale, 'home')}"
+        for locale in SUPPORTED_LOCALES
+    ]
     return "\n".join(
         [
             "# GasMixTech",
             f"> Official website: {DOMAIN}/",
             "> Product category: gas mixer for laser cutting.",
             f"> {SUPPLIER_FACT}",
+            f"> {DISCOVERY_SCOPE}",
             "",
-            "## Core Pages",
-            *link_lines(),
+            "## English Core Sales Pages",
+            *core_link_lines(),
+            "",
+            "## English Technical Resources",
+            *technical_link_lines(),
             "",
             "## Maintained Languages",
             *locale_lines,
@@ -167,7 +172,10 @@ def generate_llms_full_txt():
             "Parameter tables are reference starting points rather than universal settings. Case results apply to the recorded machine, material, thickness, gas supply, pressure, flow, nozzle, focus, and operating conditions. Results can change when those conditions change.",
             "",
             "## Authoritative pages",
-            *link_lines(),
+            *core_link_lines(),
+            "",
+            "## English technical resources",
+            *technical_link_lines(),
             "",
             "## Contact",
             "- Company: Jinan Euchio Machinery Co., Ltd.",
@@ -177,22 +185,26 @@ def generate_llms_full_txt():
             f"- Contact page: {DOMAIN}/contact",
             "",
             "## Maintained languages",
-            "English, Chinese, Spanish, Korean, Japanese, Portuguese, and Polish core pages are maintained. Technical articles and case examples are maintained in English.",
+            DISCOVERY_SCOPE,
             "",
         ]
     )
 
 
-def generate_locale_llms(code, label, path):
+def generate_locale_llms(code):
     return "\n".join(
         [
-            f"# GasMixTech — {label}",
-            f"> Maintained locale: {DOMAIN}{path}",
+            f"# GasMixTech — {LOCALE_NAMES[code]}",
+            f"> Maintained locale: {canonical_url(code, 'home')}",
             "> Product category: gas mixer for laser cutting.",
             f"> {SUPPLIER_FACT}",
+            f"> {DISCOVERY_SCOPE}",
             "",
-            "## Authoritative English Resources",
-            *link_lines(),
+            "## Maintained Core Sales Pages",
+            *core_link_lines(code),
+            "",
+            "## Authoritative English Technical Resources",
+            *technical_link_lines(),
             "",
             f"- Full site summary: {DOMAIN}/llms-full.txt",
             f"- Sitemap: {DOMAIN}/sitemap.xml",
@@ -213,8 +225,8 @@ def main():
     print(f'Sitemap: {sitemap.count("<url>")} URLs')
     write_output("llms.txt", generate_llms_txt())
     write_output("llms-full.txt", generate_llms_full_txt())
-    for code, label, path in LOCALES:
-        write_output(f"llms-{code}.txt", generate_locale_llms(code, label, path))
+    for code in SUPPORTED_LOCALES:
+        write_output(f"llms-{code}.txt", generate_locale_llms(code))
 
 
 if __name__ == "__main__":

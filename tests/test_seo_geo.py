@@ -5,6 +5,15 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
+from site_locales import (
+    CORE_ROUTES,
+    DOMAIN,
+    SUPPORTED_LOCALES,
+    UNSUPPORTED_LOCALES,
+    alternates_for,
+    canonical_url,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
@@ -55,8 +64,8 @@ CORE = {
         "The requested GasMixTech page could not be found. Return to the laser cutting gas mixer guide or contact the supplier for help.",
     ),
 }
-ACTIVE_LANGS = ("en", "zh", "es", "ko", "ja", "pt", "pl")
-REMOVED_LANGS = ("it", "de", "fr", "nl", "tr", "ru", "vi", "th", "ar")
+ACTIVE_LANGS = SUPPORTED_LOCALES
+REMOVED_LANGS = (*UNSUPPORTED_LOCALES, "ar")
 FORBIDDEN_POSITIONING = (
     "euchio mixed gas",
     "sagemro mixed gas",
@@ -67,6 +76,11 @@ FORBIDDEN_POSITIONING = (
     "1,000+",
     "50+ countries",
     "30+ distributors",
+)
+DISCOVERY_SCOPE = (
+    "English, Simplified Chinese, Spanish, Portuguese, Japanese, Korean, and Polish "
+    "core sales pages are maintained. Technical articles, ROI, parameters, "
+    "compatibility, payment, and privacy resources are maintained in English."
 )
 
 
@@ -194,11 +208,65 @@ class SeoGeoTests(unittest.TestCase):
 
     def test_sitemap_contains_only_indexable_active_urls(self):
         tree = ET.parse(PUBLIC / "sitemap.xml")
-        ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-        locs = [node.text for node in tree.findall("s:url/s:loc", ns)]
+        ns = {
+            "s": "http://www.sitemaps.org/schemas/sitemap/0.9",
+            "xhtml": "http://www.w3.org/1999/xhtml",
+        }
+        entries = {}
+        for node in tree.findall("s:url", ns):
+            loc = node.findtext("s:loc", namespaces=ns)
+            alternates = {
+                link.attrib["hreflang"]: link.attrib["href"]
+                for link in node.findall("xhtml:link", ns)
+            }
+            entries[loc] = alternates
+
+        expected_core = {
+            canonical_url(locale, page_key)
+            for locale in SUPPORTED_LOCALES
+            for page_key in CORE_ROUTES
+        }
+        clustered = {url for url, alternates in entries.items() if alternates}
+        self.assertEqual(clustered, expected_core)
+        self.assertEqual(len(clustered), 49)
+        for locale in SUPPORTED_LOCALES:
+            for page_key in CORE_ROUTES:
+                url = canonical_url(locale, page_key)
+                with self.subTest(locale=locale, page_key=page_key):
+                    self.assertEqual(entries[url], alternates_for(page_key))
+
+        standalone = set(entries) - expected_core
+        expected_standalone = set()
+        for directory in ("blog", "case-studies"):
+            for path in (PUBLIC / directory).rglob("*.html"):
+                page = parse(path)
+                if "noindex" in page.meta.get("robots", "").casefold():
+                    continue
+                relative = path.relative_to(PUBLIC).as_posix()
+                if relative.endswith("/index.html"):
+                    expected_standalone.add(f"{DOMAIN}/{relative[:-10]}")
+                else:
+                    expected_standalone.add(f"{DOMAIN}/{relative}")
+        self.assertEqual(standalone, expected_standalone)
+        self.assertTrue(all(not entries[url] for url in standalone))
+
+        locs = list(entries)
         self.assertFalse(any("privacy" in loc or "404" in loc for loc in locs))
         self.assertFalse(any(f"/{lang}/" in loc for lang in REMOVED_LANGS for loc in locs))
+        for locale in SUPPORTED_LOCALES[1:]:
+            for legacy in ("compatibility", "parameters", "roi", "payment", "privacy", "404"):
+                self.assertFalse(any(f"/{locale}/{legacy}" in loc for loc in locs))
         self.assertEqual(tree.findall("s:url/s:lastmod", ns), [])
+
+    def test_discovery_files_state_exact_maintained_scope(self):
+        filenames = ("llms.txt", "llms-full.txt") + tuple(
+            f"llms-{locale}.txt" for locale in SUPPORTED_LOCALES
+        )
+        for filename in filenames:
+            with self.subTest(filename=filename):
+                content = (PUBLIC / filename).read_text(encoding="utf-8")
+                self.assertIn(DISCOVERY_SCOPE, content)
+                self.assertNotIn("LISHI", content.upper())
 
     def test_ai_files_link_only_to_real_authoritative_pages(self):
         for filename in ("llms.txt", "llms-full.txt"):
