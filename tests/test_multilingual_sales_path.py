@@ -1789,7 +1789,7 @@ class TranslationDataTests(unittest.TestCase):
             r"(?:(?:已安装|装机)\s*\d+[\d,]*\+?\s*(?:套|台)|已有\s*\d+[\d,]*\+?\s*(?:套|台).{0,8}安装)",
             r"(?:CE|ISO\s*\d*)\s*认证(?:产品|设备)?",
             r"(?:\d+\s*天内?(?:交货|发货)|(?:明确)?交期(?:为|[:：])?\s*\d+\s*天)",
-            r"(?:\d+\s*年|终身)(?:保修|质保)",
+            r"(?:(?:\d+|[一二三四五六七八九十]+)\s*年|终身)(?:保修|质保)",
             r"(?:独家技术|唯一供应商|世界最佳|行业最佳|保证结果|结果保证|100%\s*兼容)",
             r"(?:混气柜|气体混合柜).{0,12}(?:比例阀|阀).{0,12}(?:串联|同时安装)",
         ),
@@ -1827,7 +1827,7 @@ class TranslationDataTests(unittest.TestCase):
         ),
         "pl": (
             r"(?:ponad )?\d+[\d.]* instalacji",
-            r"(?:certyfikowan[yae] (?:ce|iso(?:\s*\d+)?)|certyfikat (?:ce|iso(?:\s*\d+)?))",
+            r"(?:certyfikowan[yae] (?:ce|iso(?:\s*\d+)?)|certyfikat(?:em|u)? (?:ce|iso(?:\s*\d+)?))",
             r"(?:dostaw[ay] w ciągu \d+ dni|termin dostawy\s*[:：]?\s*\d+ dni)",
             r"(?:\d+[- ]letnia gwarancja|\d+ lata gwarancji|dożywotnia gwarancja)",
             r"(?:wyłączna technologia|jedyny dostawca|najlepszy na świecie|gwarantowane wyniki|100\s*% kompatybiln)",
@@ -1836,13 +1836,15 @@ class TranslationDataTests(unittest.TestCase):
     }
     CLAIM_NEGATION_PATTERNS = {
         "*": r"\b(?:not|without)\b",
-        "zh": r"(?:不|未|没有|并非)",
+        "zh": r"(?:不|未|没有|并非|无需|无须)",
         "es": r"\b(?:no|sin)\b",
         "pt": r"\b(?:não|sem)\b",
         "ja": r"(?:ない|ありません|未取得|なく)",
         "ko": r"(?:않|없|아닙니다)",
         "pl": r"\b(?:nie|bez)\b",
     }
+    CLAIM_SENTENCE_SPLIT = re.compile(r"[。！？!?；;\r\n]+|(?<!\d)\.(?!\d)")
+    CLAIM_NEGATION_WINDOW = 24
 
     def _translation_path(self, dataset, locale):
         return PUBLIC / Path(str(self.DATASETS[dataset]).format(locale=locale))
@@ -2059,17 +2061,27 @@ class TranslationDataTests(unittest.TestCase):
                 ),
                 f"{locale}/{dataset}/{path}: legacy LISHI branding is forbidden",
             )
-            claim_is_negated = bool(
-                re.search(self.CLAIM_NEGATION_PATTERNS["*"], value, re.IGNORECASE)
-                or re.search(self.CLAIM_NEGATION_PATTERNS[locale], value, re.IGNORECASE)
-            )
-            if claim_is_negated:
-                continue
-            for pattern in self.FORBIDDEN_CLAIM_PATTERNS["*"] + self.FORBIDDEN_CLAIM_PATTERNS[locale]:
-                self.assertIsNone(
-                    re.search(pattern, value, re.IGNORECASE),
-                    f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}",
-                )
+            for sentence in filter(None, self.CLAIM_SENTENCE_SPLIT.split(value)):
+                for pattern in (
+                    self.FORBIDDEN_CLAIM_PATTERNS["*"]
+                    + self.FORBIDDEN_CLAIM_PATTERNS[locale]
+                ):
+                    for match in re.finditer(pattern, sentence, re.IGNORECASE):
+                        context_start = max(0, match.start() - self.CLAIM_NEGATION_WINDOW)
+                        context_end = min(len(sentence), match.end() + self.CLAIM_NEGATION_WINDOW)
+                        context = sentence[context_start:context_end]
+                        claim_is_negated = bool(
+                            re.search(
+                                self.CLAIM_NEGATION_PATTERNS["*"], context, re.IGNORECASE
+                            )
+                            or re.search(
+                                self.CLAIM_NEGATION_PATTERNS[locale], context, re.IGNORECASE
+                            )
+                        )
+                        if not claim_is_negated:
+                            self.fail(
+                                f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}"
+                            )
 
     def _is_priority_ui_path(self, dataset, path):
         parts = path.split(".")
@@ -2279,6 +2291,7 @@ class TranslationGuardRuleTests(unittest.TestCase):
             "forbidden": (
                 "本设备已取得CE认证",
                 "提供3年质保",
+                "提供五年质保",
                 "明确交期为7天",
                 "行业唯一供应商，保证结果",
                 "已有500套安装案例",
@@ -2286,6 +2299,7 @@ class TranslationGuardRuleTests(unittest.TestCase):
             ),
             "allowed": (
                 "本设备未取得CE认证",
+                "本设备无需取得CE认证",
                 "混气柜与比例阀不串联安装",
             ),
         },
@@ -2348,6 +2362,7 @@ class TranslationGuardRuleTests(unittest.TestCase):
         "pl": {
             "forbidden": (
                 "Urządzenie ma certyfikat CE",
+                "Urządzenie z certyfikatem CE",
                 "3 lata gwarancji",
                 "Termin dostawy: 7 dni",
                 "Jedyny dostawca z gwarantowanymi wynikami",
@@ -2541,6 +2556,23 @@ class TranslationGuardRuleTests(unittest.TestCase):
                     self.guard._assert_brand_and_claim_boundaries(
                         locale, "fixture", {}, {"text": text}
                     )
+
+    def test_claim_negation_does_not_cross_sentence_boundaries(self):
+        mixed_sentences = {
+            "zh": "无须维护。设备已取得CE认证。",
+            "es": "No requiere mantenimiento. Equipo con certificación CE.",
+            "pt": "Não requer manutenção. Equipamento com certificação CE.",
+            "ja": "メンテナンスは必要ありません。CE認証取得済み。",
+            "ko": "유지보수가 필요 없습니다. CE 인증 취득.",
+            "pl": "Konserwacja nie jest wymagana. Urządzenie ma certyfikat CE.",
+        }
+        for locale, text in mixed_sentences.items():
+            with self.subTest(locale=locale):
+                self.assert_guard_failure(
+                    lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                        locale, "fixture", {}, {"text": text}
+                    )
+                )
 
     def test_english_allowlist_has_global_and_locale_specific_layers(self):
         for locale in self.guard.LOCALES:
