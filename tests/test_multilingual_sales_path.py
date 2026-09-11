@@ -1619,3 +1619,473 @@ class HomepageGenerationTests(unittest.TestCase):
         self.assertIn("Invalid translation JSON: zh.json", result.stderr)
         self.assertEqual(english_output.read_text(encoding="utf-8"), "unchanged english")
         self.assertFalse((self.fixture_public / "zh" / "index.html").exists())
+
+
+class TranslationDataTests(unittest.TestCase):
+    LOCALES = ("zh", "es", "pt", "ja", "ko", "pl")
+    DATASETS = {
+        "homepage": Path("i18n") / "{locale}.json",
+        "core": Path("i18n") / "core" / "{locale}.json",
+        "products": Path("i18n") / "products" / "{locale}.json",
+    }
+    LEGAL_COMPANY_NAME = "Jinan Euchio Machinery Co., Ltd."
+    CONTROL_CHARACTERS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]")
+    EMAIL_FACT = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+    PHONE_FACT = re.compile(r"(?<!\w)\+\d[\d ()-]{6,}\d")
+    YEAR_FACT = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
+    IMMUTABLE_FIELDS = frozenset(
+        {"anchor", "href", "id", "key", "media_index", "model", "og_image", "src", "url"}
+    )
+    ALLOWED_UNTRANSLATED_TERMS = {
+        locale: (
+            "Jinan Euchio Machinery Co., Ltd.",
+            "GasMixTech",
+            "MSPV2-4000",
+            "MSPV2_4000",
+            "NPN/PNP",
+            "N₂/O₂",
+            "SAGEMRO",
+            "DHgate",
+            "Nm³/h",
+            "m³/h",
+            "L/min",
+            "MPa",
+            "kPa",
+            "PSA",
+            "OEM",
+            "MRO",
+            "PLC",
+            "ROI",
+            "FAQ",
+            "USD",
+            "N₂",
+            "O₂",
+            "bar",
+            "kg",
+            "mm",
+            "ms",
+            "kW",
+            "V",
+        )
+        for locale in LOCALES
+    }
+    PREFERRED_TERMS = {
+        "zh": {
+            "assist gas": "辅助气体",
+            "PSA nitrogen generation system": "PSA 制氮系统",
+            "integrated gas mixing cabinet": "一体式混气柜",
+            "proportional valve": "比例阀",
+            "inlet pressure": "入口压力",
+            "flow rate": "流量",
+            "retrofit": "改造集成",
+        },
+        "es": {
+            "assist gas": "gas de asistencia",
+            "PSA nitrogen generation system": "sistema PSA de generación de nitrógeno",
+            "integrated gas mixing cabinet": "armario integrado de mezcla de gases",
+            "proportional valve": "válvula proporcional",
+            "inlet pressure": "presión de entrada",
+            "flow rate": "caudal",
+            "retrofit": "modernización",
+        },
+        "pt": {
+            "assist gas": "gás de assistência",
+            "PSA nitrogen generation system": "sistema PSA de geração de nitrogênio",
+            "integrated gas mixing cabinet": "gabinete integrado de mistura de gases",
+            "proportional valve": "válvula proporcional",
+            "inlet pressure": "pressão de entrada",
+            "flow rate": "vazão",
+            "retrofit": "modernização",
+        },
+        "ja": {
+            "assist gas": "アシストガス",
+            "PSA nitrogen generation system": "PSA窒素発生システム",
+            "integrated gas mixing cabinet": "一体型ガス混合キャビネット",
+            "proportional valve": "比例弁",
+            "inlet pressure": "入口圧力",
+            "flow rate": "流量",
+            "retrofit": "レトロフィット",
+        },
+        "ko": {
+            "assist gas": "보조 가스",
+            "PSA nitrogen generation system": "PSA 질소 발생 시스템",
+            "integrated gas mixing cabinet": "통합 가스 혼합 캐비닛",
+            "proportional valve": "비례 밸브",
+            "inlet pressure": "입구 압력",
+            "flow rate": "유량",
+            "retrofit": "개조 통합",
+        },
+        "pl": {
+            "assist gas": "gaz pomocniczy",
+            "PSA nitrogen generation system": "system wytwarzania azotu PSA",
+            "integrated gas mixing cabinet": "zintegrowana szafa mieszania gazów",
+            "proportional valve": "zawór proporcjonalny",
+            "inlet pressure": "ciśnienie wlotowe",
+            "flow rate": "natężenie przepływu",
+            "retrofit": "modernizacja",
+        },
+    }
+    TERM_PATHS = (
+        ("assist gas", "homepage", "hero.badge"),
+        (
+            "PSA nitrogen generation system",
+            "homepage",
+            "principle.flow1Title",
+        ),
+        (
+            "integrated gas mixing cabinet",
+            "homepage",
+            "principle.flow3Title",
+        ),
+        ("proportional valve", "core", "contact.copy.proportional_valve"),
+        ("inlet pressure", "core", "contact.copy.oxygen_inlet_pressure"),
+        ("flow rate", "core", "contact.copy.required_mixed_gas_flow"),
+        ("retrofit", "homepage", "principle.flow4Desc"),
+    )
+    FORBIDDEN_CLAIM_PATTERNS = {
+        "*": (
+            r"\b(?:over|more than)\s+\d+[\d,]*\s+(?:installations?|systems? installed)\b",
+            r"\b\d+[\d,]*\+\s+(?:installations?|installed systems?)\b",
+            r"\b(?:ce|iso(?:\s*\d+)?)\s+certified\b",
+            r"\b(?:delivery|ships?)\s+(?:within|in)\s+\d+\s+days?\b",
+            r"\b(?:\d+[- ]year|lifetime) warranty\b",
+            r"\b(?:exclusive technology|only supplier|best in the world|guaranteed results|100% compatible)\b",
+        ),
+        "zh": (
+            r"(?:已安装|装机)\s*\d+[\d,]*\+?\s*(?:套|台)",
+            r"(?:CE|ISO\s*\d*)\s*认证(?:产品|设备)?",
+            r"\d+\s*天内(?:交货|发货)",
+            r"(?:\d+\s*年|终身)保修",
+            r"(?:独家技术|唯一供应商|世界最佳|保证结果|100%\s*兼容)",
+        ),
+        "es": (
+            r"más de \d+[\d.]* instalaciones",
+            r"certificad[oa] (?:ce|iso(?:\s*\d+)?)",
+            r"entrega en \d+ días",
+            r"garantía (?:de por vida|de \d+ años)",
+            r"(?:tecnología exclusiva|único proveedor|mejor del mundo|resultados garantizados|100\s*% compatible)",
+        ),
+        "pt": (
+            r"mais de \d+[\d.]* instalações",
+            r"certificad[oa] (?:ce|iso(?:\s*\d+)?)",
+            r"entrega em \d+ dias",
+            r"garantia (?:vitalícia|de \d+ anos)",
+            r"(?:tecnologia exclusiva|único fornecedor|melhor do mundo|resultados garantidos|100\s*% compatível)",
+        ),
+        "ja": (
+            r"\d+[\d,]*\+?\s*(?:台|件)(?:の)?導入実績",
+            r"(?:CE|ISO\s*\d*)認証済み",
+            r"\d+日以内に(?:納品|発送)",
+            r"(?:\d+年|永久)保証",
+            r"(?:独占技術|唯一のサプライヤー|世界最高|結果保証|100%\s*互換)",
+        ),
+        "ko": (
+            r"\d+[\d,]*\+?\s*(?:대|건)\s*설치 실적",
+            r"(?:CE|ISO\s*\d*)\s*인증 완료",
+            r"\d+일 이내 (?:납품|발송)",
+            r"(?:\d+년|평생) 보증",
+            r"(?:독점 기술|유일한 공급업체|세계 최고|결과 보장|100%\s*호환)",
+        ),
+        "pl": (
+            r"ponad \d+[\d.]* instalacji",
+            r"certyfikowan[yae] (?:ce|iso(?:\s*\d+)?)",
+            r"dostaw[ay] w ciągu \d+ dni",
+            r"(?:\d+[- ]letnia|dożywotnia) gwarancja",
+            r"(?:wyłączna technologia|jedyny dostawca|najlepszy na świecie|gwarantowane wyniki|100\s*% kompatybiln)",
+        ),
+    }
+
+    def _translation_path(self, dataset, locale):
+        return PUBLIC / Path(str(self.DATASETS[dataset]).format(locale=locale))
+
+    def _load_json(self, path, locale, dataset):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as error:
+            self.fail(f"{locale}/{dataset}: invalid JSON in {path.name}: {error}")
+        self.assertIsInstance(data, dict, f"{locale}/{dataset}: JSON root must be an object")
+        return data
+
+    def _walk(self, value, path=""):
+        yield path, value
+        if isinstance(value, dict):
+            for key, child in value.items():
+                child_path = f"{path}.{key}" if path else key
+                yield from self._walk(child, child_path)
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                yield from self._walk(child, f"{path}.{index}")
+
+    def _value_at(self, data, path):
+        value = data
+        for part in path.split("."):
+            value = value[int(part)] if isinstance(value, list) else value[part]
+        return value
+
+    def _assert_recursive_schema(self, locale, dataset, english, localized, path=""):
+        location = path or "<root>"
+        self.assertIs(
+            type(localized),
+            type(english),
+            f"{locale}/{dataset}/{location}: type differs from English",
+        )
+        if isinstance(english, dict):
+            self.assertTrue(localized, f"{locale}/{dataset}/{location}: empty object is forbidden")
+            missing = sorted(english.keys() - localized.keys())
+            extra = sorted(localized.keys() - english.keys())
+            self.assertEqual(
+                (missing, extra),
+                ([], []),
+                f"{locale}/{dataset}/{location}: missing keys={missing}, extra keys={extra}",
+            )
+            for key, english_child in english.items():
+                child_path = f"{path}.{key}" if path else key
+                self._assert_recursive_schema(
+                    locale, dataset, english_child, localized[key], child_path
+                )
+        elif isinstance(english, list):
+            self.assertTrue(localized, f"{locale}/{dataset}/{location}: empty list is forbidden")
+            self.assertEqual(
+                len(localized),
+                len(english),
+                f"{locale}/{dataset}/{location}: list length/order contract differs from English",
+            )
+            for index, english_child in enumerate(english):
+                self._assert_recursive_schema(
+                    locale, dataset, english_child, localized[index], f"{path}.{index}"
+                )
+
+    def _assert_safe_strings(self, locale, dataset, english, localized):
+        for path, value in self._walk(localized):
+            if isinstance(value, (dict, list)):
+                self.assertTrue(value, f"{locale}/{dataset}/{path}: empty container is forbidden")
+            elif isinstance(value, str):
+                self.assertTrue(value.strip(), f"{locale}/{dataset}/{path}: empty string is forbidden")
+                self.assertIsNone(
+                    self.CONTROL_CHARACTERS.search(value),
+                    f"{locale}/{dataset}/{path}: control character is forbidden",
+                )
+                self.assertNotIn("{{", value, f"{locale}/{dataset}/{path}: unresolved '{{{{' marker")
+                self.assertNotIn("}}", value, f"{locale}/{dataset}/{path}: unresolved '}}}}' marker")
+
+    def _assert_critical_facts(self, locale, dataset, english, localized):
+        try:
+            PRODUCT_BUILDER.validate_technical_content(localized, english, locale)
+        except (KeyError, TypeError, ValueError) as error:
+            self.fail(f"{locale}/{dataset}: builder technical validation failed: {error}")
+
+        english_leaves = PRODUCT_BUILDER.leaf_paths(english)
+        localized_leaves = PRODUCT_BUILDER.leaf_paths(localized)
+        self.assertEqual(
+            localized_leaves,
+            english_leaves,
+            f"{locale}/{dataset}: leaf paths differ from English",
+        )
+
+        for path, english_value in self._walk(english):
+            if isinstance(english_value, (dict, list)):
+                continue
+            localized_value = self._value_at(localized, path)
+            field = path.rsplit(".", 1)[-1]
+            immutable = field in self.IMMUTABLE_FIELDS or field.endswith(
+                ("_anchor", "_href", "_id", "_path", "_src", "_url")
+            )
+            if path == "locale":
+                self.assertEqual(
+                    localized_value,
+                    locale,
+                    f"{locale}/{dataset}/locale: locale identity must match filename",
+                )
+                continue
+            if immutable or PRODUCT_BUILDER.explicit_technical_value_path(path):
+                self.assertEqual(
+                    localized_value,
+                    english_value,
+                    f"{locale}/{dataset}/{path}: immutable fact differs from English",
+                )
+            if not isinstance(english_value, str):
+                self.assertEqual(
+                    localized_value,
+                    english_value,
+                    f"{locale}/{dataset}/{path}: machine value differs from English",
+                )
+                continue
+            self.assertEqual(
+                PRODUCT_BUILDER.technical_tokens(localized_value),
+                PRODUCT_BUILDER.technical_tokens(english_value),
+                f"{locale}/{dataset}/{path}: technical token/order differs from English",
+            )
+            for pattern, fact_name in (
+                (self.EMAIL_FACT, "email"),
+                (self.PHONE_FACT, "phone"),
+                (self.YEAR_FACT, "year"),
+            ):
+                self.assertEqual(
+                    tuple(pattern.findall(localized_value)),
+                    tuple(pattern.findall(english_value)),
+                    f"{locale}/{dataset}/{path}: {fact_name} fact differs from English",
+                )
+            if self.LEGAL_COMPANY_NAME in english_value:
+                self.assertIn(
+                    self.LEGAL_COMPANY_NAME,
+                    localized_value,
+                    f"{locale}/{dataset}/{path}: company legal name must remain exact",
+                )
+
+        if dataset == "products":
+            try:
+                PRODUCT_BUILDER.validate_comparison_row_keys(localized, locale)
+            except (KeyError, TypeError, ValueError) as error:
+                self.fail(f"{locale}/{dataset}: comparison stable-key validation failed: {error}")
+            english_keys = tuple(
+                row["key"] for row in english["pages"]["comparison"]["comparison_rows"]
+            )
+            localized_keys = tuple(
+                row["key"] for row in localized["pages"]["comparison"]["comparison_rows"]
+            )
+            self.assertEqual(
+                localized_keys,
+                english_keys,
+                f"{locale}/{dataset}: comparison stable-key order differs from English",
+            )
+
+    def _assert_brand_and_claim_boundaries(self, locale, dataset, english, localized):
+        for path, value in self._walk(localized):
+            if not isinstance(value, str):
+                continue
+            self.assertIsNone(
+                re.search(r"\blishi(?:\s+laser)?\b", value, re.IGNORECASE),
+                f"{locale}/{dataset}/{path}: legacy LISHI branding is forbidden",
+            )
+            for pattern in self.FORBIDDEN_CLAIM_PATTERNS["*"] + self.FORBIDDEN_CLAIM_PATTERNS[locale]:
+                self.assertIsNone(
+                    re.search(pattern, value, re.IGNORECASE),
+                    f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}",
+                )
+
+    def _is_priority_ui_path(self, dataset, path):
+        parts = path.split(".")
+        field = parts[-1].lower()
+        if path == "locale" or PRODUCT_BUILDER.immutable_content_path(path):
+            return False
+        if PRODUCT_BUILDER.explicit_technical_value_path(path):
+            return False
+        if dataset == "homepage":
+            if parts[0] in {"meta", "nav", "hero", "cta", "faq"}:
+                return True
+        elif dataset == "core":
+            if parts[0] == "shared" or path.startswith("contact.copy."):
+                return True
+            if path in {
+                "about.title",
+                "about.description",
+                "contact.title",
+                "contact.description",
+            }:
+                return True
+        elif dataset == "products" and (parts[0] == "shared" or parts[0] == "pages"):
+            return True
+        return any(
+            marker in field
+            for marker in (
+                "title",
+                "description",
+                "label",
+                "button",
+                "cta",
+                "placeholder",
+                "message",
+                "alert",
+                "question",
+                "answer",
+            )
+        )
+
+    def _english_value_is_allowlisted(self, locale, value):
+        remainder = re.sub(r"<[^>]*>", " ", value)
+        for term in sorted(self.ALLOWED_UNTRANSLATED_TERMS[locale], key=len, reverse=True):
+            remainder = re.sub(re.escape(term), " ", remainder, flags=re.IGNORECASE)
+        remainder = re.sub(r"\b(?=[A-Za-z0-9_-]*\d)[A-Za-z][A-Za-z0-9_-]*\b", " ", remainder)
+        remainder = re.sub(r"[\d\s\W_]+", "", remainder, flags=re.UNICODE)
+        return not re.search(r"[A-Za-z]", remainder)
+
+    def _assert_no_english_ui_residue(self, locale, dataset, english, localized):
+        for path, english_value in self._walk(english):
+            if not isinstance(english_value, str) or not self._is_priority_ui_path(dataset, path):
+                continue
+            localized_value = self._value_at(localized, path)
+            if localized_value != english_value:
+                continue
+            self.assertTrue(
+                self._english_value_is_allowlisted(locale, english_value),
+                f"{locale}/{dataset}/{path}: priority UI text is unchanged from English: {english_value!r}",
+            )
+
+    def _assert_preferred_terms(self, locale, dataset, english, localized):
+        for concept, term_dataset, path in self.TERM_PATHS:
+            if term_dataset != dataset:
+                continue
+            english_value = self._value_at(english, path)
+            self.assertIsInstance(
+                english_value,
+                str,
+                f"English terminology anchor is not text: {dataset}/{path}",
+            )
+            localized_value = self._value_at(localized, path)
+            expected = self.PREFERRED_TERMS[locale][concept]
+            self.assertIn(
+                expected.casefold(),
+                localized_value.casefold(),
+                f"{locale}/{dataset}/{path}: expected preferred term {expected!r}",
+            )
+
+    def assert_locale_dataset(self, locale):
+        self.assertIn(locale, self.LOCALES)
+        for dataset in self.DATASETS:
+            english_path = self._translation_path(dataset, "en")
+            localized_path = self._translation_path(dataset, locale)
+            self.assertTrue(english_path.is_file(), f"English baseline missing: {english_path}")
+
+            with self.subTest(locale=locale, dataset=dataset, check="file"):
+                self.assertTrue(
+                    localized_path.is_file(),
+                    f"{locale}/{dataset}: missing translation file {localized_path}",
+                )
+            if not localized_path.is_file():
+                continue
+
+            english = self._load_json(english_path, "en", dataset)
+            localized = self._load_json(localized_path, locale, dataset)
+            checks = (
+                ("recursive schema", self._assert_recursive_schema),
+                ("safe strings", self._assert_safe_strings),
+                ("critical facts", self._assert_critical_facts),
+                ("brand and claims", self._assert_brand_and_claim_boundaries),
+                ("English UI residue", self._assert_no_english_ui_residue),
+                ("preferred terminology", self._assert_preferred_terms),
+            )
+            for check_name, check in checks:
+                with self.subTest(locale=locale, dataset=dataset, check=check_name):
+                    check(locale, dataset, english, localized)
+
+    def test_00_locale_order_is_exact(self):
+        self.assertEqual(self.LOCALES, ("zh", "es", "pt", "ja", "ko", "pl"))
+        self.assertEqual(tuple(self.PREFERRED_TERMS), self.LOCALES)
+
+    def test_01_zh_translation_data_contract(self):
+        self.assert_locale_dataset("zh")
+
+    def test_02_es_translation_data_contract(self):
+        self.assert_locale_dataset("es")
+
+    def test_03_pt_translation_data_contract(self):
+        self.assert_locale_dataset("pt")
+
+    def test_04_ja_translation_data_contract(self):
+        self.assert_locale_dataset("ja")
+
+    def test_05_ko_translation_data_contract(self):
+        self.assert_locale_dataset("ko")
+
+    def test_06_pl_translation_data_contract(self):
+        self.assert_locale_dataset("pl")
