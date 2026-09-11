@@ -1648,6 +1648,9 @@ class TranslationDataTests(unittest.TestCase):
         r"|[×≤≥±]",
         re.IGNORECASE,
     )
+    BARE_TECHNICAL_UNIT = re.compile(
+        r"(?:Nm³/h|m³/h|L/min|m/min|MPa|kPa|bar|kg|mm|ms|kW|MW|V|ft|m|%)"
+    )
     IMMUTABLE_FIELDS = frozenset(
         {"anchor", "href", "id", "key", "media_index", "model", "og_image", "src", "url"}
     )
@@ -1684,7 +1687,11 @@ class TranslationDataTests(unittest.TestCase):
         "mm",
         "ms",
         "kW",
+        "MW",
         "V",
+        "ft",
+        "m",
+        "%",
     )
     LOCALE_UNTRANSLATED_TERMS = {
         "zh": (),
@@ -1844,7 +1851,23 @@ class TranslationDataTests(unittest.TestCase):
         "pl": r"\b(?:nie|bez)\b",
     }
     CLAIM_SENTENCE_SPLIT = re.compile(r"[。！？!?；;\r\n]+|(?<!\d)\.(?!\d)")
-    CLAIM_NEGATION_WINDOW = 24
+    CLAIM_CLAUSE_SPLIT = {
+        "zh": re.compile(r"(?<!\d)[,，](?!\d)|(?:但(?:是)?|不过)"),
+        "es": re.compile(r"(?<!\d)[,，](?!\d)|\bpero\b", re.IGNORECASE),
+        "pt": re.compile(r"(?<!\d)[,，](?!\d)|\b(?:mas|porém)\b", re.IGNORECASE),
+        "ja": re.compile(r"(?<!\d)[,，](?!\d)|(?:だ?が|しかし)"),
+        "ko": re.compile(r"(?<!\d)[,，](?!\d)|(?:하지만|그러나)"),
+        "pl": re.compile(r"(?<!\d)[,，](?!\d)|\bale\b", re.IGNORECASE),
+    }
+    CLAIM_POSTPOSED_NEGATION = {
+        "zh": re.compile(r"^\s*(?:尚?未|不|没有|并非|无需|无须)"),
+        "ja": re.compile(
+            r"^\s*(?:に?は|が|を)?\s*(?:(?:設置|取得|保証)?し)?(?:ない|ありません|未取得|なく)"
+        ),
+        "ko": re.compile(
+            r"^\s*(?:이|가|은|는|을|를)?\s*(?:하지\s*)?(?:않|없|아닙니다)"
+        ),
+    }
 
     def _translation_path(self, dataset, locale):
         return PUBLIC / Path(str(self.DATASETS[dataset]).format(locale=locale))
@@ -1918,6 +1941,9 @@ class TranslationDataTests(unittest.TestCase):
             facts.append(fact)
         return Counter(facts)
 
+    def _is_bare_technical_unit(self, value):
+        return bool(self.BARE_TECHNICAL_UNIT.fullmatch(value.strip()))
+
     def _runtime_placeholders(self, value):
         return Counter(self.RUNTIME_PLACEHOLDER.findall(value))
 
@@ -1971,6 +1997,11 @@ class TranslationDataTests(unittest.TestCase):
             if not isinstance(english_value, str):
                 continue
             localized_value = self._value_at(localized, path, locale, dataset)
+            self.assertIsInstance(
+                localized_value,
+                str,
+                f"{locale}/{dataset}/{path}: type differs from English string",
+            )
             self.assertEqual(
                 self._runtime_placeholders(localized_value),
                 self._runtime_placeholders(english_value),
@@ -2010,6 +2041,17 @@ class TranslationDataTests(unittest.TestCase):
                     f"{locale}/{dataset}/{path}: machine value differs from English",
                 )
                 continue
+            self.assertIsInstance(
+                localized_value,
+                str,
+                f"{locale}/{dataset}/{path}: type differs from English string",
+            )
+            if self._is_bare_technical_unit(english_value):
+                self.assertEqual(
+                    localized_value,
+                    english_value,
+                    f"{locale}/{dataset}/{path}: bare technical unit differs from English",
+                )
             self.assertEqual(
                 self._technical_facts(localized_value),
                 self._technical_facts(english_value),
@@ -2049,6 +2091,30 @@ class TranslationDataTests(unittest.TestCase):
                 f"{locale}/{dataset}: comparison stable-key order differs from English",
             )
 
+    def _is_question_path(self, path):
+        parts = path.split(".")
+        field = parts[-1].lower()
+        return field == "question" or (
+            bool(re.fullmatch(r"q\d+", field)) and "faq" in (part.lower() for part in parts[:-1])
+        )
+
+    def _claim_clauses(self, locale, value):
+        for sentence in filter(None, self.CLAIM_SENTENCE_SPLIT.split(value)):
+            yield from filter(None, self.CLAIM_CLAUSE_SPLIT[locale].split(sentence))
+
+    def _claim_is_negated(self, locale, clause, match):
+        negation_patterns = (
+            self.CLAIM_NEGATION_PATTERNS["*"],
+            self.CLAIM_NEGATION_PATTERNS[locale],
+        )
+        if any(re.search(pattern, match.group(0), re.IGNORECASE) for pattern in negation_patterns):
+            return True
+        before = clause[: match.start()]
+        if any(re.search(pattern, before, re.IGNORECASE) for pattern in negation_patterns):
+            return True
+        postposed = self.CLAIM_POSTPOSED_NEGATION.get(locale)
+        return bool(postposed and postposed.search(clause[match.end() :]))
+
     def _assert_brand_and_claim_boundaries(self, locale, dataset, english, localized):
         for path, value in self._walk(localized):
             if not isinstance(value, str):
@@ -2061,65 +2127,22 @@ class TranslationDataTests(unittest.TestCase):
                 ),
                 f"{locale}/{dataset}/{path}: legacy LISHI branding is forbidden",
             )
-            for sentence in filter(None, self.CLAIM_SENTENCE_SPLIT.split(value)):
+            if self._is_question_path(path):
+                continue
+            for clause in self._claim_clauses(locale, value):
                 for pattern in (
                     self.FORBIDDEN_CLAIM_PATTERNS["*"]
                     + self.FORBIDDEN_CLAIM_PATTERNS[locale]
                 ):
-                    for match in re.finditer(pattern, sentence, re.IGNORECASE):
-                        context_start = max(0, match.start() - self.CLAIM_NEGATION_WINDOW)
-                        context_end = min(len(sentence), match.end() + self.CLAIM_NEGATION_WINDOW)
-                        context = sentence[context_start:context_end]
-                        claim_is_negated = bool(
-                            re.search(
-                                self.CLAIM_NEGATION_PATTERNS["*"], context, re.IGNORECASE
-                            )
-                            or re.search(
-                                self.CLAIM_NEGATION_PATTERNS[locale], context, re.IGNORECASE
-                            )
-                        )
-                        if not claim_is_negated:
+                    for match in re.finditer(pattern, clause, re.IGNORECASE):
+                        if not self._claim_is_negated(locale, clause, match):
+                            context_start = max(0, match.start() - 48)
+                            context_end = min(len(clause), match.end() + 48)
+                            context = clause[context_start:context_end].strip()
                             self.fail(
-                                f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}"
+                                f"{locale}/{dataset}/{path}: unverified claim "
+                                f"matched text={match.group(0)!r}, context={context!r}"
                             )
-
-    def _is_priority_ui_path(self, dataset, path):
-        parts = path.split(".")
-        field = parts[-1].lower()
-        if path == "locale" or self._is_immutable_path(path):
-            return False
-        if self._is_explicit_technical_value_path(path):
-            return False
-        if dataset == "homepage":
-            if parts[0] in {"meta", "nav", "hero", "cta", "faq"}:
-                return True
-        elif dataset == "core":
-            if parts[0] == "shared" or path.startswith("contact.copy."):
-                return True
-            if path in {
-                "about.title",
-                "about.description",
-                "contact.title",
-                "contact.description",
-            }:
-                return True
-        elif dataset == "products" and (parts[0] == "shared" or parts[0] == "pages"):
-            return True
-        return any(
-            marker in field
-            for marker in (
-                "title",
-                "description",
-                "label",
-                "button",
-                "cta",
-                "placeholder",
-                "message",
-                "alert",
-                "question",
-                "answer",
-            )
-        )
 
     def _english_value_is_allowlisted(self, locale, value):
         remainder = re.sub(r"<[^>]*>", " ", value)
@@ -2129,16 +2152,31 @@ class TranslationDataTests(unittest.TestCase):
         remainder = re.sub(r"[\d\s\W_]+", "", remainder, flags=re.UNICODE)
         return not re.search(r"[A-Za-z]", remainder)
 
+    def _is_placeholder_only(self, value):
+        remainder = self.RUNTIME_PLACEHOLDER.sub(" ", re.sub(r"<[^>]*>", " ", value))
+        return not re.sub(r"[\s\W_]+", "", remainder, flags=re.UNICODE)
+
     def _assert_no_english_ui_residue(self, locale, dataset, english, localized):
         for path, english_value in self._walk(english):
-            if not isinstance(english_value, str) or not self._is_priority_ui_path(dataset, path):
+            if not isinstance(english_value, str):
+                continue
+            if path == "locale" or self._is_immutable_path(path):
+                continue
+            if self._is_explicit_technical_value_path(path):
                 continue
             localized_value = self._value_at(localized, path, locale, dataset)
+            self.assertIsInstance(
+                localized_value,
+                str,
+                f"{locale}/{dataset}/{path}: type differs from English string",
+            )
             if localized_value != english_value:
+                continue
+            if self._is_placeholder_only(english_value):
                 continue
             self.assertTrue(
                 self._english_value_is_allowlisted(locale, english_value),
-                f"{locale}/{dataset}/{path}: priority UI text is unchanged from English: {english_value!r}",
+                f"{locale}/{dataset}/{path}: translatable text is unchanged from English: {english_value!r}",
             )
 
     def _assert_preferred_terms(self, locale, dataset, english, localized):
@@ -2152,6 +2190,11 @@ class TranslationDataTests(unittest.TestCase):
                 f"English terminology anchor is not text: {dataset}/{path}",
             )
             localized_value = self._value_at(localized, path, locale, dataset)
+            self.assertIsInstance(
+                localized_value,
+                str,
+                f"{locale}/{dataset}/{path}: type differs from English string",
+            )
             expected = self.PREFERRED_TERMS[locale][concept]
             self.assertIn(
                 expected.casefold(),
@@ -2453,6 +2496,22 @@ class TranslationGuardRuleTests(unittest.TestCase):
         self.assertNotIn("/h", facts)
         self.assertEqual(facts["200m³/h"], 1)
 
+    def test_fact_guard_preserves_bare_unit_values(self):
+        for english, localized in (
+            ({"speedUnit": "m/min"}, {"speedUnit": "km/h"}),
+            ({"flow_unit": "m³/h"}, {"flow_unit": "L/min"}),
+            ({"unit": "MPa"}, {"unit": "mPa"}),
+        ):
+            with self.subTest(english=english, localized=localized):
+                self.assert_guard_failure(
+                    lambda english=english, localized=localized: self.guard._assert_critical_facts(
+                        "es", "fixture", english, localized
+                    )
+                )
+        self.guard._assert_critical_facts(
+            "es", "fixture", {"flow_unit": "m³/h"}, {"flow_unit": "m³/h"}
+        )
+
     def test_fact_guard_is_independent_of_product_builder_validation(self):
         english = {"measurement": "Pressure 20 bar"}
         localized = {"measurement": "Presión 20 bar"}
@@ -2574,6 +2633,79 @@ class TranslationGuardRuleTests(unittest.TestCase):
                     )
                 )
 
+    def test_claim_negation_does_not_cross_contrast_clause_boundaries(self):
+        mixed_clauses = {
+            "zh": "设备已取得CE认证，但不需要维护。",
+            "es": "Equipo con certificación CE, pero no requiere mantenimiento.",
+            "pt": "Equipamento com certificação CE, mas não requer manutenção.",
+            "ja": "CE認証取得済みだが、メンテナンスは必要ありません。",
+            "ko": "CE 인증 취득, 하지만 유지보수가 필요 없습니다.",
+            "pl": "Urządzenie ma certyfikat CE, ale nie wymaga konserwacji.",
+        }
+        for locale, text in mixed_clauses.items():
+            with self.subTest(locale=locale):
+                self.assert_guard_failure(
+                    lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                        locale, "fixture", {}, {"statement": text}
+                    )
+                )
+
+    def test_claim_guard_allows_same_clause_negated_guarantees(self):
+        negated_guarantees = {
+            "zh": "我们不保证结果。",
+            "es": "No son resultados garantizados.",
+            "pt": "Não são resultados garantidos.",
+            "ja": "結果を保証しない。",
+            "ko": "결과를 보장하지 않습니다.",
+            "pl": "To nie są gwarantowane wyniki.",
+        }
+        for locale, text in negated_guarantees.items():
+            with self.subTest(locale=locale):
+                self.guard._assert_brand_and_claim_boundaries(
+                    locale, "fixture", {}, {"statement": text}
+                )
+
+    def test_claim_guard_skips_questions_but_not_answers(self):
+        questions = {
+            "zh": "混气柜与比例阀是否同时安装？",
+            "es": "¿El armario y la válvula se instalan juntos?",
+            "pt": "O gabinete e a válvula são instalados juntos?",
+            "ja": "キャビネットとバルブを同時に設置しますか？",
+            "ko": "캐비닛과 밸브를 함께 설치합니까?",
+            "pl": "Czy szafa i zawór są instalowane razem?",
+        }
+        for locale, text in questions.items():
+            with self.subTest(locale=locale, field="question"):
+                self.guard._assert_brand_and_claim_boundaries(
+                    locale,
+                    "fixture",
+                    {},
+                    {"pages": {"sample": {"faq": [{"question": text}]}}},
+                )
+            with self.subTest(locale=locale, field="answer"):
+                self.assert_guard_failure(
+                    lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                        locale,
+                        "fixture",
+                        {},
+                        {"pages": {"sample": {"faq": [{"answer": text.rstrip("?？")}]}}},
+                    )
+                )
+        self.guard._assert_brand_and_claim_boundaries(
+            "zh", "fixture", {}, {"faq": {"q1": questions["zh"]}}
+        )
+
+    def test_claim_failure_names_matched_text_and_context(self):
+        text = "FAR_PREFIX_MARKER " + ("details " * 20) + "Equipo con certificación CE."
+        with self.assertRaises(AssertionError) as caught:
+            self.guard._assert_brand_and_claim_boundaries(
+                "es", "fixture", {}, {"statement": text}
+            )
+        message = str(caught.exception)
+        self.assertIn("certificación CE", message)
+        self.assertIn("context", message)
+        self.assertNotIn("FAR_PREFIX_MARKER", message)
+
     def test_english_allowlist_has_global_and_locale_specific_layers(self):
         for locale in self.guard.LOCALES:
             for value in (
@@ -2612,6 +2744,78 @@ class TranslationGuardRuleTests(unittest.TestCase):
             {"shared": {"copy": {"blog": "Blog"}}},
             {"shared": {"copy": {"blog": "Blog"}}},
         )
+
+    def test_english_residue_guard_checks_every_translatable_string_leaf(self):
+        cases = (
+            (
+                "homepage",
+                {
+                    "principle": {
+                        "flow1Desc": (
+                            "Generate nitrogen on site when the required flow, purity, pressure "
+                            "and operating profile justify a dedicated source."
+                        )
+                    }
+                },
+            ),
+            (
+                "core",
+                {"about": {"copy": {"ready_to_upgrade_your_laser_cutting": "Ready to Upgrade Your Laser Cutting?"}}},
+            ),
+        )
+        for dataset, english in cases:
+            with self.subTest(dataset=dataset):
+                self.assert_guard_failure(
+                    lambda dataset=dataset, english=english: self.guard._assert_no_english_ui_residue(
+                        "es", dataset, english, json.loads(json.dumps(english))
+                    )
+                )
+
+        for english in (
+            {"progress": "{current} / {total}"},
+            {"model": "MSPV2-4000"},
+            {"speedUnit": "m/min"},
+        ):
+            with self.subTest(allowlisted=english):
+                self.guard._assert_no_english_ui_residue(
+                    "es", "fixture", english, json.loads(json.dumps(english))
+                )
+
+    def test_wrong_leaf_types_fail_with_path_in_all_followup_checks(self):
+        english = {"hero": {"title": "Request a Solution"}}
+        localized = {"hero": {"title": 7}}
+        for check in (
+            self.guard._assert_safe_strings,
+            self.guard._assert_critical_facts,
+            self.guard._assert_no_english_ui_residue,
+        ):
+            with self.subTest(check=check.__name__):
+                try:
+                    check("es", "fixture", english, localized)
+                except AssertionError as error:
+                    self.assertIn("es/fixture/hero.title", str(error))
+                except Exception as error:
+                    self.fail(
+                        f"{check.__name__} raised {type(error).__name__} instead of AssertionError: {error}"
+                    )
+                else:
+                    self.fail(f"{check.__name__} accepted a wrong leaf type")
+
+        try:
+            self.guard._assert_preferred_terms(
+                "es",
+                "homepage",
+                {"hero": {"badge": "assist gas"}},
+                {"hero": {"badge": 7}},
+            )
+        except AssertionError as error:
+            self.assertIn("es/homepage/hero.badge", str(error))
+        except Exception as error:
+            self.fail(
+                f"preferred terms raised {type(error).__name__} instead of AssertionError: {error}"
+            )
+        else:
+            self.fail("preferred terms accepted a wrong leaf type")
 
     def test_missing_path_is_an_assertion_failure_not_key_error(self):
         english = {"hero": {"title": "Request a Solution"}}
