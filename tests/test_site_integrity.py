@@ -88,7 +88,60 @@ def page_path(lang, filename):
     return PUBLIC / filename if lang == "en" else PUBLIC / lang / filename
 
 
+def css_block_body(styles, opening_brace):
+    depth = 0
+    for index in range(opening_brace, len(styles)):
+        if styles[index] == "{":
+            depth += 1
+        elif styles[index] == "}":
+            depth -= 1
+            if depth == 0:
+                return styles[opening_brace + 1:index]
+    raise AssertionError("unterminated CSS block")
+
+
 class SiteIntegrityTests(unittest.TestCase):
+    def test_mobile_homepage_logo_tagline_matches_product_header_pattern(self):
+        styles = (PUBLIC / "styles.css").read_text(encoding="utf-8")
+        mobile_blocks = []
+        for match in re.finditer(
+            r"@media\s*\(\s*max-width\s*:\s*768px\s*\)\s*\{",
+            styles,
+        ):
+            mobile_blocks.append(css_block_body(styles, match.end() - 1))
+
+        matching_rules = []
+        for block in mobile_blocks:
+            for rule in re.finditer(r"([^{}]+)\{([^{}]*)\}", block):
+                selectors = {
+                    selector.strip() for selector in rule.group(1).split(",")
+                }
+                if {
+                    ".product-page .logo-tagline",
+                    ".portfolio-page .logo-tagline",
+                } <= selectors:
+                    matching_rules.append(rule.group(2))
+
+        self.assertTrue(
+            matching_rules,
+            "product and portfolio logo taglines must share the 768px mobile rule",
+        )
+        self.assertTrue(
+            any(re.search(r"\bdisplay\s*:\s*none\s*;", body) for body in matching_rules),
+            "the shared mobile logo tagline rule must use display: none",
+        )
+
+        desktop_rule = re.search(r"(?m)^\.logo-tagline\s*\{([^}]*)\}", styles)
+        self.assertIsNotNone(desktop_rule, "the desktop logo tagline rule must remain")
+        desktop_display = re.search(
+            r"\bdisplay\s*:\s*([^;]+)",
+            desktop_rule.group(1),
+        )
+        self.assertTrue(
+            desktop_display is None or desktop_display.group(1).strip() != "none",
+            "the desktop logo tagline must not be hidden globally",
+        )
+
     def test_about_pages_do_not_position_company_as_a_trading_business(self):
         trading_terms = (
             "machinery trading",
