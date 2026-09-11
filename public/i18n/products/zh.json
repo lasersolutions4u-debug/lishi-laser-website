@@ -1,0 +1,557 @@
+{
+  "locale": "zh",
+  "shared": {
+    "skip_to_content": "网站项目选项",
+    "home_aria": "网站项目选项 · GasMixTech",
+    "logo_alt": "网站产品与工程示意图 · Jinan Euchio Machinery Co., Ltd.",
+    "brand": "网站项目选项 · GasMixTech",
+    "tagline": "网站项目选项",
+    "nav_aria": "主导航",
+    "nav_products": "产品",
+    "nav_nitrogen_supply": "网站项目选项",
+    "nav_psa": "PSA 制氮系统",
+    "nav_mixed_control": "网站项目选项",
+    "nav_cabinet": "一体式混气柜",
+    "nav_valve": "MSPV2_4000 紧凑型比例阀",
+    "nav_compare": "网站项目选项",
+    "nav_applications": "应用",
+    "nav_results": "切割结果",
+    "nav_resources": "资源",
+    "nav_about": "关于我们",
+    "nav_request": "提交解决方案需求",
+    "mobile_aria": "切换菜单",
+    "footer_intro": "网站项目选项 · Jinan Euchio Machinery Co., Ltd.",
+    "footer_products": "网站项目选项",
+    "footer_contact": "网站项目选项",
+    "footer_privacy": "网站项目选项"
+  },
+  "pages": {
+    "psa": {
+      "title": "激光切割用 PSA 制氮系统 | GasMixTech",
+      "description": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。 · PSA",
+      "short_name": "制氮系统项目选项 · PSA",
+      "product_name": "制氮系统项目选项 · PSA",
+      "category": "制氮系统项目选项",
+      "model": "ZHN-40PSA and ZHN-75PSA reference configurations",
+      "og_image": "/images/products/psa-nitrogen-system/psa-nitrogen-system-process.png",
+      "eyebrow": "制氮系统评估",
+      "h1": "制氮系统工程说明 · PSA",
+      "lede": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "hero_note": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "primary_cta": "申请 PSA 配置评估",
+      "secondary_cta": "申请制氮系统评估",
+      "visual_alt": "制氮系统产品与工程示意图 · PSA",
+      "visual_caption": "制氮系统项目选项 · N₂",
+      "fit_label": "制氮系统评估",
+      "fit_title": "制氮系统工程说明",
+      "fit_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。 · N₂/O₂ · PSA",
+      "route_existing": "制氮系统项目选项",
+      "route_psa": "制氮系统项目选项 · PSA",
+      "route_pure": "制氮系统项目选项",
+      "route_mixed": "制氮系统项目选项",
+      "route_aria": "制氮系统项目选项 · PSA",
+      "route_or": "或",
+      "route_machine": "制氮系统项目选项",
+      "reference_label": "制氮系统评估",
+      "reference_title": "制氮系统工程说明",
+      "reference_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "specs": [
+        {
+          "label": "制氮系统评估 · ZHN-40PSA · PSA",
+          "value": "40 Nm³/h",
+          "note": "制氮系统项目选项 · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "制氮系统评估 · ZHN-75PSA · PSA",
+          "value": "75 Nm³/h",
+          "note": "制氮系统项目选项 · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "制氮系统评估",
+          "value": "Complete or modular",
+          "note": "制氮系统项目选项"
+        }
+      ],
+      "scope_label": "制氮系统评估",
+      "scope_title": "制氮系统工程说明",
+      "scope_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "cards": [
+        {
+          "kicker": "制氮系统评估 · 01",
+          "title": "制氮系统工程说明",
+          "text": "制氮系统项目选项",
+          "meta": "制氮系统项目选项"
+        },
+        {
+          "kicker": "制氮系统评估 · 02",
+          "title": "制氮系统工程说明",
+          "text": "制氮系统项目选项",
+          "meta": "制氮系统项目选项"
+        },
+        {
+          "kicker": "制氮系统评估 · 03",
+          "title": "制氮系统工程说明 · PSA",
+          "text": "制氮系统项目选项",
+          "meta": "制氮系统项目选项"
+        },
+        {
+          "kicker": "制氮系统评估 · 04",
+          "title": "制氮系统工程说明",
+          "text": "制氮系统项目选项",
+          "meta": "制氮系统项目选项"
+        },
+        {
+          "kicker": "制氮系统评估 · 05",
+          "title": "制氮系统工程说明",
+          "text": "制氮系统项目选项",
+          "meta": "制氮系统项目选项"
+        }
+      ],
+      "footprint_alt": "制氮系统产品与工程示意图 · 40 · PSA",
+      "footprint_caption": "制氮系统项目选项 · 10.17 · × · 1.60 m",
+      "case_label": "制氮系统评估",
+      "case_title": "制氮系统工程说明 · 6 kW",
+      "case_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。 · 6 kW",
+      "case_laser_label": "制氮系统评估",
+      "case_laser_value": "6 kW",
+      "case_flow_label": "制氮系统评估",
+      "case_flow_value": "40 Nm³/h",
+      "case_purity_label": "制氮系统评估",
+      "case_purity_value": "99.99%",
+      "case_pressure_label": "制氮系统评估",
+      "case_pressure_value": "2.0 MPa",
+      "inputs_label": "制氮系统评估",
+      "inputs_title": "制氮系统工程说明",
+      "inputs_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "checklist": [
+        "制氮系统项目选项",
+        "制氮系统项目选项",
+        "制氮系统项目选项",
+        "制氮系统项目选项",
+        "制氮系统项目选项"
+      ],
+      "boundary_title": "制氮系统工程说明",
+      "boundary_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。 · 40 · 75 Nm³/h",
+      "faq_label": "制氮系统评估 · PSA",
+      "faq_title": "制氮系统工程说明",
+      "faq": [
+        {
+          "question": "制氮系统应如何根据项目条件确认？ · PSA",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。"
+        },
+        {
+          "question": "制氮系统应如何根据项目条件确认？ · PSA",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。 · N₂/O₂"
+        },
+        {
+          "question": "制氮系统应如何根据项目条件确认？ · 40 · 75 Nm³/h",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。"
+        }
+      ],
+      "closing_title": "制氮系统工程说明",
+      "closing_text": "需结合供气条件、设备接口、安装环境和切割需求，对制氮系统进行项目评估。",
+      "closing_label": "制氮系统评估",
+      "closing_cta": "申请 PSA 配置评估"
+    },
+    "cabinet": {
+      "title": "激光切割用一体式 N₂/O₂ 混气柜 | GasMixTech",
+      "description": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。 · N₂/O₂",
+      "short_name": "一体式混气柜",
+      "product_name": "一体式混气柜",
+      "category": "一体式混气柜项目选项",
+      "model": "Integrated cabinet configuration",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "一体式混气柜评估",
+      "h1": "一体式混气柜",
+      "lede": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。 · N₂/O₂",
+      "hero_note": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。",
+      "primary_cta": "申请混气柜评估",
+      "purchase_cta": "申请一体式混气柜评估 · DHgate",
+      "compare_cta": "与紧凑型比例阀对比",
+      "parameters_cta": "申请一体式混气柜评估",
+      "results_cta": "申请一体式混气柜评估",
+      "visual_alt": "一体式混气柜产品与工程示意图",
+      "media_index": "CAB / 01",
+      "silhouette_width": "一体式混气柜项目选项 · 800",
+      "silhouette_label": "一体式混气柜评估",
+      "silhouette_height": "一体式混气柜项目选项 · 1100",
+      "fit_label": "一体式混气柜评估",
+      "fit_title": "一体式混气柜工程说明",
+      "fit_text": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。",
+      "specs_label": "一体式混气柜评估",
+      "specs_title": "一体式混气柜工程说明",
+      "specs_text": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。 · MSPV2_4000",
+      "specs": [
+        {
+          "label": "柜体尺寸",
+          "value": "800 × 350 × 1100 mm",
+          "note": "一体式混气柜项目选项"
+        },
+        {
+          "label": "重量",
+          "value": "90 kg",
+          "note": "一体式混气柜项目选项"
+        },
+        {
+          "label": "N₂ / O₂ 入口",
+          "value": "20–25 bar",
+          "note": "一体式混气柜项目选项"
+        },
+        {
+          "label": "混合气体出口",
+          "value": "12–16 bar",
+          "note": "一体式混气柜项目选项"
+        },
+        {
+          "label": "最大流量",
+          "value": "200 m³/h",
+          "note": "一体式混气柜项目选项"
+        },
+        {
+          "label": "典型混合比例",
+          "value": "N₂ 95% / O₂ 5%",
+          "note": "一体式混气柜项目选项"
+        }
+      ],
+      "function_label": "一体式混气柜评估",
+      "function_title": "一体式混气柜工程说明",
+      "function_text": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。",
+      "cards": [
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明 · N₂ · O₂",
+          "text": "一体式混气柜项目选项",
+          "meta": "一体式混气柜项目选项"
+        },
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明",
+          "text": "一体式混气柜项目选项",
+          "meta": "一体式混气柜项目选项"
+        },
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明",
+          "text": "一体式混气柜项目选项 · OEM",
+          "meta": "一体式混气柜项目选项"
+        }
+      ],
+      "evidence_label": "一体式混气柜评估",
+      "evidence_title": "一体式混气柜工程说明",
+      "evidence_text": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。",
+      "secondary_cards": [
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明",
+          "text": "一体式混气柜项目选项",
+          "meta": "一体式混气柜项目选项"
+        },
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明",
+          "text": "一体式混气柜项目选项",
+          "meta": "一体式混气柜项目选项"
+        },
+        {
+          "kicker": "一体式混气柜评估",
+          "title": "一体式混气柜工程说明",
+          "text": "一体式混气柜项目选项",
+          "meta": "一体式混气柜项目选项"
+        }
+      ],
+      "checklist_label": "一体式混气柜评估",
+      "checklist_title": "一体式混气柜工程说明",
+      "checklist": [
+        "一体式混气柜项目选项",
+        "一体式混气柜项目选项",
+        "一体式混气柜项目选项",
+        "一体式混气柜项目选项 · N₂ · O₂",
+        "一体式混气柜项目选项"
+      ],
+      "faq_label": "一体式混气柜评估",
+      "faq_title": "一体式混气柜工程说明",
+      "faq": [
+        {
+          "question": "一体式混气柜应如何根据项目条件确认？ · MSPV2_4000",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。 · N₂/O₂ · MSPV2_4000"
+        },
+        {
+          "question": "一体式混气柜应如何根据项目条件确认？",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。"
+        },
+        {
+          "question": "一体式混气柜应如何根据项目条件确认？",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。 · 6–60 kW"
+        }
+      ],
+      "closing_title": "一体式混气柜工程说明",
+      "closing_text": "需结合供气条件、设备接口、安装环境和切割需求，对一体式混气柜进行项目评估。",
+      "closing_label": "一体式混气柜评估",
+      "closing_cta": "申请混气柜评估"
+    },
+    "valve": {
+      "title": "MSPV2_4000 紧凑型混合气体比例阀 | GasMixTech",
+      "description": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · N₂/O₂ · OEM",
+      "short_name": "MSPV2_4000 紧凑型比例阀",
+      "product_name": "比例阀项目选项 · MSPV2_4000",
+      "category": "比例阀项目选项",
+      "model": "MSPV2_4000",
+      "video_name": "比例阀项目选项 · MSPV2_4000 · 360",
+      "video_description": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · N₂/O₂",
+      "og_image": "/images/products/mspv2-4000/mspv2-4000-angle-02.png",
+      "eyebrow": "比例阀评估",
+      "h1": "MSPV2_4000 紧凑型比例阀",
+      "lede": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · N₂/O₂ · OEM",
+      "hero_note": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。",
+      "primary_cta": "申请兼容性核查",
+      "store_cta": "申请比例阀评估 · SAGEMRO · DHgate · MRO",
+      "compare_cta": "与一体式混气柜对比",
+      "visual_alt": "比例阀产品与工程示意图 · MSPV2_4000",
+      "media_index": "MSPV2 / 4000",
+      "gallery_alt_1": "比例阀产品与工程示意图 · MSPV2_4000",
+      "gallery_alt_2": "比例阀产品与工程示意图 · MSPV2_4000",
+      "gallery_alt_3": "比例阀产品与工程示意图 · MSPV2_4000",
+      "video_fallback": "您的浏览器不支持产品旋转视频。",
+      "fit_label": "比例阀评估",
+      "fit_title": "比例阀工程说明 · OEM",
+      "fit_text": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · MSPV2_4000",
+      "choice_same": "核心功能相同",
+      "choice_action": "二选一",
+      "specs_label": "比例阀评估 · MSPV2_4000",
+      "specs_title": "比例阀工程说明",
+      "specs_text": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · MSPV2_4000",
+      "specs": [
+        {
+          "label": "本体尺寸",
+          "value": "120 × 118 × 106 mm",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "重量",
+          "value": "2.43 kg",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "响应时间",
+          "value": "200 ms",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "压力设定范围",
+          "value": "20–2000 kPa",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "流量范围",
+          "value": "0–5000 L/min",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "混合气体 O₂ 范围",
+          "value": "3–64%",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "电源",
+          "value": "24 V ±10%",
+          "note": "比例阀项目选项"
+        },
+        {
+          "label": "接口",
+          "value": "Analog + NPN/PNP",
+          "note": "比例阀项目选项"
+        }
+      ],
+      "control_label": "比例阀评估",
+      "control_title": "比例阀工程说明",
+      "control_text": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。",
+      "control_alt": "比例阀产品与工程示意图 · MSPV2_4000",
+      "installation_label": "比例阀评估",
+      "installation_title": "比例阀工程说明",
+      "installation_text": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · 1.5–1.6 MPa · N₂/O₂ · 100 kPa",
+      "cards": [
+        {
+          "kicker": "比例阀评估 · OEM",
+          "title": "比例阀工程说明",
+          "text": "比例阀项目选项",
+          "meta": "比例阀项目选项"
+        },
+        {
+          "kicker": "比例阀评估",
+          "title": "比例阀工程说明",
+          "text": "比例阀项目选项",
+          "meta": "比例阀项目选项"
+        },
+        {
+          "kicker": "比例阀评估",
+          "title": "比例阀工程说明",
+          "text": "比例阀项目选项",
+          "meta": "比例阀项目选项"
+        }
+      ],
+      "checklist_label": "比例阀评估",
+      "checklist_title": "比例阀工程说明 · MSPV2_4000",
+      "checklist": [
+        "比例阀项目选项",
+        "比例阀项目选项",
+        "比例阀项目选项 · N₂/O₂",
+        "比例阀项目选项 · NPN/PNP",
+        "比例阀项目选项"
+      ],
+      "faq_label": "比例阀评估 · MSPV2_4000",
+      "faq_title": "比例阀工程说明",
+      "faq": [
+        {
+          "question": "比例阀应如何根据项目条件确认？ · MSPV2_4000",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · MSPV2_4000 · N₂/O₂"
+        },
+        {
+          "question": "比例阀应如何根据项目条件确认？ · NPN/PNP",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。"
+        },
+        {
+          "question": "比例阀应如何根据项目条件确认？ · MSPV2_4000 · DHgate",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · SAGEMRO · MRO"
+        }
+      ],
+      "closing_title": "比例阀工程说明 · OEM",
+      "closing_text": "需结合供气条件、设备接口、安装环境和切割需求，对比例阀进行项目评估。 · MSPV2_4000",
+      "closing_label": "比例阀评估 · OEM",
+      "closing_cta": "申请兼容性核查"
+    },
+    "comparison": {
+      "title": "一体式混气柜与 MSPV2_4000 对比",
+      "description": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。 · N₂/O₂",
+      "short_name": "混合气体控制方案对比",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "方案对比评估",
+      "h1": "一体式混气柜还是 MSPV2_4000？",
+      "lede": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。 · N₂/O₂",
+      "hero_note": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。",
+      "primary_cta": "申请方案对比评估",
+      "hero_cabinet_label": "成套柜体",
+      "hero_cabinet_title": "方案对比工程说明",
+      "hero_or": "或",
+      "hero_valve_label": "紧凑集成",
+      "hero_valve_title": "方案对比工程说明 · MSPV2_ · 4000",
+      "cabinet_cta": "查看一体式混气柜",
+      "valve_cta": "查看 MSPV2_4000",
+      "principle_label": "方案对比评估",
+      "principle_title": "方案对比工程说明",
+      "principle_text": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。 · MSPV2_4000",
+      "table_label": "方案对比评估",
+      "table_title": "方案对比工程说明",
+      "table_text": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。",
+      "factor_header": "选型因素",
+      "cabinet_header": "一体式混气柜",
+      "valve_header": "方案对比项目选项 · MSPV2_4000",
+      "comparison_rows": [
+        {
+          "key": "core_function",
+          "factor": "核心功能",
+          "cabinet": "方案对比项目选项 · N₂/O₂",
+          "valve": "核心功能相同"
+        },
+        {
+          "key": "product_form",
+          "factor": "产品形态",
+          "cabinet": "方案对比项目选项",
+          "valve": "方案对比项目选项"
+        },
+        {
+          "key": "dimensions",
+          "factor": "尺寸",
+          "cabinet": "方案对比项目选项 · 800 · × · 350 · × · 1100 mm",
+          "valve": "方案对比项目选项 · 120 · × · 118 · × · 106 mm"
+        },
+        {
+          "key": "weight",
+          "factor": "重量",
+          "cabinet": "方案对比项目选项 · 90 kg",
+          "valve": "方案对比项目选项 · 2.43 kg"
+        },
+        {
+          "key": "inlet_condition",
+          "factor": "已发布入口条件",
+          "cabinet": "方案对比项目选项 · 20–25 bar",
+          "valve": "方案对比项目选项 · 1.5–1.6 MPa · ≤ · 100 kPa"
+        },
+        {
+          "key": "flow",
+          "factor": "已发布流量",
+          "cabinet": "方案对比项目选项 · 200 m³/h",
+          "valve": "方案对比项目选项 · 0–5000 L/min"
+        },
+        {
+          "key": "control_interfaces",
+          "factor": "控制接口",
+          "cabinet": "方案对比项目选项",
+          "valve": "方案对比项目选项 · NPN/PNP"
+        },
+        {
+          "key": "installation_responsibility",
+          "factor": "集成责任",
+          "cabinet": "方案对比项目选项",
+          "valve": "方案对比项目选项 · OEM"
+        },
+        {
+          "key": "best_fit_buyer",
+          "factor": "适用客户",
+          "cabinet": "方案对比项目选项",
+          "valve": "方案对比项目选项 · OEM"
+        },
+        {
+          "key": "purchase_path",
+          "factor": "购买路径",
+          "cabinet": "方案对比项目选项 · DHgate",
+          "valve": "方案对比项目选项 · SAGEMRO · MRO"
+        }
+      ],
+      "fit_label": "方案对比评估",
+      "fit_title": "方案对比工程说明",
+      "cards": [
+        {
+          "kicker": "方案对比评估",
+          "title": "一体式混气柜",
+          "text": "方案对比项目选项",
+          "meta": "方案对比项目选项"
+        },
+        {
+          "kicker": "方案对比评估",
+          "title": "方案对比工程说明 · MSPV2_4000",
+          "text": "方案对比项目选项 · OEM",
+          "meta": "方案对比项目选项"
+        }
+      ],
+      "checklist_label": "方案对比评估",
+      "checklist_title": "方案对比工程说明",
+      "checklist": [
+        "方案对比项目选项",
+        "方案对比项目选项 · N₂/O₂",
+        "方案对比项目选项",
+        "方案对比项目选项",
+        "方案对比项目选项 · OEM"
+      ],
+      "faq_label": "方案对比评估",
+      "faq_title": "方案对比工程说明",
+      "faq": [
+        {
+          "question": "方案对比应如何根据项目条件确认？ · MSPV2_4000",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。"
+        },
+        {
+          "question": "方案对比应如何根据项目条件确认？ · MSPV2_4000",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。 · OEM"
+        },
+        {
+          "question": "方案对比应如何根据项目条件确认？",
+          "answer": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。"
+        }
+      ],
+      "closing_title": "方案对比工程说明",
+      "closing_text": "需结合供气条件、设备接口、安装环境和切割需求，对方案对比进行项目评估。",
+      "closing_label": "方案对比评估",
+      "closing_cta": "申请混气控制器选型建议"
+    }
+  }
+}
