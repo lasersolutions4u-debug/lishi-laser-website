@@ -1,0 +1,557 @@
+{
+  "locale": "es",
+  "shared": {
+    "skip_to_content": "Opción del proyecto: sitio web",
+    "home_aria": "Opción del proyecto: sitio web · GasMixTech",
+    "logo_alt": "Vista técnica de sitio web · Jinan Euchio Machinery Co., Ltd.",
+    "brand": "Opción del proyecto: sitio web · GasMixTech",
+    "tagline": "Opción del proyecto: sitio web",
+    "nav_aria": "Opción del proyecto: sitio web",
+    "nav_products": "Opción del proyecto: sitio web",
+    "nav_nitrogen_supply": "Opción del proyecto: sitio web",
+    "nav_psa": "Opción del proyecto: sitio web · PSA",
+    "nav_mixed_control": "Opción del proyecto: sitio web",
+    "nav_cabinet": "Opción del proyecto: sitio web",
+    "nav_valve": "Opción del proyecto: sitio web · MSPV2_4000",
+    "nav_compare": "Opción del proyecto: sitio web",
+    "nav_applications": "Opción del proyecto: sitio web",
+    "nav_results": "Opción del proyecto: sitio web",
+    "nav_resources": "Opción del proyecto: sitio web",
+    "nav_about": "Opción del proyecto: sitio web",
+    "nav_request": "Opción del proyecto: sitio web",
+    "mobile_aria": "Opción del proyecto: sitio web",
+    "footer_intro": "Opción del proyecto: sitio web · Jinan Euchio Machinery Co., Ltd.",
+    "footer_products": "Opción del proyecto: sitio web",
+    "footer_contact": "Opción del proyecto: sitio web",
+    "footer_privacy": "Opción del proyecto: sitio web"
+  },
+  "pages": {
+    "psa": {
+      "title": "Información técnica: sistema PSA de generación de nitrógeno · GasMixTech · PSA",
+      "description": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno. · PSA",
+      "short_name": "Opción del proyecto: sistema PSA de generación de nitrógeno · PSA",
+      "product_name": "Opción del proyecto: sistema PSA de generación de nitrógeno · PSA",
+      "category": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "model": "ZHN-40PSA and ZHN-75PSA reference configurations",
+      "og_image": "/images/products/psa-nitrogen-system/psa-nitrogen-system-process.png",
+      "eyebrow": "Evaluación: sistema PSA de generación de nitrógeno",
+      "h1": "Información técnica: sistema PSA de generación de nitrógeno · PSA",
+      "lede": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "hero_note": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "primary_cta": "Solicitar evaluación de sistema PSA de generación de nitrógeno · PSA",
+      "secondary_cta": "Solicitar evaluación de sistema PSA de generación de nitrógeno",
+      "visual_alt": "Vista técnica de sistema PSA de generación de nitrógeno · PSA",
+      "visual_caption": "Opción del proyecto: sistema PSA de generación de nitrógeno · N₂",
+      "fit_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "fit_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "fit_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno. · N₂/O₂ · PSA",
+      "route_existing": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "route_psa": "Opción del proyecto: sistema PSA de generación de nitrógeno · PSA",
+      "route_pure": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "route_mixed": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "route_aria": "Opción del proyecto: sistema PSA de generación de nitrógeno · PSA",
+      "route_or": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "route_machine": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+      "reference_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "reference_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "reference_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "specs": [
+        {
+          "label": "Evaluación: sistema PSA de generación de nitrógeno · ZHN-40PSA · PSA",
+          "value": "40 Nm³/h",
+          "note": "Opción del proyecto: sistema PSA de generación de nitrógeno · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "Evaluación: sistema PSA de generación de nitrógeno · ZHN-75PSA · PSA",
+          "value": "75 Nm³/h",
+          "note": "Opción del proyecto: sistema PSA de generación de nitrógeno · 99.99% · 2.0 MPa"
+        },
+        {
+          "label": "Evaluación: sistema PSA de generación de nitrógeno",
+          "value": "Complete or modular",
+          "note": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        }
+      ],
+      "scope_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "scope_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "scope_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "cards": [
+        {
+          "kicker": "Evaluación: sistema PSA de generación de nitrógeno · 01",
+          "title": "Información técnica: sistema PSA de generación de nitrógeno",
+          "text": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+          "meta": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        },
+        {
+          "kicker": "Evaluación: sistema PSA de generación de nitrógeno · 02",
+          "title": "Información técnica: sistema PSA de generación de nitrógeno",
+          "text": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+          "meta": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        },
+        {
+          "kicker": "Evaluación: sistema PSA de generación de nitrógeno · 03",
+          "title": "Información técnica: sistema PSA de generación de nitrógeno · PSA",
+          "text": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+          "meta": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        },
+        {
+          "kicker": "Evaluación: sistema PSA de generación de nitrógeno · 04",
+          "title": "Información técnica: sistema PSA de generación de nitrógeno",
+          "text": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+          "meta": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        },
+        {
+          "kicker": "Evaluación: sistema PSA de generación de nitrógeno · 05",
+          "title": "Información técnica: sistema PSA de generación de nitrógeno",
+          "text": "Opción del proyecto: sistema PSA de generación de nitrógeno",
+          "meta": "Opción del proyecto: sistema PSA de generación de nitrógeno"
+        }
+      ],
+      "footprint_alt": "Vista técnica de sistema PSA de generación de nitrógeno · 40 · PSA",
+      "footprint_caption": "Opción del proyecto: sistema PSA de generación de nitrógeno · 10.17 · × · 1.60 m",
+      "case_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "case_title": "Información técnica: sistema PSA de generación de nitrógeno · 6 kW",
+      "case_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno. · 6 kW",
+      "case_laser_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "case_laser_value": "6 kW",
+      "case_flow_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "case_flow_value": "40 Nm³/h",
+      "case_purity_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "case_purity_value": "99.99%",
+      "case_pressure_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "case_pressure_value": "2.0 MPa",
+      "inputs_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "inputs_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "inputs_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "checklist": [
+        "Opción del proyecto: sistema PSA de generación de nitrógeno",
+        "Opción del proyecto: sistema PSA de generación de nitrógeno",
+        "Opción del proyecto: sistema PSA de generación de nitrógeno",
+        "Opción del proyecto: sistema PSA de generación de nitrógeno",
+        "Opción del proyecto: sistema PSA de generación de nitrógeno"
+      ],
+      "boundary_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "boundary_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno. · 40 · 75 Nm³/h",
+      "faq_label": "Evaluación: sistema PSA de generación de nitrógeno · PSA",
+      "faq_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "faq": [
+        {
+          "question": "¿Cómo debe confirmarse sistema PSA de generación de nitrógeno para el proyecto? · PSA",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno."
+        },
+        {
+          "question": "¿Cómo debe confirmarse sistema PSA de generación de nitrógeno para el proyecto? · PSA",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno. · N₂/O₂"
+        },
+        {
+          "question": "¿Cómo debe confirmarse sistema PSA de generación de nitrógeno para el proyecto? · 40 · 75 Nm³/h",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno."
+        }
+      ],
+      "closing_title": "Información técnica: sistema PSA de generación de nitrógeno",
+      "closing_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar sistema PSA de generación de nitrógeno.",
+      "closing_label": "Evaluación: sistema PSA de generación de nitrógeno",
+      "closing_cta": "Solicitar evaluación de sistema PSA de generación de nitrógeno · PSA"
+    },
+    "cabinet": {
+      "title": "Información técnica: armario integrado de mezcla de gases · N₂/O₂ · GasMixTech",
+      "description": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases. · N₂/O₂",
+      "short_name": "Opción del proyecto: armario integrado de mezcla de gases",
+      "product_name": "Opción del proyecto: armario integrado de mezcla de gases",
+      "category": "Opción del proyecto: armario integrado de mezcla de gases",
+      "model": "Integrated cabinet configuration",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "Evaluación: armario integrado de mezcla de gases",
+      "h1": "Información técnica: armario integrado de mezcla de gases",
+      "lede": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases. · N₂/O₂",
+      "hero_note": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases.",
+      "primary_cta": "Solicitar evaluación de armario integrado de mezcla de gases",
+      "purchase_cta": "Solicitar evaluación de armario integrado de mezcla de gases · DHgate",
+      "compare_cta": "Solicitar evaluación de armario integrado de mezcla de gases",
+      "parameters_cta": "Solicitar evaluación de armario integrado de mezcla de gases",
+      "results_cta": "Solicitar evaluación de armario integrado de mezcla de gases",
+      "visual_alt": "Vista técnica de armario integrado de mezcla de gases",
+      "media_index": "CAB / 01",
+      "silhouette_width": "Opción del proyecto: armario integrado de mezcla de gases · 800",
+      "silhouette_label": "Evaluación: armario integrado de mezcla de gases",
+      "silhouette_height": "Opción del proyecto: armario integrado de mezcla de gases · 1100",
+      "fit_label": "Evaluación: armario integrado de mezcla de gases",
+      "fit_title": "Información técnica: armario integrado de mezcla de gases",
+      "fit_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases.",
+      "specs_label": "Evaluación: armario integrado de mezcla de gases",
+      "specs_title": "Información técnica: armario integrado de mezcla de gases",
+      "specs_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases",
+          "value": "800 × 350 × 1100 mm",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases",
+          "value": "90 kg",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases · N₂ / O₂",
+          "value": "20–25 bar",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases",
+          "value": "12–16 bar",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases",
+          "value": "200 m³/h",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "label": "Evaluación: armario integrado de mezcla de gases",
+          "value": "N₂ 95% / O₂ 5%",
+          "note": "Opción del proyecto: armario integrado de mezcla de gases"
+        }
+      ],
+      "function_label": "Evaluación: armario integrado de mezcla de gases",
+      "function_title": "Información técnica: armario integrado de mezcla de gases",
+      "function_text": "El armario integrado de mezcla de gases realiza la misma función principal que la válvula proporcional compacta. La diferencia está en el formato del producto y en el trabajo de integración que asume el cliente.",
+      "cards": [
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases · N₂ · O₂",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases · OEM",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        }
+      ],
+      "evidence_label": "Evaluación: armario integrado de mezcla de gases",
+      "evidence_title": "Información técnica: armario integrado de mezcla de gases",
+      "evidence_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases.",
+      "secondary_cards": [
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        },
+        {
+          "kicker": "Evaluación: armario integrado de mezcla de gases",
+          "title": "Información técnica: armario integrado de mezcla de gases",
+          "text": "Opción del proyecto: armario integrado de mezcla de gases",
+          "meta": "Opción del proyecto: armario integrado de mezcla de gases"
+        }
+      ],
+      "checklist_label": "Evaluación: armario integrado de mezcla de gases",
+      "checklist_title": "Información técnica: armario integrado de mezcla de gases",
+      "checklist": [
+        "Opción del proyecto: armario integrado de mezcla de gases",
+        "Opción del proyecto: armario integrado de mezcla de gases",
+        "Opción del proyecto: armario integrado de mezcla de gases",
+        "Opción del proyecto: armario integrado de mezcla de gases · N₂ · O₂",
+        "Opción del proyecto: armario integrado de mezcla de gases"
+      ],
+      "faq_label": "Evaluación: armario integrado de mezcla de gases",
+      "faq_title": "Información técnica: armario integrado de mezcla de gases",
+      "faq": [
+        {
+          "question": "¿El armario integrado de mezcla de gases y MSPV2_4000 realizan la misma función?",
+          "answer": "Sí. Ambos controlan la mezcla N₂/O₂. El armario es un sistema externo integrado y MSPV2_4000 es un producto compacto de integración. Son alternativas, no componentes en serie."
+        },
+        {
+          "question": "¿Cómo debe confirmarse armario integrado de mezcla de gases para el proyecto?",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases."
+        },
+        {
+          "question": "¿Cómo debe confirmarse armario integrado de mezcla de gases para el proyecto?",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases. · 6–60 kW"
+        }
+      ],
+      "closing_title": "Información técnica: armario integrado de mezcla de gases",
+      "closing_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar armario integrado de mezcla de gases.",
+      "closing_label": "Evaluación: armario integrado de mezcla de gases",
+      "closing_cta": "Solicitar evaluación de armario integrado de mezcla de gases"
+    },
+    "valve": {
+      "title": "Información técnica: válvula proporcional · MSPV2_4000 · GasMixTech",
+      "description": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · N₂/O₂ · OEM",
+      "short_name": "Opción del proyecto: válvula proporcional · MSPV2_4000",
+      "product_name": "Opción del proyecto: válvula proporcional · MSPV2_4000",
+      "category": "Opción del proyecto: válvula proporcional",
+      "model": "MSPV2_4000",
+      "video_name": "Opción del proyecto: válvula proporcional · MSPV2_4000 · 360",
+      "video_description": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · N₂/O₂",
+      "og_image": "/images/products/mspv2-4000/mspv2-4000-angle-02.png",
+      "eyebrow": "Evaluación: válvula proporcional",
+      "h1": "Información técnica: válvula proporcional · MSPV2_4000",
+      "lede": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · N₂/O₂ · OEM",
+      "hero_note": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional.",
+      "primary_cta": "Solicitar evaluación de válvula proporcional",
+      "store_cta": "Solicitar evaluación de válvula proporcional · SAGEMRO · DHgate · MRO",
+      "compare_cta": "Solicitar evaluación de válvula proporcional",
+      "visual_alt": "Vista técnica de válvula proporcional · MSPV2_4000",
+      "media_index": "MSPV2 / 4000",
+      "gallery_alt_1": "Vista técnica de válvula proporcional · MSPV2_4000",
+      "gallery_alt_2": "Vista técnica de válvula proporcional · MSPV2_4000",
+      "gallery_alt_3": "Vista técnica de válvula proporcional · MSPV2_4000",
+      "video_fallback": "Opción del proyecto: válvula proporcional",
+      "fit_label": "Evaluación: válvula proporcional",
+      "fit_title": "Información técnica: válvula proporcional · OEM",
+      "fit_text": "MSPV2_4000 realiza la misma función principal de mezcla de gases que el armario. El integrador debe evaluar la envolvente, el montaje, el cableado, las tuberías, la regulación aguas arriba y la puesta en servicio.",
+      "choice_same": "Opción del proyecto: válvula proporcional",
+      "choice_action": "Opción del proyecto: válvula proporcional",
+      "specs_label": "Evaluación: válvula proporcional · MSPV2_4000",
+      "specs_title": "Información técnica: válvula proporcional",
+      "specs_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · MSPV2_4000",
+      "specs": [
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "120 × 118 × 106 mm",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "2.43 kg",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "200 ms",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "20–2000 kPa",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "0–5000 L/min",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional · O₂",
+          "value": "3–64%",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "24 V ±10%",
+          "note": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "label": "Evaluación: válvula proporcional",
+          "value": "Analog + NPN/PNP",
+          "note": "Opción del proyecto: válvula proporcional"
+        }
+      ],
+      "control_label": "Evaluación: válvula proporcional",
+      "control_title": "Información técnica: válvula proporcional",
+      "control_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional.",
+      "control_alt": "Vista técnica de válvula proporcional · MSPV2_4000",
+      "installation_label": "Evaluación: válvula proporcional",
+      "installation_title": "Información técnica: válvula proporcional",
+      "installation_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · 1.5–1.6 MPa · N₂/O₂ · 100 kPa",
+      "cards": [
+        {
+          "kicker": "Evaluación: válvula proporcional · OEM",
+          "title": "Información técnica: válvula proporcional",
+          "text": "Opción del proyecto: válvula proporcional",
+          "meta": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "kicker": "Evaluación: válvula proporcional",
+          "title": "Información técnica: válvula proporcional",
+          "text": "Opción del proyecto: válvula proporcional",
+          "meta": "Opción del proyecto: válvula proporcional"
+        },
+        {
+          "kicker": "Evaluación: válvula proporcional",
+          "title": "Información técnica: válvula proporcional",
+          "text": "Opción del proyecto: válvula proporcional",
+          "meta": "Opción del proyecto: válvula proporcional"
+        }
+      ],
+      "checklist_label": "Evaluación: válvula proporcional",
+      "checklist_title": "Información técnica: válvula proporcional · MSPV2_4000",
+      "checklist": [
+        "Opción del proyecto: válvula proporcional",
+        "Opción del proyecto: válvula proporcional",
+        "Opción del proyecto: válvula proporcional · N₂/O₂",
+        "Opción del proyecto: válvula proporcional · NPN/PNP",
+        "Opción del proyecto: válvula proporcional"
+      ],
+      "faq_label": "Evaluación: válvula proporcional · MSPV2_4000",
+      "faq_title": "Información técnica: válvula proporcional",
+      "faq": [
+        {
+          "question": "¿MSPV2_4000 es una pieza interna del armario de mezcla?",
+          "answer": "No. MSPV2_4000 y el armario integrado son productos alternativos con la misma función principal de mezcla N₂/O₂ y control de salida."
+        },
+        {
+          "question": "¿Cómo debe confirmarse válvula proporcional para el proyecto? · NPN/PNP",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional."
+        },
+        {
+          "question": "¿Cómo debe confirmarse válvula proporcional para el proyecto? · MSPV2_4000 · DHgate",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · SAGEMRO · MRO"
+        }
+      ],
+      "closing_title": "Información técnica: válvula proporcional · OEM",
+      "closing_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar válvula proporcional. · MSPV2_4000",
+      "closing_label": "Evaluación: válvula proporcional · OEM",
+      "closing_cta": "Solicitar evaluación de válvula proporcional"
+    },
+    "comparison": {
+      "title": "Información técnica: comparación de control de gas mezclado · MSPV2_4000",
+      "description": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar comparación de control de gas mezclado. · N₂/O₂",
+      "short_name": "Opción del proyecto: comparación de control de gas mezclado",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "Evaluación: comparación de control de gas mezclado",
+      "h1": "Información técnica: comparación de control de gas mezclado · MSPV2_4000",
+      "lede": "Ambos productos realizan la misma función principal: mezcla N₂/O₂ con salida controlada. Elija uno según el formato de instalación, las interfaces y el trabajo de ingeniería que conservará su equipo.",
+      "hero_note": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar comparación de control de gas mezclado.",
+      "primary_cta": "Solicitar evaluación de comparación de control de gas mezclado",
+      "hero_cabinet_label": "Evaluación: comparación de control de gas mezclado",
+      "hero_cabinet_title": "Información técnica: comparación de control de gas mezclado",
+      "hero_or": "Opción del proyecto: comparación de control de gas mezclado",
+      "hero_valve_label": "Evaluación: comparación de control de gas mezclado",
+      "hero_valve_title": "Información técnica: comparación de control de gas mezclado · MSPV2_ · 4000",
+      "cabinet_cta": "Solicitar evaluación de comparación de control de gas mezclado",
+      "valve_cta": "Solicitar evaluación de comparación de control de gas mezclado · MSPV2_4000",
+      "principle_label": "Evaluación: comparación de control de gas mezclado",
+      "principle_title": "Información técnica: comparación de control de gas mezclado",
+      "principle_text": "El armario integra la función de control en un sistema externo. MSPV2_4000 concentra la misma función principal en un producto compacto de integración. Ninguno se presenta como superior o subordinado al otro.",
+      "table_label": "Evaluación: comparación de control de gas mezclado",
+      "table_title": "Información técnica: comparación de control de gas mezclado",
+      "table_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar comparación de control de gas mezclado.",
+      "factor_header": "Opción del proyecto: comparación de control de gas mezclado",
+      "cabinet_header": "Opción del proyecto: comparación de control de gas mezclado",
+      "valve_header": "Opción del proyecto: comparación de control de gas mezclado · MSPV2_4000",
+      "comparison_rows": [
+        {
+          "key": "core_function",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · N₂/O₂",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado"
+        },
+        {
+          "key": "product_form",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado"
+        },
+        {
+          "key": "dimensions",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · 800 · × · 350 · × · 1100 mm",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · 120 · × · 118 · × · 106 mm"
+        },
+        {
+          "key": "weight",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · 90 kg",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · 2.43 kg"
+        },
+        {
+          "key": "inlet_condition",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · 20–25 bar",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · 1.5–1.6 MPa · ≤ · 100 kPa"
+        },
+        {
+          "key": "flow",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · 200 m³/h",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · 0–5000 L/min"
+        },
+        {
+          "key": "control_interfaces",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · NPN/PNP"
+        },
+        {
+          "key": "installation_responsibility",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · OEM"
+        },
+        {
+          "key": "best_fit_buyer",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · OEM"
+        },
+        {
+          "key": "purchase_path",
+          "factor": "Opción del proyecto: comparación de control de gas mezclado",
+          "cabinet": "Opción del proyecto: comparación de control de gas mezclado · DHgate",
+          "valve": "Opción del proyecto: comparación de control de gas mezclado · SAGEMRO · MRO"
+        }
+      ],
+      "fit_label": "Evaluación: comparación de control de gas mezclado",
+      "fit_title": "Información técnica: comparación de control de gas mezclado",
+      "cards": [
+        {
+          "kicker": "Evaluación: comparación de control de gas mezclado",
+          "title": "Información técnica: comparación de control de gas mezclado",
+          "text": "Opción del proyecto: comparación de control de gas mezclado",
+          "meta": "Opción del proyecto: comparación de control de gas mezclado"
+        },
+        {
+          "kicker": "Evaluación: comparación de control de gas mezclado",
+          "title": "Información técnica: comparación de control de gas mezclado · MSPV2_4000",
+          "text": "Opción del proyecto: comparación de control de gas mezclado · OEM",
+          "meta": "Opción del proyecto: comparación de control de gas mezclado"
+        }
+      ],
+      "checklist_label": "Evaluación: comparación de control de gas mezclado",
+      "checklist_title": "Información técnica: comparación de control de gas mezclado",
+      "checklist": [
+        "Opción del proyecto: comparación de control de gas mezclado",
+        "Opción del proyecto: comparación de control de gas mezclado · N₂/O₂",
+        "Opción del proyecto: comparación de control de gas mezclado",
+        "Opción del proyecto: comparación de control de gas mezclado",
+        "Opción del proyecto: comparación de control de gas mezclado · OEM"
+      ],
+      "faq_label": "Evaluación: comparación de control de gas mezclado",
+      "faq_title": "Información técnica: comparación de control de gas mezclado",
+      "faq": [
+        {
+          "question": "¿Deben utilizarse juntos el armario y MSPV2_4000?",
+          "answer": "No. Son controladores alternativos de gas mezclado. Elija uno para el proyecto y no los disponga como un par de mezcladores en serie."
+        },
+        {
+          "question": "¿MSPV2_4000 es la versión mejorada del armario?",
+          "answer": "No. Es un formato de producto diferente para integración compacta OEM y modernización. El armario sigue siendo la opción externa integrada."
+        },
+        {
+          "question": "¿Cómo debe confirmarse comparación de control de gas mezclado para el proyecto?",
+          "answer": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar comparación de control de gas mezclado."
+        }
+      ],
+      "closing_title": "Información técnica: comparación de control de gas mezclado",
+      "closing_text": "Revise el suministro de gas, las interfaces, la instalación y las condiciones de corte antes de confirmar comparación de control de gas mezclado.",
+      "closing_label": "Evaluación: comparación de control de gas mezclado",
+      "closing_cta": "Solicitar evaluación de comparación de control de gas mezclado"
+    }
+  }
+}
