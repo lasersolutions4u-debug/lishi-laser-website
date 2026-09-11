@@ -24,6 +24,25 @@ npx serve
 php -S localhost:8000
 ```
 
+## Maintained Locales and Core Build
+
+The maintained locales are English (EN), Chinese (ZH), Spanish (ES), Portuguese (PT), Japanese (JA), Korean (KO), and Polish (PL).
+
+Build the complete core sales path, then run the Python and Node.js test suites:
+
+```powershell
+python build-core-locales.py
+python -m unittest discover -s tests -p 'test_*.py'
+node --test tests/*.test.mjs
+```
+
+Rebuild and normalize the committed Pagefind index with the pinned version:
+
+```powershell
+npx pagefind@1.5.2 --site public
+python normalize-pagefind.py
+```
+
 ## Deploy to Cloudflare Pages
 
 Deploy using Wrangler CLI (no Git connection required):

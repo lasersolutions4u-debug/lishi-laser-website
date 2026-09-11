@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="{{attr:__html_lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{attr:contact.description}}">
+  <meta name="keywords" content="{{attr:contact.meta.keywords}}">
+  <title>{{text:contact.title}}</title>
+  <link rel="canonical" href="{{attr:__canonical_url}}">
+  {{safe:__hreflang_links}}
+  <meta property="og:title" content="{{attr:contact.title}}">
+  <meta property="og:description" content="{{attr:contact.meta.og_description}}">
+  <meta property="og:image" content="https://gasmixtech.com/images/device-main.jpg">
+  <meta property="og:url" content="{{attr:__canonical_url}}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="{{attr:__asset_prefix}}favicon.svg">
+  <link rel="stylesheet" href="{{attr:__asset_prefix}}styles.css?v=20260901-product-pages">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": {{json:__schema_page_id}},
+    "name": {{json:contact.title}},
+    "description": {{json:contact.description}},
+    "url": {{json:__canonical_url}},
+    "isPartOf": {"@id": "https://gasmixtech.com/#website"},
+    "publisher": {"@id": "https://gasmixtech.com/#organization"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": {{json:shared.home}}, "item": {{json:__home_url}}},
+      {"@type": "ListItem", "position": 2, "name": {{json:contact.schema.contact}}, "item": {{json:__canonical_url}}}
+    ]
+  }
+  </script>
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '28152921424302280');
+  fbq('init', '1368446785419262');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=28152921424302280&ev=PageView&noscript=1"
+  /></noscript>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1368446785419262&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+  <a href="#main" class="skip-link">{{text:shared.copy.skip_to_content}}</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="{{attr:__route_home}}" class="logo">
+        <picture><source srcset="{{attr:__asset_prefix}}images/logo.webp" type="image/webp"><img src="{{attr:__asset_prefix}}images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
+        <div class="logo-text">
+          <span class="logo-brand">GasMixTech</span>
+          <span class="logo-tagline">{{text:shared.copy.laser_cutting_assist_gas_solutions}}</span>
+        </div>
+      </a>
+      <nav class="nav product-nav" id="nav" role="navigation" aria-label="{{attr:shared.copy.main_navigation}}">
+        <div class="product-nav-group">
+          <button class="product-menu-button" id="productMenuButton" type="button" aria-expanded="false" aria-controls="productMenu">{{text:shared.products}} <span aria-hidden="true">⌄</span></button>
+          <div class="product-menu" id="productMenu"><div><span class="product-menu-label">{{text:shared.copy.nitrogen_supply}}</span><a href="{{attr:__route_psa}}">{{text:shared.copy.psa_nitrogen_generation_system}}</a></div><div><span class="product-menu-label">{{text:shared.copy.mixed_gas_control}}</span><a href="{{attr:__route_cabinet}}">{{text:shared.copy.integrated_gas_mixing_cabinet}}</a><a href="{{attr:__route_valve}}">MSPV2_4000{{text:shared.copy.compact_valve}}</a><a href="{{attr:__route_comparison}}">{{text:shared.copy.compare_both_mixers}}</a></div></div>
+        </div>
+        <a href="{{attr:__route_home_advantages}}">{{text:shared.applications}}</a>
+        <a href="{{attr:__route_home_samples}}">{{text:shared.results}}</a>
+        <a href="/blog/">{{text:shared.resources}}</a>
+        <a href="{{attr:__route_about}}">{{text:shared.about}}</a>
+        <a href="{{attr:__route_contact}}" class="nav-cta">{{text:shared.request}}</a>
+      </nav>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <span class="lang-current">{{text:shared.language_label}}</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-arrow">▼</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          {{safe:__language_menu}}
+        </div>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="{{attr:shared.copy.toggle_menu}}">☰</button>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">{{text:shared.copy.application_assessment}}</span>
+        <h1>{{text:contact.copy.discuss_your_laser_cutting_gas_mixing_requirements}}</h1>
+        <p>{{text:contact.copy.send_the_laser_brand_power_material_thickness_range_current_assist_gas_g}}</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info fade-in">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>{{text:shared.copy.email}}</h4>
+              <p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">{{text:contact.copy.technical_review_after_receipt}}</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>{{text:shared.copy.phone_wechat}}</h4>
+              <p><a href="tel:+8618615584520">+86 186 1558 4520</a></p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">{{text:contact.copy.wechat_same_number}}</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div>
+              <h4>{{text:shared.copy.whatsapp}}</h4>
+              <p>
+                <a href="https://wa.me/525572080065" target="_blank">+52 557 208 0065</a>
+                <span style="color: var(--color-text-dim); font-size: 0.85rem;"> {{text:shared.copy.mexico}}</span>
+              </p>
+              <p>
+                <a href="https://wa.me/66961135966" target="_blank">+66 961 135 966</a>
+                <span style="color: var(--color-text-dim); font-size: 0.85rem;"> {{text:shared.copy.thailand}}</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.85M19 21V10.85M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
+            </div>
+            <div>
+              <h4>{{text:shared.copy.company}}</h4>
+              <p>Jinan Euchio Machinery Co., Ltd.</p>
+              <p style="font-size: 0.85rem; color: var(--color-text-dim); margin-top: 4px;">济南钰峭机械有限公司</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <div>
+              <h4>{{text:contact.copy.business_role}}</h4>
+              <p>{{text:contact.copy.china_based_supplier_and_solution_provider}}</p>
+
+            </div>
+          </div>
+
+          <div class="contact-note">
+            <h4>{{text:contact.copy.for_end_user_projects}}</h4>
+            <p>{{text:contact.copy.equipment_payment_terms}}</p>
+            <a href="/payment.html" class="btn btn-primary">T/T{{text:contact.copy.payment_instructions}}</a>
+          </div>
+        </div>
+
+        <!-- Secure Inquiry Form -->
+        <div class="contact-form inquiry-shell fade-in">
+          <h3>{{text:contact.copy.request_a_project_assessment}}</h3>
+          <p class="inquiry-intro">{{text:contact.copy.choose_the_solution_area_add_the_operating_conditions_we_need_then_confi}}</p>
+          <div id="inquiryProgress" class="inquiry-progress" role="status" aria-live="polite" data-template="{{attr:contact.copy.step_current_of_3}}"><span data-progress-text>{{text:contact.copy.step_1_of_3}}</span><span class="inquiry-progress-track"><span data-progress-bar></span></span></div>
+          <div id="inquiryErrors" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+          <form id="contactForm" action="/api/inquiry" method="post" data-inquiry-form data-sending="{{attr:contact.copy.sending}}" data-required-message="{{attr:contact.copy.please_complete_the_required_fields_in_this_step}}" novalidate>
+            <fieldset data-step="1">
+              <legend tabindex="-1">{{text:contact.copy.01_choose_a_solution}}</legend>
+              <div class="form-group"><label for="product">{{text:contact.copy.solution_or_product_interest}}</label><select id="product" name="product" required><option value="">{{text:contact.copy.select_one}}</option><option value="psa-nitrogen-system">{{text:contact.copy.psa_nitrogen_generation_system}}</option><option value="integrated-mixing-cabinet">{{text:contact.copy.integrated_gas_mixing_cabinet}}</option><option value="mspv2-4000">MSPV2-4000{{text:contact.copy.proportional_valve_2}}</option><option value="need-recommendation">{{text:contact.copy.help_me_choose}}</option></select></div>
+              <div class="form-group" data-recommendation-only hidden><label for="recommendation_branch">{{text:contact.copy.which_supply_area_should_we_assess}}</label><select id="recommendation_branch" name="recommendation_branch" disabled><option value="">{{text:contact.copy.select_one}}</option><option value="psa">{{text:contact.copy.nitrogen_generation}}</option><option value="mixer">{{text:contact.copy.mixed_gas_control}}</option><option value="both">{{text:contact.copy.both}}</option></select></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-primary" data-next>{{text:contact.copy.continue}}</button></div>
+            </fieldset>
+            <fieldset data-step="2" hidden>
+              <legend tabindex="-1">{{text:contact.copy.02_operating_conditions}}</legend>
+              <div data-branch="psa" hidden>
+                <div class="form-row"><div class="form-group"><label for="target_flow">{{text:contact.copy.target_nitrogen_flow}}</label><input id="target_flow" name="target_flow" type="text" disabled data-required></div><div class="form-group"><label for="purity">{{text:contact.copy.required_purity}}</label><input id="purity" name="purity" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="output_pressure">{{text:contact.copy.output_pressure}}</label><input id="output_pressure" name="output_pressure" type="text" disabled data-required></div><div class="form-group"><label for="laser_count">{{text:contact.copy.number_of_lasers}}</label><input id="laser_count" name="laser_count" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="psa_laser_power">{{text:contact.copy.laser_power}}</label><input id="psa_laser_power" name="psa_laser_power" type="text" disabled data-required></div><div class="form-group"><label for="operating_hours">{{text:contact.copy.operating_hours}}</label><input id="operating_hours" name="operating_hours" type="text" disabled data-required></div></div>
+                <div class="form-group"><span class="form-label">{{text:contact.copy.modules_already_available}}</span><div class="inquiry-check-grid" data-required-group="retained_modules"><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-compressor" disabled> {{text:contact.copy.air_compressor}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="dryer" disabled> {{text:contact.copy.air_dryer}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="filters" disabled> {{text:contact.copy.filters}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="air-buffer-tank" disabled> {{text:contact.copy.air_buffer_tank}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="nitrogen-storage" disabled> {{text:contact.copy.nitrogen_storage}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="booster" disabled> {{text:contact.copy.booster}}</label><label class="inquiry-check"><input type="checkbox" name="retained_modules" value="none" disabled> {{text:contact.copy.none}}</label></div></div>
+                <div class="form-group"><label for="installation_space">{{text:contact.copy.available_installation_space}}</label><input id="installation_space" name="installation_space" type="text" disabled data-required></div>
+              </div>
+              <div data-branch="mixer" hidden>
+                <div class="form-row"><div class="form-group"><label for="laser_brand">{{text:contact.copy.laser_brand_model}}</label><input id="laser_brand" name="laser_brand" type="text" disabled data-required></div><div class="form-group"><label for="mixer_laser_power">{{text:contact.copy.laser_power}}</label><input id="mixer_laser_power" name="mixer_laser_power" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="material">{{text:contact.copy.main_material}}</label><select id="material" name="material" disabled data-required><option value="">{{text:contact.copy.select_one}}</option><option value="carbon_steel">{{text:contact.copy.carbon_steel}}</option><option value="stainless_steel">{{text:contact.copy.stainless_steel}}</option><option value="aluminum">{{text:contact.copy.aluminum}}</option><option value="mixed">{{text:contact.copy.mixed_materials}}</option><option value="other">{{text:contact.copy.other}}</option></select></div><div class="form-group"><label for="thickness">{{text:contact.copy.thickness_range}}</label><input id="thickness" name="thickness" type="text" disabled data-required></div></div>
+                <div class="form-group"><label for="current_gas">{{text:contact.copy.current_assist_gas}}</label><select id="current_gas" name="current_gas" disabled data-required><option value="">{{text:contact.copy.select_one}}</option><option value="oxygen">{{text:contact.copy.oxygen}}</option><option value="nitrogen">{{text:contact.copy.nitrogen}}</option><option value="air">{{text:contact.copy.compressed_air}}</option><option value="mixed">{{text:contact.copy.mixed_gas}}</option><option value="unknown">{{text:contact.copy.not_sure}}</option></select></div>
+                <div class="form-row"><div class="form-group"><label for="nitrogen_source">{{text:contact.copy.nitrogen_source}}</label><input id="nitrogen_source" name="nitrogen_source" type="text" disabled data-required></div><div class="form-group"><label for="nitrogen_inlet_pressure">{{text:contact.copy.nitrogen_inlet_pressure}}</label><input id="nitrogen_inlet_pressure" name="nitrogen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="oxygen_source">{{text:contact.copy.oxygen_source}}</label><input id="oxygen_source" name="oxygen_source" type="text" disabled data-required></div><div class="form-group"><label for="oxygen_inlet_pressure">{{text:contact.copy.oxygen_inlet_pressure}}</label><input id="oxygen_inlet_pressure" name="oxygen_inlet_pressure" type="text" disabled data-required></div></div>
+                <div class="form-row"><div class="form-group"><label for="required_flow">{{text:contact.copy.required_mixed_gas_flow}}</label><input id="required_flow" name="required_flow" type="text" disabled data-required></div><div class="form-group"><label for="installation_preference">{{text:contact.copy.installation_preference}}</label><select id="installation_preference" name="installation_preference" disabled data-required><option value="">{{text:contact.copy.select_one}}</option><option value="cabinet">{{text:contact.copy.integrated_cabinet}}</option><option value="valve">{{text:contact.copy.proportional_valve}}</option><option value="unsure">{{text:contact.copy.need_recommendation}}</option></select></div></div>
+                <div class="form-group" data-msp-only hidden><label for="control_interface">{{text:contact.copy.control_interface}}</label><select id="control_interface" name="control_interface" disabled data-required><option value="">{{text:contact.copy.select_one}}</option><option value="analog">{{text:contact.copy.analog}}</option><option value="modbus">{{text:contact.copy.modbus}}</option><option value="plc-custom">{{text:contact.copy.custom_plc}}</option><option value="unsure">{{text:contact.copy.not_sure}}</option></select></div>
+              </div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>{{text:contact.copy.back}}</button><button type="button" class="btn btn-primary" data-next>{{text:contact.copy.continue}}</button></div>
+            </fieldset>
+            <fieldset data-step="3" hidden>
+              <legend tabindex="-1">{{text:contact.copy.03_contact_and_review}}</legend>
+              <div class="form-row"><div class="form-group"><label for="name">{{text:contact.copy.full_name}}</label><input id="name" name="name" type="text" autocomplete="name" required></div><div class="form-group"><label for="company">{{text:contact.copy.company}}</label><input id="company" name="company" type="text" autocomplete="organization" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="country">{{text:contact.copy.country_region}}</label><input id="country" name="country" type="text" autocomplete="country-name" required></div><div class="form-group"><label for="email">{{text:contact.copy.business_email}}</label><input id="email" name="email" type="email" autocomplete="email" required></div></div>
+              <div class="form-row"><div class="form-group"><label for="phone">{{text:contact.copy.phone_whatsapp}}</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div><div class="form-group"><label for="preferred_channel">{{text:contact.copy.preferred_contact_channel}}</label><select id="preferred_channel" name="preferred_channel" required><option value="">{{text:contact.copy.select_one}}</option><option value="email">{{text:shared.copy.email}}</option><option value="phone">{{text:contact.copy.phone}}</option><option value="whatsapp">{{text:shared.copy.whatsapp}}</option></select></div></div>
+              <div class="form-group"><label for="customer_type">{{text:contact.copy.customer_type}}</label><select id="customer_type" name="customer_type" required><option value="">{{text:contact.copy.select_one}}</option><option value="end_user">{{text:contact.copy.end_user}}</option><option value="factory">{{text:contact.copy.factory}}</option><option value="integrator">{{text:contact.copy.system_integrator}}</option><option value="project_owner">{{text:contact.copy.project_purchasing_team}}</option><option value="other">{{text:contact.copy.other}}</option></select></div>
+              <div class="form-group"><label for="message">{{text:contact.copy.project_details}}</label><textarea id="message" name="message" required></textarea></div>
+              <div class="inquiry-honeypot" aria-hidden="true"><label for="website">{{text:shared.copy.website}}</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1"></div>
+              <label class="inquiry-consent"><input id="consent" name="consent" type="checkbox" required> <span>{{text:contact.copy.i_agree_that}}Jinan Euchio Machinery Co., Ltd.{{text:contact.copy.may_use_these_details_to_evaluate_and_respond_to_this_inquiry}}</span></label>
+              <div class="inquiry-review"><h4>{{text:contact.copy.review_summary}}</h4><dl id="inquiryReview"></dl></div>
+              <div class="inquiry-actions"><button type="button" class="btn btn-outline" data-back>{{text:contact.copy.back}}</button><button type="submit" class="btn btn-primary form-submit">{{text:contact.copy.send_assessment_request}}</button></div>
+            </fieldset>
+          </form>
+          <div id="inquiryFailure" class="inquiry-alert inquiry-alert-error" role="alert" aria-live="assertive" tabindex="-1" hidden><h4>{{text:contact.copy.the_form_could_not_be_delivered}}</h4><p>{{text:contact.copy.your_entries_are_still_on_this_page_please_retry_or_contact_us_directly}}</p><p><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a> · <a href="https://wa.me/525572080065">{{text:shared.copy.whatsapp}}</a></p></div>
+          <div id="inquirySuccess" class="inquiry-alert inquiry-alert-success" role="status" aria-live="polite" tabindex="-1" hidden><h4>{{text:contact.copy.request_received}}</h4><p>{{text:contact.copy.your_project_information_was_delivered_to_the_sales_team}}</p><p>{{text:contact.copy.reference}} <strong data-inquiry-reference></strong></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="{{attr:__route_home}}" class="logo">
+            <picture><source srcset="{{attr:__asset_prefix}}images/logo.webp" type="image/webp"><img src="{{attr:__asset_prefix}}images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
+            <div class="logo-text">
+              <span class="logo-brand">GasMixTech</span>
+              <span class="logo-tagline">{{text:shared.copy.gas_mixing_technology}}</span>
+            </div>
+          </a>
+          <p class="footer-brand-intro">Jinan Euchio Machinery Co., Ltd.{{text:shared.copy.is_an_industrial_equipment_solutions_and_service_company_focused_on_shee}}EUCHIO{{text:shared.copy.complete_machines_and}}SAGEMRO{{text:shared.copy.mro_parts_and_service}}</p>
+        </div>
+        <div>
+          <h4>{{text:shared.copy.product}}</h4>
+          <ul class="footer-links">
+            <li><a href="{{attr:__route_home_principle}}">{{text:shared.copy.how_it_works}}</a></li>
+            <li><a href="{{attr:__route_home_advantages}}">{{text:shared.copy.advantages}}</a></li>
+            <li><a href="/compatibility.html">{{text:contact.copy.compatibility}}</a></li>
+            <li><a href="/roi.html">{{text:contact.copy.roi}}</a></li>
+            <li><a href="/payment.html">{{text:contact.copy.payment}}</a></li>
+            <li><a href="/parameters">{{text:shared.copy.parameters}}</a></li>
+            <li><a href="{{attr:__route_home_samples}}">{{text:shared.copy.cutting_samples}}</a></li>
+            <li><a href="/blog/">{{text:shared.copy.blog}}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>{{text:shared.copy.contact}}</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></li>
+            <li><a href="tel:+8618615584520">+86 186 1558 4520</a></li>
+            <li><a href="https://wa.me/525572080065" target="_blank">{{text:shared.copy.whatsapp_mexico}}</a></li>
+            <li><a href="https://wa.me/66961135966" target="_blank">{{text:shared.copy.whatsapp_thailand}}</a></li>
+            <li><a href="https://www.linkedin.com/company/euchio" target="_blank">{{text:shared.copy.linkedin}}</a></li>
+          </ul>
+          <h4 class="footer-subtitle">{{text:shared.copy.related_links}}</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO{{text:shared.copy.complete_machines}}</a></li>
+            <li><a href="https://www.sagemro.com" target="_blank" rel="noopener">SAGEMRO{{text:shared.copy.parts}} &amp; {{text:shared.copy.service}}</a></li>
+            <li><a href="https://www.dhgate.com/store/22325464" target="_blank" rel="noopener">{{text:shared.copy.dhgate_store}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Jinan Euchio Machinery Co., Ltd.{{text:shared.copy.all_rights_reserved}}</span>
+        <span><a href="/privacy.html">{{text:shared.copy.privacy_policy}}</a></span>
+        <span>www.gasmixtech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/525572080065" class="whatsapp-float" target="_blank" aria-label="{{attr:shared.copy.chat_on_whatsapp}}">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <script src="/script.min.js"></script>
+  <script src="/inquiry-form.js"></script>
+  <!-- Facebook Lead Event Tracking -->
+  <script>
+  function trackLead(method) {
+    fbq('track', 'Lead', {
+      content_name: 'EUCHIO Inquiry - ' + method,
+      content_category: 'Gas Mixing Device'
+    });
+  }
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+    if (link) trackLead('WhatsApp Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="mailto:"], a[href^="tel:"]');
+    if (link) trackLead('Email/Phone Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="dhgate.com"]');
+    if (link) trackLead('DHgate Click');
+  });
+  </script>
+  <!-- End Facebook Lead Event Tracking -->
+</body>
+</html>

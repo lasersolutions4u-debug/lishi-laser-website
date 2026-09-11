@@ -10,64 +10,18 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
 
 const PUBLIC_DIR = __dirname;
 const I18N_DIR = path.join(PUBLIC_DIR, 'i18n');
-const PYTHON = process.platform === 'win32' ? 'python' : 'python3';
-
-// Normalize retained locale source copy before rendering. This keeps the JSON
-// sources and generated HTML under the same evidence and positioning policy.
-execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'normalize-i18n-homepages.py')], {
-  stdio: 'inherit'
-});
-
-// Supported languages — add new ones here + create i18n/xx.json
-const LANGUAGES = ['zh', 'es', 'ko', 'ja', 'pt', 'pl'];
-
-// ─── Read template ──────────────────────────────────────────────────
-const templatePath = path.join(PUBLIC_DIR, '_template.html');
-const template = fs.readFileSync(templatePath, 'utf-8');
-
-// ─── Build English (root) ───────────────────────────────────────────
-const enStrings = JSON.parse(fs.readFileSync(path.join(I18N_DIR, 'en.json'), 'utf-8'));
-const enHtml = replacePlaceholders(template, enStrings);
-fs.writeFileSync(path.join(PUBLIC_DIR, 'index.html'), enHtml, 'utf-8');
-console.log('  en/index.html (root)');
-
-// ─── Build each language ─────────────────────────────────────────────
-let built = 1;
-
-for (const lang of LANGUAGES) {
-  const jsonPath = path.join(I18N_DIR, `${lang}.json`);
-
-  if (!fs.existsSync(jsonPath)) {
-    console.warn(`  skip: ${lang}.json not found`);
-    continue;
-  }
-
-  const strings = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
-  let html = replacePlaceholders(template, strings);
-  html = adjustPaths(html, lang);
-  html = updateMeta(html, lang);
-  html = updateActiveLang(html, lang);
-
-  const outDir = path.join(PUBLIC_DIR, lang);
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-
-  fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf-8');
-  built++;
-  console.log(`  ${lang}/index.html`);
-}
-
-// Apply the shared canonical, schema, language, identity, and evidence-policy
-// contract after every homepage build so legacy translation strings cannot
-// silently restore removed product branding or unsupported positioning.
-execFileSync(PYTHON, [path.join(PUBLIC_DIR, '..', 'stabilize-core-locales.py')], {
-  stdio: 'inherit'
-});
-
-console.log(`\nDone — ${built} language(s) built and normalized.`);
+const SUPPORTED_LOCALES = ['en', 'zh', 'es', 'pt', 'ja', 'ko', 'pl'];
+const CORE_PATHS = [
+  '/about',
+  '/contact',
+  '/products/psa-nitrogen-generation-system',
+  '/products/integrated-gas-mixing-cabinet',
+  '/products/mspv2-4000-proportional-valve',
+  '/products/mixed-gas-control-comparison',
+];
 
 // ═══════════════════════════════════════════════════════════════════════
 // Helpers
@@ -78,14 +32,38 @@ console.log(`\nDone — ${built} language(s) built and normalized.`);
  * Keys use dot-notation: {{hero.title}} → strings.hero.title
  */
 function replacePlaceholders(html, strings) {
-  return html.replace(/\{\{([^}]+)\}\}/g, (match, key) => {
-    const value = getNestedValue(strings, key.trim());
+  return html.replace(/\{\{(?:(text|attr|json):)?([^}]+)\}\}/g, (match, context, key) => {
+    const normalizedKey = key.trim();
+    const value = getNestedValue(strings, normalizedKey);
     if (value === undefined) {
-      console.warn(`    missing key: ${key.trim()}`);
-      return match; // leave marker in place so it's easy to spot
+      throw new Error(`Missing translation key: ${normalizedKey}`);
     }
-    return value;
+    if (context === 'attr') return escapeHtmlAttribute(value);
+    if (context === 'json') return serializeJsonString(value);
+    return escapeHtmlText(value);
   });
+}
+
+function escapeHtmlText(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeHtmlAttribute(value) {
+  return escapeHtmlText(value);
+}
+
+function serializeJsonString(value) {
+  return JSON.stringify(String(value))
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }
 
 /**
@@ -111,9 +89,12 @@ function adjustPaths(html, lang) {
   // 1. Asset paths  ./xxx  →  ../xxx
   html = html.replace(/\.(\/(styles(?:\.min)?\.css|script(?:\.min)?\.js|favicon\.svg|images\/))/g, '../$2');
 
-  // 2. Root-relative page links  /contact.html → ./contact.html
-  html = html.replace(/href="\/(contact\.html|parameters\.html)"/g, 'href="./$1"');
-  html = html.replace(/href="\/about"/g, `href="/${lang}/about"`);
+  // 2. Localized core sales-path links
+  for (const route of CORE_PATHS) {
+    const escapedRoute = route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const routePattern = new RegExp(`href="${escapedRoute}(?=["?#])`, 'g');
+    html = html.replace(routePattern, `href="/${lang}${route}`);
+  }
 
   // 2b. Root-relative script  /script.min.js → ../script.min.js
   html = html.replace(/src="\/script(?:\.min)?\.js"/g, 'src="../script.min.js"');
@@ -157,8 +138,99 @@ function updateMeta(html, lang) {
 function updateActiveLang(html, lang) {
   // Remove "active" from all lang-option links
   html = html.replace(/ class="lang-option active"/g, ' class="lang-option"');
+  // Keep the visible current-language code and switcher targets canonical.
+  html = html.replace(
+    /(<span class="lang-current">)[^<]*(<\/span>)/,
+    `$1${lang.toUpperCase()}$2`
+  );
+  html = html.replace(
+    /href="[^"]*"( class="lang-option" data-lang="([a-z]{2})")/g,
+    (match, attributes, optionLang) => {
+      const href = optionLang === 'en' ? '/' : `/${optionLang}/`;
+      return `href="${href}"${attributes}`;
+    }
+  );
   // Add "active" to the current language's option
   const langRe = new RegExp(`(class="lang-option")( data-lang="${lang}")`);
-  html = html.replace(langRe, ' class="lang-option active"$2');
+  html = html.replace(langRe, 'class="lang-option active"$2');
   return html;
 }
+
+function requestedLocales(args) {
+  if (args.length === 0) return [...SUPPORTED_LOCALES];
+
+  const locales = [];
+  for (let index = 0; index < args.length; index++) {
+    if (args[index] !== '--locale') {
+      throw new Error(`Unknown argument: ${args[index]}`);
+    }
+
+    if (index + 1 >= args.length || args[index + 1] === '--locale') {
+      throw new Error('Missing value for --locale');
+    }
+
+    const locale = args[++index];
+    if (!SUPPORTED_LOCALES.includes(locale)) {
+      throw new Error(`Unsupported locale: ${locale}`);
+    }
+    if (!locales.includes(locale)) locales.push(locale);
+  }
+  return locales;
+}
+
+function main(args = process.argv.slice(2)) {
+  const locales = requestedLocales(args);
+  const templatePath = path.join(PUBLIC_DIR, '_template.html');
+  const template = fs.readFileSync(templatePath, 'utf-8');
+
+  const localeSources = locales.map((locale) => {
+    const jsonPath = path.join(I18N_DIR, `${locale}.json`);
+    if (!fs.existsSync(jsonPath)) {
+      throw new Error(`Missing translation file: ${locale}.json`);
+    }
+
+    try {
+      return {
+        locale,
+        strings: JSON.parse(fs.readFileSync(jsonPath, 'utf-8')),
+      };
+    } catch (error) {
+      throw new Error(`Invalid translation JSON: ${locale}.json`);
+    }
+  });
+
+  const renderedPages = localeSources.map(({ locale, strings }) => {
+    let html = replacePlaceholders(template, strings);
+    if (locale !== 'en') {
+      html = adjustPaths(html, locale);
+      html = updateMeta(html, locale);
+    }
+    html = updateActiveLang(html, locale);
+
+    if (html.includes('{{') || html.includes('}}')) {
+      throw new Error(`Unresolved translation marker: ${locale}/index.html`);
+    }
+
+    const outDir = locale === 'en' ? PUBLIC_DIR : path.join(PUBLIC_DIR, locale);
+    return { locale, html, outDir };
+  });
+
+  for (const { locale, html, outDir } of renderedPages) {
+    if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'index.html'), html, 'utf-8');
+    console.log(locale === 'en' ? '  en/index.html (root)' : `  ${locale}/index.html`);
+  }
+
+  console.log(`\nDone — ${locales.length} language(s) built.`);
+}
+
+if (require.main === module) {
+  try {
+    main();
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}
+
+module.exports = { replacePlaceholders, adjustPaths, SUPPORTED_LOCALES };

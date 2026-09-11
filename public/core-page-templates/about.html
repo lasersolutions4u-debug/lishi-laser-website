@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="{{attr:__html_lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{attr:about.description}}">
+  <meta name="keywords" content="{{attr:about.meta.keywords}}">
+  <title>{{text:about.title}}</title>
+  <link rel="canonical" href="{{attr:__canonical_url}}">
+  {{safe:__hreflang_links}}
+  <meta property="og:title" content="{{attr:about.title}}">
+  <meta property="og:description" content="{{attr:about.meta.og_description}}">
+  <meta property="og:image" content="https://gasmixtech.com/images/factory-40kw.jpg">
+  <meta property="og:url" content="{{attr:__canonical_url}}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="{{attr:__asset_prefix}}favicon.svg">
+  <link rel="stylesheet" href="{{attr:__asset_prefix}}styles.css?v=20260901-product-pages">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://gasmixtech.com/#organization",
+        "name": "Jinan Euchio Machinery Co., Ltd.",
+        "url": "https://gasmixtech.com/",
+        "logo": "https://gasmixtech.com/images/logo.png",
+        "description": {{json:about.schema.china_based_supplier_and_solution_provider_for_laser_cutting_gas_mixing}},
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+86-186-1558-4520",
+          "contactType": "sales",
+          "email": "sales@gasmixtech.com"
+        }
+      },
+      {
+        "@type": "AboutPage",
+        "@id": {{json:__schema_page_id}},
+        "url": {{json:__canonical_url}},
+        "name": {{json:about.schema.gas_mixing_device_supplier_in_china}},
+        "description": {{json:about.schema.supplier_profile_and_sourcing_guidance_for_laser_cutting_gas_mixing_equi}},
+        "isPartOf": {"@id": "https://gasmixtech.com/#website"},
+        "about": {"@id": "https://gasmixtech.com/#organization"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": {{json:shared.home}}, "item": {{json:__home_url}}},
+          {"@type": "ListItem", "position": 2, "name": {{json:shared.about}}, "item": {{json:__canonical_url}}}
+        ]
+      }
+    ]
+  }
+  </script>
+  <!-- Facebook Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '28152921424302280');
+  fbq('init', '1368446785419262');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=28152921424302280&ev=PageView&noscript=1"
+  /></noscript>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1368446785419262&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+</head>
+<body>
+
+  <a href="#main" class="skip-link">{{text:shared.copy.skip_to_content}}</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="{{attr:__route_home}}" class="logo">
+        <picture><source srcset="{{attr:__asset_prefix}}images/logo.webp" type="image/webp"><img src="{{attr:__asset_prefix}}images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
+        <div class="logo-text">
+          <span class="logo-brand">GasMixTech</span>
+          <span class="logo-tagline">{{text:shared.copy.laser_cutting_assist_gas_solutions}}</span>
+        </div>
+      </a>
+      <nav class="nav product-nav" id="nav" role="navigation" aria-label="{{attr:shared.copy.main_navigation}}">
+        <div class="product-nav-group">
+          <button class="product-menu-button" id="productMenuButton" type="button" aria-expanded="false" aria-controls="productMenu">{{text:shared.products}} <span aria-hidden="true">⌄</span></button>
+          <div class="product-menu" id="productMenu"><div><span class="product-menu-label">{{text:shared.copy.nitrogen_supply}}</span><a href="{{attr:__route_psa}}">{{text:shared.copy.psa_nitrogen_generation_system}}</a></div><div><span class="product-menu-label">{{text:shared.copy.mixed_gas_control}}</span><a href="{{attr:__route_cabinet}}">{{text:shared.copy.integrated_gas_mixing_cabinet}}</a><a href="{{attr:__route_valve}}">MSPV2_4000{{text:shared.copy.compact_valve}}</a><a href="{{attr:__route_comparison}}">{{text:shared.copy.compare_both_mixers}}</a></div></div>
+        </div>
+        <a href="{{attr:__route_home_advantages}}">{{text:shared.applications}}</a>
+        <a href="{{attr:__route_home_samples}}">{{text:shared.results}}</a>
+        <a href="/blog/">{{text:shared.resources}}</a>
+        <a href="{{attr:__route_about}}" class="active">{{text:shared.about}}</a>
+        <a href="{{attr:__route_contact}}" class="nav-cta">{{text:shared.request}}</a>
+      </nav>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" id="langBtn" type="button">
+          <span class="lang-current">{{text:shared.language_label}}</span>
+          <span class="lang-sep">|</span>
+          <span class="lang-arrow">▼</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          {{safe:__language_menu}}
+        </div>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="{{attr:shared.copy.toggle_menu}}">☰</button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" style="padding-top: 120px; padding-bottom: 60px;">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span>{{text:about.copy.china_based_supplier}}</span> & {{text:about.copy.solution_provider}}
+            </div>
+            <h1>{{text:about.copy.a_china_based_gas_mixing_device_supplier_and_solution_provider}}</h1>
+            <p class="hero-subtitle">
+              Jinan Euchio Machinery Co., Ltd.{{text:about.copy.is_a_china_based_supplier_and_solution_provider_for_laser_cutting_gas_mi}}
+            </p>
+            <div class="hero-actions">
+              <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">{{text:about.copy.get_a_quote}}</a>
+              <a href="{{attr:__route_contact}}" class="btn btn-secondary">{{text:about.copy.contact_us}}</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="{{attr:__asset_prefix}}images/factory-40kw.jpg" alt="{{attr:about.copy.gas_mixing_device_deployed_at_a}}40kW{{attr:about.copy.laser_cutting_factory_in_foshan_china}}" class="hero-image" style="border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="section" id="story">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:about.copy.our_company}}</span>
+          <h2>{{text:about.copy.who_we_are}}</h2>
+        </div>
+
+        <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+          <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-muted);">
+            Jinan Euchio Machinery Co., Ltd.{{text:about.copy.supports_overseas_buyers_sourcing_laser_cutting_gas_mixing_equipment_fro}}
+          </p>
+          <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-muted); margin-top: 20px;">
+            {{text:about.copy.equipment_is_sourced_through_qualified_manufacturing_partners_before_quo}}
+          </p>
+          <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-muted); margin-top: 20px;">
+            {{text:about.copy.our_goal_is_straightforward_provide_a_clear_well_matched_proposal_withou}}
+          </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="fade-in" style="max-width: 800px; margin: 48px auto 0; position: relative; padding-left: 32px; border-left: 3px solid var(--color-primary);">
+          <div style="margin-bottom: 40px; position: relative;">
+            <div style="position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; background: var(--color-primary); border-radius: 50%; border: 3px solid var(--color-bg);"></div>
+            <div style="font-weight: 700; color: var(--color-primary); font-size: 0.95rem;">{{text:shared.copy.application_assessment}}</div>
+            <p style="margin-top: 4px; color: var(--color-text-muted);">{{text:about.copy.collect_laser_material_thickness_gas_supply_pressure_flow_and_interface}}</p>
+          </div>
+          <div style="margin-bottom: 40px; position: relative;">
+            <div style="position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; background: var(--color-primary); border-radius: 50%; border: 3px solid var(--color-bg);"></div>
+            <div style="font-weight: 700; color: var(--color-primary); font-size: 0.95rem;">{{text:about.copy.condition_review}}</div>
+            <p style="margin-top: 4px; color: var(--color-text-muted);">{{text:about.copy.review_reference_parameters_and_case_records_together_with_their_machine}}</p>
+          </div>
+          <div style="position: relative;">
+            <div style="position: absolute; left: -41px; top: 4px; width: 16px; height: 16px; background: var(--color-accent); border-radius: 50%; border: 3px solid var(--color-bg);"></div>
+            <div style="font-weight: 700; color: var(--color-accent); font-size: 0.95rem;">{{text:about.copy.procurement_coordination}}</div>
+            <p style="margin-top: 4px; color: var(--color-text-muted);">{{text:about.copy.coordinate_the_written_quotation_agreed_scope_proforma_invoice_delivery}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two Brands -->
+    <section class="section section-dark" id="brands">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:about.copy.our_brands}}</span>
+          <h2>{{text:about.copy.two_brands_one_mission}}</h2>
+          <p>{{text:about.copy.we_operate_two_brands_to_cover_different_equipment_and_service_needs_cle}}</p>
+        </div>
+
+        <div class="brand-grid">
+          <div class="advantage-card brand-card fade-in" style="border-left: 4px solid var(--color-primary);">
+            <h3>EUCHIO <span style="font-size: 0.8rem; font-weight: 400; color: var(--color-text-muted);">{{text:about.copy.complete_machines_3}}</span></h3>
+            <p>EUCHIO{{text:about.copy.is_our_brand_for_private_label_complete_machines_including_laser_cutting}}</p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: var(--color-text-muted);">{{text:about.copy.website}} <a href="https://www.euchio.com" target="_blank" rel="noopener" style="color: var(--color-accent);">euchio.com</a></p>
+          </div>
+          <div class="advantage-card brand-card fade-in" style="border-left: 4px solid #e67e22;">
+            <h3>SAGEMRO <span style="font-size: 0.8rem; font-weight: 400; color: var(--color-text-muted);">{{text:about.copy.mro_parts_3}} & {{text:shared.copy.service}}</span></h3>
+            <p>SAGEMRO{{text:about.copy.focuses_on_mro_related_products_and_services_maintenance_repair_operatio}}SAGEMRO.</p>
+            <p style="margin-top: 12px; font-size: 0.9rem; color: var(--color-text-muted);">{{text:about.copy.website}} <a href="https://www.sagemro.com" target="_blank" rel="noopener" style="color: var(--color-accent);">sagemro.com</a></p>
+          </div>
+        </div>
+
+        <div class="brand-fit-note fade-in" style="margin-top: 32px; max-width: 800px; margin-left: auto; margin-right: auto; padding: 24px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+          <p style="font-size: 0.95rem; color: var(--color-text-muted); margin: 0;">
+            <strong style="color: var(--color-text);">{{text:about.copy.where_does_the_gas_mixing_device_fit}}</strong>
+            {{text:about.copy.the_mixed_gas_device_is_a_proprietary_product_that_is_not_offered_for_pr}}SAGEMRO{{text:about.copy.brand_for_after_sales_service_maintenance_and_technical_support_visit}} <a href="https://www.sagemro.com" target="_blank" rel="noopener" style="color: var(--color-accent);">sagemro.com</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do -->
+    <section class="section" id="what-we-do">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:about.copy.what_we_do}}</span>
+          <h2>{{text:about.copy.equipment_parts_and_service_done_right}}</h2>
+        </div>
+
+        <div class="advantage-grid" style="margin-top: 40px;">
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.complete_machines_2}}</h3>
+            <p>{{text:about.copy.through_the}}EUCHIO{{text:about.copy.brand_we_supply_laser_cutting_machines_press_brakes_tube_cutters_and_she}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.mro_parts_2}} & {{text:shared.copy.service}}</h3>
+            <p>{{text:about.copy.through}}SAGEMRO{{text:about.copy.we_provide_spare_parts_wearing_parts_equipment_upgrades_retrofit_solutio}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:shared.copy.gas_mixing_technology}}</h3>
+            <p>{{text:about.copy.laser_cutting_gas_mixing_equipment_is_a_generic_category_not_euchio_brand}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.technical_consulting}}</h3>
+            <p>{{text:about.copy.we_assess_your_laser_power_material_thickness_and_gas_supply_setup_befor}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.after_sales_support}}</h3>
+            <p>SAGEMRO{{text:about.copy.provides_ongoing_maintenance_repair_and_operation_support_for_all_equipm}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.responsible_sourcing}}</h3>
+            <p>{{text:about.copy.we_select_manufacturing_partners_carefully_and_communicate_honestly_abou}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-World Deployments -->
+    <section class="section section-alt" id="deployments">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:about.copy.real_world_deployments}}</span>
+          <h2>{{text:about.copy.not_catalog_photos_real_customer_factories}}</h2>
+          <p>{{text:about.copy.customer_floor_photos_summary}}</p>
+        </div>
+
+        <div class="params-grid" style="margin-top: 40px;">
+          <div class="params-card fade-in" style="overflow: hidden;">
+            <img src="{{attr:__asset_prefix}}images/factory-40kw.jpg" alt="40kW{{attr:about.copy.laser_cutting_factory_with_mixed_gas_device_hymson_laser_machine_with_gr}}" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div style="padding: 20px;">
+              <h3 style="margin-bottom: 8px;"><span class="params-power">40kW</span> {{text:about.copy.deployment}}</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">{{text:about.copy.foshan_china_hymson}}40kW{{text:about.copy.fiber_laser_with_mixed_gas_cutting_carbon_steel_up_to}}35mm{{text:about.copy.green_liquid_gas_storage_tanks_visible_on_the_right}}</p>
+            </div>
+          </div>
+
+          <div class="params-card fade-in" style="overflow: hidden;">
+            <img src="{{attr:__asset_prefix}}images/factory-60kw.jpg" alt="60kW{{attr:about.copy.laser_cutting_factory_with_mixed_gas_device_ultra_high_power_laser_insta}}" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div style="padding: 20px;">
+              <h3 style="margin-bottom: 8px;"><span class="params-power">60kW</span> {{text:about.copy.deployment}}</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">{{text:about.copy.foshan_60kw_application_summary}}</p>
+            </div>
+          </div>
+
+          <div class="params-card fade-in" style="overflow: hidden;">
+            <img src="{{attr:__asset_prefix}}images/factory-20kw.jpg" alt="20kW{{attr:about.copy.han_s_laser_factory_with_mixed_gas_device}}" style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px 8px 0 0;">
+            <div style="padding: 20px;">
+              <h3 style="margin-bottom: 8px;"><span class="params-power">20kW</span> {{text:about.copy.deployment}}</h3>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">{{text:about.copy.han_s_laser}}20kW{{text:about.copy.machine_with_mixed_gas_cutting_carbon_steel_up_to}}25mm{{text:about.copy.at_speeds}}2.5–7x{{text:about.copy.faster_than_pure_oxygen}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in" style="margin-top: 40px; text-align: center;">
+          <p style="color: var(--color-text-muted); margin-bottom: 20px;">{{text:about.copy.want_to_see_more_watch_cutting_videos_from_real_customer_factories}}</p>
+          <a href="{{attr:__route_home_samples}}" class="btn btn-secondary">{{text:about.copy.view_cutting_samples}}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deployment Proof -->
+    <section class="section deployment-proof-section" id="global-reach">
+      <div class="container">
+        <div class="deployment-proof fade-in">
+          <div class="deployment-proof-metric">
+            <div class="deployment-proof-number">{{text:about.copy.project}}</div>
+            <div class="deployment-proof-label">{{text:about.copy.application_review_before_quotation}}</div>
+          </div>
+          <div class="deployment-proof-copy">
+            <span class="section-label">{{text:about.copy.evidence_before_claims}}</span>
+            <h2>{{text:about.copy.review_the_conditions_behind_every_result}}</h2>
+            <p>{{text:about.copy.published_parameters_and_case_examples_are_useful_only_with_their_record}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-dark" id="why-euchio">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:about.copy.why_choose_us}}</span>
+          <h2>{{text:about.copy.honest_about_what_we_are_and_aren_t}}</h2>
+        </div>
+
+        <div class="advantage-grid" style="margin-top: 40px;">
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.we_tell_you_if_it_won_t_work}}</h3>
+            <p>{{text:about.copy.before_quoting_we_check_whether_mixed_gas_makes_sense_for_your_laser_pow}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.real_data_not_marketing_numbers}}</h3>
+            <p>{{text:about.copy.our_parameter_tables_distinguish_between_verified_field_data_and_estimat}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.one_device_three_machines}}</h3>
+            <p>{{text:about.copy.the_one_to_three_configuration_lets_a_single_gas_mixing_station_supply_u}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.energy_use_per_24_hours}}</h3>
+            <p>{{text:about.copy.power_use_and_maintenance_requirements_must_be_confirmed_against_the_pro}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.compatible_with_your_machine}}</h3>
+            <p>{{text:about.copy.compatibility_is_checked_from_the_assist_gas_interface_required_pressure}}</p>
+          </div>
+          <div class="advantage-card fade-in">
+            <h3>{{text:about.copy.long_term_support_through}}SAGEMRO</h3>
+            <p>{{text:about.copy.after_sales_service_maintenance_guidance_spare_parts_and_technical_suppo}} <a href="https://www.sagemro.com" target="_blank" rel="noopener" style="color: var(--color-accent);">SAGEMRO</a> {{text:about.copy.our_dedicated_mro_and_service_platform_you_re_not_on_your_own_after_purc}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Details -->
+    <section class="section section-alt" id="company-details">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">{{text:shared.copy.company}}</span>
+          <h2>{{text:about.copy.legal}} & {{text:about.copy.contact_details}}</h2>
+        </div>
+
+        <div class="comparison-section fade-in" style="max-width: 800px; margin: 40px auto 0;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>{{text:about.copy.detail}}</th>
+                <th>{{text:about.copy.information}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{text:about.copy.company_name}}</td>
+                <td>Jinan Euchio Machinery Co., Ltd. (济南钰峭机械有限公司)</td>
+              </tr>
+              <tr>
+                <td>{{text:about.copy.location}}</td>
+                <td>{{text:about.copy.jinan_shandong_province_china}}</td>
+              </tr>
+              <tr>
+                <td>{{text:about.copy.business}}</td>
+                <td>{{text:about.copy.industrial_equipment_solutions_and_service_for_sheet_metal_processing}}</td>
+              </tr>
+              <tr>
+                <td>{{text:about.copy.brands}}</td>
+                <td>EUCHIO{{text:about.copy.complete_machines}}SAGEMRO{{text:about.copy.mro_parts}} & {{text:about.copy.service}}</td>
+              </tr>
+              <tr>
+                <td>{{text:about.copy.product_on_this_site}}</td>
+                <td>N₂/O₂{{text:about.copy.mixed_gas_devices_for_laser_cutting}}3kW–60kW{{text:about.copy.offered_under}}SAGEMRO{{text:about.copy.brand}}</td>
+              </tr>
+              <tr>
+                <td>{{text:about.copy.after_sales}} & {{text:shared.copy.service}}</td>
+                <td><a href="https://www.sagemro.com" target="_blank" rel="noopener" style="color: var(--color-primary);">sagemro.com</a> {{text:about.copy.maintenance_repair_spare_parts_technical_support}}</td>
+              </tr>
+              <tr>
+                <td>{{text:shared.copy.email}}</td>
+                <td><a href="mailto:sales@gasmixtech.com" style="color: var(--color-primary);">sales@gasmixtech.com</a></td>
+              </tr>
+              <tr>
+                <td>{{text:shared.copy.phone_wechat}}</td>
+                <td><a href="tel:+8618615584520" style="color: var(--color-primary);">+86 186 1558 4520</a></td>
+              </tr>
+              <tr>
+                <td>{{text:shared.copy.whatsapp}}</td>
+                <td>
+                  <a href="https://wa.me/525572080065" target="_blank" style="color: var(--color-primary);">+52 557 208 0065</a> {{text:shared.copy.mexico}}<br>
+                  <a href="https://wa.me/66961135966" target="_blank" style="color: var(--color-primary);">+66 961 135 966</a> {{text:shared.copy.thailand}}
+                </td>
+              </tr>
+              <tr>
+                <td>{{text:shared.copy.linkedin}}</td>
+                <td><a href="https://www.linkedin.com/company/euchio/" target="_blank" style="color: var(--color-primary);">linkedin.com/company/euchio</a></td>
+              </tr>
+              <tr>
+                <td>{{text:shared.copy.website}}</td>
+                <td><a href="https://gasmixtech.com" style="color: var(--color-primary);">www.gasmixtech.com</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-cta">
+      <div class="container">
+        <div class="fade-in">
+          <h2>{{text:about.copy.ready_to_upgrade_your_laser_cutting}}</h2>
+          <p>
+            {{text:about.copy.tell_us_about_your_laser_setup_power_material_thickness_and_we_ll_assess}}
+          </p>
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.dhgate.com/product/integrated-gas-mixing-regulation-cabinet/1111142341.html" target="_blank" rel="noopener" class="btn btn-primary">{{text:about.copy.get_a_quote}}</a>
+            <a href="{{attr:__route_contact}}" class="btn btn-secondary">{{text:about.copy.contact_us}}</a>
+            <a href="https://wa.me/525572080065" class="btn btn-secondary" target="_blank">{{text:shared.copy.whatsapp}}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="{{attr:__route_home}}" class="logo">
+            <picture><source srcset="{{attr:__asset_prefix}}images/logo.webp" type="image/webp"><img src="{{attr:__asset_prefix}}images/logo.png" alt="Jinan Euchio Machinery Co., Ltd."></picture>
+            <div class="logo-text">
+              <span class="logo-brand">GasMixTech</span>
+              <span class="logo-tagline">{{text:shared.copy.gas_mixing_technology}}</span>
+            </div>
+          </a>
+          <p class="footer-brand-intro">Jinan Euchio Machinery Co., Ltd.{{text:shared.copy.is_an_industrial_equipment_solutions_and_service_company_focused_on_shee}}EUCHIO{{text:shared.copy.complete_machines_and}}SAGEMRO{{text:shared.copy.mro_parts_and_service}}</p>
+        </div>
+        <div>
+          <h4>{{text:shared.copy.product}}</h4>
+          <ul class="footer-links">
+            <li><a href="{{attr:__route_about}}">{{text:about.copy.about_us}}</a></li>
+            <li><a href="{{attr:__route_home_principle}}">{{text:shared.copy.how_it_works}}</a></li>
+            <li><a href="{{attr:__route_home_advantages}}">{{text:shared.copy.advantages}}</a></li>
+            <li><a href="/parameters">{{text:shared.copy.parameters}}</a></li>
+            <li><a href="{{attr:__route_home_samples}}">{{text:shared.copy.cutting_samples}}</a></li>
+            <li><a href="/blog/">{{text:shared.copy.blog}}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>{{text:shared.copy.contact}}</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:sales@gasmixtech.com">sales@gasmixtech.com</a></li>
+            <li><a href="tel:+8618615584520">+86 186 1558 4520</a></li>
+            <li><a href="https://wa.me/525572080065" target="_blank">{{text:shared.copy.whatsapp_mexico}}</a></li>
+            <li><a href="https://wa.me/66961135966" target="_blank">{{text:shared.copy.whatsapp_thailand}}</a></li>
+            <li><a href="https://www.linkedin.com/company/euchio" target="_blank">{{text:shared.copy.linkedin}}</a></li>
+          </ul>
+          <h4 class="footer-subtitle">{{text:shared.copy.related_links}}</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.euchio.com" target="_blank" rel="noopener">EUCHIO{{text:shared.copy.complete_machines}}</a></li>
+            <li><a href="https://www.sagemro.com" target="_blank" rel="noopener">SAGEMRO{{text:shared.copy.parts}} & {{text:shared.copy.service}}</a></li>
+            <li><a href="https://www.dhgate.com/store/22325464" target="_blank" rel="noopener">{{text:shared.copy.dhgate_store}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Jinan Euchio Machinery Co., Ltd.{{text:shared.copy.all_rights_reserved}}</span>
+        <span><a href="/privacy">{{text:shared.copy.privacy_policy}}</a></span>
+        <span>www.gasmixtech.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/525572080065" class="whatsapp-float" target="_blank" aria-label="{{attr:shared.copy.chat_on_whatsapp}}">
+    <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <script src="/script.min.js"></script>
+  <!-- Facebook Lead Event Tracking -->
+  <script>
+  function trackLead(method) {
+    fbq('track', 'Lead', {
+      content_name: 'EUCHIO Inquiry - ' + method,
+      content_category: 'Gas Mixing Device'
+    });
+  }
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function() {
+      trackLead('Contact Form');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="wa.me"], a[href*="whatsapp"]');
+    if (link) trackLead('WhatsApp Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="mailto:"], a[href^="tel:"]');
+    if (link) trackLead('Email/Phone Click');
+  });
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href*="dhgate.com"]');
+    if (link) trackLead('DHgate Click');
+  });
+  </script>
+  <!-- End Facebook Lead Event Tracking -->
+</body>
+</html>

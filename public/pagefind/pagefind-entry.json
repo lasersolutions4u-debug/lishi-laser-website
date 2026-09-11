@@ -1,1 +1,52 @@
-{"version":"1.5.2","languages":{"es":{"hash":"es_9e18932997","wasm":"es","page_count":9},"ko":{"hash":"ko_b1c9aa34c3","wasm":null,"page_count":9},"pt":{"hash":"pt_68a8931484","wasm":"pt","page_count":9},"ja":{"hash":"ja_40a7253c87","wasm":null,"page_count":9},"zh":{"hash":"zh_28714e7bcd","wasm":null,"page_count":9},"pl":{"hash":"pl_48fdd77bb0","wasm":"pl","page_count":9},"en":{"hash":"en_561df133a6","wasm":"en","page_count":27}},"include_characters":["_","‿","⁀","⁔","︳","︴","﹍","﹎","﹏","＿"]}
+{
+  "version": "1.5.2",
+  "languages": {
+    "en": {
+      "hash": "en_fa6655c6d2",
+      "wasm": "en",
+      "page_count": 28
+    },
+    "es": {
+      "hash": "es_b89be64ed2",
+      "wasm": "es",
+      "page_count": 7
+    },
+    "ja": {
+      "hash": "ja_61458dd29b",
+      "wasm": null,
+      "page_count": 7
+    },
+    "ko": {
+      "hash": "ko_a6c235016e",
+      "wasm": null,
+      "page_count": 7
+    },
+    "pl": {
+      "hash": "pl_5ef29acc51",
+      "wasm": "pl",
+      "page_count": 7
+    },
+    "pt": {
+      "hash": "pt_b1a36a9389",
+      "wasm": "pt",
+      "page_count": 7
+    },
+    "zh": {
+      "hash": "zh_5c4833b020",
+      "wasm": null,
+      "page_count": 7
+    }
+  },
+  "include_characters": [
+    "_",
+    "‿",
+    "⁀",
+    "⁔",
+    "︳",
+    "︴",
+    "﹍",
+    "﹎",
+    "﹏",
+    "＿"
+  ]
+}

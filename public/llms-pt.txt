@@ -2,15 +2,24 @@
 > Maintained locale: https://gasmixtech.com/pt/
 > Product category: gas mixer for laser cutting.
 > Jinan Euchio Machinery Co., Ltd. is the China-based supplier and solution provider operating this website. Product selection is assessed against laser power, material, thickness, assist-gas supply, pressure, flow, and integration requirements before quotation.
+> English, Simplified Chinese, Spanish, Portuguese, Japanese, Korean, and Polish core sales pages are maintained. Technical articles, ROI, parameters, compatibility, payment, and privacy resources are maintained in English.
 
-## Authoritative English Resources
+## Maintained Core Sales Pages
+- Laser cutting assist-gas systems: https://gasmixtech.com/pt/
+- Supplier and solution-provider profile: https://gasmixtech.com/pt/about
+- Selection support and quotation: https://gasmixtech.com/pt/contact
+- PSA nitrogen generation system: https://gasmixtech.com/pt/products/psa-nitrogen-generation-system
+- Integrated gas mixing cabinet: https://gasmixtech.com/pt/products/integrated-gas-mixing-cabinet
+- MSPV2-4000 proportional valve: https://gasmixtech.com/pt/products/mspv2-4000-proportional-valve
+- Mixed-gas controller comparison: https://gasmixtech.com/pt/products/mixed-gas-control-comparison
+
+## Authoritative English Technical Resources
 - Gas mixer for laser cutting: https://gasmixtech.com/
-- Supplier and solution-provider profile: https://gasmixtech.com/about
 - Compatibility assessment: https://gasmixtech.com/compatibility.html
 - Gas ratios and cutting parameters: https://gasmixtech.com/parameters
 - ROI and cost factors: https://gasmixtech.com/roi.html
 - Payment and procurement process: https://gasmixtech.com/payment.html
-- Selection support and quotation: https://gasmixtech.com/contact
+- Privacy policy: https://gasmixtech.com/privacy.html
 - English technical articles: https://gasmixtech.com/blog/
 - English case examples: https://gasmixtech.com/#samples
 

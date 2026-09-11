@@ -21,7 +21,8 @@
     "mobileAria": "Toggle menu"
   },
   "hero": {
-    "badge": "<span>Assist-Gas System Architecture</span> for Fiber Lasers",
+    "badgeHighlight": "Assist-Gas System Architecture",
+    "badgeContext": " for Fiber Lasers",
     "title": "Build the assist-gas system around your laser process",
     "subtitle": "Start with the nitrogen source, then select one mixed-gas controller when N₂/O₂ cutting is required. GasMixTech helps industrial buyers review supply, integration and cutting conditions before quotation.",
     "statSpeedValue": "01",
@@ -229,12 +230,17 @@
   },
   "globalPresence": {
     "label": "GLOBAL NETWORK",
-    "title": "China-Based Support for<br><span class=\"gp-accent\">Complete Assist-Gas Projects.</span>",
+    "titleLead": "China-Based Support for",
+    "titleAccent": "Complete Assist-Gas Projects.",
     "description": "Jinan Euchio Machinery Co., Ltd. coordinates nitrogen-source review, mixed-gas controller selection, integration questions, quotation, delivery, and after-sales communication for overseas buyers.",
     "asia": "Application",
     "europe": "Integration",
     "americas": "Delivery",
     "oceania": "Support",
+    "valueProject": "Project",
+    "valueExport": "Export",
+    "valueReview": "Review",
+    "valueRemote": "Remote",
     "statCountries": "Application review",
     "statContinents": "Project coordination",
     "statPower": "Technical verification",
@@ -273,8 +279,16 @@
     "q8": "What information is required before quotation?",
     "a8": "Send the laser brand and power, materials and thicknesses, current gas method, nitrogen and oxygen sources, available pressure and flow, installation space, and production objective. For a qualified One-to-Three multi-machine review, also provide simultaneous demand, pipe routing, and each machine interface."
   },
+  "organization": {
+    "description": "China-based supplier and solution provider for laser-cutting gas mixing equipment."
+  },
+  "accessibility": {
+    "whatsappChat": "Chat on WhatsApp"
+  },
   "footer": {
     "tagline": "Gas Mixing Technology",
+    "headerTagline": "Laser Cutting Assist-Gas Solutions",
+    "intro": "Jinan Euchio Machinery Co., Ltd. is an industrial equipment solutions and service company focused on sheet metal processing. We provide practical equipment, gas mixing technology, application assessment, technical coordination, and long-term support for overseas industrial customers through EUCHIO complete machines and SAGEMRO MRO parts and service.",
     "authLabel": "GasMixTech — Laser Cutting Gas Mixers",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "Product",
@@ -287,6 +301,10 @@
     "contactTitle": "Contact",
     "whatsappMexico": "WhatsApp (Mexico)",
     "whatsappThailand": "WhatsApp (Thailand)",
+    "relatedLinks": "Related Links",
+    "euchioMachines": "EUCHIO — Complete Machines",
+    "sagemroPartsService": "SAGEMRO — Parts & Service",
+    "dhgateStore": "DHgate Store",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. All rights reserved."
   }
 }

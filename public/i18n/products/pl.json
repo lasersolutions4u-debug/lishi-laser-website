@@ -1,0 +1,596 @@
+{
+  "locale": "pl",
+  "shared": {
+    "skip_to_content": "Przejdź do treści",
+    "home_aria": "Strona główna GasMixTech",
+    "logo_alt": "Jinan Euchio Machinery Co., Ltd.",
+    "brand": "GasMixTech",
+    "tagline": "Rozwiązania gazu pomocniczego do cięcia laserowego",
+    "nav_aria": "Nawigacja główna",
+    "nav_products": "Produkty",
+    "nav_nitrogen_supply": "Dostawa azotu",
+    "nav_psa": "System wytwarzania azotu PSA",
+    "nav_mixed_control": "Sterowanie mieszanką gazów",
+    "nav_cabinet": "Zintegrowana szafa mieszania gazów",
+    "nav_valve": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+    "nav_compare": "Porównaj oba mieszalniki",
+    "nav_applications": "Zastosowania",
+    "nav_results": "Wyniki cięcia",
+    "nav_resources": "Materiały",
+    "nav_about": "O nas",
+    "nav_request": "Poproś o rozwiązanie",
+    "mobile_aria": "Otwórz lub zamknij menu",
+    "footer_intro": "Jinan Euchio Machinery Co., Ltd. koordynuje dobór urządzeń gazu pomocniczego do cięcia laserowego, wymagania integracji, dostawy i wsparcie posprzedażowe dla zagranicznych klientów przemysłowych.",
+    "footer_products": "Urządzenia gazu pomocniczego",
+    "footer_contact": "Kontakt w sprawie projektu",
+    "footer_privacy": "Prywatność"
+  },
+  "pages": {
+    "psa": {
+      "title": "System wytwarzania azotu PSA do cięcia laserowego | GasMixTech",
+      "description": "Skonfiguruj kompletny lub modułowy układ wytwarzania azotu PSA według wymaganego natężenia przepływu, czystości, ciśnienia, godzin pracy i istniejących urządzeń zakładu.",
+      "short_name": "System azotowy PSA",
+      "product_name": "System wytwarzania azotu PSA do cięcia laserowego",
+      "category": "Wytwarzanie azotu na miejscu do cięcia laserowego",
+      "model": "ZHN-40PSA and ZHN-75PSA reference configurations",
+      "og_image": "/images/products/psa-nitrogen-system/psa-nitrogen-system-process.png",
+      "eyebrow": "AZOT WYTWARZANY NA MIEJSCU",
+      "h1": "Wytwarzanie azotu PSA dopasowane do potrzeb cięcia",
+      "lede": "Kompletny lub modułowy układ zasilania azotem dla zakładów, które chcą wytwarzać azot na miejscu i zachować sprawne, odpowiednie urządzenia.",
+      "hero_note": "Konfiguracja według projektu · Cięcie czystym azotem lub mieszanką · Bez bezpośredniego zakupu online",
+      "primary_cta": "Poproś o konfigurację PSA",
+      "secondary_cta": "Zobacz konfiguracje referencyjne",
+      "visual_alt": "Pełny proces wytwarzania azotu PSA od sprężonego powietrza do magazynowania azotu po podwyższeniu ciśnienia",
+      "visual_caption": "PEŁNY TOR SYSTEMU · OD SPRĘŻONEGO POWIETRZA DO WYSOKOCIŚNIENIOWEGO N₂",
+      "fit_label": "ROLA W INSTALACJI GAZOWEJ",
+      "fit_title": "Opcjonalne źródło azotu na wejściu, nie obowiązkowy element każdego projektu",
+      "fit_text": "Użyj systemu PSA do cięcia czystym azotem lub jako źródła azotu przed jednym wybranym mieszalnikiem N₂/O₂. Zakłady z odpowiednią dostawą ciekłego azotu, gazu luzem lub z butli mogą wykorzystać obecne źródło.",
+      "route_existing": "Istniejąca dostawa azotu",
+      "route_psa": "System azotowy PSA",
+      "route_pure": "Cięcie czystym azotem",
+      "route_mixed": "Wybrany sterownik mieszanki",
+      "route_aria": "Powiązanie systemu azotowego PSA z cięciem laserowym i sterowaniem mieszanką",
+      "route_or": "LUB",
+      "route_machine": "Wycinarka laserowa",
+      "reference_label": "OBECNIE UDOKUMENTOWANE WARIANTY",
+      "reference_title": "Dwie konfiguracje referencyjne do omówienia projektu",
+      "reference_text": "Są to dwie konfiguracje potwierdzone w aktualnych dokumentach źródłowych. Stanowią odniesienie, a nie deklarację, że każdy zakład potrzebuje tego samego zestawu.",
+      "specs": [
+        {
+          "label": "ZHN-40PSA",
+          "value": "40 Nm³/h",
+          "note": "Azot 99.99% · ciśnienie podwyższone do 2.0 MPa"
+        },
+        {
+          "label": "ZHN-75PSA",
+          "value": "75 Nm³/h",
+          "note": "Azot 99.99% · ciśnienie podwyższone do 2.0 MPa"
+        },
+        {
+          "label": "Sposób dostawy",
+          "value": "Kompletny lub modułowy",
+          "note": "Zachowanie odpowiednich urządzeń zakładu"
+        }
+      ],
+      "scope_label": "GRANICE SYSTEMU",
+      "scope_title": "Określ pełną linię, a następnie wybierz faktycznie dostarczane moduły",
+      "scope_text": "Analiza techniczna zaczyna się od pełnego toru gazu. Zakres dostawy jest następnie ograniczany lub rozszerzany według istniejącej sprężarki, uzdatniania powietrza, zbiorników i układu podwyższania ciśnienia.",
+      "cards": [
+        {
+          "kicker": "01",
+          "title": "Sprężanie powietrza",
+          "text": "Sprawdzamy sprężarkę śrubową i pojemność bufora powietrza względem natężenia przepływu i cyklu pracy.",
+          "meta": "Można je zachować, jeśli są odpowiednie."
+        },
+        {
+          "kicker": "02",
+          "title": "Oczyszczanie powietrza",
+          "text": "Osuszanie i filtracja stopniowa chronią proces adsorpcji i jakość gazu w dalszej części instalacji.",
+          "meta": "Istniejące uzdatnianie wymaga oceny."
+        },
+        {
+          "kicker": "03",
+          "title": "Wytwarzanie PSA",
+          "text": "Adsorpcja w dwóch kolumnach oddziela azot od sprężonego powietrza zgodnie z zapotrzebowaniem procesu.",
+          "meta": "Główny moduł wytwarzania."
+        },
+        {
+          "kicker": "04",
+          "title": "Buforowanie i magazynowanie",
+          "text": "Zbiorniki procesowe i magazynowe stabilizują dostawę dla wybranego profilu pracy.",
+          "meta": "Objętość zależy od zastosowania."
+        },
+        {
+          "kicker": "05",
+          "title": "Podwyższanie ciśnienia",
+          "text": "Sprężarka azotu podwyższa ciśnienie, gdy wymaga tego cięcie lub mieszalnik w dalszej części instalacji.",
+          "meta": "Opcjonalna, jeśli obecne ciśnienie jest wystarczające."
+        }
+      ],
+      "footprint_alt": "Referencyjny plan układu PSA o wydajności 40 normalnych metrów sześciennych azotu na godzinę",
+      "footprint_caption": "Referencyjne wymiary zabudowy: około 10.17 × 1.60 m. Ostateczne wymiary i rozmieszczenie modułów zależą od potwierdzonego zakresu dostawy i warunków lokalnych.",
+      "case_label": "PRZYKŁAD REFERENCYJNY · JEDEN LASER",
+      "case_title": "Koncepcja azotu wytwarzanego na miejscu dla jednej wycinarki 6 kW",
+      "case_text": "Ten udokumentowany układ jest przykładem projektu, a nie stałym zestawem dla każdej maszyny 6 kW. Strona pokazuje tylko wartości potrzebne do wstępnej oceny dopasowania.",
+      "case_laser_label": "Obciążenie laserowe",
+      "case_laser_value": "6 kW",
+      "case_flow_label": "Natężenie przepływu azotu",
+      "case_flow_value": "40 Nm³/h",
+      "case_purity_label": "Czystość referencyjna",
+      "case_purity_value": "99.99%",
+      "case_pressure_label": "Podwyższone ciśnienie",
+      "case_pressure_value": "2.0 MPa",
+      "inputs_label": "DANE DO KONFIGURACJI",
+      "inputs_title": "Czego potrzebujemy przed wyborem systemu",
+      "inputs_text": "Podaj warunki pracy zamiast wybierać tylko według przepływu. Ostateczny dobór zależy od rzeczywistego cyklu pracy, zużycia gazu, warunków otoczenia i zachowanych urządzeń.",
+      "checklist": [
+        "Docelowe natężenie przepływu azotu, czystość i ciśnienie wyjściowe",
+        "Liczba laserów, moc, zakres materiałów i dzienne godziny pracy",
+        "Istniejąca sprężarka, osuszacz, filtry, zbiorniki i układ podwyższania ciśnienia",
+        "Dostępne miejsce montażu i warunki mediów technicznych",
+        "Plan pracy z czystym azotem lub mieszanką gazów"
+      ],
+      "boundary_title": "Granice oceny technicznej",
+      "boundary_text": "Opublikowane wartości 40 i 75 Nm³/h są wstępnymi odniesieniami. Wycenę poprzedza analiza warunków lokalnych; nie podajemy tu zakresu certyfikacji, dopóki oferowana konfiguracja nie zostanie zweryfikowana.",
+      "faq_label": "PYTANIA O DOBÓR PSA",
+      "faq_title": "Pytania wpływające na zakres systemu",
+      "faq": [
+        {
+          "question": "Czy musimy kupić kompletny system PSA?",
+          "answer": "Niekoniecznie. Odpowiednie sprężarki, urządzenia uzdatniania powietrza, zbiorniki lub układy podwyższania ciśnienia można zachować po ocenie wydajności i stanu."
+        },
+        {
+          "question": "Czy system PSA może bezpośrednio zasilać cięcie czystym azotem?",
+          "answer": "Tak, jeśli uzyskane natężenie przepływu, czystość i ciśnienie odpowiadają wymaganiom cięcia. To samo źródło azotu może również zasilać jeden wybrany sterownik mieszanki, gdy potrzebne jest mieszanie N₂/O₂."
+        },
+        {
+          "question": "Czy dostępne są tylko wydajności 40 i 75 Nm³/h?",
+          "answer": "To dwie konfiguracje referencyjne potwierdzone w aktualnej dokumentacji. Inne wymagania muszą zostać ocenione, a nie wywnioskowane z niezweryfikowanej listy modeli."
+        }
+      ],
+      "closing_title": "Określ zapotrzebowanie na gaz przed listą urządzeń",
+      "closing_text": "Prześlij obciążenie laserowe, godziny pracy, wymagane warunki gazowe i zachowane urządzenia do oceny konfiguracji.",
+      "closing_label": "OCENA PROJEKTU",
+      "closing_cta": "Poproś o konfigurację PSA"
+    },
+    "cabinet": {
+      "title": "Zintegrowana szafa mieszania gazów N₂/O₂ do cięcia laserowego | GasMixTech",
+      "description": "Zewnętrzne, zintegrowane sterowanie proporcją N₂/O₂, ciśnieniem i natężeniem przepływu do cięcia laserowego, z udokumentowaną specyfikacją szafy i oceną zastosowania.",
+      "short_name": "Zintegrowana szafa mieszania gazów",
+      "product_name": "Zintegrowana szafa mieszania gazów",
+      "category": "Sterowanie mieszanką gazów do cięcia laserowego",
+      "model": "Integrated cabinet configuration",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "ZEWNĘTRZNE ZINTEGROWANE STEROWANIE MIESZANKĄ",
+      "h1": "Zintegrowana szafa mieszania gazów",
+      "lede": "Układ mieszania N₂/O₂ w formie szafy dla zakładów, które chcą regulować proporcje, ciśnienie i natężenie przepływu w zintegrowanej instalacji zewnętrznej.",
+      "hero_note": "Udokumentowana platforma szafy · Montaż zewnętrzny · Wymagana ocena zastosowania",
+      "primary_cta": "Poproś o ocenę szafy",
+      "purchase_cta": "Zobacz szafę na DHgate",
+      "compare_cta": "Porównaj z kompaktowym zaworem",
+      "parameters_cta": "Sprawdź parametry szafy",
+      "results_cta": "Zobacz wyniki prób cięcia z szafą",
+      "operating_impact_cta": "Oceń wpływ na eksploatację",
+      "visual_alt": "Zintegrowana szafa mieszania azotu i tlenu do cięcia laserowego",
+      "media_index": "CAB / 01",
+      "silhouette_width": "800",
+      "silhouette_label": "ZINTEGROWANE<br>STEROWANIE",
+      "silhouette_height": "1100",
+      "fit_label": "KIEDY WYBRAĆ SZAFĘ",
+      "fit_title": "Wybierz zintegrowany format, aby ograniczyć wewnętrzne prace integracyjne",
+      "fit_text": "Szafa łączy funkcje sterowania mieszanką w zewnętrznej obudowie. Zgodność nadal zależy od źródeł gazu w zakładzie, ciśnienia, natężenia przepływu, wymagań lasera i warunków montażu.",
+      "specs_label": "UDOKUMENTOWANE DANE SZAFY",
+      "specs_title": "Opublikowane specyfikacje referencyjne",
+      "specs_text": "Te wartości dotyczą zintegrowanej szafy i nie wolno ich stosować do kompaktowego zaworu MSPV2_4000.",
+      "specs": [
+        {
+          "label": "Wymiary szafy",
+          "value": "800 × 350 × 1100 mm",
+          "note": "Zintegrowana obudowa zewnętrzna"
+        },
+        {
+          "label": "Masa",
+          "value": "90 kg",
+          "note": "Referencyjna konfiguracja szafy"
+        },
+        {
+          "label": "Wlot N₂ / O₂",
+          "value": "20–25 bar",
+          "note": "Oba źródła wymagają stabilnej dostawy"
+        },
+        {
+          "label": "Wylot mieszanki",
+          "value": "12–16 bar",
+          "note": "Końcowa nastawa zależy od zastosowania"
+        },
+        {
+          "label": "Maksymalne natężenie przepływu",
+          "value": "200 m³/h",
+          "note": "Opublikowana wartość szafy"
+        },
+        {
+          "label": "Typowa mieszanka",
+          "value": "N₂ 95% / O₂ 5%",
+          "note": "Referencyjny punkt wyjścia, nie ustawienie uniwersalne"
+        }
+      ],
+      "function_label": "ZAKRES STEROWANIA",
+      "function_title": "Jedna zintegrowana platforma do regulacji proporcji, ciśnienia i natężenia przepływu",
+      "function_text": "Szafa pełni tę samą podstawową funkcję mieszania co kompaktowy zawór. Różnica dotyczy formatu produktu i zakresu prac integracyjnych pozostających po stronie klienta.",
+      "cards": [
+        {
+          "kicker": "DOPŁYW GAZU",
+          "title": "N₂ i O₂ o właściwych parametrach",
+          "text": "Przed szafą potrzebne są stabilne źródła i odpowiednia regulacja ciśnienia.",
+          "meta": "Warunki zasilania sprawdzamy przed wyceną."
+        },
+        {
+          "kicker": "REGULACJA",
+          "title": "Proporcje, ciśnienie i natężenie przepływu",
+          "text": "Szafa reguluje wyjście mieszanki zgodnie z wybranym zastosowaniem cięcia.",
+          "meta": "Nastawy zależą od warunków procesu."
+        },
+        {
+          "kicker": "MONTAŻ",
+          "title": "Zewnętrzna zintegrowana obudowa",
+          "text": "Szafa jest kompletnym zewnętrznym produktem sterującym, a nie wewnętrznym podzespołem OEM.",
+          "meta": "Rurociągi i uruchomienie na miejscu nadal wymagają oceny."
+        }
+      ],
+      "evidence_label": "DOWODY Z ZASTOSOWAŃ",
+      "evidence_title": "Istniejące dane cięcia dotyczą platformy szafy",
+      "evidence_text": "Obecne parametry cięcia i zarejestrowane przypadki na stronie opracowano dla zintegrowanej szafy. Są odniesieniem tylko dla tego produktu i wymagają uwzględnienia zapisanej maszyny, materiału, grubości i warunków gazowych.",
+      "secondary_cards": [
+        {
+          "kicker": "PARAMETRY",
+          "title": "Referencyjne ustawienia cięcia",
+          "text": "Sprawdź opublikowane ustawienia początkowe według mocy lasera i grubości.",
+          "meta": "Nie są uniwersalną gwarancją procesu."
+        },
+        {
+          "kicker": "WYNIKI",
+          "title": "Zarejestrowane przykłady cięcia",
+          "text": "Obejrzyj próbki i warunki przypadków przed wyciąganiem wniosków.",
+          "meta": "Wyniki zależą od całego procesu."
+        },
+        {
+          "kicker": "DOBÓR",
+          "title": "Szafa lub kompaktowy zawór",
+          "text": "Porównaj odpowiedzialność za integrację, formę montażu i interfejsy.",
+          "meta": "Oba produkty pełnią tę samą podstawową funkcję."
+        }
+      ],
+      "cutting_videos": [
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla laserów 12kW i 30kW",
+          "title": "12kW & 30kW · Zakład profesjonalnej obróbki metalu",
+          "description": "Referencyjna szafa dla wielu maszyn; należy sprawdzić łączne wymagania natężenia przepływu i ciśnienia.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla stali węglowej przy 30kW",
+          "title": "30kW · Stal węglowa 10–30mm",
+          "description": "Zarejestrowany przykład grubej blachy; potwierdź wszystkie warunki maszyny, materiału i zasilania gazem.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla stali węglowej przy 60kW",
+          "title": "60kW · Stal węglowa 30–40mm",
+          "description": "Zarejestrowany przykład dużej mocy do oceny proporcji gazów, ciśnienia i kryteriów odbioru cięcia.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 3mm",
+          "title": "12kW · Aluminium 3mm",
+          "description": "Zarejestrowany przykład aluminium; stan krawędzi zależy od pełnej konfiguracji procesu.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 2mm",
+          "title": "12kW · Aluminium 2mm",
+          "description": "Zarejestrowany przykład cienkiego aluminium do oceny procesu.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 1mm",
+          "title": "12kW · Aluminium 1mm",
+          "description": "Zarejestrowany przykład cienkiego aluminium; sprawdź wynik według własnych kryteriów odbioru.",
+          "tag": "Dowody z prób platformy szafy"
+        }
+      ],
+      "checklist_label": "PRZED WYCENĄ",
+      "checklist_title": "Lista danych zastosowania szafy",
+      "checklist": [
+        "Marka i moc lasera oraz liczba maszyn",
+        "Materiał i zakres grubości",
+        "Obecny gaz pomocniczy i cel produkcyjny",
+        "Źródła N₂ i O₂, ciśnienie wlotowe i dostępne natężenie przepływu",
+        "Odległość montażu, plan rurociągów i dostępna powierzchnia podłogi"
+      ],
+      "faq_label": "PYTANIA O SZAFĘ",
+      "faq_title": "Co zmienia zintegrowana forma",
+      "faq": [
+        {
+          "question": "Czy szafa i MSPV2_4000 pełnią tę samą funkcję?",
+          "answer": "Tak. Oba produkty sterują mieszanką N₂/O₂. Szafa jest zintegrowanym systemem zewnętrznym, a MSPV2_4000 kompaktowym produktem do integracji. Są alternatywami, nie elementami szeregowymi."
+        },
+        {
+          "question": "Czy szafa działa po podłączeniu z każdym laserem?",
+          "answer": "Nie. Przed potwierdzeniem zgodności trzeba sprawdzić źródła gazu, ciśnienie, natężenie przepływu, rurociągi, wymagania lasera i montaż na miejscu."
+        },
+        {
+          "question": "Jakie moce laserów obejmują obecne dowody?",
+          "answer": "Istniejąca dokumentacja szafy i materiały na stronie obejmują zastosowania 6–60 kW. To zakres dowodów, a nie automatyczna zgodność z każdą maszyną w tym przedziale."
+        }
+      ],
+      "closing_title": "Wolisz zintegrowany zewnętrzny system mieszania gazów?",
+      "closing_text": "Prześlij warunki źródeł gazu i cięcia, abyśmy ocenili dopasowanie formatu szafy do projektu.",
+      "closing_label": "OCENA ZASTOSOWANIA",
+      "closing_cta": "Poproś o ocenę szafy"
+    },
+    "valve": {
+      "title": "Kompaktowy zawór proporcjonalny mieszanki MSPV2_4000 | GasMixTech",
+      "description": "Kompaktowe sterowanie proporcją N₂/O₂, ciśnieniem i natężeniem przepływu do integracji OEM, modernizacji i instalacji przy wycinarce laserowej.",
+      "short_name": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+      "product_name": "Kompaktowy zawór proporcjonalny mieszanki gazów MSPV2_4000",
+      "category": "Kompaktowe sterowanie mieszanką do cięcia laserowego",
+      "model": "MSPV2_4000",
+      "video_name": "Widok produktu MSPV2_4000 w 360 stopniach",
+      "video_description": "Obrotowa prezentacja kompaktowego zaworu proporcjonalnego mieszanki N₂/O₂ do oceny integracji.",
+      "og_image": "/images/products/mspv2-4000/mspv2-4000-angle-02.png",
+      "eyebrow": "KOMPAKTOWA INTEGRACJA STEROWANIA MIESZANKĄ",
+      "h1": "Kompaktowy zawór proporcjonalny MSPV2_4000",
+      "lede": "Regulacja proporcji N₂/O₂, ciśnienia i natężenia przepływu w kompaktowym korpusie dla maszyn OEM, modernizacji i montażu blisko procesu przy ograniczonej przestrzeni.",
+      "hero_note": "Kompaktowy sterownik · Produkt do integracji · Wymagana ocena interfejsów i toru gazowego",
+      "primary_cta": "Poproś o sprawdzenie zgodności",
+      "store_cta": "Zobacz sklep SAGEMRO na DHgate",
+      "compare_cta": "Porównaj ze zintegrowaną szafą",
+      "visual_alt": "Widok pod kątem kompaktowego zaworu proporcjonalnego mieszanki gazów MSPV2_4000",
+      "media_index": "MSPV2 / 4000",
+      "gallery_alt_1": "Widok górny i przyłącza gazowe kompaktowego zaworu MSPV2_4000",
+      "gallery_alt_2": "Wyświetlacz i połączenia kompaktowego zaworu MSPV2_4000",
+      "gallery_alt_3": "Obudowa i wylot kompaktowego zaworu MSPV2_4000",
+      "video_fallback": "Twoja przeglądarka nie obsługuje filmu z obrotową prezentacją produktu.",
+      "fit_label": "KIEDY WYBRAĆ KOMPAKTOWY ZAWÓR",
+      "fit_title": "Wybierz kompaktową integrację, gdy klient lub OEM może odpowiadać za otaczający układ",
+      "fit_text": "MSPV2_4000 pełni tę samą podstawową funkcję mieszania co szafa. Integrator musi ocenić obudowę, mocowanie, okablowanie, rurociągi, regulację na wejściu i uruchomienie.",
+      "choice_same": "TA SAMA PODSTAWOWA FUNKCJA",
+      "choice_action": "WYBIERZ JEDEN",
+      "specs_label": "DANE MSPV2_4000",
+      "specs_title": "Opublikowana specyfikacja kompaktowego zaworu",
+      "specs_text": "Te wartości dotyczą MSPV2_4000 i nie są dowodami dla zintegrowanej szafy.",
+      "specs": [
+        {
+          "label": "Wymiary korpusu",
+          "value": "120 × 118 × 106 mm",
+          "note": "Kompaktowe wymiary montażowe"
+        },
+        {
+          "label": "Masa",
+          "value": "2.43 kg",
+          "note": "Zespół zaworu"
+        },
+        {
+          "label": "Czas reakcji",
+          "value": "200 ms",
+          "note": "Opublikowany czas reakcji regulacji"
+        },
+        {
+          "label": "Nastawa ciśnienia",
+          "value": "20–2000 kPa",
+          "note": "Opublikowany zakres nastaw"
+        },
+        {
+          "label": "Zakres natężenia przepływu",
+          "value": "0–5000 L/min",
+          "note": "Opublikowany zakres przepływu"
+        },
+        {
+          "label": "Zakres O₂ w mieszance",
+          "value": "3–64%",
+          "note": "Regulacja zawartości tlenu w mieszance"
+        },
+        {
+          "label": "Zasilanie",
+          "value": "24 V ±10%",
+          "note": "Wymagana ocena zasilania i przełączania"
+        },
+        {
+          "label": "Interfejsy",
+          "value": "Analogowe + NPN/PNP",
+          "note": "Zgodność wymaga sprawdzenia"
+        }
+      ],
+      "control_label": "ZASADA STEROWANIA",
+      "control_title": "Sprzężenie zwrotne w pętli zamkniętej reguluje wyjście zaworu proporcjonalnego",
+      "control_text": "Sygnały zwrotne ciśnienia i natężenia przepływu są porównywane z zadanymi wartościami. Sterownik napędza mechanizm zaworu, regulując proporcję gazów, natężenie przepływu i ciśnienie wyjściowe dla wskazanego procesu.",
+      "control_alt": "Zasada regulacji ciśnienia, natężenia przepływu i proporcji gazów MSPV2_4000 w pętli zamkniętej",
+      "installation_label": "WARUNKI MONTAŻU",
+      "installation_title": "Kompaktowy sprzęt nie eliminuje potrzeby zaprojektowania toru gazowego",
+      "installation_text": "Zalecane ciśnienie wlotowe to 1.5–1.6 MPa, przy różnicy ciśnień wejściowych N₂/O₂ utrzymywanej w granicach 100 kPa. Regulacja przed zaworem, zawory zwrotne, czysty gaz, mocowanie i integracja elektryczna nadal są częścią oceny projektu.",
+      "cards": [
+        {
+          "kicker": "OEM",
+          "title": "Integracja w nowej maszynie",
+          "text": "Zintegruj sterownik z platformą maszyny o określonych interfejsach gazowych, elektrycznych i sterujących.",
+          "meta": "Wymaga przypisania odpowiedzialności projektowej."
+        },
+        {
+          "kicker": "MODERNIZACJA",
+          "title": "Modyfikacja istniejącej maszyny",
+          "text": "Oceń dostępne sygnały sterujące, zasilanie gazem, obudowę i rurociągi przed modyfikacją.",
+          "meta": "Zgodność zależy od konkretnego projektu."
+        },
+        {
+          "kicker": "BLISKO PROCESU",
+          "title": "Montaż w ograniczonej przestrzeni",
+          "text": "Użyj kompaktowej formy tam, gdzie pełna zewnętrzna szafa nie jest preferowanym układem mechanicznym.",
+          "meta": "Ochrona i dostęp nadal wymagają zaprojektowania."
+        }
+      ],
+      "checklist_label": "SPRAWDZENIE INTEGRACJI",
+      "checklist_title": "Informacje potrzebne przed rekomendacją MSPV2_4000",
+      "checklist": [
+        "Marka i moc lasera, sterownik i dostępne sygnały sterujące",
+        "Materiał i zakres grubości",
+        "Źródła N₂/O₂, ciśnienie wlotowe, jego stabilność i wymagane natężenie przepływu",
+        "Preferowany interfejs analogowy lub NPN/PNP",
+        "Miejsce mocowania, ochrona obudowy, rurociągi i odpowiedzialność za uruchomienie"
+      ],
+      "faq_label": "PYTANIA O MSPV2_4000",
+      "faq_title": "Co trzeba ocenić przed integracją",
+      "faq": [
+        {
+          "question": "Czy MSPV2_4000 jest wewnętrzną częścią szafy mieszania?",
+          "answer": "Nie. MSPV2_4000 i zintegrowana szafa to alternatywne produkty o tej samej podstawowej funkcji mieszania N₂/O₂ i regulacji wyjścia."
+        },
+        {
+          "question": "Czy interfejsy analogowe i NPN/PNP oznaczają zgodność z każdym sterownikiem lasera?",
+          "answer": "Nie. To dostępne typy interfejsów. Definicje sygnałów, napięcie, logikę i pełną sekwencję sterowania trzeba sprawdzić dla docelowej maszyny."
+        },
+        {
+          "question": "Czy możemy już kupić MSPV2_4000 bezpośrednio na DHgate?",
+          "answer": "Nie ma jeszcze dedykowanej oferty produktu. Obecny link otwiera sklep SAGEMRO; skorzystaj z zapytania o zgodność, aby uzyskać ocenę tego produktu."
+        }
+      ],
+      "closing_title": "Planujesz integrację OEM lub modernizację?",
+      "closing_text": "Prześlij warunki gazowe, plan interfejsów i ograniczenia montażu, abyśmy sprawdzili, czy MSPV2_4000 jest odpowiednim formatem.",
+      "closing_label": "OCENA OEM / MODERNIZACJI",
+      "closing_cta": "Poproś o sprawdzenie zgodności"
+    },
+    "comparison": {
+      "title": "Zintegrowana szafa mieszania gazów a MSPV2_4000 | Porównanie",
+      "description": "Porównaj dwa alternatywne produkty sterowania mieszanką N₂/O₂ według formatu, opublikowanych warunków, interfejsów i odpowiedzialności klienta za integrację.",
+      "short_name": "Porównanie sterowania mieszanką gazów",
+      "og_image": "/images/device-main.jpg",
+      "eyebrow": "STEROWANIE MIESZANKĄ · WYBIERZ JEDEN",
+      "h1": "Zintegrowana szafa czy MSPV2_4000?",
+      "lede": "Oba produkty pełnią tę samą podstawową funkcję: mieszanie N₂/O₂ z kontrolowanym wyjściem. Wybierz jeden według formy montażu, interfejsów i zakresu prac projektowych pozostających po stronie Twojego zespołu.",
+      "hero_note": "Ta sama podstawowa funkcja · Produkty alternatywne · Nigdy nie montować jako dwóch mieszalników w szeregu",
+      "primary_cta": "Prześlij warunki, a zarekomendujemy jeden",
+      "hero_cabinet_label": "ZINTEGROWANA",
+      "hero_cabinet_title": "Zintegrowana<br>szafa",
+      "hero_or": "LUB",
+      "hero_valve_label": "KOMPAKTOWY",
+      "hero_valve_title": "MSPV2_<br>4000 zawór proporcjonalny",
+      "cabinet_cta": "Zobacz zintegrowaną szafę",
+      "valve_cta": "Zobacz MSPV2_4000",
+      "principle_label": "ZASADA WYBORU",
+      "principle_title": "Wybierz między formatami produktu, nie między wyższą i niższą klasą",
+      "principle_text": "Szafa zawiera funkcję sterowania w zewnętrznym systemie. MSPV2_4000 skupia tę samą podstawową funkcję w kompaktowym produkcie do integracji. Żaden nie jest przedstawiany jako nowszy, lepszy ani podporządkowany drugiemu.",
+      "table_label": "PORÓWNANIE TECHNICZNE",
+      "table_title": "Opublikowane fakty i odpowiedzialność za integrację",
+      "table_text": "Braków w porównaniu nie uzupełniamy założeniami. Jeśli obecne źródło nie podaje porównywalnej wartości, tabela wyraźnie to zaznacza.",
+      "factor_header": "Kryterium wyboru",
+      "cabinet_header": "Zintegrowana szafa",
+      "valve_header": "MSPV2_4000",
+      "comparison_rows": [
+        {
+          "key": "core_function",
+          "factor": "Podstawowa funkcja",
+          "cabinet": "Regulacja proporcji N₂/O₂, ciśnienia i natężenia przepływu",
+          "valve": "Ta sama podstawowa funkcja"
+        },
+        {
+          "key": "product_form",
+          "factor": "Format produktu",
+          "cabinet": "Zintegrowana szafa zewnętrzna",
+          "valve": "Kompaktowa jednostka do integracji"
+        },
+        {
+          "key": "dimensions",
+          "factor": "Wymiary",
+          "cabinet": "800 × 350 × 1100 mm",
+          "valve": "120 × 118 × 106 mm"
+        },
+        {
+          "key": "weight",
+          "factor": "Masa",
+          "cabinet": "90 kg",
+          "valve": "2.43 kg"
+        },
+        {
+          "key": "inlet_condition",
+          "factor": "Opublikowane warunki wlotowe",
+          "cabinet": "20–25 bar",
+          "valve": "Zalecane 1.5–1.6 MPa; różnica na wlotach ≤100 kPa"
+        },
+        {
+          "key": "flow",
+          "factor": "Opublikowane natężenie przepływu",
+          "cabinet": "Maksymalnie 200 m³/h",
+          "valve": "0–5000 L/min"
+        },
+        {
+          "key": "control_interfaces",
+          "factor": "Interfejsy sterowania",
+          "cabinet": "Nie podano w obecnym źródle",
+          "valve": "Analogowe wejście/wyjście i interfejsy cyfrowe NPN/PNP"
+        },
+        {
+          "key": "installation_responsibility",
+          "factor": "Odpowiedzialność za montaż",
+          "cabinet": "Zintegrowana obudowa ogranicza prace integracyjne klienta",
+          "valve": "Klient lub OEM odpowiada za obudowę, mocowanie, okablowanie, rurociągi i uruchomienie"
+        },
+        {
+          "key": "best_fit_buyer",
+          "factor": "Odpowiedni nabywca",
+          "cabinet": "Użytkownik końcowy preferujący zewnętrzny zintegrowany system",
+          "valve": "OEM, zespół modernizacji lub integrator techniczny"
+        },
+        {
+          "key": "purchase_path",
+          "factor": "Ścieżka zakupu",
+          "cabinet": "Istniejąca strona produktu szafy na DHgate",
+          "valve": "Wejście przez sklep SAGEMRO do czasu publikacji dedykowanej oferty"
+        }
+      ],
+      "fit_label": "WSTĘPNE DOPASOWANIE",
+      "fit_title": "Zacznij od odpowiedzialności za integrację",
+      "cards": [
+        {
+          "kicker": "ZEWNĘTRZNA ZINTEGROWANA",
+          "title": "Zintegrowana szafa",
+          "text": "Dla nabywcy, który chce zewnętrznego produktu mieszania w obudowie i mniejszego zakresu prac integracyjnych.",
+          "meta": "Nadal wymaga oceny źródła gazu i miejsca montażu."
+        },
+        {
+          "kicker": "KOMPAKTOWA INTEGRACJA",
+          "title": "MSPV2_4000",
+          "text": "Gdy OEM lub zespół modernizacji może odpowiadać za integrację mechaniczną, elektryczną, gazową i uruchomienie.",
+          "meta": "Interfejsy muszą zostać ocenione."
+        }
+      ],
+      "checklist_label": "PRZEŚLIJ TE WARUNKI",
+      "checklist_title": "Co pozwala nam zarekomendować format",
+      "checklist": [
+        "Marka i moc lasera, materiał i zakres grubości",
+        "Źródła N₂/O₂, stabilność ciśnienia wlotowego i wymagane natężenie przepływu",
+        "Dostępna przestrzeń montażowa i preferowany format urządzenia",
+        "Wymagany interfejs sterowania i możliwości inżynieryjne",
+        "Czy projekt dotyczy montażu u użytkownika końcowego, modernizacji czy platformy OEM"
+      ],
+      "faq_label": "PYTANIA O PORÓWNANIE",
+      "faq_title": "Typowe nieporozumienia przy doborze produktu",
+      "faq": [
+        {
+          "question": "Czy szafę i MSPV2_4000 należy stosować razem?",
+          "answer": "Nie. To alternatywne sterowniki mieszanki. Wybierz jeden dla projektu; nie łącz ich jako dwóch mieszalników w szeregu."
+        },
+        {
+          "question": "Czy MSPV2_4000 jest ulepszoną wersją szafy?",
+          "answer": "Nie. To inny format produktu do kompaktowej integracji OEM i modernizacji. Szafa pozostaje zintegrowanym rozwiązaniem zewnętrznym."
+        },
+        {
+          "question": "Który produkt zapewnia lepsze wyniki cięcia?",
+          "answer": "Obecne dowody nie wskazują uniwersalnego zwycięzcy. Wyniki zależą od całej maszyny, dostawy gazu, ustawień, materiału i warunków integracji."
+        }
+      ],
+      "closing_title": "Prześlij warunki, a zarekomendujemy jeden format",
+      "closing_text": "Krótka ocena integracji jest bardziej przydatna niż wybór wyłącznie według wymiarów.",
+      "closing_label": "WSPARCIE DOBORU",
+      "closing_cta": "Poproś o rekomendację mieszalnika"
+    }
+  }
+}

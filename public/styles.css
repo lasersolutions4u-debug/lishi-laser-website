@@ -4946,8 +4946,10 @@ textarea:focus-visible {
 }
 
 .cabinet-silhouette strong {
+  min-width: 0;
   font: 800 2.6rem/0.9 'Barlow Condensed', sans-serif;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .cabinet-silhouette span {
@@ -5798,7 +5800,8 @@ a.assist-product-card:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .product-page .logo-tagline {
+  .product-page .logo-tagline,
+  .portfolio-page .logo-tagline {
     display: none;
   }
 
