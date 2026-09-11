@@ -312,6 +312,22 @@ class ProductExpansionTests(unittest.TestCase):
         self.assertRegex(valve, r'<video\b[^>]*preload="none"')
         self.assertIn("prefers-reduced-motion", (PUBLIC / "styles.css").read_text(encoding="utf-8"))
 
+    def test_cabinet_diagram_labels_can_shrink_and_wrap_in_every_locale(self):
+        for locale in ("en", "zh", "es", "pt", "ja", "ko", "pl"):
+            with self.subTest(locale=locale):
+                cabinet = read_page(self, "cabinet", locale)
+                self.assertRegex(
+                    cabinet,
+                    r'class="cabinet-silhouette"[^>]*>.*?<strong>.*?</strong>',
+                )
+
+        styles = (PUBLIC / "styles.css").read_text(encoding="utf-8")
+        label_rule = re.search(r"\.cabinet-silhouette strong\s*\{([^}]*)\}", styles)
+        self.assertIsNotNone(label_rule)
+        declarations = label_rule.group(1) if label_rule else ""
+        self.assertRegex(declarations, r"min-width:\s*0\s*;")
+        self.assertRegex(declarations, r"overflow-wrap:\s*anywhere\s*;")
+
     def test_homepage_explains_the_two_stage_product_decision(self):
         content = (PUBLIC / "index.html").read_text(encoding="utf-8")
         folded = content.casefold()

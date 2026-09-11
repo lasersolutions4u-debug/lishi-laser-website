@@ -4946,8 +4946,10 @@ textarea:focus-visible {
 }
 
 .cabinet-silhouette strong {
+  min-width: 0;
   font: 800 2.6rem/0.9 'Barlow Condensed', sans-serif;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .cabinet-silhouette span {
