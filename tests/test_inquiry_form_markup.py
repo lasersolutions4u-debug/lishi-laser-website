@@ -38,6 +38,74 @@ EXPECTED_FIELD_NAMES = {
     "name", "company", "country", "email", "phone", "preferred_channel",
     "customer_type", "message", "consent", "website",
 }
+EXPECTED_CONTROL_NAMES_BY_ID = {
+    "product": "product",
+    "recommendation_branch": "recommendation_branch",
+    "target_flow": "target_flow",
+    "purity": "purity",
+    "output_pressure": "output_pressure",
+    "laser_count": "laser_count",
+    "psa_laser_power": "psa_laser_power",
+    "operating_hours": "operating_hours",
+    "installation_space": "installation_space",
+    "laser_brand": "laser_brand",
+    "mixer_laser_power": "mixer_laser_power",
+    "material": "material",
+    "thickness": "thickness",
+    "current_gas": "current_gas",
+    "nitrogen_source": "nitrogen_source",
+    "nitrogen_inlet_pressure": "nitrogen_inlet_pressure",
+    "oxygen_source": "oxygen_source",
+    "oxygen_inlet_pressure": "oxygen_inlet_pressure",
+    "required_flow": "required_flow",
+    "installation_preference": "installation_preference",
+    "control_interface": "control_interface",
+    "name": "name",
+    "company": "company",
+    "country": "country",
+    "email": "email",
+    "phone": "phone",
+    "preferred_channel": "preferred_channel",
+    "customer_type": "customer_type",
+    "message": "message",
+    "consent": "consent",
+    "website": "website",
+}
+EXPECTED_BRANCH_CONTROL_IDS = {
+    "psa": {
+        "target_flow",
+        "purity",
+        "output_pressure",
+        "laser_count",
+        "psa_laser_power",
+        "operating_hours",
+        "installation_space",
+    },
+    "mixer": {
+        "laser_brand",
+        "mixer_laser_power",
+        "material",
+        "thickness",
+        "current_gas",
+        "nitrogen_source",
+        "nitrogen_inlet_pressure",
+        "oxygen_source",
+        "oxygen_inlet_pressure",
+        "required_flow",
+        "installation_preference",
+        "control_interface",
+    },
+}
+EXPECTED_STEP_BUTTON_BINDINGS = [
+    ("next", "1"),
+    ("back", "2"),
+    ("next", "2"),
+    ("back", "3"),
+]
+VOID_ELEMENTS = {
+    "area", "base", "br", "col", "embed", "hr", "img", "input",
+    "link", "meta", "param", "source", "track", "wbr",
+}
 
 LABEL_KEYS_BY_ID = {
     "product": "solution_or_product_interest",
@@ -206,6 +274,7 @@ class InquiryParser(HTMLParser):
         self.choice_values = {}
         self.scripts = []
         self.ids = set()
+        self.id_counts = {}
         self.live_regions = 0
         self.controls = {}
         self.honeypots = 0
@@ -222,6 +291,10 @@ class InquiryParser(HTMLParser):
         self.inquiry_data_attributes = {
             name: [] for name in INQUIRY_DATA_ATTRIBUTES
         }
+        self.element_stack = []
+        self.branch_control_ids = {"psa": set(), "mixer": set()}
+        self.branch_choice_values = {"psa": {}, "mixer": {}}
+        self.step_button_bindings = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -230,6 +303,7 @@ class InquiryParser(HTMLParser):
                 self.inquiry_data_attributes[name].append(attrs[name])
         if attrs.get("id"):
             self.ids.add(attrs["id"])
+            self.id_counts[attrs["id"]] = self.id_counts.get(attrs["id"], 0) + 1
             self.attrs_by_id[attrs["id"]] = attrs
         if tag == "form" and attrs.get("id") == "contactForm":
             self.forms.append(attrs)
@@ -270,10 +344,40 @@ class InquiryParser(HTMLParser):
             and "value" in attrs
         ):
             self.choice_values.setdefault(attrs["name"], set()).add(attrs["value"])
+        current_step = next(
+            (
+                ancestor_attrs["data-step"]
+                for _ancestor_tag, ancestor_attrs in reversed(self.element_stack)
+                if "data-step" in ancestor_attrs
+            ),
+            None,
+        )
+        current_branch = next(
+            (
+                ancestor_attrs["data-branch"]
+                for _ancestor_tag, ancestor_attrs in reversed(self.element_stack)
+                if "data-branch" in ancestor_attrs
+            ),
+            None,
+        )
+        if tag in {"input", "select", "textarea"} and current_branch in self.branch_control_ids:
+            if attrs.get("id"):
+                self.branch_control_ids[current_branch].add(attrs["id"])
+            if attrs.get("name") and "value" in attrs:
+                self.branch_choice_values[current_branch].setdefault(
+                    attrs["name"], set()
+                ).add(attrs["value"])
+        if tag == "button" and current_step:
+            if "data-next" in attrs:
+                self.step_button_bindings.append(("next", current_step))
+            if "data-back" in attrs:
+                self.step_button_bindings.append(("back", current_step))
         if tag == "script" and attrs.get("src"):
             self.scripts.append(attrs["src"])
         if attrs.get("aria-live") in {"polite", "assertive"}:
             self.live_regions += 1
+        if tag not in VOID_ELEMENTS:
+            self.element_stack.append((tag, attrs))
 
     def handle_endtag(self, tag):
         for index in range(len(self.captures) - 1, -1, -1):
@@ -298,6 +402,10 @@ class InquiryParser(HTMLParser):
             self.current_select = None
         if tag == "form" and self.in_form:
             self.in_form = False
+        for index in range(len(self.element_stack) - 1, -1, -1):
+            if self.element_stack[index][0] == tag:
+                del self.element_stack[index:]
+                break
 
     def handle_data(self, data):
         if self.in_form:
@@ -332,9 +440,18 @@ def assert_inquiry_contract(test_case, html):
     test_case.assertEqual(parser.choice_values, EXPECTED_CHOICE_VALUES)
     test_case.assertEqual(parser.names, EXPECTED_FIELD_NAMES)
     test_case.assertEqual(
-        set(parser.controls),
-        EXPECTED_FIELD_NAMES - {"retained_modules"},
+        {control_id: attrs["name"] for control_id, attrs in parser.controls.items()},
+        EXPECTED_CONTROL_NAMES_BY_ID,
     )
+    test_case.assertEqual(parser.branch_control_ids, EXPECTED_BRANCH_CONTROL_IDS)
+    test_case.assertEqual(
+        parser.branch_choice_values,
+        {
+            "psa": {"retained_modules": EXPECTED_CHOICE_VALUES["retained_modules"]},
+            "mixer": {},
+        },
+    )
+    test_case.assertEqual(parser.step_button_bindings, EXPECTED_STEP_BUTTON_BINDINGS)
     for attribute, expected_values in EXPECTED_MACHINE_DATA_ATTRIBUTES.items():
         test_case.assertCountEqual(
             parser.inquiry_data_attributes[attribute],
@@ -344,6 +461,17 @@ def assert_inquiry_contract(test_case, html):
     test_case.assertTrue({
         "inquiryProgress", "inquiryErrors", "inquiryReview", "inquirySuccess", "inquiryFailure",
     }.issubset(parser.ids))
+    for element_id in {
+        "contactForm", "inquiryProgress", "inquiryErrors", "inquiryReview",
+        "inquirySuccess", "inquiryFailure",
+    }:
+        test_case.assertEqual(parser.id_counts.get(element_id), 1, element_id)
+    for attribute in {"data-sending", "data-required-message", "data-template"}:
+        test_case.assertEqual(
+            len(parser.inquiry_data_attributes[attribute]),
+            1,
+            attribute,
+        )
     test_case.assertEqual(parser.honeypots, 1)
     test_case.assertEqual(parser.controls["website"].get("autocomplete"), "off")
     test_case.assertEqual(parser.controls["website"].get("tabindex"), "-1")
@@ -529,6 +657,22 @@ class InquiryFormMarkupTests(unittest.TestCase):
     def test_form_contract_has_security_and_conditional_fields(self):
         names = self.parse("en").names
         self.assertEqual(names, EXPECTED_FIELD_NAMES)
+
+    def test_contract_rejects_swapped_control_name_bindings(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace('name="target_flow"', 'name="__purity__"', 1)
+        mutated = mutated.replace('name="purity"', 'name="target_flow"', 1)
+        mutated = mutated.replace('name="__purity__"', 'name="purity"', 1)
+        with self.assertRaises(AssertionError):
+            assert_inquiry_contract(self, mutated)
+
+    def test_contract_rejects_swapped_branch_bindings(self):
+        html = contact_path("en").read_text(encoding="utf-8")
+        mutated = html.replace('data-branch="psa"', 'data-branch="__mixer__"', 1)
+        mutated = mutated.replace('data-branch="mixer"', 'data-branch="psa"', 1)
+        mutated = mutated.replace('data-branch="__mixer__"', 'data-branch="mixer"', 1)
+        with self.assertRaises(AssertionError):
+            assert_inquiry_contract(self, mutated)
 
     def test_all_locales_render_the_complete_localized_inquiry_journey(self):
         english = json.loads((PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8"))
