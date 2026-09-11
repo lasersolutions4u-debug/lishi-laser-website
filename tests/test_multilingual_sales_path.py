@@ -1099,6 +1099,69 @@ class StaticCoreRendererTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "template context|placeholder context"):
                     self.builder.render_page("en", "about", template, content)
 
+    def test_json_context_uses_the_parsed_script_type_attribute(self):
+        template = (
+            "<script data-note='type=\"application/ld+json\"' "
+            'type="text/javascript">{{json:shared.home}}</script>'
+        )
+        with self.assertRaisesRegex(ValueError, "placeholder context"):
+            self.builder.render_page(
+                "en",
+                "about",
+                template,
+                {"locale": "en", "shared": {"home": "Home"}},
+            )
+
+    def test_safe_menu_context_uses_parsed_class_and_id_attributes(self):
+        template = (
+            "<div data-note='class=\"lang-dropdown\" id=\"langDropdown\"'>"
+            "{{safe:language_menu}}</div>"
+        )
+        with self.assertRaisesRegex(ValueError, "placeholder context"):
+            self.builder.render_page(
+                "en",
+                "about",
+                template,
+                {"locale": "en", "shared": {"home": "Home"}},
+            )
+
+    def test_duplicate_context_attributes_are_rejected(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        templates = (
+            '<script type="application/ld+json" type="application/ld+json">'
+            "{{json:shared.home}}</script>",
+            '<div class="lang-dropdown" class="lang-dropdown" id="langDropdown">'
+            "{{safe:language_menu}}</div>",
+            '<div class="lang-dropdown" id="langDropdown" id="langDropdown">'
+            "{{safe:language_menu}}</div>",
+        )
+        for template in templates:
+            with self.subTest(template=template):
+                with self.assertRaisesRegex(ValueError, "Duplicate HTML attribute"):
+                    self.builder.render_page("en", "about", template, content)
+
+    def test_every_non_void_element_must_close_in_stack_order(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        templates = (
+            "<p>{{text:shared.home}}",
+            "</span><p>{{text:shared.home}}</p>",
+            "<p><span>{{text:shared.home}}</p></span>",
+        )
+        for template in templates:
+            with self.subTest(template=template):
+                with self.assertRaisesRegex(ValueError, "template context"):
+                    self.builder.render_page("en", "about", template, content)
+
+    def test_hreflang_safe_block_requires_head_as_direct_parent(self):
+        content = {"locale": "en", "shared": {"home": "Home"}}
+        with self.assertRaisesRegex(ValueError, "placeholder context"):
+            self.builder.render_page(
+                "en",
+                "about",
+                "<head><div>{{safe:hreflang_links}}</div></head>",
+                content,
+            )
+
     def test_single_quote_payload_cannot_create_a_new_attribute(self):
         payload = "x' onmouseover='alert(1)"
         rendered = self.builder.render_page(

@@ -6,6 +6,7 @@ import html
 import json
 import re
 from collections import Counter
+from html.parser import HTMLParser
 from pathlib import Path
 
 from site_locales import SUPPORTED_LOCALES, alternates_for, canonical_url, output_path, route_for
@@ -279,248 +280,206 @@ def _raise_template_error(locale, page_key, detail):
     raise ValueError(f"Invalid template context: {locale}/{page_key}: {detail}")
 
 
-def _tag_has_attribute(tag_text, name, value=None):
-    match = re.search(
-        rf"\b{re.escape(name)}\s*=\s*([\"'])(?P<value>.*?)\1",
-        tag_text,
-        re.IGNORECASE | re.DOTALL,
-    )
-    if not match:
-        return False
-    if value is None:
-        return True
-    return match.group("value") == value
+SENTINEL_PREFIX = "STATICCOREPLACEHOLDER"
+SENTINEL = re.compile(rf"{SENTINEL_PREFIX}\d+END")
+VOID_ELEMENTS = frozenset(
+    {
+        "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
+        "meta", "param", "source", "track", "wbr",
+    }
+)
 
 
-def _is_language_menu_tag(tag_text):
-    class_match = re.search(
-        r"\bclass\s*=\s*([\"'])(?P<value>.*?)\1",
-        tag_text,
-        re.IGNORECASE | re.DOTALL,
-    )
-    return bool(
-        class_match
-        and "lang-dropdown" in class_match.group("value").split()
-        and _tag_has_attribute(tag_text, "id", "langDropdown")
-    )
-
-
-def _scan_template_contexts(template_text, locale, page_key):
-    placeholder_starts = {match.start() for match in PLACEHOLDER.finditer(template_text)}
-    contexts = {}
-    state = "data"
+def _sentinel_quote(start_tag_text, sentinel):
     quote = None
-    attribute_name = None
-    tag_start = None
-    raw_open_tag = None
-    closing_raw_tag = None
-    in_head = False
-    div_stack = []
     index = 0
-    lowered = template_text.lower()
-
-    while index < len(template_text):
-        if index in placeholder_starts:
-            placeholder_state = "attribute" if state == "tag" and quote else state
-            contexts[index] = {
-                "state": placeholder_state,
-                "quote": quote,
-                "attribute_name": attribute_name,
-                "raw_open_tag": raw_open_tag,
-                "in_head": in_head,
-                "in_language_menu": bool(div_stack and div_stack[-1]),
-            }
-
-        if state == "comment":
-            if template_text.startswith("-->", index):
-                state = "data"
-                index += 3
-            else:
-                index += 1
-            continue
-
-        if state in {"script", "style"}:
-            closing = f"</{state}"
-            if lowered.startswith(closing, index):
-                boundary = index + len(closing)
-                if boundary < len(template_text) and not (
-                    template_text[boundary].isspace() or template_text[boundary] == ">"
-                ):
-                    index += 1
-                    continue
-                closing_raw_tag = state
-                state = "tag"
-                tag_start = index
-                quote = None
-                attribute_name = None
-                index += 1
-            else:
-                index += 1
-            continue
-
-        if state == "data":
-            if template_text.startswith("<!--", index):
-                state = "comment"
-                index += 4
-                continue
-            if template_text[index] == "<":
-                state = "tag"
-                tag_start = index
-                quote = None
-                attribute_name = None
-            index += 1
-            continue
-
-        character = template_text[index]
+    while index < len(start_tag_text):
+        if start_tag_text.startswith(sentinel, index):
+            return quote
+        character = start_tag_text[index]
         if quote:
             if character == quote:
                 quote = None
-                attribute_name = None
-            index += 1
-            continue
-        if character in {'"', "'"}:
-            before_quote = template_text[tag_start + 1 : index]
-            attribute_match = re.search(
-                r"(?:^|\s)(?P<name>[^\s=<>/]+)\s*=\s*$", before_quote
-            )
-            if not attribute_match:
-                _raise_template_error(locale, page_key, "quote outside an attribute value")
+        elif character in {'"', "'"}:
             quote = character
-            attribute_name = attribute_match.group("name")
-            index += 1
-            continue
-        if character == "<":
-            _raise_template_error(locale, page_key, "unexpected < inside a tag")
-        if character != ">":
-            index += 1
-            continue
-
-        tag_text = template_text[tag_start : index + 1]
-        tag_match = re.match(
-            r"<\s*(?P<closing>/)?\s*(?P<name>[a-zA-Z][a-zA-Z0-9:-]*)\b",
-            tag_text,
-        )
-        if not tag_match:
-            if not re.match(r"<\s*[!?]", tag_text):
-                _raise_template_error(locale, page_key, "unrecognized tag boundary")
-            state = "data"
-            index += 1
-            continue
-
-        name = tag_match.group("name").lower()
-        closing = bool(tag_match.group("closing"))
-        self_closing = tag_text.rstrip().endswith("/>")
-        if closing_raw_tag:
-            if not closing or name != closing_raw_tag:
-                _raise_template_error(locale, page_key, f"invalid {closing_raw_tag} closing tag")
-            closing_raw_tag = None
-            raw_open_tag = None
-            state = "data"
-        elif closing and name in {"script", "style"}:
-            _raise_template_error(locale, page_key, f"unexpected closing {name} tag")
-        elif not closing and name in {"script", "style"}:
-            if self_closing:
-                _raise_template_error(locale, page_key, f"self-closing {name} tag")
-            raw_open_tag = tag_text
-            state = name
-        else:
-            state = "data"
-
-        if name == "head":
-            if closing:
-                if not in_head:
-                    _raise_template_error(locale, page_key, "unexpected closing head tag")
-                in_head = False
-            elif not self_closing:
-                if in_head:
-                    _raise_template_error(locale, page_key, "nested head tag")
-                in_head = True
-        elif name == "div":
-            if closing:
-                if not div_stack:
-                    _raise_template_error(locale, page_key, "unexpected closing div tag")
-                div_stack.pop()
-            elif not self_closing:
-                div_stack.append(_is_language_menu_tag(tag_text))
         index += 1
-
-    if state != "data":
-        _raise_template_error(locale, page_key, f"unterminated {state} context")
-    if quote:
-        _raise_template_error(locale, page_key, "unterminated attribute value")
-    if in_head:
-        _raise_template_error(locale, page_key, "unterminated head tag")
-    if div_stack:
-        _raise_template_error(locale, page_key, "unterminated div tag")
-    return contexts
+    return None
 
 
-def _validate_placeholder_contexts(template_text, locale, page_key):
-    contexts = _scan_template_contexts(template_text, locale, page_key)
-    for match in PLACEHOLDER.finditer(template_text):
+class TemplateContextValidator(HTMLParser):
+    def __init__(self, locale, page_key, placeholders):
+        super().__init__(convert_charrefs=False)
+        self.locale = locale
+        self.page_key = page_key
+        self.placeholders = placeholders
+        self.seen = set()
+        self.stack = []
+
+    def _attributes(self, attrs):
+        values = {}
+        for name, value in attrs:
+            if name in values:
+                _raise_template_error(
+                    self.locale, self.page_key, f"Duplicate HTML attribute: {name}"
+                )
+            values[name] = value
+        return values
+
+    def _matches(self, value):
+        return SENTINEL.findall(value or "")
+
+    def _match(self, sentinel):
+        if sentinel not in self.placeholders or sentinel in self.seen:
+            _raise_template_error(self.locale, self.page_key, "ambiguous placeholder sentinel")
+        self.seen.add(sentinel)
+        return self.placeholders[sentinel]
+
+    def _validate_attribute_placeholder(self, sentinel, start_tag_text):
+        match = self._match(sentinel)
+        if match.group("kind") != "attr":
+            _raise_context_error(
+                self.locale,
+                self.page_key,
+                match,
+                "only attr placeholders are allowed in attributes",
+            )
+        if _sentinel_quote(start_tag_text, sentinel) != '"':
+            _raise_context_error(
+                self.locale,
+                self.page_key,
+                match,
+                "Attribute placeholder requires double-quoted attribute context",
+            )
+
+    def _validate_data_placeholder(self, sentinel):
+        match = self._match(sentinel)
         kind = match.group("kind")
         key = match.group("key")
-        context = contexts[match.start()]
-        state = context["state"]
+        parent = self.stack[-1] if self.stack else None
+        parent_tag = parent["tag"] if parent else None
 
-        if state == "attribute":
-            if kind != "attr":
-                _raise_context_error(
-                    locale, page_key, match, "only attr placeholders are allowed in attributes"
-                )
-            if context["quote"] != '"' or not context["attribute_name"]:
-                _raise_context_error(
-                    locale,
-                    page_key,
-                    match,
-                    "Attribute placeholder requires double-quoted attribute context",
-                )
-            continue
-        if state in {"tag", "comment"}:
-            _raise_context_error(
-                locale, page_key, match, f"placeholders cannot appear in {state} context"
-            )
         if kind == "attr":
             _raise_context_error(
-                locale,
-                page_key,
+                self.locale,
+                self.page_key,
                 match,
                 "Attribute placeholder requires double-quoted attribute context",
             )
         if kind == "text":
-            if state in {"script", "style"}:
+            if parent_tag in {"script", "style"}:
                 _raise_context_error(
-                    locale, page_key, match, "text placeholders cannot appear in script or style"
+                    self.locale,
+                    self.page_key,
+                    match,
+                    "text placeholders cannot appear in script or style",
                 )
-            continue
+            return
         if kind == "json":
-            if state != "script" or not _tag_has_attribute(
-                context["raw_open_tag"], "type", "application/ld+json"
+            if not (
+                parent_tag == "script"
+                and parent["attrs"].get("type") == "application/ld+json"
             ):
                 _raise_context_error(
-                    locale,
-                    page_key,
+                    self.locale,
+                    self.page_key,
                     match,
                     "json placeholders require application/ld+json script content",
                 )
-            continue
-        if state in {"script", "style"}:
+            return
+        if parent_tag in {"script", "style"}:
             _raise_context_error(
-                locale, page_key, match, "safe placeholders cannot appear in script or style"
+                self.locale,
+                self.page_key,
+                match,
+                "safe placeholders cannot appear in script or style",
             )
-        if key in {"hreflang_links", "__hreflang_links"}:
-            if not context["in_head"]:
-                _raise_context_error(
-                    locale, page_key, match, "hreflang markup must be a direct head block"
-                )
-            continue
-        if key in {"language_menu", "__language_menu"}:
-            if not context["in_language_menu"]:
-                _raise_context_error(
-                    locale, page_key, match, "language menu markup requires langDropdown block"
-                )
-            continue
-        _raise_context_error(locale, page_key, match, "safe block is not approved")
+        if key in {"hreflang_links", "__hreflang_links"} and parent_tag == "head":
+            return
+        if key in {"language_menu", "__language_menu"} and parent_tag == "div":
+            classes = (parent["attrs"].get("class") or "").split()
+            if "lang-dropdown" in classes and parent["attrs"].get("id") == "langDropdown":
+                return
+        _raise_context_error(self.locale, self.page_key, match, "safe block is not approved")
+
+    def _start(self, tag, attrs, self_closing=False):
+        values = self._attributes(attrs)
+        start_tag_text = self.get_starttag_text() or ""
+        for _, value in attrs:
+            for sentinel in self._matches(value):
+                self._validate_attribute_placeholder(sentinel, start_tag_text)
+        if self_closing:
+            return
+        if tag not in VOID_ELEMENTS:
+            self.stack.append({"tag": tag, "attrs": values})
+
+    def handle_starttag(self, tag, attrs):
+        self._start(tag, attrs)
+
+    def handle_startendtag(self, tag, attrs):
+        self._start(tag, attrs, self_closing=True)
+
+    def handle_endtag(self, tag):
+        if not self.stack or self.stack[-1]["tag"] != tag:
+            expected = self.stack[-1]["tag"] if self.stack else "none"
+            _raise_template_error(
+                self.locale,
+                self.page_key,
+                f"unexpected closing element: {tag}; expected {expected}",
+            )
+        self.stack.pop()
+
+    def handle_data(self, data):
+        for sentinel in self._matches(data):
+            self._validate_data_placeholder(sentinel)
+
+    def handle_comment(self, data):
+        for sentinel in self._matches(data):
+            match = self._match(sentinel)
+            _raise_context_error(
+                self.locale, self.page_key, match, "placeholders cannot appear in comments"
+            )
+
+    def handle_decl(self, decl):
+        if self._matches(decl):
+            _raise_template_error(self.locale, self.page_key, "placeholder in declaration")
+
+    def handle_pi(self, data):
+        if self._matches(data):
+            _raise_template_error(self.locale, self.page_key, "placeholder in instruction")
+
+    def unknown_decl(self, data):
+        if self._matches(data):
+            _raise_template_error(self.locale, self.page_key, "placeholder in declaration")
+
+    def finish(self):
+        if self.rawdata:
+            _raise_template_error(self.locale, self.page_key, "unterminated HTML construct")
+        self.close()
+        if self.stack:
+            _raise_template_error(
+                self.locale,
+                self.page_key,
+                "unclosed HTML elements: " + ", ".join(frame["tag"] for frame in self.stack),
+            )
+        missing = set(self.placeholders) - self.seen
+        if missing:
+            _raise_template_error(self.locale, self.page_key, "placeholder crossed HTML context")
+
+
+def _validate_placeholder_contexts(template_text, locale, page_key):
+    if SENTINEL_PREFIX in template_text:
+        _raise_template_error(locale, page_key, "reserved placeholder sentinel in template")
+    placeholders = {}
+
+    def replace(match):
+        sentinel = f"{SENTINEL_PREFIX}{len(placeholders)}END"
+        placeholders[sentinel] = match
+        return sentinel
+
+    validation_text = PLACEHOLDER.sub(replace, template_text)
+    validator = TemplateContextValidator(locale, page_key, placeholders)
+    validator.feed(validation_text)
+    validator.finish()
 
 
 def _language_menu(locale, page_key):
