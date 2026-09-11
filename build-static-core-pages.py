@@ -288,6 +288,92 @@ VOID_ELEMENTS = frozenset(
         "meta", "param", "source", "track", "wbr",
     }
 )
+SVG_SELF_CLOSING_ELEMENTS = frozenset({"circle", "path", "polyline"})
+ALLOWED_SELF_CLOSING_ELEMENTS = VOID_ELEMENTS | SVG_SELF_CLOSING_ELEMENTS
+
+
+def _skip_space(value, index):
+    while index < len(value) and value[index].isspace():
+        index += 1
+    return index
+
+
+def _validate_start_tag_syntax(start_tag_text, expected_tag, locale, page_key):
+    index = _skip_space(start_tag_text, 1)
+    name_start = index
+    while index < len(start_tag_text) and not (
+        start_tag_text[index].isspace() or start_tag_text[index] in "/>"
+    ):
+        index += 1
+    if start_tag_text[name_start:index].lower() != expected_tag:
+        _raise_template_error(locale, page_key, "invalid start tag name")
+
+    while index < len(start_tag_text):
+        spaced_index = _skip_space(start_tag_text, index)
+        had_space = spaced_index > index
+        index = spaced_index
+        if index == len(start_tag_text) - 1 and start_tag_text[index] == ">":
+            return False
+        if start_tag_text.startswith("/>", index) and index == len(start_tag_text) - 2:
+            return True
+        if index >= len(start_tag_text) or start_tag_text[index] in "/>":
+            _raise_template_error(locale, page_key, "stray slash or malformed start tag")
+        if not had_space:
+            _raise_template_error(locale, page_key, "missing whitespace before attribute")
+
+        name_start = index
+        while index < len(start_tag_text) and not (
+            start_tag_text[index].isspace()
+            or start_tag_text[index] in "=<>/\"'"
+        ):
+            index += 1
+        if index == name_start:
+            _raise_template_error(locale, page_key, "invalid attribute syntax")
+        after_name = index
+        equals_index = _skip_space(start_tag_text, index)
+        if (
+            equals_index >= len(start_tag_text)
+            or start_tag_text[equals_index] != "="
+        ):
+            index = after_name
+            continue
+
+        index = _skip_space(start_tag_text, equals_index + 1)
+        if index >= len(start_tag_text):
+            _raise_template_error(locale, page_key, "missing attribute value")
+        if start_tag_text[index] in {'"', "'"}:
+            quote = start_tag_text[index]
+            index += 1
+            closing_quote = start_tag_text.find(quote, index)
+            if closing_quote < 0:
+                _raise_template_error(locale, page_key, "unterminated attribute value")
+            index = closing_quote + 1
+            continue
+
+        value_start = index
+        while index < len(start_tag_text) and not (
+            start_tag_text[index].isspace() or start_tag_text[index] == ">"
+        ):
+            if start_tag_text[index] in "\"'<=`":
+                _raise_template_error(locale, page_key, "invalid unquoted attribute value")
+            index += 1
+        if index == value_start:
+            _raise_template_error(locale, page_key, "missing attribute value")
+    _raise_template_error(locale, page_key, "unterminated start tag")
+
+
+def _validate_end_tag_syntax(end_tag_text, locale, page_key):
+    index = _skip_space(end_tag_text, 2)
+    name_start = index
+    while index < len(end_tag_text) and not (
+        end_tag_text[index].isspace() or end_tag_text[index] in "/>"
+    ):
+        index += 1
+    if index == name_start:
+        _raise_template_error(locale, page_key, "missing end tag name")
+    index = _skip_space(end_tag_text, index)
+    if index != len(end_tag_text) - 1 or end_tag_text[index] != ">":
+        _raise_template_error(locale, page_key, "malformed end tag")
 
 
 def _sentinel_quote(start_tag_text, sentinel):
@@ -404,10 +490,19 @@ class TemplateContextValidator(HTMLParser):
     def _start(self, tag, attrs, self_closing=False):
         values = self._attributes(attrs)
         start_tag_text = self.get_starttag_text() or ""
+        raw_self_closing = _validate_start_tag_syntax(
+            start_tag_text, tag, self.locale, self.page_key
+        )
+        if raw_self_closing != self_closing:
+            _raise_template_error(self.locale, self.page_key, "ambiguous self-closing tag")
         for _, value in attrs:
             for sentinel in self._matches(value):
                 self._validate_attribute_placeholder(sentinel, start_tag_text)
         if self_closing:
+            if tag not in ALLOWED_SELF_CLOSING_ELEMENTS:
+                _raise_template_error(
+                    self.locale, self.page_key, f"disallowed self-closing element: {tag}"
+                )
             return
         if tag not in VOID_ELEMENTS:
             self.stack.append({"tag": tag, "attrs": values})
@@ -417,6 +512,15 @@ class TemplateContextValidator(HTMLParser):
 
     def handle_startendtag(self, tag, attrs):
         self._start(tag, attrs, self_closing=True)
+
+    def parse_endtag(self, index):
+        end = self.rawdata.find(">", index + 2)
+        if end < 0:
+            return -1
+        _validate_end_tag_syntax(
+            self.rawdata[index : end + 1], self.locale, self.page_key
+        )
+        return super().parse_endtag(index)
 
     def handle_endtag(self, tag):
         if not self.stack or self.stack[-1]["tag"] != tag:

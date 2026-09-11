@@ -1162,6 +1162,40 @@ class StaticCoreRendererTests(unittest.TestCase):
                 content,
             )
 
+    def test_malformed_tag_syntax_fails_before_rendering_or_writing(self):
+        self.write_content("en")
+        template_path = self.fixture_templates / "about.html"
+        original = template_path.read_text(encoding="utf-8")
+        malformed = (
+            '<div/>{{text:shared.home}}',
+            '<p>{{text:shared.home}}</p junk>',
+            '<p / junk>{{text:shared.home}}</p>',
+        )
+        for suffix in malformed:
+            with self.subTest(suffix=suffix):
+                template_path.write_text(original + suffix, encoding="utf-8")
+                about_output = output_path(self.fixture_public, "en", "about")
+                contact_output = output_path(self.fixture_public, "en", "contact")
+                about_output.parent.mkdir(parents=True, exist_ok=True)
+                about_output.write_text("unchanged about", encoding="utf-8")
+                contact_output.write_text("unchanged contact", encoding="utf-8")
+
+                with self.assertRaisesRegex(ValueError, "template context"):
+                    self.build(("en",))
+
+                self.assertEqual(about_output.read_text(encoding="utf-8"), "unchanged about")
+                self.assertEqual(contact_output.read_text(encoding="utf-8"), "unchanged contact")
+
+    def test_slashes_in_attribute_values_and_svg_self_closing_tags_are_valid(self):
+        rendered = self.builder.render_page(
+            "en",
+            "about",
+            '<div data-path="/products/a/b">{{text:shared.home}}'
+            '<svg><path d="M0/1" /></svg></div>',
+            {"locale": "en", "shared": {"home": "Home"}},
+        )
+        self.assertIn('data-path="/products/a/b">Home', rendered)
+
     def test_single_quote_payload_cannot_create_a_new_attribute(self):
         payload = "x' onmouseover='alert(1)"
         rendered = self.builder.render_page(
