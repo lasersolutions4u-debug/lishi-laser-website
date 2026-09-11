@@ -428,7 +428,7 @@ def immutable_content_path(path):
 def explicit_technical_value_path(path):
     parts = path.split(".")
     field = parts[-1]
-    collections = {"cases", "configurations", "specs"}
+    collections = {"cases", "configurations"}
     if field == "value" and collections.intersection(parts[:-1]):
         return True
     return field.endswith("_value") and field.startswith(("case_", "config_"))

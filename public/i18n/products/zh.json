@@ -68,7 +68,7 @@
         },
         {
           "label": "供货方式",
-          "value": "Complete or modular",
+          "value": "完整或模块化",
           "note": "保留工厂已有且适用的设备"
         }
       ],
@@ -170,6 +170,7 @@
       "compare_cta": "与紧凑型比例阀对比",
       "parameters_cta": "查阅混气柜参数",
       "results_cta": "查看混气柜切割验证资料",
+      "operating_impact_cta": "评估生产运营影响",
       "visual_alt": "激光切割用一体式氮氧混气柜",
       "media_index": "CAB / 01",
       "silhouette_width": "800",
@@ -257,6 +258,44 @@
           "title": "混气柜或紧凑型比例阀",
           "text": "对比集成责任、安装形式与接口。",
           "meta": "两种产品实现相同的核心功能。"
+        }
+      ],
+      "cutting_videos": [
+        {
+          "iframe_title": "12kW 和 30kW 激光应用的一体式混气柜切割验证视频",
+          "title": "12kW & 30kW · 专业金属加工厂",
+          "description": "多机供气混气柜参考案例；必须验证总流量和压力需求。",
+          "tag": "混气柜平台验证资料"
+        },
+        {
+          "iframe_title": "30kW 碳钢应用的一体式混气柜切割验证视频",
+          "title": "30kW · 10–30mm 碳钢",
+          "description": "厚板切割记录；请确认完整的设备、材料和供气条件。",
+          "tag": "混气柜平台验证资料"
+        },
+        {
+          "iframe_title": "60kW 碳钢应用的一体式混气柜切割验证视频",
+          "title": "60kW · 30–40mm 碳钢",
+          "description": "高功率切割记录，用于评估气体配比、压力及切割验收要求。",
+          "tag": "混气柜平台验证资料"
+        },
+        {
+          "iframe_title": "12kW、3mm 铝材应用的一体式混气柜切割验证视频",
+          "title": "12kW · 3mm 铝材",
+          "description": "铝材切割记录；切边状态取决于完整工艺设置。",
+          "tag": "混气柜平台验证资料"
+        },
+        {
+          "iframe_title": "12kW、2mm 铝材应用的一体式混气柜切割验证视频",
+          "title": "12kW · 2mm 铝材",
+          "description": "用于工艺评估的薄铝板切割记录。",
+          "tag": "混气柜平台验证资料"
+        },
+        {
+          "iframe_title": "12kW、1mm 铝材应用的一体式混气柜切割验证视频",
+          "title": "12kW · 1mm 铝材",
+          "description": "薄铝板切割记录；请按您的验收标准验证结果。",
+          "tag": "混气柜平台验证资料"
         }
       ],
       "checklist_label": "报价前",
@@ -358,7 +397,7 @@
         },
         {
           "label": "接口",
-          "value": "Analog + NPN/PNP",
+          "value": "模拟量 + NPN/PNP",
           "note": "必须核查适配性"
         }
       ],

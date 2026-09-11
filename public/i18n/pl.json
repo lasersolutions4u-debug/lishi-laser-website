@@ -152,7 +152,7 @@
     "alertSuccess": "Dziękujemy! Wyślemy tabelę parametrów w ciągu 24 godzin.",
     "alertFail": "Wystąpił błąd. Skontaktuj się przez WhatsApp",
     "alertCatch": "Dziękujemy! Skontaktujemy się w ciągu 24 godzin.",
-    "warningThickness": "Gdy grubość przekracza zakres odpowiedni dla obecnej mocy lasera, zalecamy 20kW+ w celu poprawy wydajności cięcia mieszanką gazów.",
+    "warningThickness": "Dla grubości powyżej {{max}}mm przy {{power}}kW zalecamy 20kW+, aby poprawić wydajność cięcia mieszanką gazów.",
     "n2CostLabel": "Miesięczny koszt N2 (USD)",
     "n2CostNote": "Obecne miesięczne wydatki na azot (USD)"
   },
@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "Technologia mieszania gazów",
+    "headerTagline": "Rozwiązania gazu pomocniczego do cięcia laserowego",
+    "intro": "Jinan Euchio Machinery Co., Ltd. to firma oferująca rozwiązania i usługi w zakresie urządzeń przemysłowych do obróbki blach. Dzięki kompletnym maszynom EUCHIO oraz częściom i usługom MRO marki SAGEMRO dostarczamy zagranicznym klientom przemysłowym praktyczne urządzenia, technologię mieszania gazów, ocenę zastosowań, koordynację techniczną i długoterminowe wsparcie.",
     "authLabel": "GasMixTech — Mieszalniki gazów do cięcia laserowego",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "Produkt",
@@ -287,6 +289,10 @@
     "contactTitle": "Kontakt",
     "whatsappMexico": "WhatsApp (Meksyk)",
     "whatsappThailand": "WhatsApp (Tajlandia)",
+    "relatedLinks": "Powiązane linki",
+    "euchioMachines": "EUCHIO — Kompletne maszyny",
+    "sagemroPartsService": "SAGEMRO — Części i serwis",
+    "dhgateStore": "Sklep na DHgate",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. Wszelkie prawa zastrzeżone."
   }
 }

@@ -320,13 +320,24 @@ class ProductRouteTests(unittest.TestCase):
             r"Technical token mismatch: zh: pages\.psa\.specs\.0\.note",
         )
 
-    def test_text_only_spec_value_cannot_drift(self):
+    def test_text_only_spec_value_can_be_translated_when_technical_tokens_are_preserved(self):
+        self.write_content("en")
+
+        def translate_interface(data):
+            data["pages"]["valve"]["specs"][7]["value"] = "模拟量 + NPN/PNP"
+
+        self.write_content("zh", translate_interface)
+        self.build(("zh",))
+        rendered = output_path(self.fixture_public, "zh", "valve").read_text(encoding="utf-8")
+        self.assertIn("模拟量 + NPN/PNP", rendered)
+
+    def test_text_only_spec_value_cannot_drop_technical_tokens(self):
         def change_interface(data):
             data["pages"]["valve"]["specs"][7]["value"] = "Digital only"
 
         self.assert_fact_drift_fails_without_writes(
             change_interface,
-            r"Technical content mismatch: zh: pages\.valve\.specs\.7\.value",
+            r"Technical token mismatch: zh: pages\.valve\.specs\.7\.value",
         )
 
     def test_approved_slash_technical_identifier_cannot_drift(self):
@@ -1300,13 +1311,15 @@ class StaticCoreRendererTests(unittest.TestCase):
                 ):
                     self.builder.render_page("en", "about", template, content)
 
-    def test_about_hours_label_is_translated_without_moving_the_technical_value(self):
+    def test_about_energy_use_is_translated_as_one_complete_value(self):
         template = (PUBLIC / "core-page-templates" / "about.html").read_text(encoding="utf-8")
         content = json.loads((PUBLIC / "i18n" / "core" / "en.json").read_text(encoding="utf-8"))
-        self.assertNotIn("24 Hours", template)
-        self.assertIn("2 kWh", template)
-        self.assertIn("24 ", template)
-        self.assertEqual(content["about"]["copy"]["hours"], "Hours")
+        self.assertNotIn("2 kWh", template)
+        self.assertIn("{{text:about.copy.energy_use_per_24_hours}}", template)
+        self.assertEqual(
+            content["about"]["copy"]["energy_use_per_24_hours"],
+            "2 kWh per 24 Hours",
+        )
 
     def test_translation_html_is_not_treated_as_safe_markup(self):
         content = {"locale": "en", "shared": {"home": "Line one<br>Line two"}}
@@ -1636,6 +1649,7 @@ class TranslationDataTests(unittest.TestCase):
     PHONE_FACT = re.compile(r"(?<!\w)\+\d[\d ()-]{6,}\d")
     YEAR_FACT = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
     RUNTIME_PLACEHOLDER = re.compile(r"(?<!\{)\{([A-Za-z_][A-Za-z0-9_]*)\}(?!\})")
+    DOUBLE_RUNTIME_PLACEHOLDER = re.compile(r"\{\{([A-Za-z_][A-Za-z0-9_]*)\}\}")
     TECHNICAL_FACT = re.compile(
         r"https?://[^\s\"'<>]+"
         r"|(?<![A-Za-z0-9_<³])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
@@ -1926,7 +1940,7 @@ class TranslationDataTests(unittest.TestCase):
     def _is_explicit_technical_value_path(self, path):
         parts = path.split(".")
         field = parts[-1]
-        if field == "value" and {"cases", "configurations", "specs"}.intersection(parts[:-1]):
+        if field == "value" and {"cases", "configurations"}.intersection(parts[:-1]):
             return True
         return field.endswith("_value") and field.startswith(("case_", "config_"))
 
@@ -1946,6 +1960,9 @@ class TranslationDataTests(unittest.TestCase):
 
     def _runtime_placeholders(self, value):
         return Counter(self.RUNTIME_PLACEHOLDER.findall(value))
+
+    def _double_runtime_placeholders(self, value):
+        return Counter(self.DOUBLE_RUNTIME_PLACEHOLDER.findall(value))
 
     def _assert_recursive_schema(self, locale, dataset, english, localized, path=""):
         location = path or "<root>"
@@ -1990,8 +2007,31 @@ class TranslationDataTests(unittest.TestCase):
                     self.CONTROL_CHARACTERS.search(value),
                     f"{locale}/{dataset}/{path}: control character is forbidden",
                 )
-                self.assertNotIn("{{", value, f"{locale}/{dataset}/{path}: unresolved '{{{{' marker")
-                self.assertNotIn("}}", value, f"{locale}/{dataset}/{path}: unresolved '}}}}' marker")
+                double_placeholders = self._double_runtime_placeholders(value)
+                if dataset == "homepage" and path == "roi.warningThickness":
+                    self.assertEqual(
+                        double_placeholders,
+                        Counter({"max": 1, "power": 1}),
+                        f"{locale}/{dataset}/{path}: expected max and power template placeholders",
+                    )
+                    marker_free_value = self.DOUBLE_RUNTIME_PLACEHOLDER.sub("", value)
+                    self.assertNotIn(
+                        "{{",
+                        marker_free_value,
+                        f"{locale}/{dataset}/{path}: unresolved '{{{{' marker",
+                    )
+                    self.assertNotIn(
+                        "}}",
+                        marker_free_value,
+                        f"{locale}/{dataset}/{path}: unresolved '}}}}' marker",
+                    )
+                else:
+                    self.assertFalse(
+                        double_placeholders,
+                        f"{locale}/{dataset}/{path}: unexpected double-brace placeholder",
+                    )
+                    self.assertNotIn("{{", value, f"{locale}/{dataset}/{path}: unresolved '{{{{' marker")
+                    self.assertNotIn("}}", value, f"{locale}/{dataset}/{path}: unresolved '}}}}' marker")
 
         for path, english_value in self._walk(english):
             if not isinstance(english_value, str):
@@ -2006,6 +2046,11 @@ class TranslationDataTests(unittest.TestCase):
                 self._runtime_placeholders(localized_value),
                 self._runtime_placeholders(english_value),
                 f"{locale}/{dataset}/{path}: runtime placeholder multiset differs from English",
+            )
+            self.assertEqual(
+                self._double_runtime_placeholders(localized_value),
+                self._double_runtime_placeholders(english_value),
+                f"{locale}/{dataset}/{path}: double-brace placeholder multiset differs from English",
             )
 
     def _assert_critical_facts(self, locale, dataset, english, localized):
@@ -2534,13 +2579,11 @@ class TranslationGuardRuleTests(unittest.TestCase):
                         "es", "fixture", {field: "stable-value"}, {field: "changed-value"}
                     )
                 )
-        self.assert_guard_failure(
-            lambda: self.guard._assert_critical_facts(
-                "es",
-                "fixture",
-                {"specs": [{"value": "Analog + NPN/PNP"}]},
-                {"specs": [{"value": "Analógico + NPN/PNP"}]},
-            )
+        self.guard._assert_critical_facts(
+            "es",
+            "fixture",
+            {"specs": [{"value": "Analog + NPN/PNP"}]},
+            {"specs": [{"value": "Analógico + NPN/PNP"}]},
         )
 
     def test_runtime_placeholder_guard_rejects_missing_and_extra_placeholders(self):
@@ -2563,6 +2606,40 @@ class TranslationGuardRuleTests(unittest.TestCase):
         english = {"message": "Step {current} of {total}"}
         localized = {"message": "De {total}: paso {current}"}
         self.guard._assert_safe_strings("es", "fixture", english, localized)
+
+    def test_warning_thickness_guard_requires_exact_double_brace_placeholders(self):
+        english = {
+            "roi": {
+                "warningThickness": "Above {{max}}mm at {{power}}kW, review 20kW+."
+            }
+        }
+        localized = {
+            "roi": {
+                "warningThickness": "Con {{power}}kW y más de {{max}}mm, revise 20kW+."
+            }
+        }
+        self.guard._assert_safe_strings("es", "homepage", english, localized)
+
+        for invalid in (
+            "Con {{power}}kW, revise 20kW+.",
+            "Con {{power}}kW y {{max}}mm, revise {{extra}}.",
+        ):
+            with self.subTest(invalid=invalid):
+                with self.assertRaises(AssertionError):
+                    self.guard._assert_safe_strings(
+                        "es",
+                        "homepage",
+                        english,
+                        {"roi": {"warningThickness": invalid}},
+                    )
+
+        with self.assertRaises(AssertionError):
+            self.guard._assert_safe_strings(
+                "es",
+                "fixture",
+                {"message": "No template markers"},
+                {"message": "Unexpected {{max}} marker"},
+            )
 
     def test_lishi_guard_detects_cjk_adjacent_brand(self):
         self.assert_guard_failure(

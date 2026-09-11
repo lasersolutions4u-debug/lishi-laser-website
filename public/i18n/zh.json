@@ -152,7 +152,7 @@
     "alertSuccess": "感谢您的提交！我们将在 24 小时内发送参数表。",
     "alertFail": "提交出错，请通过 WhatsApp 联系我们",
     "alertCatch": "感谢您的提交！我们将在 24 小时内与您联系。",
-    "warningThickness": "当材料厚度超出当前激光功率适用范围时，建议采用 20kW+ 功率，以获得更好的混气切割表现。",
+    "warningThickness": "使用 {{power}}kW 激光器切割超过 {{max}}mm 的材料时，建议采用 20kW+ 功率，以获得更好的混气切割表现。",
     "n2CostLabel": "每月 N2 成本（USD）",
     "n2CostNote": "您目前每月的氮气支出（USD）"
   },
@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "气体混合技术",
+    "headerTagline": "激光切割辅助气体解决方案",
+    "intro": "Jinan Euchio Machinery Co., Ltd. 是一家专注于钣金加工的工业设备解决方案与服务公司。我们通过 EUCHIO 整机设备和 SAGEMRO MRO 配件与服务，为海外工业客户提供实用设备、气体混合技术、应用评估、技术协调及长期支持。",
     "authLabel": "GasMixTech — 激光切割混气设备",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "产品",
@@ -287,6 +289,10 @@
     "contactTitle": "联系方式",
     "whatsappMexico": "WhatsApp（墨西哥）",
     "whatsappThailand": "WhatsApp（泰国）",
+    "relatedLinks": "相关链接",
+    "euchioMachines": "EUCHIO — 整机设备",
+    "sagemroPartsService": "SAGEMRO — 配件与服务",
+    "dhgateStore": "敦煌网店铺",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. 保留所有权利。"
   }
 }

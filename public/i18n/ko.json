@@ -152,7 +152,7 @@
     "alertSuccess": "감사합니다! 24시간 이내에 조건표를 보내 드리겠습니다.",
     "alertFail": "오류가 발생했습니다. WhatsApp으로 문의해 주세요",
     "alertCatch": "감사합니다! 24시간 이내에 연락드리겠습니다.",
-    "warningThickness": "두께가 현재 레이저 출력의 적합 범위를 초과하면 혼합 가스 절단 성능 향상을 위해 20kW+를 권장합니다.",
+    "warningThickness": "{{power}}kW 레이저로 {{max}}mm를 초과하는 두께를 절단할 경우, 혼합 가스 절단 성능 향상을 위해 20kW+를 권장합니다.",
     "n2CostLabel": "월간 N2 비용(USD)",
     "n2CostNote": "현재 월간 질소 지출액(USD)"
   },
@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "가스 혼합 기술",
+    "headerTagline": "레이저 절단용 보조 가스 솔루션",
+    "intro": "Jinan Euchio Machinery Co., Ltd.는 판금 가공에 특화된 산업용 장비 솔루션 및 서비스 기업입니다. EUCHIO 완성 장비와 SAGEMRO MRO 부품 및 서비스를 통해 해외 산업 고객에게 실용적인 장비, 가스 혼합 기술, 용도 검토, 기술 조율, 장기 지원을 제공합니다.",
     "authLabel": "GasMixTech — 레이저 절단용 가스 혼합기",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "제품",
@@ -287,6 +289,10 @@
     "contactTitle": "연락처",
     "whatsappMexico": "WhatsApp(멕시코)",
     "whatsappThailand": "WhatsApp(태국)",
+    "relatedLinks": "관련 링크",
+    "euchioMachines": "EUCHIO — 완성 장비",
+    "sagemroPartsService": "SAGEMRO — 부품 및 서비스",
+    "dhgateStore": "DHgate 스토어",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. 모든 권리 보유."
   }
 }

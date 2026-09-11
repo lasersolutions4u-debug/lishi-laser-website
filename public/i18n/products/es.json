@@ -68,7 +68,7 @@
         },
         {
           "label": "Modalidad de suministro",
-          "value": "Complete or modular",
+          "value": "Completo o modular",
           "note": "Conservar los equipos existentes adecuados"
         }
       ],
@@ -170,6 +170,7 @@
       "compare_cta": "Comparar con la válvula compacta",
       "parameters_cta": "Consultar parámetros del armario",
       "results_cta": "Ver evidencia de corte del armario",
+      "operating_impact_cta": "Evaluar el impacto operativo",
       "visual_alt": "Armario integrado de mezcla de nitrógeno y oxígeno para corte láser",
       "media_index": "CAB / 01",
       "silhouette_width": "800",
@@ -257,6 +258,44 @@
           "title": "Armario o válvula compacta",
           "text": "Compare responsabilidad de integración, formato de instalación e interfaces.",
           "meta": "Ambos productos realizan la misma función principal."
+        }
+      ],
+      "cutting_videos": [
+        {
+          "iframe_title": "Prueba de corte con armario integrado para aplicaciones láser de 12kW y 30kW",
+          "title": "12kW & 30kW · Fábrica especializada en metal",
+          "description": "Referencia de un armario para varios equipos; se deben verificar los requisitos combinados de caudal y presión.",
+          "tag": "Evidencia de la plataforma del armario"
+        },
+        {
+          "iframe_title": "Prueba de corte con armario integrado para acero al carbono a 30kW",
+          "title": "30kW · Acero al carbono de 10–30mm",
+          "description": "Ejemplo registrado de chapa gruesa; confirme todas las condiciones del equipo, el material y el suministro de gas.",
+          "tag": "Evidencia de la plataforma del armario"
+        },
+        {
+          "iframe_title": "Prueba de corte con armario integrado para acero al carbono a 60kW",
+          "title": "60kW · Acero al carbono de 30–40mm",
+          "description": "Ejemplo registrado de alta potencia para evaluar proporción de gases, presión y criterios de aceptación del corte.",
+          "tag": "Evidencia de la plataforma del armario"
+        },
+        {
+          "iframe_title": "Prueba de corte con armario integrado a 12kW en aluminio de 3mm",
+          "title": "12kW · Aluminio de 3mm",
+          "description": "Ejemplo registrado de aluminio; el estado del borde depende de la configuración completa del proceso.",
+          "tag": "Evidencia de la plataforma del armario"
+        },
+        {
+          "iframe_title": "Prueba de corte con armario integrado a 12kW en aluminio de 2mm",
+          "title": "12kW · Aluminio de 2mm",
+          "description": "Ejemplo registrado de aluminio fino para evaluar el proceso.",
+          "tag": "Evidencia de la plataforma del armario"
+        },
+        {
+          "iframe_title": "Prueba de corte con armario integrado a 12kW en aluminio de 1mm",
+          "title": "12kW · Aluminio de 1mm",
+          "description": "Ejemplo registrado de aluminio fino; verifique el resultado según sus criterios de aceptación.",
+          "tag": "Evidencia de la plataforma del armario"
         }
       ],
       "checklist_label": "ANTES DE COTIZAR",
@@ -358,7 +397,7 @@
         },
         {
           "label": "Interfaces de control",
-          "value": "Analog + NPN/PNP",
+          "value": "Analógica + NPN/PNP",
           "note": "Se debe comprobar la compatibilidad"
         }
       ],

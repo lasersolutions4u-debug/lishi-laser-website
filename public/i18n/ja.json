@@ -152,7 +152,7 @@
     "alertSuccess": "ありがとうございます。24時間以内に条件表をお送りします。",
     "alertFail": "エラーが発生しました。WhatsAppでお問い合わせください",
     "alertCatch": "ありがとうございます。24時間以内にご連絡します。",
-    "warningThickness": "板厚が現在のレーザー出力に適した範囲を超える場合、混合ガス切断の性能向上には20kW+を推奨します。",
+    "warningThickness": "{{power}}kWのレーザーで{{max}}mmを超える板厚を切断する場合、混合ガス切断の性能向上には20kW+を推奨します。",
     "n2CostLabel": "毎月のN2費用（USD）",
     "n2CostNote": "現在の毎月の窒素支出（USD）"
   },
@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "ガス混合技術",
+    "headerTagline": "レーザー切断用アシストガスソリューション",
+    "intro": "Jinan Euchio Machinery Co., Ltd.は、板金加工に特化した産業機器ソリューション・サービス企業です。EUCHIOの完成機とSAGEMROのMRO部品・サービスを通じて、海外の産業分野のお客様に実用的な機器、ガス混合技術、用途評価、技術調整、長期サポートを提供します。",
     "authLabel": "GasMixTech — レーザー切断用ガス混合装置",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "製品",
@@ -287,6 +289,10 @@
     "contactTitle": "連絡先",
     "whatsappMexico": "WhatsApp（メキシコ）",
     "whatsappThailand": "WhatsApp（タイ）",
+    "relatedLinks": "関連リンク",
+    "euchioMachines": "EUCHIO — 完成機",
+    "sagemroPartsService": "SAGEMRO — 部品・サービス",
+    "dhgateStore": "DHgateストア",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. 無断転載を禁じます。"
   }
 }

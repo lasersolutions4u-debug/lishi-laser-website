@@ -68,7 +68,7 @@
         },
         {
           "label": "Modalidade de fornecimento",
-          "value": "Complete or modular",
+          "value": "Completo ou modular",
           "note": "Manter os equipamentos existentes adequados"
         }
       ],
@@ -170,6 +170,7 @@
       "compare_cta": "Comparar com a válvula compacta",
       "parameters_cta": "Consultar parâmetros do gabinete",
       "results_cta": "Ver evidências de corte do gabinete",
+      "operating_impact_cta": "Avaliar o impacto operacional",
       "visual_alt": "Gabinete integrado de mistura de nitrogênio e oxigênio para corte a laser",
       "media_index": "CAB / 01",
       "silhouette_width": "800",
@@ -257,6 +258,44 @@
           "title": "Gabinete ou válvula compacta",
           "text": "Compare responsabilidade de integração, formato de instalação e interfaces.",
           "meta": "Ambos os produtos realizam a mesma função principal."
+        }
+      ],
+      "cutting_videos": [
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado em aplicações laser de 12kW e 30kW",
+          "title": "12kW & 30kW · Fábrica especializada em metais",
+          "description": "Referência de gabinete para diversos equipamentos; os requisitos combinados de vazão e pressão devem ser verificados.",
+          "tag": "Evidências da plataforma do gabinete"
+        },
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado em aço carbono a 30kW",
+          "title": "30kW · Aço carbono de 10–30mm",
+          "description": "Exemplo registrado de chapa grossa; confirme todas as condições do equipamento, do material e do gás.",
+          "tag": "Evidências da plataforma do gabinete"
+        },
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado em aço carbono a 60kW",
+          "title": "60kW · Aço carbono de 30–40mm",
+          "description": "Exemplo registrado de alta potência para avaliar proporção dos gases, pressão e critérios de aceitação do corte.",
+          "tag": "Evidências da plataforma do gabinete"
+        },
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado a 12kW em alumínio de 3mm",
+          "title": "12kW · Alumínio de 3mm",
+          "description": "Exemplo registrado de alumínio; a condição da borda depende da configuração completa do processo.",
+          "tag": "Evidências da plataforma do gabinete"
+        },
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado a 12kW em alumínio de 2mm",
+          "title": "12kW · Alumínio de 2mm",
+          "description": "Exemplo registrado de alumínio fino para avaliar o processo.",
+          "tag": "Evidências da plataforma do gabinete"
+        },
+        {
+          "iframe_title": "Evidências de corte com gabinete integrado a 12kW em alumínio de 1mm",
+          "title": "12kW · Alumínio de 1mm",
+          "description": "Exemplo registrado de alumínio fino; verifique o resultado conforme seus critérios de aceitação.",
+          "tag": "Evidências da plataforma do gabinete"
         }
       ],
       "checklist_label": "ANTES DA COTAÇÃO",
@@ -358,7 +397,7 @@
         },
         {
           "label": "Interfaces de controle",
-          "value": "Analog + NPN/PNP",
+          "value": "Analógico + NPN/PNP",
           "note": "A compatibilidade deve ser verificada"
         }
       ],

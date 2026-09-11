@@ -124,6 +124,7 @@
       "compare_cta": "Compare with Compact Valve",
       "parameters_cta": "Review Cabinet Parameters",
       "results_cta": "View Cabinet Cutting Evidence",
+      "operating_impact_cta": "Review Operating Impact",
       "visual_alt": "Integrated nitrogen and oxygen gas mixing cabinet for laser cutting",
       "media_index": "CAB / 01",
       "silhouette_width": "800",
@@ -158,6 +159,14 @@
         {"kicker": "PARAMETERS", "title": "Reference cutting settings", "text": "Review published starting points by laser power and thickness.", "meta": "Not universal process guarantees."},
         {"kicker": "RESULTS", "title": "Recorded cutting examples", "text": "Inspect the existing samples and case conditions before drawing conclusions.", "meta": "Results vary with the complete process."},
         {"kicker": "SELECTION", "title": "Cabinet or compact valve", "text": "Compare integration responsibility, installation form and interfaces.", "meta": "Both products perform the same core function."}
+      ],
+      "cutting_videos": [
+        {"iframe_title": "Integrated cabinet cutting evidence for 12kW and 30kW laser applications", "title": "12kW & 30kW · Professional Metal Factory", "description": "Multi-machine cabinet reference; combined flow and pressure requirements must be verified.", "tag": "Cabinet platform evidence"},
+        {"iframe_title": "Integrated cabinet cutting evidence for 30kW carbon steel", "title": "30kW · 10–30mm Carbon Steel", "description": "Recorded thick-plate example; confirm the complete machine, material, and gas conditions.", "tag": "Cabinet platform evidence"},
+        {"iframe_title": "Integrated cabinet cutting evidence for 60kW carbon steel", "title": "60kW · 30–40mm Carbon Steel", "description": "Recorded high-power example for reviewing gas ratio, pressure, and cut acceptance.", "tag": "Cabinet platform evidence"},
+        {"iframe_title": "Integrated cabinet cutting evidence for 12kW 3mm aluminum", "title": "12kW · 3mm Aluminum", "description": "Recorded aluminum example; edge condition depends on the complete process setup.", "tag": "Cabinet platform evidence"},
+        {"iframe_title": "Integrated cabinet cutting evidence for 12kW 2mm aluminum", "title": "12kW · 2mm Aluminum", "description": "Recorded thin-aluminum example for process evaluation.", "tag": "Cabinet platform evidence"},
+        {"iframe_title": "Integrated cabinet cutting evidence for 12kW 1mm aluminum", "title": "12kW · 1mm Aluminum", "description": "Recorded thin-aluminum example; verify the result against your acceptance criteria.", "tag": "Cabinet platform evidence"}
       ],
       "checklist_label": "BEFORE QUOTATION",
       "checklist_title": "Cabinet application checklist",

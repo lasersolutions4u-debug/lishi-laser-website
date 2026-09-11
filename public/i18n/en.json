@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "Gas Mixing Technology",
+    "headerTagline": "Laser Cutting Assist-Gas Solutions",
+    "intro": "Jinan Euchio Machinery Co., Ltd. is an industrial equipment solutions and service company focused on sheet metal processing. We provide practical equipment, gas mixing technology, application assessment, technical coordination, and long-term support for overseas industrial customers through EUCHIO complete machines and SAGEMRO MRO parts and service.",
     "authLabel": "GasMixTech — Laser Cutting Gas Mixers",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "Product",
@@ -287,6 +289,10 @@
     "contactTitle": "Contact",
     "whatsappMexico": "WhatsApp (Mexico)",
     "whatsappThailand": "WhatsApp (Thailand)",
+    "relatedLinks": "Related Links",
+    "euchioMachines": "EUCHIO — Complete Machines",
+    "sagemroPartsService": "SAGEMRO — Parts &amp; Service",
+    "dhgateStore": "DHgate Store",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. All rights reserved."
   }
 }

@@ -152,7 +152,7 @@
     "alertSuccess": "Obrigado! Enviaremos a tabela de parâmetros em até 24 horas.",
     "alertFail": "Ocorreu um erro. Entre em contato pelo WhatsApp",
     "alertCatch": "Obrigado! Entraremos em contato em até 24 horas.",
-    "warningThickness": "Quando a espessura superar a faixa adequada à potência laser atual, recomendamos 20kW+ para melhorar o desempenho do corte com mistura de gases.",
+    "warningThickness": "Para espessuras acima de {{max}}mm com {{power}}kW, recomendamos 20kW+ para melhorar o desempenho do corte com mistura de gases.",
     "n2CostLabel": "Custo mensal de N2 (USD)",
     "n2CostNote": "Seu gasto mensal atual com nitrogênio (USD)"
   },
@@ -275,6 +275,8 @@
   },
   "footer": {
     "tagline": "Tecnologia de mistura de gases",
+    "headerTagline": "Soluções de gás de assistência para corte a laser",
+    "intro": "Jinan Euchio Machinery Co., Ltd. é uma empresa de soluções e serviços de equipamentos industriais voltada ao processamento de chapas. Oferecemos equipamentos práticos, tecnologia de mistura de gases, avaliação de aplicações, coordenação técnica e suporte de longo prazo para clientes industriais internacionais por meio dos equipamentos completos EUCHIO e das peças e serviços MRO da SAGEMRO.",
     "authLabel": "GasMixTech — Misturadores de gases para corte a laser",
     "authCompany": "Jinan Euchio Machinery Co., Ltd.",
     "productTitle": "Produto",
@@ -287,6 +289,10 @@
     "contactTitle": "Contato",
     "whatsappMexico": "WhatsApp (México)",
     "whatsappThailand": "WhatsApp (Tailândia)",
+    "relatedLinks": "Links relacionados",
+    "euchioMachines": "EUCHIO — Equipamentos completos",
+    "sagemroPartsService": "SAGEMRO — Peças e serviços",
+    "dhgateStore": "Loja no DHgate",
     "copyright": "© 2026 Jinan Euchio Machinery Co., Ltd. Todos os direitos reservados."
   }
 }

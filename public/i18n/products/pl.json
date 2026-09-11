@@ -68,7 +68,7 @@
         },
         {
           "label": "Sposób dostawy",
-          "value": "Complete or modular",
+          "value": "Kompletny lub modułowy",
           "note": "Zachowanie odpowiednich urządzeń zakładu"
         }
       ],
@@ -170,6 +170,7 @@
       "compare_cta": "Porównaj z kompaktowym zaworem",
       "parameters_cta": "Sprawdź parametry szafy",
       "results_cta": "Zobacz wyniki prób cięcia z szafą",
+      "operating_impact_cta": "Oceń wpływ na eksploatację",
       "visual_alt": "Zintegrowana szafa mieszania azotu i tlenu do cięcia laserowego",
       "media_index": "CAB / 01",
       "silhouette_width": "800",
@@ -257,6 +258,44 @@
           "title": "Szafa lub kompaktowy zawór",
           "text": "Porównaj odpowiedzialność za integrację, formę montażu i interfejsy.",
           "meta": "Oba produkty pełnią tę samą podstawową funkcję."
+        }
+      ],
+      "cutting_videos": [
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla laserów 12kW i 30kW",
+          "title": "12kW & 30kW · Zakład profesjonalnej obróbki metalu",
+          "description": "Referencyjna szafa dla wielu maszyn; należy sprawdzić łączne wymagania natężenia przepływu i ciśnienia.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla stali węglowej przy 30kW",
+          "title": "30kW · Stal węglowa 10–30mm",
+          "description": "Zarejestrowany przykład grubej blachy; potwierdź wszystkie warunki maszyny, materiału i zasilania gazem.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą dla stali węglowej przy 60kW",
+          "title": "60kW · Stal węglowa 30–40mm",
+          "description": "Zarejestrowany przykład dużej mocy do oceny proporcji gazów, ciśnienia i kryteriów odbioru cięcia.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 3mm",
+          "title": "12kW · Aluminium 3mm",
+          "description": "Zarejestrowany przykład aluminium; stan krawędzi zależy od pełnej konfiguracji procesu.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 2mm",
+          "title": "12kW · Aluminium 2mm",
+          "description": "Zarejestrowany przykład cienkiego aluminium do oceny procesu.",
+          "tag": "Dowody z prób platformy szafy"
+        },
+        {
+          "iframe_title": "Próby cięcia ze zintegrowaną szafą przy 12kW dla aluminium 1mm",
+          "title": "12kW · Aluminium 1mm",
+          "description": "Zarejestrowany przykład cienkiego aluminium; sprawdź wynik według własnych kryteriów odbioru.",
+          "tag": "Dowody z prób platformy szafy"
         }
       ],
       "checklist_label": "PRZED WYCENĄ",
@@ -358,7 +397,7 @@
         },
         {
           "label": "Interfejsy",
-          "value": "Analog + NPN/PNP",
+          "value": "Analogowe + NPN/PNP",
           "note": "Zgodność wymaga sprawdzenia"
         }
       ],
