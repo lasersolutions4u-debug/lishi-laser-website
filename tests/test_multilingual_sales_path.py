@@ -36,6 +36,7 @@ PRODUCT_BUILDER = importlib.util.module_from_spec(PRODUCT_BUILDER_SPEC)
 PRODUCT_BUILDER_SPEC.loader.exec_module(PRODUCT_BUILDER)
 
 CORE_BUILDER_PATH = ROOT / "build-static-core-pages.py"
+ORCHESTRATOR_PATH = ROOT / "build-core-locales.py"
 APPROVED_CORE_PAGE_SHA256 = {
     "about": "6e1778c87ce105001c4ec9fa99715de8a0a78adf258e5c5a5c83cc71fc806e06",
     "contact": "6aae65975ba8daab26a459afb7ea82933ec7080db7bce07b2cf3d78d2de1a140",
@@ -47,6 +48,54 @@ def load_core_builder():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def load_build_orchestrator():
+    spec = importlib.util.spec_from_file_location("build_core_locales", ORCHESTRATOR_PATH)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+class BuildOrchestrationTests(unittest.TestCase):
+    EXPECTED_STAGES = (
+        "homepages",
+        "about-contact",
+        "products",
+        "integrity-check",
+    )
+
+    def test_runs_all_stages_in_order_with_checked_argument_arrays(self):
+        orchestrator = load_build_orchestrator()
+
+        with mock.patch.object(orchestrator.subprocess, "run") as run:
+            orchestrator.main()
+
+        self.assertEqual(
+            tuple(name for name, _ in orchestrator.STAGES),
+            self.EXPECTED_STAGES,
+        )
+        self.assertEqual(run.call_count, len(self.EXPECTED_STAGES))
+        for call, (_, command) in zip(run.call_args_list, orchestrator.STAGES):
+            args, kwargs = call
+            self.assertIsInstance(args[0], list)
+            self.assertEqual(args[0], list(command))
+            self.assertEqual(kwargs, {"cwd": orchestrator.ROOT, "check": True})
+
+    def test_stops_immediately_when_a_stage_fails(self):
+        orchestrator = load_build_orchestrator()
+        failure = subprocess.CalledProcessError(1, list(orchestrator.STAGES[2][1]))
+
+        with mock.patch.object(
+            orchestrator.subprocess,
+            "run",
+            side_effect=(None, None, failure),
+        ) as run:
+            with self.assertRaises(subprocess.CalledProcessError) as raised:
+                orchestrator.main()
+
+        self.assertIs(raised.exception, failure)
+        self.assertEqual(run.call_count, 3)
 
 
 class LocaleRouteContractTests(unittest.TestCase):
