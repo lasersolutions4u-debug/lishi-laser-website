@@ -1,3 +1,4 @@
+from collections import Counter
 import difflib
 import hashlib
 import importlib.util
@@ -7,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -1633,41 +1635,72 @@ class TranslationDataTests(unittest.TestCase):
     EMAIL_FACT = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
     PHONE_FACT = re.compile(r"(?<!\w)\+\d[\d ()-]{6,}\d")
     YEAR_FACT = re.compile(r"(?<!\d)(?:19|20)\d{2}(?!\d)")
+    RUNTIME_PLACEHOLDER = re.compile(r"(?<!\{)\{([A-Za-z_][A-Za-z0-9_]*)\}(?!\})")
+    TECHNICAL_FACT = re.compile(
+        r"https?://[^\s\"'<>]+"
+        r"|(?<![A-Za-z0-9_<])/(?:[A-Za-z0-9._~!$&'()*+,;=:@%-]+/?)+"
+        r"|(?<![A-Za-z0-9_])(?=[A-Za-z0-9_/-]*[A-Za-z])(?=[A-Za-z0-9_/-]*\d)"
+        r"[A-Za-z][A-Za-z0-9_/-]*(?![A-Za-z0-9_])"
+        r"|(?<![A-Za-z0-9])(?:NPN/PNP|N[₂2]\s*/\s*O[₂2]|N[₂2]|O[₂2])(?![A-Za-z0-9])"
+        r"|(?<![\w.])[-+]?\d+(?:[.,]\d+)?(?:\s*[–—-]\s*[-+]?\d+(?:[.,]\d+)?)?\s*"
+        r"(?:Nm³/h|m³/h|L/min|m/min|MPa|kPa|bar|kg|mm|ms|kW|MW|V|ft|m|%)(?![A-Za-z])"
+        r"|(?<![\w.])\d+(?:[.,]\d+)?(?![\w.])"
+        r"|[×≤≥±]",
+        re.IGNORECASE,
+    )
     IMMUTABLE_FIELDS = frozenset(
         {"anchor", "href", "id", "key", "media_index", "model", "og_image", "src", "url"}
     )
+    GLOBAL_UNTRANSLATED_TERMS = (
+        "Jinan Euchio Machinery Co., Ltd.",
+        "GasMixTech",
+        "MSPV2-4000",
+        "MSPV2_4000",
+        "NPN/PNP",
+        "N₂/O₂",
+        "SAGEMRO",
+        "WhatsApp",
+        "LinkedIn",
+        "DHgate",
+        "Modbus",
+        "Nm³/h",
+        "m³/h",
+        "L/min",
+        "m/min",
+        "MPa",
+        "kPa",
+        "PSA",
+        "OEM",
+        "MRO",
+        "PLC",
+        "ROI",
+        "FAQ",
+        "VS",
+        "USD",
+        "N₂",
+        "O₂",
+        "bar",
+        "kg",
+        "mm",
+        "ms",
+        "kW",
+        "V",
+    )
+    LOCALE_UNTRANSLATED_TERMS = {
+        "zh": (),
+        "es": ("Blog", "Factor"),
+        "pt": ("Blog",),
+        "ja": (),
+        "ko": (),
+        "pl": ("Blog",),
+    }
     ALLOWED_UNTRANSLATED_TERMS = {
-        locale: (
-            "Jinan Euchio Machinery Co., Ltd.",
-            "GasMixTech",
-            "MSPV2-4000",
-            "MSPV2_4000",
-            "NPN/PNP",
-            "N₂/O₂",
-            "SAGEMRO",
-            "DHgate",
-            "Nm³/h",
-            "m³/h",
-            "L/min",
-            "MPa",
-            "kPa",
-            "PSA",
-            "OEM",
-            "MRO",
-            "PLC",
-            "ROI",
-            "FAQ",
-            "USD",
-            "N₂",
-            "O₂",
-            "bar",
-            "kg",
-            "mm",
-            "ms",
-            "kW",
-            "V",
-        )
-        for locale in LOCALES
+        "zh": GLOBAL_UNTRANSLATED_TERMS,
+        "es": GLOBAL_UNTRANSLATED_TERMS + LOCALE_UNTRANSLATED_TERMS["es"],
+        "pt": GLOBAL_UNTRANSLATED_TERMS + LOCALE_UNTRANSLATED_TERMS["pt"],
+        "ja": GLOBAL_UNTRANSLATED_TERMS,
+        "ko": GLOBAL_UNTRANSLATED_TERMS,
+        "pl": GLOBAL_UNTRANSLATED_TERMS + LOCALE_UNTRANSLATED_TERMS["pl"],
     }
     PREFERRED_TERMS = {
         "zh": {
@@ -1750,13 +1783,15 @@ class TranslationDataTests(unittest.TestCase):
             r"\b(?:delivery|ships?)\s+(?:within|in)\s+\d+\s+days?\b",
             r"\b(?:\d+[- ]year|lifetime) warranty\b",
             r"\b(?:exclusive technology|only supplier|best in the world|guaranteed results|100% compatible)\b",
+            r"\b(?:integrated )?(?:gas mixing )?cabinet.{0,50}(?:mspv2[_-]?4000|(?:proportional )?valve).{0,40}(?:are installed in series|are installed together)\b",
         ),
         "zh": (
-            r"(?:已安装|装机)\s*\d+[\d,]*\+?\s*(?:套|台)",
+            r"(?:(?:已安装|装机)\s*\d+[\d,]*\+?\s*(?:套|台)|已有\s*\d+[\d,]*\+?\s*(?:套|台).{0,8}安装)",
             r"(?:CE|ISO\s*\d*)\s*认证(?:产品|设备)?",
             r"\d+\s*天内(?:交货|发货)",
             r"(?:\d+\s*年|终身)保修",
             r"(?:独家技术|唯一供应商|世界最佳|保证结果|100%\s*兼容)",
+            r"(?:混气柜|气体混合柜).{0,12}(?:比例阀|阀).{0,12}(?:串联|同时安装)",
         ),
         "es": (
             r"más de \d+[\d.]* instalaciones",
@@ -1764,6 +1799,7 @@ class TranslationDataTests(unittest.TestCase):
             r"entrega en \d+ días",
             r"garantía (?:de por vida|de \d+ años)",
             r"(?:tecnología exclusiva|único proveedor|mejor del mundo|resultados garantizados|100\s*% compatible)",
+            r"(?:armario|gabinete).{0,30}válvula.{0,30}(?:se instalan en serie|se instalan juntos|instalados? juntos?)",
         ),
         "pt": (
             r"mais de \d+[\d.]* instalações",
@@ -1771,20 +1807,23 @@ class TranslationDataTests(unittest.TestCase):
             r"entrega em \d+ dias",
             r"garantia (?:vitalícia|de \d+ anos)",
             r"(?:tecnologia exclusiva|único fornecedor|melhor do mundo|resultados garantidos|100\s*% compatível)",
+            r"gabinete.{0,30}válvula.{0,30}(?:instalad[oa]s? em série|instalad[oa]s? juntos?)",
         ),
         "ja": (
-            r"\d+[\d,]*\+?\s*(?:台|件)(?:の)?導入実績",
+            r"\d+[\d,]*\+?\s*(?:台|件)(?:以上)?(?:の)?導入実績",
             r"(?:CE|ISO\s*\d*)認証済み",
             r"\d+日以内に(?:納品|発送)",
             r"(?:\d+年|永久)保証",
             r"(?:独占技術|唯一のサプライヤー|世界最高|結果保証|100%\s*互換)",
+            r"キャビネット.{0,20}バルブ.{0,20}(?:直列|同時に設置)",
         ),
         "ko": (
-            r"\d+[\d,]*\+?\s*(?:대|건)\s*설치 실적",
+            r"\d+[\d,]*\+?\s*(?:대|건)(?:\s*이상(?:의)?)?\s*설치 실적",
             r"(?:CE|ISO\s*\d*)\s*인증 완료",
             r"\d+일 이내 (?:납품|발송)",
             r"(?:\d+년|평생) 보증",
             r"(?:독점 기술|유일한 공급업체|세계 최고|결과 보장|100%\s*호환)",
+            r"캐비닛.{0,20}밸브.{0,20}(?:직렬로|함께)\s*설치",
         ),
         "pl": (
             r"ponad \d+[\d.]* instalacji",
@@ -1792,7 +1831,16 @@ class TranslationDataTests(unittest.TestCase):
             r"dostaw[ay] w ciągu \d+ dni",
             r"(?:\d+[- ]letnia|dożywotnia) gwarancja",
             r"(?:wyłączna technologia|jedyny dostawca|najlepszy na świecie|gwarantowane wyniki|100\s*% kompatybiln)",
+            r"szafa.{0,30}zawór.{0,30}(?:instalowane szeregowo|instalowane razem)",
         ),
+    }
+    CLAIM_DISCLAIMER_PATTERNS = {
+        "zh": (r"混气柜与比例阀不是串联组件，不应同时安装。?",),
+        "es": (r"No son componentes en serie y no deben instalarse juntos\.?",),
+        "pt": (r"Não são componentes em série e não devem ser instalados juntos\.?",),
+        "ja": (r"直列部品ではなく、同時に設置しません。?",),
+        "ko": (r"직렬 구성품이 아니며 함께 설치하지 않습니다\.?",),
+        "pl": (r"To nie są elementy szeregowe i nie należy instalować ich razem\.?",),
     }
 
     def _translation_path(self, dataset, locale):
@@ -1816,11 +1864,57 @@ class TranslationDataTests(unittest.TestCase):
             for index, child in enumerate(value):
                 yield from self._walk(child, f"{path}.{index}")
 
-    def _value_at(self, data, path):
+    def _value_at(self, data, path, locale, dataset):
         value = data
-        for part in path.split("."):
-            value = value[int(part)] if isinstance(value, list) else value[part]
+        try:
+            for part in path.split("."):
+                value = value[int(part)] if isinstance(value, list) else value[part]
+        except (IndexError, KeyError, TypeError, ValueError):
+            self.fail(f"{locale}/{dataset}/{path}: missing or invalid translation path")
         return value
+
+    def _leaf_paths(self, value, path=""):
+        if isinstance(value, dict):
+            if not value:
+                return {path}
+            paths = set()
+            for key, child in value.items():
+                child_path = f"{path}.{key}" if path else key
+                paths.update(self._leaf_paths(child, child_path))
+            return paths
+        if isinstance(value, list):
+            if not value:
+                return {path}
+            paths = set()
+            for index, child in enumerate(value):
+                paths.update(self._leaf_paths(child, f"{path}.{index}"))
+            return paths
+        return {path}
+
+    def _is_immutable_path(self, path):
+        field = path.rsplit(".", 1)[-1]
+        return field in self.IMMUTABLE_FIELDS or field.endswith(
+            ("_anchor", "_href", "_id", "_path", "_src", "_url")
+        )
+
+    def _is_explicit_technical_value_path(self, path):
+        parts = path.split(".")
+        field = parts[-1]
+        if field == "value" and {"cases", "configurations", "specs"}.intersection(parts[:-1]):
+            return True
+        return field.endswith("_value") and field.startswith(("case_", "config_"))
+
+    def _technical_facts(self, value):
+        facts = []
+        for match in self.TECHNICAL_FACT.finditer(value):
+            fact = match.group(0)
+            if not fact.startswith(("http://", "https://", "/")):
+                fact = re.sub(r"\s+", "", fact).casefold()
+            facts.append(fact)
+        return Counter(facts)
+
+    def _runtime_placeholders(self, value):
+        return Counter(self.RUNTIME_PLACEHOLDER.findall(value))
 
     def _assert_recursive_schema(self, locale, dataset, english, localized, path=""):
         location = path or "<root>"
@@ -1868,14 +1962,19 @@ class TranslationDataTests(unittest.TestCase):
                 self.assertNotIn("{{", value, f"{locale}/{dataset}/{path}: unresolved '{{{{' marker")
                 self.assertNotIn("}}", value, f"{locale}/{dataset}/{path}: unresolved '}}}}' marker")
 
-    def _assert_critical_facts(self, locale, dataset, english, localized):
-        try:
-            PRODUCT_BUILDER.validate_technical_content(localized, english, locale)
-        except (KeyError, TypeError, ValueError) as error:
-            self.fail(f"{locale}/{dataset}: builder technical validation failed: {error}")
+        for path, english_value in self._walk(english):
+            if not isinstance(english_value, str):
+                continue
+            localized_value = self._value_at(localized, path, locale, dataset)
+            self.assertEqual(
+                self._runtime_placeholders(localized_value),
+                self._runtime_placeholders(english_value),
+                f"{locale}/{dataset}/{path}: runtime placeholder multiset differs from English",
+            )
 
-        english_leaves = PRODUCT_BUILDER.leaf_paths(english)
-        localized_leaves = PRODUCT_BUILDER.leaf_paths(localized)
+    def _assert_critical_facts(self, locale, dataset, english, localized):
+        english_leaves = self._leaf_paths(english)
+        localized_leaves = self._leaf_paths(localized)
         self.assertEqual(
             localized_leaves,
             english_leaves,
@@ -1885,11 +1984,7 @@ class TranslationDataTests(unittest.TestCase):
         for path, english_value in self._walk(english):
             if isinstance(english_value, (dict, list)):
                 continue
-            localized_value = self._value_at(localized, path)
-            field = path.rsplit(".", 1)[-1]
-            immutable = field in self.IMMUTABLE_FIELDS or field.endswith(
-                ("_anchor", "_href", "_id", "_path", "_src", "_url")
-            )
+            localized_value = self._value_at(localized, path, locale, dataset)
             if path == "locale":
                 self.assertEqual(
                     localized_value,
@@ -1897,7 +1992,7 @@ class TranslationDataTests(unittest.TestCase):
                     f"{locale}/{dataset}/locale: locale identity must match filename",
                 )
                 continue
-            if immutable or PRODUCT_BUILDER.explicit_technical_value_path(path):
+            if self._is_immutable_path(path) or self._is_explicit_technical_value_path(path):
                 self.assertEqual(
                     localized_value,
                     english_value,
@@ -1911,9 +2006,9 @@ class TranslationDataTests(unittest.TestCase):
                 )
                 continue
             self.assertEqual(
-                PRODUCT_BUILDER.technical_tokens(localized_value),
-                PRODUCT_BUILDER.technical_tokens(english_value),
-                f"{locale}/{dataset}/{path}: technical token/order differs from English",
+                self._technical_facts(localized_value),
+                self._technical_facts(english_value),
+                f"{locale}/{dataset}/{path}: technical fact multiset differs from English",
             )
             for pattern, fact_name in (
                 (self.EMAIL_FACT, "email"),
@@ -1954,21 +2049,28 @@ class TranslationDataTests(unittest.TestCase):
             if not isinstance(value, str):
                 continue
             self.assertIsNone(
-                re.search(r"\blishi(?:\s+laser)?\b", value, re.IGNORECASE),
+                re.search(
+                    r"(?<![A-Za-z0-9])lishi(?:\s+laser)?(?![A-Za-z0-9])",
+                    value,
+                    re.IGNORECASE,
+                ),
                 f"{locale}/{dataset}/{path}: legacy LISHI branding is forbidden",
             )
+            claim_text = value
+            for disclaimer in self.CLAIM_DISCLAIMER_PATTERNS[locale]:
+                claim_text = re.sub(disclaimer, "", claim_text, flags=re.IGNORECASE)
             for pattern in self.FORBIDDEN_CLAIM_PATTERNS["*"] + self.FORBIDDEN_CLAIM_PATTERNS[locale]:
                 self.assertIsNone(
-                    re.search(pattern, value, re.IGNORECASE),
+                    re.search(pattern, claim_text, re.IGNORECASE),
                     f"{locale}/{dataset}/{path}: unverified claim matches {pattern!r}",
                 )
 
     def _is_priority_ui_path(self, dataset, path):
         parts = path.split(".")
         field = parts[-1].lower()
-        if path == "locale" or PRODUCT_BUILDER.immutable_content_path(path):
+        if path == "locale" or self._is_immutable_path(path):
             return False
-        if PRODUCT_BUILDER.explicit_technical_value_path(path):
+        if self._is_explicit_technical_value_path(path):
             return False
         if dataset == "homepage":
             if parts[0] in {"meta", "nav", "hero", "cta", "faq"}:
@@ -2013,7 +2115,7 @@ class TranslationDataTests(unittest.TestCase):
         for path, english_value in self._walk(english):
             if not isinstance(english_value, str) or not self._is_priority_ui_path(dataset, path):
                 continue
-            localized_value = self._value_at(localized, path)
+            localized_value = self._value_at(localized, path, locale, dataset)
             if localized_value != english_value:
                 continue
             self.assertTrue(
@@ -2025,13 +2127,13 @@ class TranslationDataTests(unittest.TestCase):
         for concept, term_dataset, path in self.TERM_PATHS:
             if term_dataset != dataset:
                 continue
-            english_value = self._value_at(english, path)
+            english_value = self._value_at(english, path, "en", dataset)
             self.assertIsInstance(
                 english_value,
                 str,
                 f"English terminology anchor is not text: {dataset}/{path}",
             )
-            localized_value = self._value_at(localized, path)
+            localized_value = self._value_at(localized, path, locale, dataset)
             expected = self.PREFERRED_TERMS[locale][concept]
             self.assertIn(
                 expected.casefold(),
@@ -2089,3 +2191,254 @@ class TranslationDataTests(unittest.TestCase):
 
     def test_06_pl_translation_data_contract(self):
         self.assert_locale_dataset("pl")
+
+
+class TranslationGuardRuleTests(unittest.TestCase):
+    CLAIM_FIXTURES = {
+        "zh": {
+            "forbidden": (
+                "已有 500 套安装案例",
+                "CE 认证设备",
+                "7 天内交货",
+                "5 年保修",
+                "独家技术，保证结果",
+                "混气柜与比例阀串联安装",
+                "混气柜与比例阀同时安装",
+            ),
+            "disclaimer": "混气柜与比例阀不是串联组件，不应同时安装。",
+        },
+        "es": {
+            "forbidden": (
+                "Más de 500 instalaciones",
+                "Equipo certificado CE",
+                "Entrega en 7 días",
+                "Garantía de 5 años",
+                "La mejor del mundo con resultados garantizados",
+                "El armario y la válvula se instalan en serie",
+                "El armario y la válvula se instalan juntos",
+            ),
+            "disclaimer": "No son componentes en serie y no deben instalarse juntos.",
+        },
+        "pt": {
+            "forbidden": (
+                "Mais de 500 instalações",
+                "Equipamento certificado CE",
+                "Entrega em 7 dias",
+                "Garantia de 5 anos",
+                "A melhor do mundo com resultados garantidos",
+                "O gabinete e a válvula são instalados em série",
+                "O gabinete e a válvula são instalados juntos",
+            ),
+            "disclaimer": "Não são componentes em série e não devem ser instalados juntos.",
+        },
+        "ja": {
+            "forbidden": (
+                "500台以上の導入実績",
+                "CE認証済み",
+                "7日以内に納品",
+                "5年保証",
+                "世界最高、結果保証",
+                "キャビネットとバルブを直列に設置",
+                "キャビネットとバルブを同時に設置",
+            ),
+            "disclaimer": "直列部品ではなく、同時に設置しません。",
+        },
+        "ko": {
+            "forbidden": (
+                "500대 이상의 설치 실적",
+                "CE 인증 완료",
+                "7일 이내 납품",
+                "5년 보증",
+                "세계 최고, 결과 보장",
+                "캐비닛과 밸브를 직렬로 설치",
+                "캐비닛과 밸브를 함께 설치",
+            ),
+            "disclaimer": "직렬 구성품이 아니며 함께 설치하지 않습니다.",
+        },
+        "pl": {
+            "forbidden": (
+                "Ponad 500 instalacji",
+                "Urządzenie certyfikowane CE",
+                "Dostawa w ciągu 7 dni",
+                "5-letnia gwarancja",
+                "Najlepszy na świecie, gwarantowane wyniki",
+                "Szafa i zawór są instalowane szeregowo",
+                "Szafa i zawór są instalowane razem",
+            ),
+            "disclaimer": "To nie są elementy szeregowe i nie należy instalować ich razem.",
+        },
+    }
+
+    def setUp(self):
+        self.guard = TranslationDataTests("test_00_locale_order_is_exact")
+
+    def assert_guard_failure(self, callback):
+        with self.assertRaises(AssertionError):
+            callback()
+
+    def test_fact_guard_rejects_changed_number_and_unit(self):
+        self.assert_guard_failure(
+            lambda: self.guard._assert_critical_facts(
+                "es", "fixture", {"measurement": "Power 20kW"}, {"measurement": "Potencia 999MW"}
+            )
+        )
+
+    def test_fact_guard_allows_translated_pressure_and_flow_to_change_order(self):
+        english = {"measurement": "Pressure 20 bar; flow 200 m³/h"}
+        localized = {"measurement": "Caudal 200 m³/h; presión 20 bar"}
+        self.guard._assert_critical_facts("es", "fixture", english, localized)
+
+    def test_fact_guard_recognizes_supported_units_with_or_without_spaces(self):
+        english = {
+            "measurement": (
+                "20kW; 1.5 MPa; 100kPa; 25 bar; 90kg; 1100 mm; 10.17ft; "
+                "200ms; 24 V; 95%; 5000 L/min; 200m³/h; 12 m/min"
+            )
+        }
+        localized = {
+            "measurement": (
+                "200 m³/h; 5000L/min; 95 %; 24V; 200 ms; 10.17 ft; "
+                "1100mm; 90 kg; 25bar; 100 kPa; 1.5MPa; 20 kW; 12m/min"
+            )
+        }
+        self.guard._assert_critical_facts("es", "fixture", english, localized)
+
+    def test_fact_guard_is_independent_of_product_builder_validation(self):
+        english = {"measurement": "Pressure 20 bar"}
+        localized = {"measurement": "Presión 20 bar"}
+        with mock.patch.object(
+            PRODUCT_BUILDER,
+            "validate_technical_content",
+            side_effect=AssertionError("production validator must not decide this contract"),
+        ), mock.patch.object(
+            PRODUCT_BUILDER,
+            "technical_tokens",
+            side_effect=AssertionError("production tokenizer must not decide this contract"),
+        ):
+            self.guard._assert_critical_facts("es", "fixture", english, localized)
+
+    def test_fact_guard_keeps_identity_and_explicit_technical_values_exact(self):
+        for field in ("model", "id", "url", "key"):
+            with self.subTest(field=field):
+                self.assert_guard_failure(
+                    lambda field=field: self.guard._assert_critical_facts(
+                        "es", "fixture", {field: "stable-value"}, {field: "changed-value"}
+                    )
+                )
+        self.assert_guard_failure(
+            lambda: self.guard._assert_critical_facts(
+                "es",
+                "fixture",
+                {"specs": [{"value": "Analog + NPN/PNP"}]},
+                {"specs": [{"value": "Analógico + NPN/PNP"}]},
+            )
+        )
+
+    def test_runtime_placeholder_guard_rejects_missing_and_extra_placeholders(self):
+        english = {"message": "Step {current} of {total}"}
+        for localized in (
+            "Paso {current}",
+            "Paso {current} de {total} ({extra})",
+            "Paso {current} de {total} / {total}",
+        ):
+            with self.subTest(localized=localized):
+                with self.assertRaisesRegex(
+                    AssertionError,
+                    r"es/fixture/message: runtime placeholder multiset differs",
+                ):
+                    self.guard._assert_safe_strings(
+                        "es", "fixture", english, {"message": localized}
+                    )
+
+    def test_runtime_placeholder_guard_allows_reordered_placeholders(self):
+        english = {"message": "Step {current} of {total}"}
+        localized = {"message": "De {total}: paso {current}"}
+        self.guard._assert_safe_strings("es", "fixture", english, localized)
+
+    def test_lishi_guard_detects_cjk_adjacent_brand(self):
+        self.assert_guard_failure(
+            lambda: self.guard._assert_brand_and_claim_boundaries(
+                "zh", "fixture", {}, {"text": "禁止LISHI品牌残留"}
+            )
+        )
+
+    def test_claim_guard_rejects_english_serial_installation_but_not_negation(self):
+        self.assert_guard_failure(
+            lambda: self.guard._assert_brand_and_claim_boundaries(
+                "es",
+                "fixture",
+                {},
+                {"text": "The integrated cabinet and proportional valve are installed in series."},
+            )
+        )
+        self.guard._assert_brand_and_claim_boundaries(
+            "es",
+            "fixture",
+            {},
+            {"text": "The integrated cabinet and proportional valve are not installed together."},
+        )
+
+    def test_six_locale_claim_guard_positive_and_disclaimer_fixtures(self):
+        for locale, fixtures in self.CLAIM_FIXTURES.items():
+            for text in fixtures["forbidden"]:
+                with self.subTest(locale=locale, kind="forbidden", text=text):
+                    self.assert_guard_failure(
+                        lambda locale=locale, text=text: self.guard._assert_brand_and_claim_boundaries(
+                            locale, "fixture", {}, {"text": text}
+                        )
+                    )
+            with self.subTest(locale=locale, kind="disclaimer"):
+                self.guard._assert_brand_and_claim_boundaries(
+                    locale, "fixture", {}, {"text": fixtures["disclaimer"]}
+                )
+
+    def test_english_allowlist_has_global_and_locale_specific_layers(self):
+        for locale in self.guard.LOCALES:
+            for value in (
+                "WhatsApp",
+                "LinkedIn",
+                "Modbus",
+                "GasMixTech",
+                "PSA",
+                "DHgate",
+                "20 kW",
+                "12 m/min",
+                "VS",
+            ):
+                with self.subTest(locale=locale, value=value):
+                    self.assertTrue(self.guard._english_value_is_allowlisted(locale, value))
+        for locale in ("es", "pt", "pl"):
+            with self.subTest(locale=locale, value="Blog"):
+                self.assertTrue(self.guard._english_value_is_allowlisted(locale, "Blog"))
+        self.assertTrue(self.guard._english_value_is_allowlisted("es", "Factor"))
+        for value in ("Request a Solution", "Send assessment request"):
+            with self.subTest(value=value):
+                self.assertFalse(self.guard._english_value_is_allowlisted("es", value))
+
+    def test_english_ui_guard_rejects_sentence_but_allows_locale_specific_term(self):
+        self.assert_guard_failure(
+            lambda: self.guard._assert_no_english_ui_residue(
+                "es",
+                "homepage",
+                {"hero": {"title": "Request a Solution"}},
+                {"hero": {"title": "Request a Solution"}},
+            )
+        )
+        self.guard._assert_no_english_ui_residue(
+            "es",
+            "core",
+            {"shared": {"copy": {"blog": "Blog"}}},
+            {"shared": {"copy": {"blog": "Blog"}}},
+        )
+
+    def test_missing_path_is_an_assertion_failure_not_key_error(self):
+        english = {"hero": {"title": "Request a Solution"}}
+        localized = {"hero": {}}
+        try:
+            self.guard._assert_no_english_ui_residue("es", "fixture", english, localized)
+        except AssertionError as error:
+            self.assertIn("es/fixture/hero.title", str(error))
+        except Exception as error:
+            self.fail(f"missing path raised {type(error).__name__} instead of AssertionError: {error}")
+        else:
+            self.fail("missing path did not fail")
